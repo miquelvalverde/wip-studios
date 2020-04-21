@@ -23,21 +23,15 @@ public class PlayerCameraController : MonoBehaviour
 
     [HideInInspector] private InputSystem controls;
 
-    private void Awake()
+    public void Initializate(InputSystem controls)
     {
-        controls = new InputSystem();
-        controls.Enable();
+        this.controls = controls;
 
-        Cursor.lockState = CursorLockMode.Locked;
+        this.controls.Player.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
+        this.controls.Player.Look.canceled += _ => mouseInput = Vector2.zero;
     }
 
-    private void Start()
-    {
-        controls.Player.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
-        controls.Player.Look.canceled += _ => mouseInput = Vector2.zero;
-    }
-
-    private void LateUpdate()
+    public void UpdateCamera()
     {
         float mouseX = mouseInput.x;
         float mouseY = mouseInput.y;

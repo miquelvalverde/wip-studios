@@ -270,6 +270,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 370017931}
+  - component: {fileID: 370017933}
+  - component: {fileID: 370017932}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -293,6 +295,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &370017932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370017930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0d393f5cd385f48827b428c215ac08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &370017933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370017930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43fbac8307f9d684ebd7529594b86955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraController: {fileID: 2078856100}
 --- !u!1 &472835898
 GameObject:
   m_ObjectHideFlags: 0
