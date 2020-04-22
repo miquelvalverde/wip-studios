@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour
 
     public bool onGrounded { get; private set; }
 
-    private bool isHoldingToChange;
-
     public float groundDistance
     {
         get
@@ -70,9 +68,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        isHoldingToChange = radialMenuController.UpdateRadialMenu();
+        radialMenuController.UpdateRadialMenu();
 
-        if (isHoldingToChange)
+        if (radialMenuController.IsHoldingToChange)
             return;
 
         if (canNormalMove)
@@ -85,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (isHoldingToChange)
+        if (radialMenuController.IsHoldingToChange)
             return;
 
         cameraController.UpdateCamera();

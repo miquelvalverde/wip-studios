@@ -22,17 +22,27 @@ public class RadialMenuController : MonoBehaviour
     private int portionCount;
     private float portionSize360;
     private float portionSize01;
-    private bool isHoldingToChange;
+    private int currentSelection;
+
+    public bool IsHoldingToChange { get; private set; }
 
     public void Initializate(InputSystem controls)
     {
-        controls.Player.Change.performed += _ => isHoldingToChange = true;
-        controls.Player.Change.canceled += _ => isHoldingToChange = false;
+        controls.Player.Change.performed += _ => EnableRadialMenu();
+        controls.Player.Change.canceled += _ => DisableRadialMenu();
+        controls.UI.Submit.performed += _ => SubmitSelection();
         portionCount = portions.Length;
         portionSize360 = 360F / portionCount;
         portionSize01 = portionSize360 / 360F;
-        isHoldingToChange = false;
+        currentSelection = -1;
         radialMenuPortions = CreateWheel();
+        DisableRadialMenu();
+    }
+
+    private void SubmitSelection()
+    {
+        if (currentSelection != -1)
+            SelectPortion(currentSelection);
     }
 
     private RadialMenuPortion[] CreateWheel()
@@ -59,29 +69,28 @@ public class RadialMenuController : MonoBehaviour
         return portion;
     }
 
-    public bool UpdateRadialMenu()
+    public void UpdateRadialMenu()
     {
-        if (isHoldingToChange)
+        if (IsHoldingToChange)
         {
-            this.gameObject.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
             var mouseAngle = GetAngleFromMouseInput(Input.mousePosition);
-            var selectedPortionIndex = (int)(mouseAngle / portionSize360);
-
-            HoverPortion(selectedPortionIndex);
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                SelectPortion(selectedPortionIndex);
-            }
+            currentSelection = (int)(mouseAngle / portionSize360);
+            HoverPortion(currentSelection);
         }
-        else
-        {
-            this.gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+    }
 
-        return isHoldingToChange;
+    private void EnableRadialMenu()
+    {
+        this.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        IsHoldingToChange = true;
+    }
+
+    private void DisableRadialMenu()
+    {
+        this.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        IsHoldingToChange = false;
     }
 
     private void SelectPortion(int selectedPortionIndex)
