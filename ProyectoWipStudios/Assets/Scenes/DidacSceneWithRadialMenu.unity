@@ -378,9 +378,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  gravity: -9.81
   jumpForce: 5
   moveTime: 0.2
+  maxVerticalSpeed: 10
+  verticalSpeed: 0
 --- !u!114 &370017933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radialMenuController: {fileID: 609577599}
+  canNormalMove: 0
 --- !u!143 &370017934
 CharacterController:
   m_ObjectHideFlags: 0

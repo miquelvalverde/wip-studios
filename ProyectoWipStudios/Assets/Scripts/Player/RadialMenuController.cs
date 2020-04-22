@@ -24,18 +24,14 @@ public class RadialMenuController : MonoBehaviour
     private float portionSize01;
     private bool isHoldingToChange;
 
-    private void Awake()
-    {
-        portionCount = portions.Length;
-        portionSize360 = 360F / portionCount;
-        portionSize01 = portionSize360 / 360F;
-        isHoldingToChange = false;
-    }
-
     public void Initializate(InputSystem controls)
     {
         controls.Player.Change.performed += _ => isHoldingToChange = true;
         controls.Player.Change.canceled += _ => isHoldingToChange = false;
+        portionCount = portions.Length;
+        portionSize360 = 360F / portionCount;
+        portionSize01 = portionSize360 / 360F;
+        isHoldingToChange = false;
         radialMenuPortions = CreateWheel();
     }
 

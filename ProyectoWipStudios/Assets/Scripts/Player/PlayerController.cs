@@ -5,15 +5,54 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovementController))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance { get; private set; }
+
     private PlayerMovementController movementController;
-    private PlayerCameraController cameraController = null;
+    private PlayerCameraController cameraController;
+    private PlayerSpecificController specificController;
     [SerializeField] private RadialMenuController radialMenuController;
-    private bool isHoldingToChange;
 
     public InputSystem controls { get; private set; }
 
+    [HideInInspector] public bool canNormalMove;
+
+    public bool onGrounded { get; private set; }
+
+    private bool isHoldingToChange;
+
+    public float groundDistance
+    {
+        get
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit))
+            {
+                return hit.distance;
+            }
+
+            return Mathf.Infinity;
+        }
+
+        private set { }
+    }
+
+    public Vector3 movementVector
+    {
+        get
+        {
+            return this.movementController.GetMovementVector();
+        }
+
+        private set { }
+    }
+
     private void Awake()
     {
+        if (instance)
+            Destroy(instance.gameObject);
+
+        instance = this;
+
         Cursor.lockState = CursorLockMode.Locked;
 
         controls = new InputSystem();
@@ -25,21 +64,47 @@ public class PlayerController : MonoBehaviour
         cameraController.Initializate(controls);
         movementController.Initializate(controls);
         radialMenuController.Initializate(controls);
+
+        canNormalMove = true;
     }
 
     private void Update()
     {
         isHoldingToChange = radialMenuController.UpdateRadialMenu();
 
-        if(!isHoldingToChange)
-            movementController.UpdateMovement();
+        if (isHoldingToChange)
+            return;
+
+        if (canNormalMove)
+            onGrounded = movementController.UpdateMovement();
+
+        if (specificController)
+            specificController.UpdateSpecificAction();
+
     }
 
     private void LateUpdate()
     {
-        if (!isHoldingToChange)
-            cameraController.UpdateCamera();
+        if (isHoldingToChange)
+            return;
+
+        cameraController.UpdateCamera();
     }
 
+    /** GETTERS AND SETTERS **/
+    public void SetSpecificController(PlayerSpecificController specificController)
+    {
+        this.specificController = specificController;
+    }
+
+    public void ChangeMaxVerticalSpeed(float maxVerticalSpeed)
+    {
+        this.movementController.SetMaxVerticalSpeed(maxVerticalSpeed);
+    }
+
+    public void ResetMaxVerticalSpeed()
+    {
+        this.movementController.ResetMaxVerticalSpeed();
+    }
 
 }

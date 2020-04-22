@@ -43,9 +43,17 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Glide"",
+                    ""type"": ""Button"",
+                    ""id"": ""187cc167-575b-45b1-8696-b087b8c3f994"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Change"",
                     ""type"": ""Button"",
-                    ""id"": ""44c6dc90-9a64-4510-9d60-52a2628204a2"",
+                    ""id"": ""84de7a9d-2f68-4e80-b380-ae06c742e29d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -131,11 +139,22 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bf5879bc-181c-4f5a-90f6-ecc277e35333"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""id"": ""fb6d4757-cab6-4b02-a0e3-acd6434fd946"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Glide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0150fb59-19db-4c10-a4b0-8924898eec04"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Change"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -178,6 +197,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_Glide = m_Player.FindAction("Glide", throwIfNotFound: true);
         m_Player_Change = m_Player.FindAction("Change", throwIfNotFound: true);
     }
 
@@ -231,6 +251,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_Glide;
     private readonly InputAction m_Player_Change;
     public struct PlayerActions
     {
@@ -239,6 +260,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @Glide => m_Wrapper.m_Player_Glide;
         public InputAction @Change => m_Wrapper.m_Player_Change;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -258,6 +280,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Glide.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGlide;
+                @Glide.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGlide;
+                @Glide.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGlide;
                 @Change.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChange;
                 @Change.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChange;
                 @Change.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChange;
@@ -274,6 +299,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Glide.started += instance.OnGlide;
+                @Glide.performed += instance.OnGlide;
+                @Glide.canceled += instance.OnGlide;
                 @Change.started += instance.OnChange;
                 @Change.performed += instance.OnChange;
                 @Change.canceled += instance.OnChange;
@@ -304,6 +332,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnGlide(InputAction.CallbackContext context);
         void OnChange(InputAction.CallbackContext context);
     }
 }

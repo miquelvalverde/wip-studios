@@ -30,9 +30,17 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Glide",
+                    "type": "Button",
+                    "id": "187cc167-575b-45b1-8696-b087b8c3f994",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Change",
                     "type": "Button",
-                    "id": "44c6dc90-9a64-4510-9d60-52a2628204a2",
+                    "id": "84de7a9d-2f68-4e80-b380-ae06c742e29d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -118,11 +126,22 @@
                 },
                 {
                     "name": "",
-                    "id": "bf5879bc-181c-4f5a-90f6-ecc277e35333",
-                    "path": "<Keyboard>/c",
+                    "id": "fb6d4757-cab6-4b02-a0e3-acd6434fd946",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "MouseAndKeyboard",
+                    "action": "Glide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0150fb59-19db-4c10-a4b0-8924898eec04",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Change",
                     "isComposite": false,
                     "isPartOfComposite": false
