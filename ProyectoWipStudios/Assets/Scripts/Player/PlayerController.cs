@@ -10,10 +10,12 @@ public class PlayerController : MonoBehaviour
     private PlayerMovementController movementController;
     private PlayerCameraController cameraController;
     private PlayerSpecificController specificController;
+    [SerializeField] private RadialMenuController radialMenuController;
 
     public InputSystem controls { get; private set; }
 
     [HideInInspector] public bool canNormalMove;
+
     public bool onGrounded { get; private set; }
 
     public float groundDistance
@@ -21,7 +23,7 @@ public class PlayerController : MonoBehaviour
         get
         {
             RaycastHit hit;
-            if(Physics.Raycast(transform.position, Vector3.down, out hit))
+            if (Physics.Raycast(transform.position, Vector3.down, out hit))
             {
                 return hit.distance;
             }
@@ -59,13 +61,19 @@ public class PlayerController : MonoBehaviour
 
         cameraController.Initializate(controls);
         movementController.Initializate(controls);
+        radialMenuController.Initializate(controls);
 
         canNormalMove = true;
     }
 
     private void Update()
     {
-        if(canNormalMove)
+        radialMenuController.UpdateRadialMenu();
+
+        if (radialMenuController.IsHoldingToChange)
+            return;
+
+        if (canNormalMove)
             onGrounded = movementController.UpdateMovement();
 
         if (specificController)
@@ -75,6 +83,9 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (radialMenuController.IsHoldingToChange)
+            return;
+
         cameraController.UpdateCamera();
     }
 
