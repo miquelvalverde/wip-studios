@@ -9,9 +9,12 @@ public class PlayerMovementController : MonoBehaviour
     private CharacterController characterController;
 
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float moveTime = .2f;
+
+    [SerializeField] private float gravity = Physics.gravity.y;
+    [SerializeField] private float maxVerticalSpeed = 10;
+    private float initialMaxVerticalSpeed;
 
     private Transform camTransform;
     private Vector2 moveInput = Vector2.zero;
@@ -19,8 +22,10 @@ public class PlayerMovementController : MonoBehaviour
     private Vector3 lastForward = Vector3.zero;
     private CollisionFlags collisionFlags;
 
-    private float verticalSpeed;
+    [SerializeField] public float verticalSpeed;
     private bool jumpInput;
+
+    private bool hasMovement;
 
     public void Initializate(InputSystem controls)
     {
@@ -34,11 +39,44 @@ public class PlayerMovementController : MonoBehaviour
         controls.Player.Jump.performed += _ => jumpInput = true;
         controls.Player.Jump.canceled += _ => jumpInput = false;
 
+        initialMaxVerticalSpeed = maxVerticalSpeed;
     }
 
     public bool UpdateMovement()
     {
 
+        Vector3 movement = GetMovementVector();
+
+        collisionFlags = characterController.Move(movement);
+
+        bool onGrounded = false;
+
+        if ((collisionFlags & CollisionFlags.Below) != 0)
+        {
+            onGrounded = true;
+            verticalSpeed = 0;
+        }
+
+        if ((collisionFlags & CollisionFlags.Above) != 0 && verticalSpeed > 0f)
+            verticalSpeed = 0;
+        if (jumpInput)
+        {
+            jumpInput = false;
+            if (onGrounded)
+                verticalSpeed = jumpForce;
+        }
+
+        transform.forward = (hasMovement) ? Vector3.Lerp(new Vector3(movement.x, 0, movement.z), transform.forward, moveTime) : lastForward;
+        lastForward = transform.forward;
+
+        if (onGrounded)
+            ResetMaxVerticalSpeed();
+
+        return onGrounded;
+    }
+
+    public Vector3 GetMovementVector()
+    {
         Vector3 movement = Vector3.zero;
         Vector3 forward = camTransform.forward;
         Vector3 right = camTransform.right;
@@ -58,38 +96,26 @@ public class PlayerMovementController : MonoBehaviour
         else if (moveInput.x < 0)
             movement -= right;
 
-        bool hasMovement = movement != Vector3.zero;
+        hasMovement = movement != Vector3.zero;
         movement.Normalize();
 
         movement *= speed * Time.deltaTime;
 
         verticalSpeed += gravity * Time.deltaTime;
+        verticalSpeed = Mathf.Clamp(verticalSpeed, -maxVerticalSpeed, maxVerticalSpeed);
         movement.y = verticalSpeed * Time.deltaTime;
 
-        collisionFlags = characterController.Move(movement);
+        return movement;
+    }
 
-        bool isGrounded = false;
+    public void SetMaxVerticalSpeed(float maxVerticalSpeed)
+    {
+        this.maxVerticalSpeed = maxVerticalSpeed;
+    }
 
-        if ((collisionFlags & CollisionFlags.Below) != 0)
-        {
-            isGrounded = true;
-            verticalSpeed = 0;
-        }
-
-        if ((collisionFlags & CollisionFlags.Above) != 0 && verticalSpeed > 0f)
-            verticalSpeed = 0;
-
-        if(isGrounded && jumpInput)
-        {
-            jumpInput = false;
-
-            verticalSpeed = jumpForce;
-        }
-
-        transform.forward = (hasMovement) ? Vector3.Lerp(new Vector3(movement.x, 0, movement.z), transform.forward, moveTime) : lastForward;
-        lastForward = transform.forward;
-
-        return isGrounded;
+    public void ResetMaxVerticalSpeed()
+    {
+        SetMaxVerticalSpeed(initialMaxVerticalSpeed);
     }
 
 }
