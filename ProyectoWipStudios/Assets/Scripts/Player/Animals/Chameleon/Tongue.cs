@@ -49,7 +49,6 @@ public class Tongue : MonoBehaviour
     private void RetractTongue()
     {
         isRetracting = true;
-        closestPickable.transform.SetParent(tongueEnd);
     }
 
     private void Update()
@@ -78,18 +77,15 @@ public class Tongue : MonoBehaviour
         else if (isRetracting)
         {
             tongueScaler.localScale -= new Vector3(0, 0, speed * factor * Time.deltaTime);
-            if(closestPickable)
-                closestPickable.transform.localScale = Vector3.one;
-
+            closestPickable.transform.position = tongueEnd.position;
             if (tongueScaler.localScale.z <= 1)
             {
                 isRetracting = false;
-                ResetTongue();
-                if(closestPickable)
+                if(closestPickable != null)
                 {
                     Destroy(closestPickable.gameObject);
-                    closestPickable = null;
                 }
+                ResetTongue();
             }
         }
     }
