@@ -12,8 +12,8 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float moveTime = .2f;
 
-    [SerializeField] private float gravity = Physics.gravity.y;
     [SerializeField] private float maxVerticalSpeed = 10;
+    private float gravity = Physics.gravity.y;
     private float initialMaxVerticalSpeed;
 
     private Transform camTransform;
@@ -22,7 +22,7 @@ public class PlayerMovementController : MonoBehaviour
     private Vector3 lastForward = Vector3.zero;
     private CollisionFlags collisionFlags;
 
-    [SerializeField] public float verticalSpeed;
+    [HideInInspector] public float verticalSpeed;
     private bool jumpInput;
 
     private bool hasMovement;
