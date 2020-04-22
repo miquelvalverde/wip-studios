@@ -22,16 +22,20 @@ public class RadialMenuController : MonoBehaviour
     private int portionCount;
     private float portionSize360;
     private float portionSize01;
+    private bool isHoldingToChange;
 
     private void Awake()
     {
         portionCount = portions.Length;
         portionSize360 = 360F / portionCount;
         portionSize01 = portionSize360 / 360F;
+        isHoldingToChange = false;
     }
 
-    private void Start()
+    public void Initializate(InputSystem controls)
     {
+        controls.Player.Change.performed += _ => isHoldingToChange = true;
+        controls.Player.Change.canceled += _ => isHoldingToChange = false;
         radialMenuPortions = CreateWheel();
     }
 
@@ -59,13 +63,15 @@ public class RadialMenuController : MonoBehaviour
         return portion;
     }
 
-    private void Update()
+    public bool UpdateRadialMenu()
     {
-        var mouseAngle = GetAngleFromMouseInput(Input.mousePosition);
-        var selectedPortionIndex = (int)(mouseAngle / portionSize360);
-
-        if(this.gameObject.activeSelf)
+        if (isHoldingToChange)
         {
+            this.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            var mouseAngle = GetAngleFromMouseInput(Input.mousePosition);
+            var selectedPortionIndex = (int)(mouseAngle / portionSize360);
+
             HoverPortion(selectedPortionIndex);
 
             if (Input.GetMouseButtonDown(0))
@@ -73,6 +79,13 @@ public class RadialMenuController : MonoBehaviour
                 SelectPortion(selectedPortionIndex);
             }
         }
+        else
+        {
+            this.gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        return isHoldingToChange;
     }
 
     private void SelectPortion(int selectedPortionIndex)
