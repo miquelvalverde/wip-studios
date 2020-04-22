@@ -21,9 +21,15 @@ public class PlayerController : MonoBehaviour
         cameraController = Camera.main.GetComponent<PlayerCameraController>();
 
         cameraController.Initializate(controls);
+        movementController.Initializate(controls);
     }
 
     private void Update()
+    {
+        movementController.UpdateMovement();
+    }
+
+    private void LateUpdate()
     {
         cameraController.UpdateCamera();
     }

@@ -21,14 +21,10 @@ public class PlayerCameraController : MonoBehaviour
 
     [HideInInspector] private Vector2 mouseInput;
 
-    [HideInInspector] private InputSystem controls;
-
     public void Initializate(InputSystem controls)
     {
-        this.controls = controls;
-
-        this.controls.Player.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
-        this.controls.Player.Look.canceled += _ => mouseInput = Vector2.zero;
+        controls.Player.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
+        controls.Player.Look.canceled += _ => mouseInput = Vector2.zero;
     }
 
     public void UpdateCamera()
