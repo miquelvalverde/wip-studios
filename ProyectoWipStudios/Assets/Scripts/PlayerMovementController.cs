@@ -9,7 +9,9 @@ public class PlayerMovementController : MonoBehaviour
     private CharacterController characterController;
 
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float moveTime = 1;
+    [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float moveTime = .2f;
 
     private Transform camTransform;
     private Vector2 moveInput = Vector2.zero;
@@ -18,6 +20,7 @@ public class PlayerMovementController : MonoBehaviour
     private CollisionFlags collisionFlags;
 
     private float verticalSpeed;
+    private bool jumpInput;
 
     public void Initializate(InputSystem controls)
     {
@@ -27,6 +30,10 @@ public class PlayerMovementController : MonoBehaviour
 
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += _ => moveInput = Vector2.zero;
+
+        controls.Player.Jump.performed += _ => jumpInput = true;
+        controls.Player.Jump.canceled += _ => jumpInput = false;
+
     }
 
     public bool UpdateMovement()
@@ -56,6 +63,9 @@ public class PlayerMovementController : MonoBehaviour
 
         movement *= speed * Time.deltaTime;
 
+        verticalSpeed += gravity * Time.deltaTime;
+        movement.y = verticalSpeed * Time.deltaTime;
+
         collisionFlags = characterController.Move(movement);
 
         bool isGrounded = false;
@@ -68,6 +78,13 @@ public class PlayerMovementController : MonoBehaviour
 
         if ((collisionFlags & CollisionFlags.Above) != 0 && verticalSpeed > 0f)
             verticalSpeed = 0;
+
+        if(isGrounded && jumpInput)
+        {
+            jumpInput = false;
+
+            verticalSpeed = jumpForce;
+        }
 
         transform.forward = (hasMovement) ? Vector3.Lerp(new Vector3(movement.x, 0, movement.z), transform.forward, moveTime) : lastForward;
         lastForward = transform.forward;
