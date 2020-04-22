@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class RadialMenuController : MonoBehaviour
 {
@@ -45,6 +41,8 @@ public class RadialMenuController : MonoBehaviour
     {
         if (IsHoldingToChange && currentSelection != -1)
             SelectPortion(currentSelection);
+
+        DisableRadialMenu();
     }
 
     private RadialMenuPortion[] CreateWheel()
