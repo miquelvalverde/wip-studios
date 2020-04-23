@@ -1675,6 +1675,7 @@ MonoBehaviour:
   - {fileID: 222890666}
   - {fileID: 380500930}
   radius: 1.1
+  maxClimbForward: 1
 --- !u!65 &1772779498
 BoxCollider:
   m_ObjectHideFlags: 0

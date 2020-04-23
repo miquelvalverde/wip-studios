@@ -80,7 +80,7 @@ public class SquirrelController : PlayerSpecificController
                 currentClimbPosition = nextClimbPosition;
                 nextClimbPosition = currentTree.GetNextPosition(playerController.transform);
             }
-            catch
+            catch (CannotClimbException)
             {
                 endedTree = true;
             }

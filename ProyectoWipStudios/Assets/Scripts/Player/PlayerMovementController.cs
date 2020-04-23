@@ -108,6 +108,11 @@ public class PlayerMovementController : MonoBehaviour
         return movement;
     }
 
+    public void SetLastForward(Vector3 forward)
+    {
+        lastForward = forward;
+    }
+
     public void SetMaxVerticalSpeed(float maxVerticalSpeed)
     {
         this.maxVerticalSpeed = maxVerticalSpeed;

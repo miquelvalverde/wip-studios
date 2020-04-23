@@ -14,7 +14,23 @@ public class PlayerController : MonoBehaviour
 
     public InputSystem controls { get; private set; }
 
-    [HideInInspector] public bool canNormalMove;
+    private bool _canNormalMove;
+    [HideInInspector] public bool canNormalMove
+    {
+        get
+        {
+            return _canNormalMove;
+        }
+
+        set
+        {
+            _canNormalMove = value;
+
+            if (_canNormalMove)
+                movementController.SetLastForward(transform.forward);
+        }
+
+    }
 
     public bool onGrounded { get; private set; }
 
