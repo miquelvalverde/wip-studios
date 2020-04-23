@@ -1126,6 +1126,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 694460796}
     m_Modifications:
+    - target: {fileID: 421299150604779264, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 421299150604779264, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 421299150604779264, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[1].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 421299150604779264, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[1].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 421299150604779264, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 421299150604779264, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 421299150604779264, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 421299150604779264, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 421299150604779264, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: movementCurve.m_Curve.Array.data[1].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 421299150604779264, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: speed
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 421299150604779294, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
         type: 3}
       propertyPath: m_Name

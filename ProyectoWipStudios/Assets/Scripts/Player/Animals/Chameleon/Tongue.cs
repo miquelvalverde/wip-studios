@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Tongue : MonoBehaviour
@@ -14,6 +13,7 @@ public class Tongue : MonoBehaviour
     private float pickableDistance;
     private float currentTime;
     private Pickable closestPickable;
+    private float factor;
         
     private void Awake()
     {
@@ -44,59 +44,73 @@ public class Tongue : MonoBehaviour
         tongueScaler.gameObject.SetActive(true);
     }
 
-    private void RetractTongue()
-    {
-        isRetracting = true;
-    }
-
     private void Update()
     {
-
+        ///// Temporary use of old input system just for testing purposes
         if (Input.GetMouseButtonDown(0))
         {
             closestPickable = GetClosestPickable();
             ProtractTongue(closestPickable);
         }
+        /////
 
-        currentTime += Time.deltaTime;
-        float factor = movementCurve.Evaluate(currentTime);
+        UpdateTongueMovement();
+    }
 
+    private void UpdateTongueMovement()
+    {
         if (isProtracting)
         {
+            currentTime += Time.deltaTime;
+            factor = movementCurve.Evaluate(currentTime);
             tongueScaler.localScale += new Vector3(0, 0, speed * factor * Time.deltaTime);
 
-            if(tongueScaler.localScale.z >= pickableDistance)
+            if (tongueScaler.localScale.z >= pickableDistance)
             {
-                isProtracting = false;
-                currentTime = 0;
                 RetractTongue();
             }
         }
         else if (isRetracting)
         {
+            currentTime += Time.deltaTime;
+            factor = movementCurve.Evaluate(currentTime);
             tongueScaler.localScale -= new Vector3(0, 0, speed * factor * Time.deltaTime);
             closestPickable.transform.position = tongueEnd.position;
+
             if (tongueScaler.localScale.z <= 1)
             {
-                isRetracting = false;
-                if(closestPickable != null)
-                {
-                    Destroy(closestPickable.gameObject);
-                }
-                ResetTongue();
+                Eat();
             }
         }
     }
 
+    private void RetractTongue()
+    {
+        isProtracting = false;
+        isRetracting = true;
+    }
+
+    private void Eat()
+    {
+        isRetracting = false;
+        if (closestPickable != null)
+        {
+            Destroy(closestPickable.gameObject);
+        }
+        ResetTongue();
+    }
+
     private Pickable GetClosestPickable()
     {
-        float minDistance = float.MaxValue;
+        var colliders = Physics.OverlapSphere(transform.position, range);
+        var pickables = ExtractPickablesOnly(colliders);
+        var minDistance = range;
         Pickable closestPickable = null;
-        foreach (Pickable pickable in GameObject.FindObjectsOfType<Pickable>())
+        foreach (Pickable pickable in pickables)
         {
             var distance = Vector3.Distance(tongueScaler.position, pickable.transform.position);
             var direction = pickable.transform.position - tongueScaler.position;
-            if (distance < minDistance && IsValidPickable(distance, direction))
+            if (distance < minDistance && Vector3.Dot(direction, transform.forward) > 0)
             {
                 closestPickable = pickable;
                 minDistance = distance;
@@ -105,8 +119,17 @@ public class Tongue : MonoBehaviour
         return closestPickable;
     }
 
-    private bool IsValidPickable(float distance, Vector3 direction)
+    private static List<Pickable> ExtractPickablesOnly(Collider[] colliders)
     {
-        return distance < range && Vector3.Dot(direction, transform.forward) > 0;
+        var pickables = new List<Pickable>();
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            var pickable = colliders[i].GetComponent<Pickable>();
+            if (pickable != null)
+                pickables.Add(pickable);
+        }
+
+        return pickables;
     }
 }
