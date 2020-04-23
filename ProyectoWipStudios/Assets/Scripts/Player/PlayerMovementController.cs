@@ -6,14 +6,14 @@ using UnityEngine;
 public class PlayerMovementController : MonoBehaviour
 {
 
-    private CharacterController characterController;
+    public CharacterController characterController { get; private set; }
 
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float moveTime = .2f;
 
     [SerializeField] private float maxVerticalSpeed = 10;
-    private float gravity = Physics.gravity.y;
+    [SerializeField] private float gravity = Physics.gravity.y;
     private float initialMaxVerticalSpeed;
 
     private Transform camTransform;
@@ -106,6 +106,11 @@ public class PlayerMovementController : MonoBehaviour
         movement.y = verticalSpeed * Time.deltaTime;
 
         return movement;
+    }
+
+    public void SetLastForward(Vector3 forward)
+    {
+        lastForward = forward;
     }
 
     public void SetMaxVerticalSpeed(float maxVerticalSpeed)

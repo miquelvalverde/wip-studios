@@ -1,5 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class RadialMenuController : MonoBehaviour
 {
@@ -19,7 +23,6 @@ public class RadialMenuController : MonoBehaviour
     private float portionSize360;
     private float portionSize01;
     private int currentSelection;
-    private Vector2 mousePosition;
 
     public bool IsHoldingToChange { get; private set; }
 
@@ -28,7 +31,6 @@ public class RadialMenuController : MonoBehaviour
         controls.Player.Change.performed += _ => EnableRadialMenu();
         controls.Player.Change.canceled += _ => DisableRadialMenu();
         controls.UI.Submit.performed += _ => SubmitSelection();
-        controls.UI.MousePosition.performed += ctx => mousePosition = ctx.ReadValue<Vector2>();
         portionCount = portions.Length;
         portionSize360 = 360F / portionCount;
         portionSize01 = portionSize360 / 360F;
@@ -39,10 +41,8 @@ public class RadialMenuController : MonoBehaviour
 
     private void SubmitSelection()
     {
-        if (IsHoldingToChange && currentSelection != -1)
+        if (currentSelection != -1)
             SelectPortion(currentSelection);
-
-        DisableRadialMenu();
     }
 
     private RadialMenuPortion[] CreateWheel()
@@ -73,7 +73,7 @@ public class RadialMenuController : MonoBehaviour
     {
         if (IsHoldingToChange)
         {
-            var mouseAngle = GetAngleFromMouseInput(mousePosition);
+            var mouseAngle = GetAngleFromMouseInput(Input.mousePosition);
             currentSelection = (int)(mouseAngle / portionSize360);
             HoverPortion(currentSelection);
         }
