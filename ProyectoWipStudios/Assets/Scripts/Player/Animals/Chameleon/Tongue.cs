@@ -8,6 +8,7 @@ public class Tongue : MonoBehaviour
     [SerializeField] private AnimationCurve movementCurve;
     [SerializeField] private float speed;
     [SerializeField] private Transform tongueEnd;
+    [SerializeField] private float range;
     private bool isProtracting;
     private bool isRetracting;
     private float pickableDistance;
@@ -37,9 +38,6 @@ public class Tongue : MonoBehaviour
             return;
 
         var direction = toPickable.transform.position - tongueScaler.position;
-        if (Vector3.Dot(direction, transform.forward) < 0)
-            return;
-
         tongueScaler.forward = direction;
         pickableDistance = Vector3.Distance(tongueScaler.position, toPickable.transform.position);
         isProtracting = true;
@@ -96,13 +94,19 @@ public class Tongue : MonoBehaviour
         Pickable closestPickable = null;
         foreach (Pickable pickable in GameObject.FindObjectsOfType<Pickable>())
         {
-            float distance = Vector3.Distance(tongueScaler.position, pickable.transform.position);
-            if (distance < minDistance)
+            var distance = Vector3.Distance(tongueScaler.position, pickable.transform.position);
+            var direction = pickable.transform.position - tongueScaler.position;
+            if (distance < minDistance && IsValidPickable(distance, direction))
             {
                 closestPickable = pickable;
                 minDistance = distance;
             }
         }
         return closestPickable;
+    }
+
+    public bool IsValidPickable(float distance, Vector3 direction)
+    {
+        return distance < range && Vector3.Dot(direction, transform.forward) > 0;
     }
 }
