@@ -74,7 +74,12 @@ public class PlayerController : MonoBehaviour
             return;
 
         if (canNormalMove)
+        {
+            movementController.characterController.enabled = true;
             onGrounded = movementController.UpdateMovement();
+        }
+        else
+            movementController.characterController.enabled = false;
 
         if (specificController)
             specificController.UpdateSpecificAction();
