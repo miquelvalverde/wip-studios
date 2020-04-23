@@ -13,7 +13,7 @@ public class PlayerMovementController : MonoBehaviour
     [SerializeField] private float moveTime = .2f;
 
     [SerializeField] private float maxVerticalSpeed = 10;
-    private float gravity = Physics.gravity.y;
+    [SerializeField] private float gravity = Physics.gravity.y;
     private float initialMaxVerticalSpeed;
 
     private Transform camTransform;
