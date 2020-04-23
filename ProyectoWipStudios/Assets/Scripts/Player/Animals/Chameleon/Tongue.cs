@@ -34,7 +34,7 @@ public class Tongue : MonoBehaviour
 
     public void ProtractTongue(Pickable toPickable) /* METHOD TO CALL */
     {
-        if(toPickable == null)
+        if(toPickable == null || isProtracting || isRetracting)
             return;
 
         var direction = toPickable.transform.position - tongueScaler.position;
