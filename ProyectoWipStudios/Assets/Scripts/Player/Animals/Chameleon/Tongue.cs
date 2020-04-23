@@ -32,7 +32,7 @@ public class Tongue : MonoBehaviour
         closestPickable = null;
     }
 
-    public void ProtractTongue(Pickable toPickable)
+    public void ProtractTongue(Pickable toPickable) /* METHOD TO CALL */
     {
         if(toPickable == null)
             return;
@@ -105,7 +105,7 @@ public class Tongue : MonoBehaviour
         return closestPickable;
     }
 
-    public bool IsValidPickable(float distance, Vector3 direction)
+    private bool IsValidPickable(float distance, Vector3 direction)
     {
         return distance < range && Vector3.Dot(direction, transform.forward) > 0;
     }
