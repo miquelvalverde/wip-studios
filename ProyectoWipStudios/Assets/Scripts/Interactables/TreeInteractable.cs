@@ -10,57 +10,57 @@ public class TreeInteractable : MonoBehaviour
     [SerializeField] private bool maxClimbForward = false;
     private int climbIndex = 0;
 
+    private struct CustomPoint
+    {
+        public CustomPoint(Vector3 point, Vector3 direction)
+        {
+            this.point = point;
+            this.direction = direction;
+        }
+
+        public Vector3 point;
+        public Vector3 direction;
+    }
+
     public Vector3 GetNextPosition(Transform player)
     {
-        Vector3 nextClimbPoint;
-
-        try
-        {
-            nextClimbPoint = climbPoints[climbIndex].position;
-        }
-        catch (System.ArgumentOutOfRangeException)
+        if(climbIndex > climbPoints.Count)
         {
             ResetTree();
             throw new CannotClimbException();
         }
+
+
+        Vector3 nextClimbPoint;
+        nextClimbPoint = climbPoints[climbIndex].position;
 
         climbIndex++;
 
         if (climbIndex == climbPoints.Count)
             return nextClimbPoint;
 
-        Vector3 direction = Vector3.zero;
-
-        if (maxClimbForward)
-        {
-            Vector3 forwardPosition = nextClimbPoint + (transform.forward * radius);
-            Vector3 backwardPosition = nextClimbPoint + (-transform.forward * radius);
-            return (Vector3.Distance(player.position, forwardPosition) < Vector3.Distance(player.position, backwardPosition)) ? forwardPosition : backwardPosition;
-        }
-        else
-        {
-            Vector3 rightPosition = nextClimbPoint + (transform.right * radius);
-            Vector3 leftPosition = nextClimbPoint + (-transform.right * radius);
-            return (Vector3.Distance(player.position, rightPosition) < Vector3.Distance(player.position, leftPosition)) ? rightPosition : leftPosition;
-        }
+        return GetNearestClimbPointToDirection(player.position, nextClimbPoint, (maxClimbForward) ? transform.forward : transform.right).point;
     }
 
     public Vector3 GetForward(Transform player)
     {
         Vector3 nextClimbPoint = climbPoints[climbIndex].position;
 
-        if (maxClimbForward)
-        {
-            Vector3 forwardPosition = nextClimbPoint + (transform.forward * radius);
-            Vector3 backwardPosition = nextClimbPoint + (-transform.forward * radius);
-            return (Vector3.Distance(player.position, forwardPosition) < Vector3.Distance(player.position, backwardPosition)) ? -transform.forward : transform.forward;
-        }
+        return GetNearestClimbPointToDirection(player.position, nextClimbPoint, (maxClimbForward) ? transform.forward : transform.right).direction;
+    }
+
+    private CustomPoint GetNearestClimbPointToDirection(Vector3 playerPoint, Vector3 climbPoint, Vector3 direction)
+    {
+        Vector3 pointA = climbPoint + (direction * radius);
+        Vector3 pointB = climbPoint + (-direction * radius);
+
+        float distanceToA = Vector3.Distance(playerPoint, pointA);
+        float distanceToB = Vector3.Distance(playerPoint, pointB);
+
+        if (distanceToA < distanceToB)
+            return new CustomPoint(pointA, direction);
         else
-        {
-            Vector3 rightPosition = nextClimbPoint + (transform.right * radius);
-            Vector3 leftPosition = nextClimbPoint + (-transform.right * radius);
-            return (Vector3.Distance(player.position, rightPosition) < Vector3.Distance(player.position, leftPosition)) ? -transform.right : transform.right;
-        }
+            return new CustomPoint(pointB, -direction);
     }
 
     public void ResetTree()
