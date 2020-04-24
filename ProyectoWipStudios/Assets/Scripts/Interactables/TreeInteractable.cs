@@ -58,9 +58,9 @@ public class TreeInteractable : MonoBehaviour
         float distanceToB = Vector3.Distance(playerPoint, pointB);
 
         if (distanceToA < distanceToB)
-            return new CustomPoint(pointA, direction);
+            return new CustomPoint(pointA, -direction);
         else
-            return new CustomPoint(pointB, -direction);
+            return new CustomPoint(pointB, direction);
     }
 
     public void ResetTree()

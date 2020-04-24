@@ -56,7 +56,6 @@ public class SquirrelController : PlayerSpecificController
                 if (c.GetComponent<TreeInteractable>())
                 {
                     currentTree = c.GetComponent<TreeInteractable>();
-                    this.playerController.transform.forward = currentTree.GetForward(this.playerController.transform);
                     nextClimbPosition = currentTree.GetNextPosition(playerController.transform);
 
                     if(nextClimbPosition.y < this.playerController.transform.position.y)
@@ -65,6 +64,8 @@ public class SquirrelController : PlayerSpecificController
                         currentTree = null;
                         return;
                     }
+
+                    this.playerController.transform.forward = currentTree.GetForward(this.playerController.transform);
 
                     continue;
                 }
