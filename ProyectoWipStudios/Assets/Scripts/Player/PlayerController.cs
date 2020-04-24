@@ -103,9 +103,6 @@ public class PlayerController : MonoBehaviour
     {
         radialMenuController.UpdateRadialMenu();
 
-        if (radialMenuController.IsHoldingToChange)
-            return;
-
         if (canNormalMove)
         {
             movementController.characterController.enabled = true;
@@ -122,9 +119,6 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (radialMenuController.IsHoldingToChange)
-            return;
-
         cameraController.UpdateCamera();
     }
 

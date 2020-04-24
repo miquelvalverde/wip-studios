@@ -24,7 +24,7 @@ public class RadialMenuController : MonoBehaviour
     private float portionSize01;
     private int currentSelection;
 
-    public bool IsHoldingToChange { get; private set; }
+    private bool IsHoldingToChange;
 
     public void Initializate(InputSystem controls)
     {
@@ -73,10 +73,13 @@ public class RadialMenuController : MonoBehaviour
     {
         if (IsHoldingToChange)
         {
+            Time.timeScale = .1f;
             var mouseAngle = GetAngleFromMouseInput(Input.mousePosition);
             currentSelection = (int)(mouseAngle / portionSize360);
             HoverPortion(currentSelection);
         }
+        else
+            Time.timeScale = 1;
     }
 
     private void EnableRadialMenu()
