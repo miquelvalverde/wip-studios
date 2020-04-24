@@ -103,10 +103,10 @@ public class PlayerController : MonoBehaviour
     {
         radialMenuController.UpdateRadialMenu();
 
+        movementController.UpdateGravity();
         if (canNormalMove)
         {
             movementController.characterController.enabled = true;
-            movementController.UpdateGravity();
             movementController.UpdateNormalMovement();
             animatorController.UpdateAnimation(movementController.GetState());
         }
