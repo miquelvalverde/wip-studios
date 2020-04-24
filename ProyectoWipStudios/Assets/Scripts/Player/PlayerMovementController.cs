@@ -14,6 +14,11 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField] private float maxVerticalSpeed = 10;
     [SerializeField] private float gravity = Physics.gravity.y;
+
+    [Header("Ground detection")]
+    [SerializeField] private float groundCheckerRadius = .5f;
+    [SerializeField] private LayerMask whatIsGround;
+
     private float initialMaxVerticalSpeed;
 
     private Transform camTransform;
@@ -26,6 +31,15 @@ public class PlayerMovementController : MonoBehaviour
     private bool jumpInput;
 
     private bool hasMovement;
+
+    public struct State
+    {
+        public Vector3 velocity;
+        public bool onGrounded;
+        public bool onJump;
+    }
+
+    private State currentState;
 
     public void Initializate(InputSystem controls)
     {
@@ -46,31 +60,38 @@ public class PlayerMovementController : MonoBehaviour
     {
 
         Vector3 movement = GetMovementVector();
+        State nextState = new State();
 
         collisionFlags = characterController.Move(movement);
 
-        bool onGrounded = false;
+        bool onGrounded = CheckGround();
 
         if ((collisionFlags & CollisionFlags.Below) != 0)
         {
-            onGrounded = true;
             verticalSpeed = 0;
         }
 
         if ((collisionFlags & CollisionFlags.Above) != 0 && verticalSpeed > 0f)
             verticalSpeed = 0;
+
         if (jumpInput)
         {
             jumpInput = false;
+            nextState.onJump = true;
             if (onGrounded)
                 verticalSpeed = jumpForce;
         }
 
-        transform.forward = (hasMovement) ? Vector3.Lerp(new Vector3(movement.x, 0, movement.z), transform.forward, moveTime) : lastForward;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((hasMovement) ? new Vector3(movement.x, 0, movement.z) : lastForward), moveTime * Time.deltaTime);
         lastForward = transform.forward;
 
         if (onGrounded)
             ResetMaxVerticalSpeed();
+
+        nextState.velocity = characterController.velocity;
+        nextState.onGrounded = onGrounded;
+
+        currentState = nextState;
 
         return onGrounded;
     }
@@ -108,6 +129,16 @@ public class PlayerMovementController : MonoBehaviour
         return movement;
     }
 
+    private bool CheckGround()
+    {
+        return Physics.CheckSphere(transform.position + (Vector3.up * .2f), groundCheckerRadius, whatIsGround);
+    }
+
+    public State GetState()
+    {
+        return currentState;
+    }
+
     public void SetLastForward(Vector3 forward)
     {
         lastForward = forward;
@@ -121,6 +152,13 @@ public class PlayerMovementController : MonoBehaviour
     public void ResetMaxVerticalSpeed()
     {
         SetMaxVerticalSpeed(initialMaxVerticalSpeed);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(transform.position + (Vector3.up * .2f), groundCheckerRadius);
     }
 
 }

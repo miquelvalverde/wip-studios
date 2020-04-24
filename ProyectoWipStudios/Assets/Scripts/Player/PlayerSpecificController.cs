@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public abstract class PlayerSpecificController : MonoBehaviour
 {
     protected PlayerController playerController;
@@ -16,5 +17,10 @@ public abstract class PlayerSpecificController : MonoBehaviour
     public abstract void Initializate(InputSystem controls);
 
     public abstract void UpdateSpecificAction();
+
+    public Animator GetAnimator()
+    {
+        return this.GetComponent<Animator>();
+    }
 
 }

@@ -3,13 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementController))]
+[RequireComponent(typeof(PlayerAnimatorController))]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance { get; private set; }
 
     private PlayerMovementController movementController;
+    private PlayerAnimatorController animatorController;
     private PlayerCameraController cameraController;
-    private PlayerSpecificController specificController;
+    private PlayerSpecificController _specificController;
+    private PlayerSpecificController specificController
+    {
+        get
+        {
+            return _specificController;
+        }
+
+        set
+        {
+            _specificController = value;
+            animatorController.SetAnimator(_specificController.GetAnimator());
+        }
+
+    }
     [SerializeField] private RadialMenuController radialMenuController;
 
     public InputSystem controls { get; private set; }
@@ -73,6 +89,7 @@ public class PlayerController : MonoBehaviour
         controls.Enable();
 
         movementController = this.GetComponent<PlayerMovementController>();
+        animatorController = this.GetComponent<PlayerAnimatorController>();
         cameraController = Camera.main.GetComponent<PlayerCameraController>();
 
         cameraController.Initializate(controls);
@@ -93,6 +110,7 @@ public class PlayerController : MonoBehaviour
         {
             movementController.characterController.enabled = true;
             onGrounded = movementController.UpdateMovement();
+            animatorController.UpdateAnimation(movementController.GetState());
         }
         else
             movementController.characterController.enabled = false;
