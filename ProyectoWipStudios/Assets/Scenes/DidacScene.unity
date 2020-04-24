@@ -470,7 +470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 7
-  moveTime: 0.2
+  moveTime: 10
   maxVerticalSpeed: 10
   gravity: -15
   groundCheckerRadius: 0.4
