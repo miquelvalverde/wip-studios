@@ -12,42 +12,54 @@ public class Tongue : MonoBehaviour
     private bool isRetracting;
     private float pickableDistance;
     private float currentTime;
-    private Pickable closestPickable;
     private float factor;
-    private float tongueInitialSize = 0.1F;
-        
+    private const float INITIAL_SIZE = 0.1F;
+
+    public Pickable CurrentPickable { get; private set; }
+
     private void Awake()
     {
        ResetTongue();
     }   
         
-    public void DoTongue()
+    public void DoTongue(float dropForce = 0)
     {
-        closestPickable = GetClosestPickable();
+        if(CurrentPickable != null)
+        {
+            Drop(dropForce);
+            return;
+        }
 
+        var closestPickable = GetClosestPickable();
         if (closestPickable == null || isProtracting || isRetracting)
             return;
 
-        ProtractTongue(closestPickable);
+        CurrentPickable = closestPickable;
+        ProtractTongue();
+    }
+        
+    public void Drop(float force)
+    {
+        CurrentPickable?.Drop(transform.position, transform.forward, force);
+        CurrentPickable = null;
     }
 
     private void ResetTongue()
     {
         tongueScaler.localPosition = Vector3.zero;
-        tongueScaler.localScale = new Vector3(1, 1, tongueInitialSize);
+        tongueScaler.localScale = new Vector3(1, 1, INITIAL_SIZE);
         tongueScaler.localRotation = Quaternion.identity;
         isProtracting = false;
         isRetracting = false;
         currentTime = 0;
         tongueScaler.gameObject.SetActive(false);
-        closestPickable = null;
     }
 
-    private void ProtractTongue(Pickable toPickable)
+    private void ProtractTongue()
     {
-        var direction = toPickable.transform.position - tongueScaler.position;
+        var direction = CurrentPickable.transform.position - tongueScaler.position;
         tongueScaler.forward = direction;
-        pickableDistance = Vector3.Distance(tongueScaler.position, toPickable.transform.position);
+        pickableDistance = Vector3.Distance(tongueScaler.position, CurrentPickable.transform.position);
         isProtracting = true;
         tongueScaler.gameObject.SetActive(true);
     }
@@ -75,9 +87,9 @@ public class Tongue : MonoBehaviour
             currentTime += Time.deltaTime;
             factor = movementCurve.Evaluate(currentTime);
             tongueScaler.localScale -= new Vector3(0, 0, speed * factor * Time.deltaTime);
-            closestPickable.transform.position = tongueEnd.position;
+            CurrentPickable.transform.position = tongueEnd.position;
 
-            if (tongueScaler.localScale.z <= tongueInitialSize)
+            if (tongueScaler.localScale.z <= INITIAL_SIZE)
             {
                 Eat();
             }
@@ -93,9 +105,9 @@ public class Tongue : MonoBehaviour
     private void Eat()
     {
         isRetracting = false;
-        if (closestPickable != null)
+        if (CurrentPickable != null)
         {
-            Destroy(closestPickable.gameObject);
+            CurrentPickable.Pick();
         }
         ResetTongue();
     }
