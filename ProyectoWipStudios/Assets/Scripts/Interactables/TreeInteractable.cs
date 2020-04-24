@@ -24,7 +24,7 @@ public class TreeInteractable : MonoBehaviour
 
     public Vector3 GetNextPosition(Transform player)
     {
-        if(climbIndex > climbPoints.Count)
+        if(climbIndex > climbPoints.Count-1)
         {
             ResetTree();
             throw new CannotClimbException();

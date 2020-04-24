@@ -27,6 +27,15 @@ public class PlayerMovementController : MonoBehaviour
 
     private bool hasMovement;
 
+    public struct State
+    {
+        public Vector3 velocity;
+        public bool onGrounded;
+        public bool onJump;
+    }
+
+    private State currentState;
+
     public void Initializate(InputSystem controls)
     {
         characterController = this.GetComponent<CharacterController>();
@@ -46,22 +55,24 @@ public class PlayerMovementController : MonoBehaviour
     {
 
         Vector3 movement = GetMovementVector();
+        State nextState = new State();
 
         collisionFlags = characterController.Move(movement);
 
-        bool onGrounded = false;
+        bool onGrounded = CheckGround();
 
         if ((collisionFlags & CollisionFlags.Below) != 0)
         {
-            onGrounded = true;
             verticalSpeed = 0;
         }
 
         if ((collisionFlags & CollisionFlags.Above) != 0 && verticalSpeed > 0f)
             verticalSpeed = 0;
+
         if (jumpInput)
         {
             jumpInput = false;
+            nextState.onJump = true;
             if (onGrounded)
                 verticalSpeed = jumpForce;
         }
@@ -71,6 +82,11 @@ public class PlayerMovementController : MonoBehaviour
 
         if (onGrounded)
             ResetMaxVerticalSpeed();
+
+        nextState.velocity = characterController.velocity;
+        nextState.onGrounded = onGrounded;
+
+        currentState = nextState;
 
         return onGrounded;
     }
@@ -108,6 +124,19 @@ public class PlayerMovementController : MonoBehaviour
         return movement;
     }
 
+    private bool CheckGround()
+    {
+        if(Physics.Raycast(transform.position + (Vector3.up * .2f), Vector3.down, .5f))
+            return true;
+
+        return false;
+    }
+
+    public State GetState()
+    {
+        return currentState;
+    }
+
     public void SetLastForward(Vector3 forward)
     {
         lastForward = forward;
@@ -121,6 +150,13 @@ public class PlayerMovementController : MonoBehaviour
     public void ResetMaxVerticalSpeed()
     {
         SetMaxVerticalSpeed(initialMaxVerticalSpeed);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawLine(transform.position + (Vector3.up * .2f), transform.position + (Vector3.up * .2f) + (Vector3.down * .5f));
     }
 
 }
