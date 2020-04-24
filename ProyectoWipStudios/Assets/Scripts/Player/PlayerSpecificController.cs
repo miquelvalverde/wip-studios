@@ -12,6 +12,7 @@ public abstract class PlayerSpecificController : MonoBehaviour
         this.playerController = PlayerController.instance;
         this.playerController.SetSpecificController(this);
         Initializate(this.playerController.controls);
+        this.playerController.controls.Enable();
     }
 
     public abstract void Initializate(InputSystem controls);

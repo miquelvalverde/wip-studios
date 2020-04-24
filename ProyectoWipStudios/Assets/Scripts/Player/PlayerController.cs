@@ -106,11 +106,14 @@ public class PlayerController : MonoBehaviour
         if (canNormalMove)
         {
             movementController.characterController.enabled = true;
-            onGrounded = movementController.UpdateMovement();
+            movementController.UpdateGravity();
+            movementController.UpdateNormalMovement();
             animatorController.UpdateAnimation(movementController.GetState());
         }
         else
             movementController.characterController.enabled = false;
+
+        onGrounded = movementController.UpdateMovement();
 
         if (specificController)
             specificController.UpdateSpecificAction();

@@ -28,6 +28,7 @@ public class PlayerMovementController : MonoBehaviour
     private CollisionFlags collisionFlags;
 
     [HideInInspector] public float verticalSpeed;
+    private Vector3 movement;
     private bool jumpInput;
 
     private bool hasMovement;
@@ -50,37 +51,29 @@ public class PlayerMovementController : MonoBehaviour
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += _ => moveInput = Vector2.zero;
 
-        controls.Player.Jump.performed += _ => jumpInput = true;
-        controls.Player.Jump.canceled += _ => jumpInput = false;
+        controls.Player.Jump.performed += _ => Jump();
 
         initialMaxVerticalSpeed = maxVerticalSpeed;
     }
 
+    public CollisionFlags MoveWithVelocity(Vector3 velocity)
+    {
+        return characterController.Move(velocity);
+    }
+
     public bool UpdateMovement()
     {
+        currentState.onJump = false;
 
-        Vector3 movement = GetMovementVector();
-        State nextState = new State();
-
-        collisionFlags = characterController.Move(movement);
+        collisionFlags = MoveWithVelocity(movement);
 
         bool onGrounded = CheckGround();
 
         if ((collisionFlags & CollisionFlags.Below) != 0)
-        {
             verticalSpeed = 0;
-        }
 
         if ((collisionFlags & CollisionFlags.Above) != 0 && verticalSpeed > 0f)
             verticalSpeed = 0;
-
-        if (jumpInput)
-        {
-            jumpInput = false;
-            nextState.onJump = true;
-            if (onGrounded)
-                verticalSpeed = jumpForce;
-        }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((hasMovement) ? new Vector3(movement.x, 0, movement.z) : lastForward), moveTime * Time.deltaTime);
         lastForward = transform.forward;
@@ -88,12 +81,33 @@ public class PlayerMovementController : MonoBehaviour
         if (onGrounded)
             ResetMaxVerticalSpeed();
 
-        nextState.velocity = characterController.velocity;
-        nextState.onGrounded = onGrounded;
-
-        currentState = nextState;
+        currentState.velocity = characterController.velocity;
+        currentState.onGrounded = onGrounded;
 
         return onGrounded;
+    }
+
+    public void UpdateNormalMovement()
+    {
+        movement = GetMovementVector();
+    }
+
+    public void UpdateGravity()
+    {
+        verticalSpeed += gravity * Time.deltaTime;
+        verticalSpeed = Mathf.Clamp(verticalSpeed, -maxVerticalSpeed, Mathf.Infinity);
+
+        MoveWithVelocity(Vector3.up * verticalSpeed * Time.deltaTime);
+
+    }
+
+    private void Jump()
+    {
+        if (!PlayerController.instance.onGrounded)
+            return;
+
+        currentState.onJump = true;
+        verticalSpeed = jumpForce;
     }
 
     public Vector3 GetMovementVector()
@@ -121,10 +135,6 @@ public class PlayerMovementController : MonoBehaviour
         movement.Normalize();
 
         movement *= speed * Time.deltaTime;
-
-        verticalSpeed += gravity * Time.deltaTime;
-        verticalSpeed = Mathf.Clamp(verticalSpeed, -maxVerticalSpeed, maxVerticalSpeed);
-        movement.y = verticalSpeed * Time.deltaTime;
 
         return movement;
     }
