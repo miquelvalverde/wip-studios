@@ -753,6 +753,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tongue: {fileID: 7385755679254333289}
+  dropForce: 100
+  chameleonHUD: {fileID: 6480272451193786695, guid: be39bea30aae1494eb351bb51af2c1fa,
+    type: 3}
 --- !u!1 &8050269287478634522
 GameObject:
   m_ObjectHideFlags: 0

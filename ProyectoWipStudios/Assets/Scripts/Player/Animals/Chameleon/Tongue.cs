@@ -24,14 +24,17 @@ public class Tongue : MonoBehaviour
         
     public void DoTongue(float dropForce = 0)
     {
-        if(CurrentPickable != null)
+        if (isProtracting || isRetracting)
+            return;
+
+        if (CurrentPickable != null)
         {
             Drop(dropForce);
             return;
         }
 
         var closestPickable = GetClosestPickable();
-        if (closestPickable == null || isProtracting || isRetracting)
+        if (closestPickable == null)
             return;
 
         CurrentPickable = closestPickable;
@@ -104,11 +107,7 @@ public class Tongue : MonoBehaviour
 
     private void Eat()
     {
-        isRetracting = false;
-        if (CurrentPickable != null)
-        {
-            CurrentPickable.Pick();
-        }
+        CurrentPickable?.Pick();
         ResetTongue();
     }
 

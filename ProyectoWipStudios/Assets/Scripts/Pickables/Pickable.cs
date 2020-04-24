@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pickable : MonoBehaviour
 {
+    public Sprite icon;
     private Rigidbody rb;
         
     private void Awake()
@@ -20,6 +21,9 @@ public class Pickable : MonoBehaviour
 
     public void Drop(Vector3 position, Vector3 direction, float force)
     {
+        if (this == null)
+            return;
+
         this.gameObject.transform.position = position;
         this.gameObject.SetActive(true);
         this.rb.isKinematic = false;
