@@ -82,7 +82,7 @@ public class PlayerMovementController : MonoBehaviour
                 verticalSpeed = jumpForce;
         }
 
-        transform.forward = (hasMovement) ? Vector3.Lerp(new Vector3(movement.x, 0, movement.z), transform.forward, moveTime) : lastForward;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((hasMovement) ? new Vector3(movement.x, 0, movement.z) : lastForward), moveTime * Time.deltaTime);
         lastForward = transform.forward;
 
         if (onGrounded)
