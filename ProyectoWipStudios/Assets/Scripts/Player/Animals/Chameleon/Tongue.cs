@@ -14,16 +14,27 @@ public class Tongue : MonoBehaviour
     private float currentTime;
     private Pickable closestPickable;
     private float factor;
+    private float tongueInitialSize = 0.1F;
         
     private void Awake()
     {
        ResetTongue();
     }   
+        
+    public void DoTongue()
+    {
+        closestPickable = GetClosestPickable();
+
+        if (closestPickable == null || isProtracting || isRetracting)
+            return;
+
+        ProtractTongue(closestPickable);
+    }
 
     private void ResetTongue()
     {
         tongueScaler.localPosition = Vector3.zero;
-        tongueScaler.localScale = Vector3.one;
+        tongueScaler.localScale = new Vector3(1, 1, tongueInitialSize);
         tongueScaler.localRotation = Quaternion.identity;
         isProtracting = false;
         isRetracting = false;
@@ -32,11 +43,8 @@ public class Tongue : MonoBehaviour
         closestPickable = null;
     }
 
-    public void ProtractTongue(Pickable toPickable) /* METHOD TO CALL */
+    private void ProtractTongue(Pickable toPickable)
     {
-        if(toPickable == null || isProtracting || isRetracting)
-            return;
-
         var direction = toPickable.transform.position - tongueScaler.position;
         tongueScaler.forward = direction;
         pickableDistance = Vector3.Distance(tongueScaler.position, toPickable.transform.position);
@@ -46,14 +54,6 @@ public class Tongue : MonoBehaviour
 
     private void Update()
     {
-        ///// Temporary use of old input system just for testing purposes
-        if (Input.GetMouseButtonDown(0))
-        {
-            closestPickable = GetClosestPickable();
-            ProtractTongue(closestPickable);
-        }
-        /////
-
         UpdateTongueMovement();
     }
 
@@ -77,7 +77,7 @@ public class Tongue : MonoBehaviour
             tongueScaler.localScale -= new Vector3(0, 0, speed * factor * Time.deltaTime);
             closestPickable.transform.position = tongueEnd.position;
 
-            if (tongueScaler.localScale.z <= 1)
+            if (tongueScaler.localScale.z <= tongueInitialSize)
             {
                 Eat();
             }
