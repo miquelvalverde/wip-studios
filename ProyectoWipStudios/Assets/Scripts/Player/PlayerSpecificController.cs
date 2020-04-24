@@ -23,5 +23,4 @@ public abstract class PlayerSpecificController : MonoBehaviour
     {
         return this.GetComponent<Animator>();
     }
-
 }

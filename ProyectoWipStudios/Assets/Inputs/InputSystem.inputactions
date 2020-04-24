@@ -54,9 +54,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Run",
+                    "name": "Tongue",
                     "type": "Button",
-                    "id": "5bdfe8bb-54a3-4a06-b993-7795823a7436",
+                    "id": "c9228c17-d247-459b-9a4f-933661488064",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -175,12 +175,12 @@
                 },
                 {
                     "name": "",
-                    "id": "ae5877c8-766b-4d62-b449-b37085aa2a59",
-                    "path": "<Mouse>/leftButton",
+                    "id": "22143800-3e0e-4be1-962e-ef11c4eb50f7",
+                    "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",
                     "groups": "MouseAndKeyboard",
-                    "action": "Run",
+                    "action": "Tongue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
