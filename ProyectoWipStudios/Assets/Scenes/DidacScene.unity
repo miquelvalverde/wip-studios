@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 25688110}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 02
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 189145462}
   - component: {fileID: 189145461}
   - component: {fileID: 189145460}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 215438606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Scenario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 222890666}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 03
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -473,6 +473,10 @@ MonoBehaviour:
   moveTime: 0.2
   maxVerticalSpeed: 10
   gravity: -15
+  groundCheckerRadius: 0.4
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
   verticalSpeed: 0
 --- !u!114 &370017933
 MonoBehaviour:
@@ -526,7 +530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 380500930}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 04
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -556,7 +560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 598246489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ClimbPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 751677150}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 01
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -623,7 +627,7 @@ GameObject:
   - component: {fileID: 986518971}
   - component: {fileID: 986518970}
   - component: {fileID: 986518969}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +750,7 @@ GameObject:
   - component: {fileID: 1331874916}
   - component: {fileID: 1331874915}
   - component: {fileID: 1331874914}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -839,7 +843,7 @@ GameObject:
   - component: {fileID: 1353913186}
   - component: {fileID: 1353913185}
   - component: {fileID: 1353913184}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Branch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,7 +936,7 @@ GameObject:
   - component: {fileID: 1388884371}
   - component: {fileID: 1388884370}
   - component: {fileID: 1388884369}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1090,7 +1094,7 @@ GameObject:
   - component: {fileID: 1533949458}
   - component: {fileID: 1533949461}
   - component: {fileID: 1533949460}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1171,7 +1175,7 @@ GameObject:
   - component: {fileID: 1771992772}
   - component: {fileID: 1771992771}
   - component: {fileID: 1771992770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1263,7 +1267,7 @@ GameObject:
   - component: {fileID: 1772779496}
   - component: {fileID: 1772779497}
   - component: {fileID: 1772779498}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Interactive-Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1330,7 +1334,7 @@ GameObject:
   - component: {fileID: 1852715489}
   - component: {fileID: 1852715488}
   - component: {fileID: 1852715487}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1772,7 +1776,7 @@ GameObject:
   - component: {fileID: 1997261785}
   - component: {fileID: 1997261784}
   - component: {fileID: 1997261783}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2085,7 +2089,7 @@ GameObject:
   - component: {fileID: 2095218158}
   - component: {fileID: 2095218157}
   - component: {fileID: 2095218156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2187,7 +2191,7 @@ PrefabInstance:
     - target: {fileID: 6409196610489863217, guid: 496e83698e0663b4cba496b0b5d858e5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.09
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409196610489863217, guid: 496e83698e0663b4cba496b0b5d858e5,
         type: 3}

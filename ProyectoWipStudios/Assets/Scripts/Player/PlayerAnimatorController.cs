@@ -16,7 +16,7 @@ public class PlayerAnimatorController : MonoBehaviour
         Vector3 velocity = state.velocity;
         velocity.y = 0;
         velocity.Normalize();
-        anim.SetFloat("Speed", velocity.magnitude);
+        anim.SetFloat("Speed", velocity.magnitude, .1f, Time.deltaTime);
         anim.SetBool("OnGrounded", state.onGrounded);
         anim.SetBool("OnJump", state.onJump);
     }

@@ -14,6 +14,11 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField] private float maxVerticalSpeed = 10;
     [SerializeField] private float gravity = Physics.gravity.y;
+
+    [Header("Ground detection")]
+    [SerializeField] private float groundCheckerRadius = .5f;
+    [SerializeField] private LayerMask whatIsGround;
+
     private float initialMaxVerticalSpeed;
 
     private Transform camTransform;
@@ -126,10 +131,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private bool CheckGround()
     {
-        if(Physics.Raycast(transform.position + (Vector3.up * .2f), Vector3.down, .5f))
-            return true;
-
-        return false;
+        return Physics.CheckSphere(transform.position + (Vector3.up * .2f), groundCheckerRadius, whatIsGround);
     }
 
     public State GetState()
@@ -156,7 +158,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawLine(transform.position + (Vector3.up * .2f), transform.position + (Vector3.up * .2f) + (Vector3.down * .5f));
+        Gizmos.DrawWireSphere(transform.position + (Vector3.up * .2f), groundCheckerRadius);
     }
 
 }
