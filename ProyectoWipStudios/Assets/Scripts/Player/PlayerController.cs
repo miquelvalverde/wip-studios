@@ -42,8 +42,8 @@ public class PlayerController : MonoBehaviour
         {
             _canNormalMove = value;
 
-            if (_canNormalMove)
-                movementController.SetLastForward(transform.forward);
+            /*if (_canNormalMove)
+                movementController.SetLastForward(transform.forward);*/
         }
 
     }
@@ -70,7 +70,8 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            return this.movementController.GetMovementVector();
+            return Vector3.zero;
+            //return this.movementController.GetMovementVector();
         }
 
         private set { }
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour
         cameraController = Camera.main.GetComponent<PlayerCameraController>();
 
         cameraController.Initializate(controls);
-        movementController.Initializate(controls);
+        movementController.Initialize(controls);
         radialMenuController.Initializate(controls);
 
         canNormalMove = true;
@@ -103,7 +104,7 @@ public class PlayerController : MonoBehaviour
     {
         radialMenuController.UpdateRadialMenu();
 
-        movementController.UpdateGravity();
+        /*movementController.UpdateGravity();
         if (canNormalMove)
         {
             movementController.characterController.enabled = true;
@@ -113,7 +114,9 @@ public class PlayerController : MonoBehaviour
         else
             movementController.characterController.enabled = false;
 
-        onGrounded = movementController.UpdateMovement();
+        onGrounded = movementController.UpdateMovement();*/
+
+        cameraController.UpdateCamera();
 
         if (specificController)
             specificController.UpdateSpecificAction();
@@ -122,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        cameraController.UpdateCamera();
+        //cameraController.UpdateCamera();
     }
 
     /** GETTERS AND SETTERS **/
@@ -133,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeMaxVerticalSpeed(float maxVerticalSpeed)
     {
-        this.movementController.SetMaxVerticalSpeed(maxVerticalSpeed);
+        //this.movementController.SetMaxVerticalSpeed(maxVerticalSpeed);
     }
 
     public void ResetMaxVerticalSpeed()

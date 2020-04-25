@@ -73,6 +73,14 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""a10776e5-7485-466b-b477-d977a7fdb01c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -196,6 +204,17 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""action"": ""Tongue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3428da4c-0e1a-4f07-8267-79b8e9bea828"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -285,6 +304,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_Player_Glide = m_Player.FindAction("Glide", throwIfNotFound: true);
         m_Player_Climb = m_Player.FindAction("Climb", throwIfNotFound: true);
         m_Player_Tongue = m_Player.FindAction("Tongue", throwIfNotFound: true);
+        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
@@ -345,6 +365,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Glide;
     private readonly InputAction m_Player_Climb;
     private readonly InputAction m_Player_Tongue;
+    private readonly InputAction m_Player_Run;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
@@ -356,6 +377,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         public InputAction @Glide => m_Wrapper.m_Player_Glide;
         public InputAction @Climb => m_Wrapper.m_Player_Climb;
         public InputAction @Tongue => m_Wrapper.m_Player_Tongue;
+        public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -386,6 +408,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Tongue.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTongue;
                 @Tongue.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTongue;
                 @Tongue.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTongue;
+                @Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -411,6 +436,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Tongue.started += instance.OnTongue;
                 @Tongue.performed += instance.OnTongue;
                 @Tongue.canceled += instance.OnTongue;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
             }
         }
     }
@@ -483,6 +511,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         void OnGlide(InputAction.CallbackContext context);
         void OnClimb(InputAction.CallbackContext context);
         void OnTongue(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

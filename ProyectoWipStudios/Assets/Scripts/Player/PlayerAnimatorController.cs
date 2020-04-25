@@ -11,7 +11,7 @@ public class PlayerAnimatorController : MonoBehaviour
         this.anim = anim;
     }
 
-    public void UpdateAnimation(PlayerMovementController.State state)
+    /*public void UpdateAnimation(PlayerMovementController.State state)
     {
         Vector3 velocity = state.velocity;
         velocity.y = 0;
@@ -19,6 +19,6 @@ public class PlayerAnimatorController : MonoBehaviour
         anim.SetFloat("Speed", velocity.magnitude, .1f, Time.deltaTime);
         anim.SetBool("OnGrounded", state.onGrounded);
         anim.SetBool("OnJump", state.onJump);
-    }
+    }*/
 
 }
