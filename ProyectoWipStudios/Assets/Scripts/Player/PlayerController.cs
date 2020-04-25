@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance { get; private set; }
 
+    //Controllers
     private PlayerMovementController movementController;
     private PlayerAnimatorController animatorController;
     private PlayerCameraController cameraController;
     private PlayerSpecificController _specificController;
+    [SerializeField] private RadialMenuController radialMenuController;
     private PlayerSpecificController specificController
     {
         get
@@ -26,29 +28,12 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    [SerializeField] private RadialMenuController radialMenuController;
 
     public InputSystem controls { get; private set; }
 
-    private bool _canNormalMove;
-    [HideInInspector] public bool canNormalMove
-    {
-        get
-        {
-            return _canNormalMove;
-        }
-
-        set
-        {
-            _canNormalMove = value;
-
-            /*if (_canNormalMove)
-                movementController.SetLastForward(transform.forward);*/
-        }
-
-    }
-
-    public bool onGrounded { get; private set; }
+    [HideInInspector] public bool doNormalMovement = true;
+    [HideInInspector] public bool lockRotation = false;
+    [HideInInspector] public bool doGravity = true;
 
     public float groundDistance
     {
@@ -66,16 +51,26 @@ public class PlayerController : MonoBehaviour
         private set { }
     }
 
-    public Vector3 movementVector
+    public struct PlayerStats
     {
-        get
-        {
-            return Vector3.zero;
-            //return this.movementController.GetMovementVector();
-        }
+        public float speed;
+        public Vector3 velocity;
+        public bool isGrounded;
+        public bool isJumping;
+        public bool isGliding;
 
-        private set { }
+        public override string ToString()
+        {
+            return
+                "Velocity: " + velocity
+                + "\nSpeed: " + Mathf.RoundToInt(speed)
+                + "\nisGrounded: " + isGrounded
+                + "\nisGliding: " + isGliding;
+        }
     }
+
+    [HideInInspector] public PlayerStats stats = new PlayerStats();
+
 
     private void Awake()
     {
@@ -96,36 +91,22 @@ public class PlayerController : MonoBehaviour
         cameraController.Initializate(controls);
         movementController.Initialize(controls);
         radialMenuController.Initializate(controls);
-
-        canNormalMove = true;
     }
 
     private void Update()
     {
         radialMenuController.UpdateRadialMenu();
 
-        /*movementController.UpdateGravity();
-        if (canNormalMove)
-        {
-            movementController.characterController.enabled = true;
-            movementController.UpdateNormalMovement();
-            animatorController.UpdateAnimation(movementController.GetState());
-        }
-        else
-            movementController.characterController.enabled = false;
-
-        onGrounded = movementController.UpdateMovement();*/
-
         cameraController.UpdateCamera();
+
+        movementController.UpdateMovement(doNormalMovement, lockRotation, doGravity);
 
         if (specificController)
             specificController.UpdateSpecificAction();
 
-    }
+        movementController.Move();
 
-    private void LateUpdate()
-    {
-        //cameraController.UpdateCamera();
+        animatorController.UpdateAnimation();
     }
 
     /** GETTERS AND SETTERS **/
@@ -136,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeMaxVerticalSpeed(float maxVerticalSpeed)
     {
-        //this.movementController.SetMaxVerticalSpeed(maxVerticalSpeed);
+        this.movementController.SetMaxVerticalSpeed(maxVerticalSpeed);
     }
 
     public void ResetMaxVerticalSpeed()

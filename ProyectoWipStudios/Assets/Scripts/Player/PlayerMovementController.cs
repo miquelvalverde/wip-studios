@@ -31,13 +31,14 @@ public class PlayerMovementController : MonoBehaviour
     private float verticalSpeed = 0;
 
     [Header("Grounded Checker")]
-    [SerializeField] private float checkerRadius = .4f;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Vector3 checkerOffset = Vector3.up * .2f;
     [SerializeField] private Vector3 chekcerDimensions;
 
     //Control variables
     private bool doNormalMovement;
+    private bool lockRotation;
+    private bool doGravity;
     private bool isGrounded;
 
     public void Initialize(InputSystem controls)
@@ -54,26 +55,32 @@ public class PlayerMovementController : MonoBehaviour
         this.ResetMaxVerticalSpeed();
     }
 
-    private void Update()
-    {        
-        UpdateMovement(true);
-        this.Move();
+    public void UpdateMovement()
+    {
+        this.UpdateMovement(true, false, true);
     }
 
-    public void UpdateMovement(bool doNormalMovement)
+    public void UpdateMovement(bool doNormalMovement, bool lockRotation, bool doGravity)
     {
         this.doNormalMovement = doNormalMovement;
-
-        this.CalculateLookDirection();
+        this.lockRotation = lockRotation;
+        this.doGravity = doGravity;
 
         this.CheckIfIsGrounded();
+
+        if(!this.lockRotation)
+            this.CalculateLookDirection();
 
         if (this.doNormalMovement)
             this.CalculateNormalMovement();
 
-        this.CalculateGravity();
+        if (this.doGravity)
+            this.CalculateGravity();
+        else
+            verticalSpeed = 0;
 
-        this.CalculateJump();
+        if(this.doNormalMovement)
+            this.CalculateJump();
     }
 
     private void CalculateLookDirection()
@@ -91,7 +98,7 @@ public class PlayerMovementController : MonoBehaviour
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
     }
 
-    private void Move()
+    public void Move()
     {
         Vector3 velocity = transform.forward * currentSpeed + Vector3.up * verticalSpeed;
         characterController.Move(velocity * Time.deltaTime);
@@ -99,6 +106,10 @@ public class PlayerMovementController : MonoBehaviour
 
         if (characterController.isGrounded)
             verticalSpeed = 0;
+
+        PlayerController.instance.stats.isGrounded = isGrounded;
+        PlayerController.instance.stats.speed = currentSpeed;
+        PlayerController.instance.stats.velocity = velocity;
     }
 
     #region Gravity
@@ -110,10 +121,14 @@ public class PlayerMovementController : MonoBehaviour
             verticalSpeed = Mathf.Clamp(verticalSpeed, -Mathf.Abs(_maxVerticalSpeed), Mathf.Infinity);
         }
     }
-
     public void ResetMaxVerticalSpeed()
     {
-        _maxVerticalSpeed = maxVerticalSpeed;
+        SetMaxVerticalSpeed(maxVerticalSpeed);
+    }
+
+    public void SetMaxVerticalSpeed(float newSpeed)
+    {
+        _maxVerticalSpeed = newSpeed;
     }
     #endregion
 
@@ -131,14 +146,16 @@ public class PlayerMovementController : MonoBehaviour
         if (!doNormalMovement || !isGrounded)
             return;
 
-        float jumpSpeed = Mathf.Sqrt(-2 * gravity * jumpHeight);
+        float jumpSpeed = Mathf.Sqrt(-2 * -Mathf.Abs(gravity) * jumpHeight);
         verticalSpeed = jumpSpeed;
+
+        PlayerController.instance.stats.isJumping = true;
     }
     #endregion
 
     private void CheckIfIsGrounded()
     {
-        isGrounded = Physics.CheckBox(transform.position + checkerOffset, chekcerDimensions, transform.rotation, whatIsGround);
+        isGrounded = Physics.CheckBox(transform.position + checkerOffset, chekcerDimensions/2, transform.rotation, whatIsGround);
     }
 
     private void OnDrawGizmos()
@@ -150,169 +167,4 @@ public class PlayerMovementController : MonoBehaviour
 
         Gizmos.DrawWireCube(checkerOffset, chekcerDimensions);
     }
-
-    /*public CharacterController characterController { get; private set; }
-
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float moveTime = .2f;
-
-    [SerializeField] private float maxVerticalSpeed = 10;
-    [SerializeField] private float gravity = Physics.gravity.y;
-
-    [Header("Ground detection")]
-    [SerializeField] private float groundCheckerRadius = .5f;
-    [SerializeField] private LayerMask whatIsGround;
-
-    private float initialMaxVerticalSpeed;
-
-    private Transform camTransform;
-    private Vector2 moveInput = Vector2.zero;
-
-    private Vector3 lastForward = Vector3.zero;
-    private CollisionFlags collisionFlags;
-
-    [HideInInspector] public float verticalSpeed;
-    private Vector3 movement;
-    private bool jumpInput;
-
-    private bool hasMovement;
-
-    public struct State
-    {
-        public Vector3 velocity;
-        public bool onGrounded;
-        public bool onJump;
-    }
-
-    private State currentState;
-
-    public void Initializate(InputSystem controls)
-    {
-        characterController = this.GetComponent<CharacterController>();
-
-        camTransform = Camera.main.transform;
-
-        controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        controls.Player.Move.canceled += _ => moveInput = Vector2.zero;
-
-        controls.Player.Jump.performed += _ => Jump();
-
-        initialMaxVerticalSpeed = maxVerticalSpeed;
-    }
-
-    public CollisionFlags MoveWithVelocity(Vector3 velocity)
-    {
-        return characterController.Move(velocity);
-    }
-
-    public bool UpdateMovement()
-    {
-        currentState.onJump = false;
-
-        collisionFlags = MoveWithVelocity(movement);
-
-        bool onGrounded = CheckGround();
-
-        if ((collisionFlags & CollisionFlags.Below) != 0)
-            verticalSpeed = 0;
-
-        if ((collisionFlags & CollisionFlags.Above) != 0 && verticalSpeed > 0f)
-            verticalSpeed = 0;
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((hasMovement) ? new Vector3(movement.x, 0, movement.z) : lastForward), moveTime * Time.deltaTime);
-        lastForward = transform.forward;
-
-        if (onGrounded)
-            ResetMaxVerticalSpeed();
-
-        currentState.velocity = characterController.velocity;
-        currentState.onGrounded = onGrounded;
-
-        return onGrounded;
-    }
-
-    public void UpdateNormalMovement()
-    {
-        movement = GetMovementVector();
-    }
-
-    public void UpdateGravity()
-    {
-        verticalSpeed += gravity * Time.deltaTime;
-        verticalSpeed = Mathf.Clamp(verticalSpeed, -maxVerticalSpeed, Mathf.Infinity);
-
-        MoveWithVelocity(Vector3.up * verticalSpeed * Time.deltaTime);
-
-    }
-
-    private void Jump()
-    {
-        if (!PlayerController.instance.onGrounded)
-            return;
-
-        currentState.onJump = true;
-        verticalSpeed = jumpForce;
-    }
-
-    public Vector3 GetMovementVector()
-    {
-        Vector3 movement = Vector3.zero;
-        Vector3 forward = camTransform.forward;
-        Vector3 right = camTransform.right;
-
-        forward.y = 0;
-        forward.Normalize();
-        right.y = 0;
-        right.Normalize();
-
-        if (moveInput.y > 0)
-            movement = forward;
-        else if (moveInput.y < 0)
-            movement = -forward;
-
-        if (moveInput.x > 0)
-            movement += right;
-        else if (moveInput.x < 0)
-            movement -= right;
-
-        hasMovement = movement != Vector3.zero;
-        movement.Normalize();
-
-        movement *= speed * Time.deltaTime;
-
-        return movement;
-    }
-
-    private bool CheckGround()
-    {
-        return Physics.CheckSphere(transform.position + (Vector3.up * .2f), groundCheckerRadius, whatIsGround);
-    }
-
-    public State GetState()
-    {
-        return currentState;
-    }
-
-    public void SetLastForward(Vector3 forward)
-    {
-        lastForward = forward;
-    }
-
-    public void SetMaxVerticalSpeed(float maxVerticalSpeed)
-    {
-        this.maxVerticalSpeed = maxVerticalSpeed;
-    }
-
-    public void ResetMaxVerticalSpeed()
-    {
-        SetMaxVerticalSpeed(initialMaxVerticalSpeed);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawWireSphere(transform.position + (Vector3.up * .2f), groundCheckerRadius);
-    }*/
 }

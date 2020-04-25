@@ -11,14 +11,20 @@ public class PlayerAnimatorController : MonoBehaviour
         this.anim = anim;
     }
 
-    /*public void UpdateAnimation(PlayerMovementController.State state)
+    public struct AnimationParameters
     {
-        Vector3 velocity = state.velocity;
-        velocity.y = 0;
-        velocity.Normalize();
-        anim.SetFloat("Speed", velocity.magnitude, .1f, Time.deltaTime);
-        anim.SetBool("OnGrounded", state.onGrounded);
-        anim.SetBool("OnJump", state.onJump);
-    }*/
+        public float speed;
+        public bool isGrounded;
+        public bool IsJumping;
+    }
+
+    public void UpdateAnimation()
+    {
+        anim.SetFloat("Speed", PlayerController.instance.stats.speed, .1f, Time.deltaTime);
+        anim.SetBool("IsGrounded", PlayerController.instance.stats.isGrounded);
+        anim.SetBool("IsJumping", PlayerController.instance.stats.isJumping);
+
+        PlayerController.instance.stats.isJumping = false;
+    }
 
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 154933127}
-  m_IndirectSpecularColor: {r: 0.4509821, g: 0.5008466, b: 0.5743557, a: 1}
+  m_IndirectSpecularColor: {r: 0.4509825, g: 0.5008476, b: 0.5743571, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -543,16 +543,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0d393f5cd385f48827b428c215ac08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 7
-  moveTime: 10
+  turnSmoothTime: 0.15
+  walkSpeed: 5
+  speedSmoothTime: 0.1
+  jumpHeight: 1
+  gravity: -12
   maxVerticalSpeed: 10
-  gravity: -15
-  groundCheckerRadius: 0.4
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  verticalSpeed: 0
+  checkerOffset: {x: 0, y: 0, z: 0}
+  chekcerDimensions: {x: 0.4, y: 0.1, z: 0.4}
 --- !u!114 &370017933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radialMenuController: {fileID: 1863938780}
+  canNormalMove: 1
 --- !u!143 &370017934
 CharacterController:
   m_ObjectHideFlags: 0
@@ -582,8 +584,8 @@ CharacterController:
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.01
-  m_Center: {x: 0, y: 1.3, z: 0}
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.15, z: 0}
 --- !u!114 &370017935
 MonoBehaviour:
   m_ObjectHideFlags: 0

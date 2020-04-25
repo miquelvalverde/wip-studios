@@ -5,9 +5,7 @@ using UnityEngine;
 public class SquirrelController : PlayerSpecificController
 {
 
-    private bool glideInput;
-
-    [SerializeField] private float maxVerticalSpeedGlide = 2f;
+    [SerializeField] private float glideSpeed = 2f;
     [SerializeField] private float climbSpeed = 10f;
     [SerializeField] private float climbRadius = .5f;
 
@@ -18,22 +16,18 @@ public class SquirrelController : PlayerSpecificController
 
     public override void Initializate(InputSystem controls)
     {
-        controls.Player.Glide.performed += _ => glideInput = true;
-        controls.Player.Glide.canceled += _ => glideInput = false;
+        controls.Player.Glide.performed += _ => StartGlide();
+        controls.Player.Glide.canceled += _ => StopGlide();
 
-        controls.Player.Climb.performed += _ => Climb();
+        //controls.Player.Climb.performed += _ => Climb();
     }
 
     public override void UpdateSpecificAction()
     {
-        if (glideInput && this.playerController.groundDistance > 1f && this.playerController.movementVector.y < 0)
-        {
-            this.playerController.ChangeMaxVerticalSpeed(maxVerticalSpeedGlide);
-        }
-        else if (!glideInput)
-            this.playerController.ResetMaxVerticalSpeed();
+        if (this.playerController.stats.isGliding && this.playerController.stats.isGrounded)
+            StopGlide();
 
-        if (currentTree && this.playerController.transform.position != currentClimbPosition)
+        /*if (currentTree && this.playerController.transform.position != currentClimbPosition)
         {
             this.playerController.transform.position = Vector3.Lerp(this.playerController.transform.position, currentClimbPosition, climbSpeed * Time.deltaTime);
         }
@@ -43,10 +37,28 @@ public class SquirrelController : PlayerSpecificController
             endedTree = false;
             currentTree = null;
             playerController.canNormalMove = true;
-        }
+        }*/
     }
 
-    private void Climb()
+    private void StartGlide()
+    {
+        if (this.playerController.stats.isGrounded && this.playerController.stats.velocity.y >= 0)
+            return;
+
+        this.playerController.stats.isGliding = true;
+        this.playerController.ChangeMaxVerticalSpeed(glideSpeed);
+    }
+
+    private void StopGlide()
+    {
+        if (!this.playerController.stats.isGliding)
+            return;
+
+        this.playerController.stats.isGliding = false;
+        this.playerController.ResetMaxVerticalSpeed();
+    }
+
+    /*private void Climb()
     {
         if (!currentTree)
         {
@@ -87,14 +99,14 @@ public class SquirrelController : PlayerSpecificController
             }
 
         }
-    }
+    }*/
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
 
         Gizmos.DrawWireSphere(((playerController) ? playerController.transform.position : transform.position) + (((playerController) ? playerController.transform.forward : transform.forward) * .6f), climbRadius);
 
-    }
+    }*/
 
 }

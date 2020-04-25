@@ -30,7 +30,6 @@ public class TreeInteractable : MonoBehaviour
             throw new CannotClimbException();
         }
 
-
         Vector3 nextClimbPoint;
         nextClimbPoint = climbPoints[climbIndex].position;
 
