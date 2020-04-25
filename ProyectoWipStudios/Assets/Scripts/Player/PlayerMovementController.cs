@@ -31,9 +31,9 @@ public class PlayerMovementController : MonoBehaviour
     private float verticalSpeed = 0;
 
     [Header("Grounded Checker")]
-    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private LayerMask whatIsGround = 0;
     [SerializeField] private Vector3 checkerOffset = Vector3.up * .2f;
-    [SerializeField] private Vector3 chekcerDimensions;
+    [SerializeField] private Vector3 chekcerDimensions = Vector3.one;
 
     //Control variables
     private bool doNormalMovement;

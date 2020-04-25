@@ -12,7 +12,7 @@ public class SquirrelController : PlayerSpecificController
     [SerializeField] private float climbCheckerVerticalOffset = .5f;
     [SerializeField] private float climbCheckerHorizontalOffset = .5f;
     [SerializeField] private float climbCheckerRadius = .5f;
-    [SerializeField] private LayerMask whatIsTree;
+    [SerializeField] private LayerMask whatIsTree = 0;
     private Vector3 checkerPosition
     {
         get
@@ -138,56 +138,5 @@ public class SquirrelController : PlayerSpecificController
 
         Gizmos.DrawWireSphere(checkerPosition, climbCheckerRadius);
     }
-
-    /*private void Climb()
-    {
-        if (!currentTree)
-        {
-            Collider[] colliders = Physics.OverlapSphere(playerController.transform.position + (playerController.transform.forward * .6f), climbRadius);
-            foreach(Collider c in colliders)
-            {
-                if (c.GetComponent<TreeInteractable>())
-                {
-                    currentTree = c.GetComponent<TreeInteractable>();
-                    nextClimbPosition = currentTree.GetNextPosition(playerController.transform);
-
-                    if(nextClimbPosition.y < this.playerController.transform.position.y)
-                    {
-                        currentTree.ResetTree();
-                        currentTree = null;
-                        return;
-                    }
-
-                    this.playerController.transform.forward = currentTree.GetForward(this.playerController.transform);
-
-                    continue;
-                }
-            }
-        }
-
-        if (currentTree)
-        {
-            playerController.canNormalMove = false;
-
-            try
-            {
-                currentClimbPosition = nextClimbPosition;
-                nextClimbPosition = currentTree.GetNextPosition(playerController.transform);
-            }
-            catch (CannotClimbException)
-            {
-                endedTree = true;
-            }
-
-        }
-    }*/
-
-    /*private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawWireSphere(((playerController) ? playerController.transform.position : transform.position) + (((playerController) ? playerController.transform.forward : transform.forward) * .6f), climbRadius);
-
-    }*/
 
 }

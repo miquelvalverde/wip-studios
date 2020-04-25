@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class DebugConsoleHUD : MonoBehaviour
 {
-    [SerializeField] private GameObject parentPanel;
-    [SerializeField] private Text debugText;
+    [SerializeField] private GameObject parentPanel = null;
+    [SerializeField] private Text debugText = null;
     private bool isShowing;
 
     private void Start()
