@@ -45,6 +45,7 @@ public class SquirrelController : PlayerSpecificController
         if (this.playerController.stats.isGrounded && this.playerController.stats.velocity.y >= 0)
             return;
 
+        this.playerController.doNormalMovement = false;
         this.playerController.stats.isGliding = true;
         this.playerController.ChangeMaxVerticalSpeed(glideSpeed);
     }
@@ -54,6 +55,7 @@ public class SquirrelController : PlayerSpecificController
         if (!this.playerController.stats.isGliding)
             return;
 
+        this.playerController.doNormalMovement = true;
         this.playerController.stats.isGliding = false;
         this.playerController.ResetMaxVerticalSpeed();
     }

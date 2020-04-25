@@ -57,14 +57,9 @@ public class PlayerMovementController : MonoBehaviour
 
     public void UpdateMovement()
     {
-        this.UpdateMovement(true, false, true);
-    }
-
-    public void UpdateMovement(bool doNormalMovement, bool lockRotation, bool doGravity)
-    {
-        this.doNormalMovement = doNormalMovement;
-        this.lockRotation = lockRotation;
-        this.doGravity = doGravity;
+        this.doNormalMovement = PlayerController.instance.doNormalMovement;
+        this.lockRotation = PlayerController.instance.lockRotation;
+        this.doGravity = PlayerController.instance.doGravity;
 
         this.CheckIfIsGrounded();
 
@@ -73,6 +68,8 @@ public class PlayerMovementController : MonoBehaviour
 
         if (this.doNormalMovement)
             this.CalculateNormalMovement();
+        else if (PlayerController.instance.stats.isGliding)
+            this.CalculateGlidingMovement();
 
         if (this.doGravity)
             this.CalculateGravity();
@@ -81,6 +78,9 @@ public class PlayerMovementController : MonoBehaviour
 
         if(this.doNormalMovement)
             this.CalculateJump();
+
+        if (inputJump)
+            inputJump = false;
     }
 
     private void CalculateLookDirection()
@@ -95,6 +95,12 @@ public class PlayerMovementController : MonoBehaviour
     private void CalculateNormalMovement()
     {
         float targetSpeed = walkSpeed * inputDirection.magnitude;
+        currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
+    }
+
+    private void CalculateGlidingMovement()
+    {
+        float targetSpeed = walkSpeed;
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
     }
 

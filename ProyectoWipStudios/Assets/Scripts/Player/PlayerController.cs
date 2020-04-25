@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         public override string ToString()
         {
             return
-                "Velocity: " + velocity
+                  "Velocity: " + velocity
                 + "\nSpeed: " + Mathf.RoundToInt(speed)
                 + "\nisGrounded: " + isGrounded
                 + "\nisGliding: " + isGliding;
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         cameraController.UpdateCamera();
 
-        movementController.UpdateMovement(doNormalMovement, lockRotation, doGravity);
+        movementController.UpdateMovement();
 
         if (specificController)
             specificController.UpdateSpecificAction();
