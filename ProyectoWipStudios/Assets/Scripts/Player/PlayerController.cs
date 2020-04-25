@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool lockRotation = false;
     [HideInInspector] public bool doGravity = true;
 
+    [HideInInspector] public Vector3 alternativeMoveDestination;
+
     public float groundDistance
     {
         get
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour
         public bool isGrounded;
         public bool isJumping;
         public bool isGliding;
+        public bool isClimbing;
 
         public override string ToString()
         {
@@ -65,7 +68,8 @@ public class PlayerController : MonoBehaviour
                   "Velocity: " + velocity
                 + "\nSpeed: " + Mathf.RoundToInt(speed)
                 + "\nisGrounded: " + isGrounded
-                + "\nisGliding: " + isGliding;
+                + "\nisGliding: " + isGliding
+                + "\nisClimbing: " + isClimbing;
         }
     }
 

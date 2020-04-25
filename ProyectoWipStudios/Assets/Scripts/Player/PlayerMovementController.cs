@@ -106,7 +106,11 @@ public class PlayerMovementController : MonoBehaviour
 
     public void Move()
     {
-        Vector3 velocity = transform.forward * currentSpeed + Vector3.up * verticalSpeed;
+        Vector3 velocity;
+        velocity = (!PlayerController.instance.stats.isClimbing) ? 
+            transform.forward * currentSpeed + Vector3.up * verticalSpeed :
+            (PlayerController.instance.alternativeMoveDestination - transform.position) * walkSpeed;
+
         characterController.Move(velocity * Time.deltaTime);
         currentSpeed = new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude;
 

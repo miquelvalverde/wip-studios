@@ -183,7 +183,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e34a68c4-43cb-4fa5-9707-e1efd84daffb"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",

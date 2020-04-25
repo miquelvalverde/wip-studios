@@ -418,11 +418,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Squirrel
       objectReference: {fileID: 0}
-    - target: {fileID: 7973996445671112226, guid: 496e83698e0663b4cba496b0b5d858e5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 496e83698e0663b4cba496b0b5d858e5, type: 3}
 --- !u!4 &204213879 stripped
@@ -668,6 +663,7 @@ MonoBehaviour:
   doNormalMovement: 1
   lockRotation: 0
   doGravity: 1
+  alternativeMoveDestination: {x: 0, y: 0, z: 0}
 --- !u!143 &370017934
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1465,7 +1461,7 @@ GameObject:
   - component: {fileID: 1772779496}
   - component: {fileID: 1772779497}
   - component: {fileID: 1772779498}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Interactive-Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
