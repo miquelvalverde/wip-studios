@@ -18,6 +18,6 @@ public class Destructible : MonoBehaviour
     public void Break()
     {
         Instantiate(destructibleVersion, transform.position, transform.rotation);
-        this.gameObject.SetActive(false);  
+        Destroy(gameObject); 
     }
 }
