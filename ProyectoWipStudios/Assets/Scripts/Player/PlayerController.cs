@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private PlayerAnimatorController animatorController;
     private PlayerCameraController cameraController;
     private PlayerSpecificController _specificController;
-    [SerializeField] private RadialMenuController radialMenuController;
+    [SerializeField] private RadialMenuController radialMenuController = null;
     private PlayerSpecificController specificController
     {
         get
