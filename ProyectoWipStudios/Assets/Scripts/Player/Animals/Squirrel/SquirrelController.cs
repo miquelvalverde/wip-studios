@@ -49,7 +49,7 @@ public class SquirrelController : PlayerSpecificController
         {
             GetTree();
 
-            if (!currentTree)
+            if (!currentTree || !currentTree.CanInteract)
                 return;
 
             this.playerController.stats.isClimbing = true;

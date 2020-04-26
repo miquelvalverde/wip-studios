@@ -2,18 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destructible : MonoBehaviour
+public class Destructible : MonoBehaviour, IBreakable
 {
     [SerializeField] private GameObject destructibleVersion;
-
-    private void Update()
-    {
-        // TODO delete. Only used to test. 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Break();
-        }
-    }
 
     public void Break()
     {
