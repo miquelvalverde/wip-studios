@@ -10,6 +10,14 @@ public class TreeInteractable : MonoBehaviour
     [SerializeField] private bool maxClimbForward = false;
     private int climbIndex = 0;
 
+    [HideInInspector] public bool IsLastPoint
+    {
+        get
+        {
+            return climbIndex >= climbPoints.Count;
+        }
+    }
+
     private struct CustomPoint
     {
         public CustomPoint(Vector3 point, Vector3 direction)
@@ -29,7 +37,6 @@ public class TreeInteractable : MonoBehaviour
             ResetTree();
             throw new CannotClimbException();
         }
-
 
         Vector3 nextClimbPoint;
         nextClimbPoint = climbPoints[climbIndex].position;
@@ -61,6 +68,11 @@ public class TreeInteractable : MonoBehaviour
             return new CustomPoint(pointA, -direction);
         else
             return new CustomPoint(pointB, direction);
+    }
+
+    public Vector3 GetFirstPoint()
+    {
+        return climbPoints[0].position;
     }
 
     public void ResetTree()

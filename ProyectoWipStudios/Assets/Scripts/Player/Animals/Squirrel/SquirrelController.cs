@@ -5,96 +5,138 @@ using UnityEngine;
 public class SquirrelController : PlayerSpecificController
 {
 
-    private bool glideInput;
+    [Header("Glide")]
+    [SerializeField] private float glideSpeed = 2f;
 
-    [SerializeField] private float maxVerticalSpeedGlide = 2f;
-    [SerializeField] private float climbSpeed = 10f;
-    [SerializeField] private float climbRadius = .5f;
+    [Header("Climb")]
+    [SerializeField] private float climbCheckerVerticalOffset = .5f;
+    [SerializeField] private float climbCheckerHorizontalOffset = .5f;
+    [SerializeField] private float climbCheckerRadius = .5f;
+    [SerializeField] private LayerMask whatIsTree = 0;
+    private Vector3 checkerPosition
+    {
+        get
+        {
+            return transform.position + (transform.forward * climbCheckerHorizontalOffset) + (transform.up * climbCheckerVerticalOffset);
+        }
+
+        set { }
+    }
 
     private TreeInteractable currentTree = null;
-    private Vector3 currentClimbPosition = Vector3.zero;
-    private Vector3 nextClimbPosition = Vector3.zero;
     private bool endedTree = false;
+    private Vector3 nextClimbPosition = Vector3.zero;
+
+    private bool inputClimb;
 
     public override void Initializate(InputSystem controls)
     {
-        controls.Player.Glide.performed += _ => glideInput = true;
-        controls.Player.Glide.canceled += _ => glideInput = false;
+        controls.Player.Glide.performed += _ => StartGlide();
+        controls.Player.Glide.canceled += _ => StopGlide();
 
-        controls.Player.Climb.performed += _ => Climb();
+        controls.Player.Climb.performed += _ => inputClimb = true;
+        controls.Player.Climb.canceled += _ => inputClimb = false;
+
+        controls.Enable();
     }
 
     public override void UpdateSpecificAction()
     {
-        if (glideInput && this.playerController.groundDistance > 1f && this.playerController.movementVector.y < 0)
-        {
-            this.playerController.ChangeMaxVerticalSpeed(maxVerticalSpeedGlide);
-        }
-        else if (!glideInput)
-            this.playerController.ResetMaxVerticalSpeed();
+        if (this.playerController.stats.isGliding && this.playerController.groundDistance < 1)
+            StopGlide();
 
-        if (currentTree && this.playerController.transform.position != currentClimbPosition)
+        if (!this.playerController.stats.isClimbing && !this.playerController.stats.isGliding && !this.playerController.stats.isGrounded && inputClimb && IsTreeClose())
         {
-            this.playerController.transform.position = Vector3.Lerp(this.playerController.transform.position, currentClimbPosition, climbSpeed * Time.deltaTime);
+            GetTree();
+
+            if (!currentTree)
+                return;
+
+            this.playerController.stats.isClimbing = true;
+
+            this.playerController.doNormalMovement = false;
+            this.playerController.lockRotation = true;
+            this.playerController.doGravity = false;
+            currentTree.ResetTree();
+            GetNextClimbPoint();
+            this.playerController.transform.forward = currentTree.GetForward(this.playerController.transform);
         }
-        
-        if (endedTree && Vector3.Distance(this.playerController.transform.position, currentClimbPosition) < .1f)
+
+        if (this.playerController.stats.isClimbing && Vector3.Distance(transform.position, nextClimbPosition) < .5f)
         {
-            endedTree = false;
-            currentTree = null;
-            playerController.canNormalMove = true;
+            try
+            {
+                if (inputClimb)
+                    endedTree = GetNextClimbPoint();
+                else if (endedTree)
+                    EndClimb();
+            }
+            catch (CannotClimbException) { EndClimb(); }
         }
     }
 
-    private void Climb()
+    #region Gliding
+    private void StartGlide()
     {
-        if (!currentTree)
-        {
-            Collider[] colliders = Physics.OverlapSphere(playerController.transform.position + (playerController.transform.forward * .6f), climbRadius);
-            foreach(Collider c in colliders)
-            {
-                if (c.GetComponent<TreeInteractable>())
-                {
-                    currentTree = c.GetComponent<TreeInteractable>();
-                    nextClimbPosition = currentTree.GetNextPosition(playerController.transform);
+        if (this.playerController.stats.isGrounded && this.playerController.stats.velocity.y >= 0 || this.playerController.stats.isClimbing)
+            return;
 
-                    if(nextClimbPosition.y < this.playerController.transform.position.y)
-                    {
-                        currentTree.ResetTree();
-                        currentTree = null;
-                        return;
-                    }
+        this.playerController.doNormalMovement = false;
+        this.playerController.stats.isGliding = true;
+        this.playerController.ChangeMaxVerticalSpeed(glideSpeed);
+    }
 
-                    this.playerController.transform.forward = currentTree.GetForward(this.playerController.transform);
+    private void StopGlide()
+    {
+        if (!this.playerController.stats.isGliding)
+            return;
 
-                    continue;
-                }
-            }
-        }
+        this.playerController.doNormalMovement = true;
+        this.playerController.stats.isGliding = false;
+        this.playerController.ResetMaxVerticalSpeed();
+    }
+    #endregion
 
-        if (currentTree)
-        {
-            playerController.canNormalMove = false;
+    private bool IsTreeClose()
+    {
+        return Physics.CheckSphere(checkerPosition, climbCheckerRadius, whatIsTree);
+    }
 
-            try
-            {
-                currentClimbPosition = nextClimbPosition;
-                nextClimbPosition = currentTree.GetNextPosition(playerController.transform);
-            }
-            catch (CannotClimbException)
-            {
-                endedTree = true;
-            }
+    private void GetTree()
+    {
+        Collider[] colliders = Physics.OverlapSphere(checkerPosition, climbCheckerRadius, whatIsTree);
 
-        }
+        currentTree = colliders[0].GetComponent<TreeInteractable>();
+
+        if (currentTree.GetFirstPoint().y < this.playerController.transform.position.y)
+            currentTree = null;
+
+    }
+
+    private bool GetNextClimbPoint()
+    {
+        nextClimbPosition = currentTree.GetNextPosition(transform);
+        this.playerController.alternativeMoveDestination = nextClimbPosition;
+
+        return currentTree.IsLastPoint;
+    }
+
+    private void EndClimb()
+    {
+        endedTree = false;
+
+        this.playerController.stats.isClimbing = false;
+
+        this.playerController.doNormalMovement = true;
+        this.playerController.doGravity = true;
+        this.playerController.lockRotation = false;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.blue;
 
-        Gizmos.DrawWireSphere(((playerController) ? playerController.transform.position : transform.position) + (((playerController) ? playerController.transform.forward : transform.forward) * .6f), climbRadius);
-
+        Gizmos.DrawWireSphere(checkerPosition, climbCheckerRadius);
     }
 
 }
