@@ -1,38 +1,18 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(TreeInteractable))]
 public class TreeBrakeable : MonoBehaviour, IBreakable
 {
     [SerializeField] private float fallAngle;
     [SerializeField] private float fallTime;    
     [SerializeField] private AnimationCurve fallCurve;
-    private TreeInteractable treeInteractable;
     private float debugHeight = 10F;
     private int debugArrowCount = 5;
     private float debugArrowLength = 2F;
 
-    private void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            Break();
-        }
-    }
-
     public void Break()
     {
-        if(treeInteractable.CanInteract)
-        {
-            treeInteractable.CanInteract = false;
-            StartCoroutine(TreeFallRoutine());
-        }
-    }
-
-    private void Awake()
-    {
-        treeInteractable = GetComponent<TreeInteractable>();
+        StartCoroutine(TreeFallRoutine());
     }
 
     IEnumerator TreeFallRoutine()

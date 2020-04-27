@@ -7,6 +7,9 @@ public abstract class PlayerSpecificController : MonoBehaviour
 {
     protected PlayerController playerController;
 
+    public float walkSpeed;
+    public float jumpHeight;
+
     public virtual void Start()
     {
         this.playerController = PlayerController.instance;

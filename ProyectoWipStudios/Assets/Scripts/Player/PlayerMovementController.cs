@@ -18,15 +18,17 @@ public class PlayerMovementController : MonoBehaviour
     private float turnSmoothVelocity;
 
     [Header("Player Movement")]
-    [SerializeField] private float walkSpeed = 5;
     [SerializeField] private float speedSmoothTime = .1f;
+    private float _speed = 5;
+    private float speed = 5;
     private float speedSmoothVelocity;
     private float currentSpeed;
 
     [Header("Vertical Movement")]
-    [SerializeField] private float jumpHeight = 1;
     [SerializeField] private float gravity = Physics.gravity.y;
     [SerializeField] private float maxVerticalSpeed = 10;
+    private float _jumpHeight = 1;
+    private float jumpHeight = 1;
     private float _maxVerticalSpeed;
     private float verticalSpeed = 0;
 
@@ -39,6 +41,8 @@ public class PlayerMovementController : MonoBehaviour
     private bool doNormalMovement;
     private bool lockRotation;
     private bool doGravity;
+    private bool useMovementInputs;
+
     private bool isGrounded;
 
     public void Initialize(InputSystem controls)
@@ -60,23 +64,22 @@ public class PlayerMovementController : MonoBehaviour
         this.doNormalMovement = PlayerController.instance.doNormalMovement;
         this.lockRotation = PlayerController.instance.lockRotation;
         this.doGravity = PlayerController.instance.doGravity;
+        this.useMovementInputs = PlayerController.instance.useMovementInputs;
 
         this.CheckIfIsGrounded();
 
-        if(!this.lockRotation)
+        if (!this.lockRotation)
             this.CalculateLookDirection();
 
         if (this.doNormalMovement)
             this.CalculateNormalMovement();
-        else if (PlayerController.instance.stats.isGliding)
-            this.CalculateGlidingMovement();
 
         if (this.doGravity)
             this.CalculateGravity();
         else
             verticalSpeed = 0;
 
-        if(this.doNormalMovement)
+        if (this.doNormalMovement && this.useMovementInputs)
             this.CalculateJump();
 
         if (inputJump)
@@ -85,7 +88,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void CalculateLookDirection()
     {
-        if(inputDirection != Vector2.zero)
+        if (inputDirection != Vector2.zero)
         {
             float targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.y) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
             transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
@@ -94,22 +97,19 @@ public class PlayerMovementController : MonoBehaviour
 
     private void CalculateNormalMovement()
     {
-        float targetSpeed = walkSpeed * inputDirection.magnitude;
-        currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
-    }
+        float targetSpeed = speed;
+        if (PlayerController.instance.useMovementInputs)
+            targetSpeed *= inputDirection.magnitude;
 
-    private void CalculateGlidingMovement()
-    {
-        float targetSpeed = walkSpeed;
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
     }
 
     public void Move()
     {
         Vector3 velocity;
-        velocity = (!PlayerController.instance.stats.isClimbing) ? 
+        velocity = (!PlayerController.instance.stats.isClimbing) ?
             transform.forward * currentSpeed + Vector3.up * verticalSpeed :
-            (PlayerController.instance.alternativeMoveDestination - transform.position) * walkSpeed;
+            (PlayerController.instance.alternativeMoveDestination - transform.position) * speed;
 
         characterController.Move(velocity * Time.deltaTime);
         currentSpeed = new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude;
@@ -162,6 +162,22 @@ public class PlayerMovementController : MonoBehaviour
         PlayerController.instance.stats.isJumping = true;
     }
     #endregion
+
+    public void SetSpeedAndJumpHeight(float speed, float jumpHeight)
+    {
+        this.speed = this._speed = speed;
+        this.jumpHeight = _jumpHeight = jumpHeight;
+    }
+
+    public void ChangeSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
+    public void ResetSpeed()
+    {
+        this.speed = this._speed;
+    }
 
     private void CheckIfIsGrounded()
     {
