@@ -52,6 +52,30 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Tongue",
+                    "type": "Button",
+                    "id": "c9228c17-d247-459b-9a4f-933661488064",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "a10776e5-7485-466b-b477-d977a7fdb01c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Debug",
+                    "type": "Button",
+                    "id": "cc2a88aa-f7b7-4e20-9c2b-4fc547893030",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -146,7 +170,7 @@
                 {
                     "name": "",
                     "id": "e34a68c4-43cb-4fa5-9707-e1efd84daffb",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "MouseAndKeyboard",
@@ -162,6 +186,39 @@
                     "processors": "",
                     "groups": "MouseAndKeyboard",
                     "action": "Glide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "22143800-3e0e-4be1-962e-ef11c4eb50f7",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MouseAndKeyboard",
+                    "action": "Tongue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3428da4c-0e1a-4f07-8267-79b8e9bea828",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MouseAndKeyboard",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ef1d758-9dc2-4660-8117-c33fb544001b",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MouseAndKeyboard",
+                    "action": "Debug",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

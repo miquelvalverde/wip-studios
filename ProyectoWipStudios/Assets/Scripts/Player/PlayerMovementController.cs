@@ -5,160 +5,176 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovementController : MonoBehaviour
 {
+    //Components
+    private CharacterController characterController;
+    private Transform cameraTransform;
 
-    public CharacterController characterController { get; private set; }
+    //Inputs
+    private Vector2 inputDirection;
+    private bool inputJump;
 
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float moveTime = .2f;
+    [Header("Turn Movement")]
+    [SerializeField] private float turnSmoothTime = .15f;
+    private float turnSmoothVelocity;
 
-    [SerializeField] private float maxVerticalSpeed = 10;
+    [Header("Player Movement")]
+    [SerializeField] private float walkSpeed = 5;
+    [SerializeField] private float speedSmoothTime = .1f;
+    private float speedSmoothVelocity;
+    private float currentSpeed;
+
+    [Header("Vertical Movement")]
+    [SerializeField] private float jumpHeight = 1;
     [SerializeField] private float gravity = Physics.gravity.y;
+    [SerializeField] private float maxVerticalSpeed = 10;
+    private float _maxVerticalSpeed;
+    private float verticalSpeed = 0;
 
-    [Header("Ground detection")]
-    [SerializeField] private float groundCheckerRadius = .5f;
-    [SerializeField] private LayerMask whatIsGround;
+    [Header("Grounded Checker")]
+    [SerializeField] private LayerMask whatIsGround = 0;
+    [SerializeField] private Vector3 checkerOffset = Vector3.up * .2f;
+    [SerializeField] private Vector3 chekcerDimensions = Vector3.one;
 
-    private float initialMaxVerticalSpeed;
+    //Control variables
+    private bool doNormalMovement;
+    private bool lockRotation;
+    private bool doGravity;
+    private bool isGrounded;
 
-    private Transform camTransform;
-    private Vector2 moveInput = Vector2.zero;
-
-    private Vector3 lastForward = Vector3.zero;
-    private CollisionFlags collisionFlags;
-
-    [HideInInspector] public float verticalSpeed;
-    private bool jumpInput;
-
-    private bool hasMovement;
-
-    public struct State
+    public void Initialize(InputSystem controls)
     {
-        public Vector3 velocity;
-        public bool onGrounded;
-        public bool onJump;
+        characterController = GetComponent<CharacterController>();
+        cameraTransform = Camera.main.transform;
+
+        controls.Player.Move.performed += ctx => inputDirection = ctx.ReadValue<Vector2>();
+        controls.Player.Move.canceled += _ => inputDirection = Vector2.zero;
+
+        controls.Player.Jump.performed += _ => inputJump = true;
+        controls.Player.Jump.canceled += _ => inputJump = false;
+
+        this.ResetMaxVerticalSpeed();
     }
 
-    private State currentState;
-
-    public void Initializate(InputSystem controls)
+    public void UpdateMovement()
     {
-        characterController = this.GetComponent<CharacterController>();
+        this.doNormalMovement = PlayerController.instance.doNormalMovement;
+        this.lockRotation = PlayerController.instance.lockRotation;
+        this.doGravity = PlayerController.instance.doGravity;
 
-        camTransform = Camera.main.transform;
+        this.CheckIfIsGrounded();
 
-        controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        controls.Player.Move.canceled += _ => moveInput = Vector2.zero;
+        if(!this.lockRotation)
+            this.CalculateLookDirection();
 
-        controls.Player.Jump.performed += _ => jumpInput = true;
-        controls.Player.Jump.canceled += _ => jumpInput = false;
+        if (this.doNormalMovement)
+            this.CalculateNormalMovement();
+        else if (PlayerController.instance.stats.isGliding)
+            this.CalculateGlidingMovement();
 
-        initialMaxVerticalSpeed = maxVerticalSpeed;
-    }
-
-    public bool UpdateMovement()
-    {
-
-        Vector3 movement = GetMovementVector();
-        State nextState = new State();
-
-        collisionFlags = characterController.Move(movement);
-
-        bool onGrounded = CheckGround();
-
-        if ((collisionFlags & CollisionFlags.Below) != 0)
-        {
-            verticalSpeed = 0;
-        }
-
-        if ((collisionFlags & CollisionFlags.Above) != 0 && verticalSpeed > 0f)
+        if (this.doGravity)
+            this.CalculateGravity();
+        else
             verticalSpeed = 0;
 
-        if (jumpInput)
+        if(this.doNormalMovement)
+            this.CalculateJump();
+
+        if (inputJump)
+            inputJump = false;
+    }
+
+    private void CalculateLookDirection()
+    {
+        if(inputDirection != Vector2.zero)
         {
-            jumpInput = false;
-            nextState.onJump = true;
-            if (onGrounded)
-                verticalSpeed = jumpForce;
+            float targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.y) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
+            transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
         }
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((hasMovement) ? new Vector3(movement.x, 0, movement.z) : lastForward), moveTime * Time.deltaTime);
-        lastForward = transform.forward;
-
-        if (onGrounded)
-            ResetMaxVerticalSpeed();
-
-        nextState.velocity = characterController.velocity;
-        nextState.onGrounded = onGrounded;
-
-        currentState = nextState;
-
-        return onGrounded;
     }
 
-    public Vector3 GetMovementVector()
+    private void CalculateNormalMovement()
     {
-        Vector3 movement = Vector3.zero;
-        Vector3 forward = camTransform.forward;
-        Vector3 right = camTransform.right;
-
-        forward.y = 0;
-        forward.Normalize();
-        right.y = 0;
-        right.Normalize();
-
-        if (moveInput.y > 0)
-            movement = forward;
-        else if (moveInput.y < 0)
-            movement = -forward;
-
-        if (moveInput.x > 0)
-            movement += right;
-        else if (moveInput.x < 0)
-            movement -= right;
-
-        hasMovement = movement != Vector3.zero;
-        movement.Normalize();
-
-        movement *= speed * Time.deltaTime;
-
-        verticalSpeed += gravity * Time.deltaTime;
-        verticalSpeed = Mathf.Clamp(verticalSpeed, -maxVerticalSpeed, maxVerticalSpeed);
-        movement.y = verticalSpeed * Time.deltaTime;
-
-        return movement;
+        float targetSpeed = walkSpeed * inputDirection.magnitude;
+        currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
     }
 
-    private bool CheckGround()
+    private void CalculateGlidingMovement()
     {
-        return Physics.CheckSphere(transform.position + (Vector3.up * .2f), groundCheckerRadius, whatIsGround);
+        float targetSpeed = walkSpeed;
+        currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
     }
 
-    public State GetState()
+    public void Move()
     {
-        return currentState;
+        Vector3 velocity;
+        velocity = (!PlayerController.instance.stats.isClimbing) ? 
+            transform.forward * currentSpeed + Vector3.up * verticalSpeed :
+            (PlayerController.instance.alternativeMoveDestination - transform.position) * walkSpeed;
+
+        characterController.Move(velocity * Time.deltaTime);
+        currentSpeed = new Vector2(characterController.velocity.x, characterController.velocity.z).magnitude;
+
+        if (characterController.isGrounded)
+            verticalSpeed = 0;
+
+        PlayerController.instance.stats.isGrounded = isGrounded;
+        PlayerController.instance.stats.speed = currentSpeed;
+        PlayerController.instance.stats.velocity = velocity;
     }
 
-    public void SetLastForward(Vector3 forward)
+    #region Gravity
+    private void CalculateGravity()
     {
-        lastForward = forward;
+        if (!isGrounded)
+        {
+            verticalSpeed += -Mathf.Abs(gravity) * Time.deltaTime;
+            verticalSpeed = Mathf.Clamp(verticalSpeed, -Mathf.Abs(_maxVerticalSpeed), Mathf.Infinity);
+        }
     }
-
-    public void SetMaxVerticalSpeed(float maxVerticalSpeed)
-    {
-        this.maxVerticalSpeed = maxVerticalSpeed;
-    }
-
     public void ResetMaxVerticalSpeed()
     {
-        SetMaxVerticalSpeed(initialMaxVerticalSpeed);
+        SetMaxVerticalSpeed(maxVerticalSpeed);
+    }
+
+    public void SetMaxVerticalSpeed(float newSpeed)
+    {
+        _maxVerticalSpeed = newSpeed;
+    }
+    #endregion
+
+    #region Jump
+    private void CalculateJump()
+    {
+        if (inputJump)
+            Jump();
+    }
+
+    private void Jump()
+    {
+        inputJump = false;
+
+        if (!doNormalMovement || !isGrounded)
+            return;
+
+        float jumpSpeed = Mathf.Sqrt(-2 * -Mathf.Abs(gravity) * jumpHeight);
+        verticalSpeed = jumpSpeed;
+
+        PlayerController.instance.stats.isJumping = true;
+    }
+    #endregion
+
+    private void CheckIfIsGrounded()
+    {
+        isGrounded = Physics.CheckBox(transform.position + checkerOffset, chekcerDimensions/2, transform.rotation, whatIsGround);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawWireSphere(transform.position + (Vector3.up * .2f), groundCheckerRadius);
-    }
+        Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.lossyScale);
+        Gizmos.matrix = rotationMatrix;
 
+        Gizmos.DrawWireCube(checkerOffset, chekcerDimensions);
+    }
 }
