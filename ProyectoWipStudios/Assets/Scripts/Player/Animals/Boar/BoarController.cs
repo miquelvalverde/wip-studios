@@ -1,9 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BoarController : PlayerSpecificController
 {
+    [SerializeField] private float runSpeed = 10;
+    [SerializeField] private float timeRunning = 2;
+
+    [Space]
+    [Header("Crash Checker")]
+    [SerializeField] private Vector3 checkerOffset = Vector3.zero;
+    [SerializeField] private Vector3 checkerDimensions = Vector3.zero;
+    [SerializeField] private LayerMask whatIsObstacle = 0;
+
     public override void Initializate(InputSystem controls)
     {
         controls.Player.Run.performed += _ => Run();
@@ -11,11 +18,54 @@ public class BoarController : PlayerSpecificController
 
     public override void UpdateSpecificAction()
     {
-        
+        if (this.playerController.stats.isRunning && this.HasCrashed())
+            ExitRun();
     }
 
     private void Run()
     {
-        Debug.Log("Run");
+        this.playerController.useMovementInputs = false;
+        this.playerController.lockRotation = true;
+        this.playerController.stats.isRunning = true;
+
+        this.playerController.ChangeSpeed(runSpeed);
+
+        Invoke("ExitRun", timeRunning);
+    }
+
+    private void ExitRun()
+    {
+        CancelInvoke("ExitRun");
+        this.playerController.useMovementInputs = true;
+        this.playerController.lockRotation = false;
+        this.playerController.stats.isRunning = false;
+
+        this.playerController.ResetSpeed();
+    }
+
+    private bool HasCrashed()
+    {
+        Collider[] colliders = Physics.OverlapBox(transform.position + ((transform.forward * checkerOffset.z) + (transform.right * checkerOffset.x) + (transform.up * checkerOffset.y))
+            , checkerDimensions/2, transform.rotation, whatIsObstacle);
+
+        if(colliders.Length > 0)
+        {
+            if (colliders[0].GetComponent<IBreakable>() != null)
+                colliders[0].GetComponent<IBreakable>().Break();
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+
+        Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position + ((transform.forward * checkerOffset.z) + (transform.right * checkerOffset.x) + (transform.up * checkerOffset.y)), transform.rotation, checkerDimensions);
+        Gizmos.matrix = rotationMatrix;
+
+        Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
     }
 }

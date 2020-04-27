@@ -77,6 +77,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edb76ca6dea4a04bb139a7cd069d91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkSpeed: 5
+  jumpHeight: 1
+  runSpeed: 10
+  timeRunning: 2
+  checkerOffset: {x: 0, y: 1.4, z: 0.8}
+  checkerDimensions: {x: 0.7, y: 1.75, z: 0.25}
+  whatIsObstacle:
+    serializedVersion: 2
+    m_Bits: 823
 --- !u!95 &414739622474296691
 Animator:
   serializedVersion: 3
@@ -92,7 +101,10 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'CATRigHub001'\n\tTransform 'CATRigHub001'\n\tFrom
+    animation clip 'PlayerGliding'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -599,7 +611,6 @@ GameObject:
   - component: {fileID: 7739472215647739208}
   - component: {fileID: 7739472215647739211}
   - component: {fileID: 7739472215647739210}
-  - component: {fileID: 7739472215647739209}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -668,19 +679,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7739472215647739209
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7739472215647739207}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8421421052272645944
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,13 +895,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9191191817035327016}
-  m_LocalRotation: {x: 0.50000006, y: -0.49999997, z: -0.49999997, w: 0.50000006}
-  m_LocalPosition: {x: -0.006635641, y: 0.57526183, z: -0.18128161}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0.57526183, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2358289554405448656}
   - {fileID: 853648067836060858}
   - {fileID: 2128664801360784552}
   m_Father: {fileID: 3718331334000303969}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}

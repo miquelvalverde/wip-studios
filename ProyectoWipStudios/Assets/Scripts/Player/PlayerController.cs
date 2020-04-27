@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private PlayerCameraController cameraController;
     private PlayerSpecificController _specificController;
     [SerializeField] private RadialMenuController radialMenuController = null;
+    public Transform cameraPoint = null;
     private PlayerSpecificController specificController
     {
         get
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         {
             _specificController = value;
             animatorController.SetAnimator(_specificController.GetAnimator());
+            movementController.SetSpeedAndJumpHeight(_specificController.walkSpeed, _specificController.jumpHeight);
         }
 
     }
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public InputSystem controls { get; private set; }
 
     [HideInInspector] public bool doNormalMovement = true;
+    [HideInInspector] public bool useMovementInputs = true;
     [HideInInspector] public bool lockRotation = false;
     [HideInInspector] public bool doGravity = true;
 
@@ -61,6 +64,7 @@ public class PlayerController : MonoBehaviour
         public bool isJumping;
         public bool isGliding;
         public bool isClimbing;
+        public bool isRunning;
 
         public override string ToString()
         {
@@ -69,7 +73,8 @@ public class PlayerController : MonoBehaviour
                 + "\nSpeed: " + Mathf.RoundToInt(speed)
                 + "\nisGrounded: " + isGrounded
                 + "\nisGliding: " + isGliding
-                + "\nisClimbing: " + isClimbing;
+                + "\nisClimbing: " + isClimbing
+                + "\nisRunning: " + isRunning;
         }
     }
 
@@ -127,6 +132,16 @@ public class PlayerController : MonoBehaviour
     public void ResetMaxVerticalSpeed()
     {
         this.movementController.ResetMaxVerticalSpeed();
+    }
+
+    public void ChangeSpeed(float speed)
+    {
+        movementController.ChangeSpeed(speed);
+    }
+
+    public void ResetSpeed()
+    {
+        movementController.ResetSpeed();
     }
 
 }
