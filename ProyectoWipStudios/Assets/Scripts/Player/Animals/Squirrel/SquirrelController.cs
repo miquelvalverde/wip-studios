@@ -49,7 +49,7 @@ public class SquirrelController : PlayerSpecificController
         {
             GetTree();
 
-            if (!currentTree || !currentTree.CanInteract)
+            if (!currentTree)
                 return;
 
             this.playerController.stats.isClimbing = true;
@@ -81,7 +81,7 @@ public class SquirrelController : PlayerSpecificController
         if (this.playerController.stats.isGrounded && this.playerController.stats.velocity.y >= 0 || this.playerController.stats.isClimbing)
             return;
 
-        this.playerController.doNormalMovement = false;
+        this.playerController.useMovementInputs = false;
         this.playerController.stats.isGliding = true;
         this.playerController.ChangeMaxVerticalSpeed(glideSpeed);
     }
@@ -91,7 +91,7 @@ public class SquirrelController : PlayerSpecificController
         if (!this.playerController.stats.isGliding)
             return;
 
-        this.playerController.doNormalMovement = true;
+        this.playerController.useMovementInputs = true;
         this.playerController.stats.isGliding = false;
         this.playerController.ResetMaxVerticalSpeed();
     }

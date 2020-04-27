@@ -12,8 +12,7 @@ public class PlayerCameraController : MonoBehaviour
     [SerializeField] private float sensitivity = 20;
     [SerializeField] private float minPitch = -50;
     [SerializeField] private float maxPitch = 80;
-    [Space]
-    [SerializeField] private Transform player = null;
+    private Transform player = null;
 
     [HideInInspector] private Vector3 desiredPosition;
     [HideInInspector] private Vector3 direction;
@@ -25,6 +24,7 @@ public class PlayerCameraController : MonoBehaviour
     {
         controls.Player.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
         controls.Player.Look.canceled += _ => mouseInput = Vector2.zero;
+        player = PlayerController.instance.cameraPoint;
     }
 
     public void UpdateCamera()

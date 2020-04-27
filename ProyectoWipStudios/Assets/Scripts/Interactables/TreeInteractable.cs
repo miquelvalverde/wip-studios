@@ -10,8 +10,6 @@ public class TreeInteractable : MonoBehaviour
     [SerializeField] private bool maxClimbForward = false;
     private int climbIndex = 0;
 
-    public bool CanInteract { get; set; } = true;
-
     [HideInInspector] public bool IsLastPoint
     {
         get
