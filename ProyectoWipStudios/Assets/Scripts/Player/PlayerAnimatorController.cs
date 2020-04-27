@@ -20,6 +20,9 @@ public class PlayerAnimatorController : MonoBehaviour
 
     public void UpdateAnimation()
     {
+        if (!anim)
+            return;
+
         anim.SetFloat("Speed", PlayerController.instance.stats.speed, .1f, Time.deltaTime);
         anim.SetBool("IsGrounded", PlayerController.instance.stats.isGrounded);
         anim.SetBool("IsJumping", PlayerController.instance.stats.isJumping);

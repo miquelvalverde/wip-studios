@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7851267889730761742}
   - component: {fileID: 8074667991408332694}
   m_Layer: 5
-  m_Name: RadialMenu
+  m_Name: RadialMenuHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,12 +50,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portions:
-  - {fileID: 11400000, guid: 4c08da3f862eb1941a0fa8b535ff8b0a, type: 2}
-  - {fileID: 11400000, guid: 20f03e3e3f785ee4582b726f40c34d12, type: 2}
-  - {fileID: 11400000, guid: 9c314aa6bb7dfd4489a67f4cc0530797, type: 2}
+  - portion: {fileID: 11400000, guid: 74662b567cb7ea14aaa65d7477e9765d, type: 2}
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - portion: {fileID: 11400000, guid: d474f5dc78d1a21419ae0fd373aa1174, type: 2}
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: Callback2
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - portion: {fileID: 11400000, guid: 4351201884a50f14c9bd8d68af5f9052, type: 2}
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: Callback3
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   portionPrefabRef: {fileID: 5734370874022196264, guid: ecd8891a9d61f1c4d90405b34b830617,
     type: 3}
-  iconDistanceFromCenter: 128
+  iconDistanceFromCenter: 210
+  unselectedPortionBackground: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7851267889968165638
 GameObject:
   m_ObjectHideFlags: 0

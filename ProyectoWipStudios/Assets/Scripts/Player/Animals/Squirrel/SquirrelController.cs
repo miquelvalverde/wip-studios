@@ -108,6 +108,9 @@ public class SquirrelController : PlayerSpecificController
 
         currentTree = colliders[0].GetComponent<TreeInteractable>();
 
+        if (!currentTree)
+            return;
+
         if (currentTree.GetFirstPoint().y < this.playerController.transform.position.y)
             currentTree = null;
 
@@ -138,5 +141,4 @@ public class SquirrelController : PlayerSpecificController
 
         Gizmos.DrawWireSphere(checkerPosition, climbCheckerRadius);
     }
-
 }
