@@ -29,23 +29,21 @@ public class SquirrelController : PlayerSpecificController
 
     private bool inputClimb;
 
-    public override void Initializate(InputSystem controls)
+    public override void Initializate()
     {
-        controls.Player.Glide.performed += _ => StartGlide();
-        controls.Player.Glide.canceled += _ => StopGlide();
+        this.controls.Player.Glide.performed += _ => StartGlide();
+        this.controls.Player.Glide.canceled += _ => StopGlide();
 
-        controls.Player.Climb.performed += _ => inputClimb = true;
-        controls.Player.Climb.canceled += _ => inputClimb = false;
-
-        controls.Enable();
+        this.controls.Player.Climb.performed += _ => inputClimb = true;
+        this.controls.Player.Climb.canceled += _ => inputClimb = false;
     }
 
     public override void UpdateSpecificAction()
     {
-        if (this.playerController.stats.isGliding && this.playerController.groundDistance < 1)
+        if (PlayerController.instance.stats.isGliding && PlayerController.instance.groundDistance < 1)
             StopGlide();
 
-        if (!this.playerController.stats.isClimbing && !this.playerController.stats.isGliding && !this.playerController.stats.isGrounded && inputClimb && IsTreeClose())
+        if (!PlayerController.instance.stats.isClimbing && !PlayerController.instance.stats.isGliding && !PlayerController.instance.stats.isGrounded && inputClimb && IsTreeClose())
         {
             GetTree();
 
@@ -62,7 +60,7 @@ public class SquirrelController : PlayerSpecificController
             this.playerController.transform.forward = currentTree.GetForward(this.playerController.transform);
         }
 
-        if (this.playerController.stats.isClimbing && Vector3.Distance(transform.position, nextClimbPosition) < .5f)
+        if (PlayerController.instance.stats.isClimbing && Vector3.Distance(transform.position, nextClimbPosition) < .5f)
         {
             try
             {
@@ -78,6 +76,9 @@ public class SquirrelController : PlayerSpecificController
     #region Gliding
     private void StartGlide()
     {
+        if (PlayerController.instance.specificController.GetType() != typeof(SquirrelController))
+            return;
+
         if (this.playerController.stats.isGrounded && this.playerController.stats.velocity.y >= 0 || this.playerController.stats.isClimbing)
             return;
 
@@ -133,6 +134,11 @@ public class SquirrelController : PlayerSpecificController
         this.playerController.doNormalMovement = true;
         this.playerController.doGravity = true;
         this.playerController.lockRotation = false;
+    }
+
+    public override string ToString()
+    {
+        return "Squirrel";
     }
 
     private void OnDrawGizmos()

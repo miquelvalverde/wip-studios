@@ -42,7 +42,10 @@ public class RadialMenuController : MonoBehaviour
     private void SubmitSelection()
     {
         if (currentSelection != -1)
+        {
             SelectPortion(currentSelection);
+            currentSelection = -1;
+        }
     }
 
     private RadialMenuPortion[] CreateWheel()
@@ -71,7 +74,7 @@ public class RadialMenuController : MonoBehaviour
 
     public void UpdateRadialMenu()
     {
-        if (IsHoldingToChange)
+        if (IsHoldingToChange && !PlayerController.instance.IsDoingSomething())
         {
             Time.timeScale = .1f;
             var mouseAngle = GetAngleFromMouseInput(Input.mousePosition);
@@ -79,11 +82,17 @@ public class RadialMenuController : MonoBehaviour
             HoverPortion(currentSelection);
         }
         else
+        {
             Time.timeScale = 1;
+            currentSelection = -1;
+        }
     }
 
     private void EnableRadialMenu()
     {
+        if (PlayerController.instance.IsDoingSomething())
+            return;
+
         this.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         IsHoldingToChange = true;

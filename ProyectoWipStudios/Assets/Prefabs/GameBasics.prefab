@@ -276,16 +276,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8657104808115142407}
     m_Modifications:
-    - target: {fileID: 595176226304341865, guid: a4ddcc62997b3f742ac072ff7d9f7b11,
-        type: 3}
-      propertyPath: m_Name
-      value: SquirrelObj
-      objectReference: {fileID: 0}
-    - target: {fileID: 1474131164055931233, guid: a4ddcc62997b3f742ac072ff7d9f7b11,
-        type: 3}
-      propertyPath: m_Name
-      value: ChameleonObj
-      objectReference: {fileID: 0}
     - target: {fileID: 2742673791137860586, guid: a4ddcc62997b3f742ac072ff7d9f7b11,
         type: 3}
       propertyPath: m_Name
@@ -351,11 +341,6 @@ PrefabInstance:
       propertyPath: radialMenuController
       value: 
       objectReference: {fileID: 588508329039538143}
-    - target: {fileID: 6035453029403253852, guid: a4ddcc62997b3f742ac072ff7d9f7b11,
-        type: 3}
-      propertyPath: m_Name
-      value: BoarObj
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4ddcc62997b3f742ac072ff7d9f7b11, type: 3}
 --- !u!4 &6785756667637627796 stripped

@@ -11,19 +11,22 @@ public class BoarController : PlayerSpecificController
     [SerializeField] private Vector3 checkerDimensions = Vector3.zero;
     [SerializeField] private LayerMask whatIsObstacle = 0;
 
-    public override void Initializate(InputSystem controls)
+    public override void Initializate()
     {
-        controls.Player.Run.performed += _ => Run();
+        this.controls.Player.Run.performed += _ => Run();
     }
 
     public override void UpdateSpecificAction()
     {
-        if (this.playerController.stats.isRunning && this.HasCrashed())
+        if (PlayerController.instance.stats.isRunning && this.HasCrashed())
             ExitRun();
     }
 
     private void Run()
     {
+        if (PlayerController.instance.specificController.GetType() != typeof(BoarController))
+            return;
+
         this.playerController.useMovementInputs = false;
         this.playerController.lockRotation = true;
         this.playerController.stats.isRunning = true;
@@ -57,6 +60,11 @@ public class BoarController : PlayerSpecificController
         }
 
         return false;
+    }
+
+    public override string ToString()
+    {
+        return "Boar";
     }
 
     private void OnDrawGizmos()

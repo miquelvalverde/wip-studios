@@ -15,14 +15,14 @@ public class PlayerController : MonoBehaviour
     private PlayerSpecificController _specificController;
     [SerializeField] private RadialMenuController radialMenuController = null;
     public Transform cameraPoint = null;
-    private PlayerSpecificController specificController
+    public PlayerSpecificController specificController
     {
         get
         {
             return _specificController;
         }
 
-        set
+        private set
         {
             _specificController = value;
             animatorController.SetAnimator(_specificController.GetAnimator());
@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
         public bool isGliding;
         public bool isClimbing;
         public bool isRunning;
+        public bool isTongue;
 
         public override string ToString()
         {
@@ -74,12 +75,19 @@ public class PlayerController : MonoBehaviour
                 + "\nisGrounded: " + isGrounded
                 + "\nisGliding: " + isGliding
                 + "\nisClimbing: " + isClimbing
-                + "\nisRunning: " + isRunning;
+                + "\nisRunning: " + isRunning
+                + "\nisTongue: " + isTongue
+                + "\nAnimal: " + PlayerController.instance.specificController.ToString();
         }
     }
 
     [HideInInspector] public PlayerStats stats = new PlayerStats();
 
+
+    [Header("Animals objects")]
+    [SerializeField] private PlayerSpecificController squirrelRef = null;
+    [SerializeField] private PlayerSpecificController chameleonRef = null;
+    [SerializeField] private PlayerSpecificController boarRef = null;
 
     private void Awake()
     {
@@ -100,6 +108,9 @@ public class PlayerController : MonoBehaviour
         cameraController.Initializate(controls);
         movementController.Initialize(controls);
         radialMenuController.Initializate(controls);
+
+        ChangeToSquirrel();
+
     }
 
     private void Update()
@@ -119,6 +130,13 @@ public class PlayerController : MonoBehaviour
     }
 
     /** GETTERS AND SETTERS **/
+    public bool IsDoingSomething()
+    {
+        return this.stats.isClimbing ||
+            this.stats.isGliding ||
+            this.stats.isRunning;
+    }
+
     public void SetSpecificController(PlayerSpecificController specificController)
     {
         this.specificController = specificController;
@@ -142,6 +160,30 @@ public class PlayerController : MonoBehaviour
     public void ResetSpeed()
     {
         movementController.ResetSpeed();
+    }
+
+
+    private void ChangeToAnimal(PlayerSpecificController animalRef)
+    {
+        if (specificController)
+            Destroy(specificController.gameObject);
+
+        specificController = Instantiate(animalRef, transform);
+    }
+
+    public void ChangeToSquirrel()
+    {
+        ChangeToAnimal(squirrelRef);
+    }
+
+    public void ChangeToChameleon()
+    {
+        ChangeToAnimal(chameleonRef);
+    }
+
+    public void ChangeToBoar()
+    {
+        ChangeToAnimal(boarRef);
     }
 
 }
