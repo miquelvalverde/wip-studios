@@ -1,23 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-public abstract class PlayerSpecificController : MonoBehaviour
+public abstract class PlayerSpecificController : AMonoBehaivourWithInputs
 {
     protected PlayerController playerController;
-    protected InputSystem controls;
-
 
     public float walkSpeed;
     public float jumpHeight;
     public float scale = 1;
     public Transform cameraPoint;
 
-    public virtual void Awake()
-    {
-        this.controls = new InputSystem();
-    }
+    [SerializeField] protected Animator anim = null;
 
     public virtual void Start()
     {
@@ -26,23 +18,13 @@ public abstract class PlayerSpecificController : MonoBehaviour
         Initializate();
     }
 
-    private void OnEnable()
-    {
-        this.controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        this.controls.Disable();
-    }
-
     public abstract void Initializate();
 
     public abstract void UpdateSpecificAction();
 
     public Animator GetAnimator()
     {
-        return this.GetComponent<Animator>();
+        return anim;
     }
 
     public abstract override string ToString();

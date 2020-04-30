@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCameraController : MonoBehaviour
+public class PlayerCameraController : AMonoBehaivourWithInputs
 {
     [SerializeField] private float maxDistanceToLookAt = 5;
     [SerializeField] private float minDistanceToLookAt = 1;
@@ -19,11 +19,8 @@ public class PlayerCameraController : MonoBehaviour
 
     [HideInInspector] private Vector2 mouseInput;
 
-    private InputSystem controls;
-
-    private void Awake()
+    protected override void SetControls()
     {
-        controls = new InputSystem();
         controls.Player.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
         controls.Player.Look.canceled += _ => mouseInput = Vector2.zero;
     }
@@ -31,16 +28,6 @@ public class PlayerCameraController : MonoBehaviour
     public void Initializate()
     {
 
-    }
-
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
     }
 
     public void UpdateCamera()

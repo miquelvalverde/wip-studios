@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementController))]
 [RequireComponent(typeof(PlayerAnimatorController))]
@@ -42,8 +40,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
-    private InputSystem controls;
 
     [HideInInspector] public bool doNormalMovement = true;
     [HideInInspector] public bool useMovementInputs = true;
@@ -109,9 +105,6 @@ public class PlayerController : MonoBehaviour
         instance = this;
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        controls = new InputSystem();
-        controls.Enable();
 
         movementController = this.GetComponent<PlayerMovementController>();
         animatorController = this.GetComponent<PlayerAnimatorController>();
@@ -201,6 +194,20 @@ public class PlayerController : MonoBehaviour
     public void ChangeToBoar()
     {
         ChangeToAnimal(boarRef);
+    }
+
+    public void EnableInputs()
+    {
+        specificController.EnableControls();
+        movementController.EnableControls();
+        cameraController.EnableControls();
+    }
+
+    public void DisableInputs()
+    {
+        specificController.DisableControls();
+        movementController.DisableControls();
+        cameraController.DisableControls();
     }
 
 }

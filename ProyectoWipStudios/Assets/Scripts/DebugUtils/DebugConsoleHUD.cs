@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DebugConsoleHUD : MonoBehaviour
+public class DebugConsoleHUD : AMonoBehaivourWithInputs
 {
     [SerializeField] private GameObject parentPanel = null;
     [SerializeField] private Text debugText = null;
     private bool isShowing;
-    private InputSystem controls;
 
-    private void Awake()
+    protected override void SetControls()
     {
-        controls = new InputSystem();
-
         controls.Player.Debug.performed += _ => ToggleDebugWindow();
     }
 
@@ -34,16 +31,6 @@ public class DebugConsoleHUD : MonoBehaviour
     private void ToggleDebugWindow()
     {
         isShowing = !isShowing;
-    }
-
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
     }
 
 }
