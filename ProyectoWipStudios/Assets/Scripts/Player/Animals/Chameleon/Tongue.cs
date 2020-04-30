@@ -56,6 +56,7 @@ public class Tongue : MonoBehaviour
         isRetracting = false;
         currentTime = 0;
         tongueScaler.gameObject.SetActive(false);
+        PlayerController.instance.stats.isTongue = false;
     }
 
     private void ProtractTongue()
@@ -65,6 +66,7 @@ public class Tongue : MonoBehaviour
         pickableDistance = Vector3.Distance(tongueScaler.position, CurrentPickable.transform.position);
         isProtracting = true;
         tongueScaler.gameObject.SetActive(true);
+        PlayerController.instance.stats.isTongue = true;
     }
 
     private void Update()

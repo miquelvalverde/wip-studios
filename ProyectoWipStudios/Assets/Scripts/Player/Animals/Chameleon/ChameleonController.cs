@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class ChameleonController : PlayerSpecificController
 {
-    [SerializeField] private Tongue tongue;
+    [SerializeField] private Tongue tongue = null;
     [SerializeField] private float dropForce;
-    [SerializeField] ChameleonHUDController chameleonHUD;
+    [SerializeField] ChameleonHUDController chameleonHUD = null;
     private ChameleonHUDController hudInstance;
 
-    public override void Initializate(InputSystem controls)
+    public override void Initializate()
     {
-        controls.Player.Tongue.performed += _ => TonguePick();
+        this.controls.Player.Tongue.performed += _ => TonguePick();
         hudInstance = Instantiate(chameleonHUD);
     }
         
@@ -26,9 +26,14 @@ public class ChameleonController : PlayerSpecificController
     {
     }
 
+    public override string ToString()
+    {
+        return "Chameleon";
+    }
+
     private void OnDestroy()
     {
         tongue?.Drop(0);
-        Destroy(hudInstance);
+        Destroy(hudInstance.gameObject);
     }
 }

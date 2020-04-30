@@ -6,10 +6,11 @@ using UnityEngine;
 public class PlayerMovementController : MonoBehaviour
 {
     //Components
-    private CharacterController characterController;
+    public CharacterController characterController { get; private set; }
     private Transform cameraTransform;
 
     //Inputs
+    private InputSystem controls;
     private Vector2 inputDirection;
     private bool inputJump;
 
@@ -45,18 +46,33 @@ public class PlayerMovementController : MonoBehaviour
 
     private bool isGrounded;
 
-    public void Initialize(InputSystem controls)
+    private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
-        cameraTransform = Camera.main.transform;
+        controls = new InputSystem();
 
         controls.Player.Move.performed += ctx => inputDirection = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += _ => inputDirection = Vector2.zero;
 
         controls.Player.Jump.performed += _ => inputJump = true;
         controls.Player.Jump.canceled += _ => inputJump = false;
+    }
 
+    public void Initialize()
+    {
+        characterController = GetComponent<CharacterController>();
+        cameraTransform = Camera.main.transform;
+        
         this.ResetMaxVerticalSpeed();
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
     }
 
     public void UpdateMovement()

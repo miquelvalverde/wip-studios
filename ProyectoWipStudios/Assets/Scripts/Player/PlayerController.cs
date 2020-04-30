@@ -14,15 +14,27 @@ public class PlayerController : MonoBehaviour
     private PlayerCameraController cameraController;
     private PlayerSpecificController _specificController;
     [SerializeField] private RadialMenuController radialMenuController = null;
-    public Transform cameraPoint = null;
-    private PlayerSpecificController specificController
+    [SerializeField] private Transform _defaultCameraPoint = null;
+    [HideInInspector] public Transform cameraPoint
+    {
+        get
+        {
+            return (!specificController) ? _defaultCameraPoint : specificController.cameraPoint;
+        }
+
+        private set { }
+    }
+    private float characterDefaultHeight;
+    private float characterDefaultYCenter;
+
+    public PlayerSpecificController specificController
     {
         get
         {
             return _specificController;
         }
 
-        set
+        private set
         {
             _specificController = value;
             animatorController.SetAnimator(_specificController.GetAnimator());
@@ -31,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public InputSystem controls { get; private set; }
+    private InputSystem controls;
 
     [HideInInspector] public bool doNormalMovement = true;
     [HideInInspector] public bool useMovementInputs = true;
@@ -65,6 +77,7 @@ public class PlayerController : MonoBehaviour
         public bool isGliding;
         public bool isClimbing;
         public bool isRunning;
+        public bool isTongue;
 
         public override string ToString()
         {
@@ -74,12 +87,19 @@ public class PlayerController : MonoBehaviour
                 + "\nisGrounded: " + isGrounded
                 + "\nisGliding: " + isGliding
                 + "\nisClimbing: " + isClimbing
-                + "\nisRunning: " + isRunning;
+                + "\nisRunning: " + isRunning
+                + "\nisTongue: " + isTongue
+                + "\nAnimal: " + PlayerController.instance.specificController.ToString();
         }
     }
 
     [HideInInspector] public PlayerStats stats = new PlayerStats();
 
+
+    [Header("Animals objects")]
+    [SerializeField] private PlayerSpecificController squirrelRef = null;
+    [SerializeField] private PlayerSpecificController chameleonRef = null;
+    [SerializeField] private PlayerSpecificController boarRef = null;
 
     private void Awake()
     {
@@ -97,9 +117,14 @@ public class PlayerController : MonoBehaviour
         animatorController = this.GetComponent<PlayerAnimatorController>();
         cameraController = Camera.main.GetComponent<PlayerCameraController>();
 
-        cameraController.Initializate(controls);
-        movementController.Initialize(controls);
-        radialMenuController.Initializate(controls);
+        cameraController.Initializate();
+        movementController.Initialize();
+        radialMenuController.Initializate();
+
+        characterDefaultHeight = movementController.characterController.height;
+        characterDefaultYCenter = movementController.characterController.center.y;
+
+        ChangeToSquirrel();
     }
 
     private void Update()
@@ -119,9 +144,19 @@ public class PlayerController : MonoBehaviour
     }
 
     /** GETTERS AND SETTERS **/
+    public bool IsDoingSomething()
+    {
+        return this.stats.isClimbing ||
+            this.stats.isGliding ||
+            this.stats.isRunning;
+    }
+
     public void SetSpecificController(PlayerSpecificController specificController)
     {
         this.specificController = specificController;
+        CharacterController cc = GetComponent<CharacterController>();
+        cc.height = characterDefaultHeight * this.specificController.scale;
+        cc.center = new Vector3(0, characterDefaultYCenter * this.specificController.scale, 0);
     }
 
     public void ChangeMaxVerticalSpeed(float maxVerticalSpeed)
@@ -142,6 +177,30 @@ public class PlayerController : MonoBehaviour
     public void ResetSpeed()
     {
         movementController.ResetSpeed();
+    }
+
+
+    private void ChangeToAnimal(PlayerSpecificController animalRef)
+    {
+        if (specificController)
+            Destroy(specificController.gameObject);
+
+        specificController = Instantiate(animalRef, transform);
+    }
+
+    public void ChangeToSquirrel()
+    {
+        ChangeToAnimal(squirrelRef);
+    }
+
+    public void ChangeToChameleon()
+    {
+        ChangeToAnimal(chameleonRef);
+    }
+
+    public void ChangeToBoar()
+    {
+        ChangeToAnimal(boarRef);
     }
 
 }
