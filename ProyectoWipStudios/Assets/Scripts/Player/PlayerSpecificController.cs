@@ -11,18 +11,19 @@ public abstract class PlayerSpecificController : MonoBehaviour
 
     public float walkSpeed;
     public float jumpHeight;
+    public float scale = 1;
+    public Transform cameraPoint;
 
     public virtual void Awake()
     {
-        
         this.controls = new InputSystem();
-        Initializate();
     }
 
     public virtual void Start()
     {
         this.playerController = PlayerController.instance;
         this.playerController.SetSpecificController(this);
+        Initializate();
     }
 
     private void OnEnable()

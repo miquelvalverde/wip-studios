@@ -14,7 +14,19 @@ public class PlayerController : MonoBehaviour
     private PlayerCameraController cameraController;
     private PlayerSpecificController _specificController;
     [SerializeField] private RadialMenuController radialMenuController = null;
-    public Transform cameraPoint = null;
+    [SerializeField] private Transform _defaultCameraPoint = null;
+    [HideInInspector] public Transform cameraPoint
+    {
+        get
+        {
+            return (!specificController) ? _defaultCameraPoint : specificController.cameraPoint;
+        }
+
+        private set { }
+    }
+    private float characterDefaultHeight;
+    private float characterDefaultYCenter;
+
     public PlayerSpecificController specificController
     {
         get
@@ -31,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public InputSystem controls { get; private set; }
+    private InputSystem controls;
 
     [HideInInspector] public bool doNormalMovement = true;
     [HideInInspector] public bool useMovementInputs = true;
@@ -105,12 +117,14 @@ public class PlayerController : MonoBehaviour
         animatorController = this.GetComponent<PlayerAnimatorController>();
         cameraController = Camera.main.GetComponent<PlayerCameraController>();
 
-        cameraController.Initializate(controls);
-        movementController.Initialize(controls);
-        radialMenuController.Initializate(controls);
+        cameraController.Initializate();
+        movementController.Initialize();
+        radialMenuController.Initializate();
+
+        characterDefaultHeight = movementController.characterController.height;
+        characterDefaultYCenter = movementController.characterController.center.y;
 
         ChangeToSquirrel();
-
     }
 
     private void Update()
@@ -140,6 +154,9 @@ public class PlayerController : MonoBehaviour
     public void SetSpecificController(PlayerSpecificController specificController)
     {
         this.specificController = specificController;
+        CharacterController cc = GetComponent<CharacterController>();
+        cc.height = characterDefaultHeight * this.specificController.scale;
+        cc.center = new Vector3(0, characterDefaultYCenter * this.specificController.scale, 0);
     }
 
     public void ChangeMaxVerticalSpeed(float maxVerticalSpeed)

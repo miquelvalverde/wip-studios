@@ -26,7 +26,15 @@ public class RadialMenuController : MonoBehaviour
 
     private bool IsHoldingToChange;
 
-    public void Initializate(InputSystem controls)
+    private InputSystem controls;
+
+    private void Awake()
+    {
+        controls = new InputSystem();
+        this.controls.Enable(); // On this case the enable needs to be here because the component is disabled since press Change button and its need to be always enabled.
+    }
+
+    public void Initializate()
     {
         controls.Player.Change.performed += _ => EnableRadialMenu();
         controls.Player.Change.canceled += _ => DisableRadialMenu();

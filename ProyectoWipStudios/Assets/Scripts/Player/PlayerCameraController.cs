@@ -12,7 +12,6 @@ public class PlayerCameraController : MonoBehaviour
     [SerializeField] private float sensitivity = 20;
     [SerializeField] private float minPitch = -50;
     [SerializeField] private float maxPitch = 80;
-    private Transform player = null;
 
     [HideInInspector] private Vector3 desiredPosition;
     [HideInInspector] private Vector3 direction;
@@ -20,11 +19,28 @@ public class PlayerCameraController : MonoBehaviour
 
     [HideInInspector] private Vector2 mouseInput;
 
-    public void Initializate(InputSystem controls)
+    private InputSystem controls;
+
+    private void Awake()
     {
+        controls = new InputSystem();
         controls.Player.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
         controls.Player.Look.canceled += _ => mouseInput = Vector2.zero;
-        player = PlayerController.instance.cameraPoint;
+    }
+
+    public void Initializate()
+    {
+
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
     }
 
     public void UpdateCamera()
@@ -34,7 +50,7 @@ public class PlayerCameraController : MonoBehaviour
 
         desiredPosition = transform.position;
         direction = transform.forward;
-        distance = Vector3.Distance(transform.position, player.position);
+        distance = Vector3.Distance(transform.position, PlayerController.instance.cameraPoint.position);
 
         float yaw = 0;
         float pitch = 0;
@@ -43,14 +59,14 @@ public class PlayerCameraController : MonoBehaviour
         yaw = (eulerAngles.y + 180);
         pitch = eulerAngles.x;
 
-        CalculatePosition(mouseX, mouseY, yaw, pitch);
+        CalculatePosition(mouseX, mouseY, yaw, pitch, PlayerController.instance.cameraPoint.position);
 
         transform.forward = direction;
         transform.position =  desiredPosition;
 
     }
 
-    private void CalculatePosition(float mouseX, float mouseY, float yaw, float pitch)
+    private void CalculatePosition(float mouseX, float mouseY, float yaw, float pitch, Vector3 playerPosition)
     {
         yaw += sensitivity * mouseX * Time.deltaTime;
         yaw *= Mathf.Deg2Rad;
@@ -62,24 +78,24 @@ public class PlayerCameraController : MonoBehaviour
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
         pitch *= Mathf.Deg2Rad;
 
-        desiredPosition = player.position + new Vector3(Mathf.Sin(yaw) * Mathf.Cos(pitch) * distance, Mathf.Sin(pitch) * distance, Mathf.Cos(yaw) * Mathf.Cos(pitch) * distance);
+        desiredPosition = playerPosition + new Vector3(Mathf.Sin(yaw) * Mathf.Cos(pitch) * distance, Mathf.Sin(pitch) * distance, Mathf.Cos(yaw) * Mathf.Cos(pitch) * distance);
 
-        direction = player.position - desiredPosition;
+        direction = playerPosition - desiredPosition;
 
         direction.Normalize();
 
         distance = maxDistanceToLookAt;
-        desiredPosition = player.position - direction * maxDistanceToLookAt;
+        desiredPosition = playerPosition - direction * maxDistanceToLookAt;
 
         if (distance < minDistanceToLookAt)
         {
             distance = minDistanceToLookAt;
-            desiredPosition = player.position - direction * minDistanceToLookAt;
+            desiredPosition = playerPosition - direction * minDistanceToLookAt;
         }
 
         RaycastHit hit;
 
-        Ray ray = new Ray(player.position, -direction);
+        Ray ray = new Ray(playerPosition, -direction);
         if (Physics.Raycast(ray, out hit, distance, raycastLayerMask.value))
         {
             desiredPosition = hit.point + direction * offsetOnCollision;

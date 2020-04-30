@@ -48,15 +48,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radialMenuController: {fileID: 0}
-  cameraPoint: {fileID: 2742673791809083249}
+  _defaultCameraPoint: {fileID: 2742673791809083249}
   doNormalMovement: 1
   useMovementInputs: 1
   lockRotation: 0
   doGravity: 1
   alternativeMoveDestination: {x: 0, y: 0, z: 0}
-  squirrelRef: {fileID: 0}
-  chameleonRef: {fileID: 0}
-  boarRef: {fileID: 0}
+  squirrelRef: {fileID: 7973996445671112236, guid: 496e83698e0663b4cba496b0b5d858e5,
+    type: 3}
+  chameleonRef: {fileID: 7781761433846612570, guid: 6ac01b678c755e248ac0a889c711b313,
+    type: 3}
+  boarRef: {fileID: 3176338992834017789, guid: 42982406e9bba274b8383c6807d58519, type: 3}
 --- !u!114 &2742673791137860588
 MonoBehaviour:
   m_ObjectHideFlags: 0
