@@ -21,13 +21,19 @@ public class RadialMenuController : AMonoBehaivourWithInputs
     private int currentSelection;
 
     private bool IsHoldingToChange;
+    private Vector2 pixelsMouse;
+    private Vector2 deltaMouse;
+    private float tolerance = 2.0F;
+    private int previousSelection;
 
     protected override void SetControls()
     {
         canDisableInputs = false; // On this case its need to be always enabled.
         controls.Player.Change.performed += _ => EnableRadialMenu();
         controls.Player.Change.canceled += _ => DisableRadialMenu();
-        controls.UI.Submit.performed += _ => SubmitSelection();
+        controls.UI.MousePosition.performed += ctx => pixelsMouse = ctx.ReadValue<Vector2>();
+        controls.UI.MouseDelta.performed += ctx => deltaMouse = ctx.ReadValue<Vector2>();
+        controls.UI.MouseDelta.canceled += _ => deltaMouse = Vector2.zero;
         DisableRadialMenu();
     }
 
@@ -36,18 +42,15 @@ public class RadialMenuController : AMonoBehaivourWithInputs
         portionCount = portions.Length;
         portionSize360 = 360F / portionCount;
         portionSize01 = portionSize360 / 360F;
-        currentSelection = -1;
+        currentSelection = 0;
         radialMenuPortions = CreateWheel();
     }
 
     private void SubmitSelection()
     {
-        PlayerController.instance.EnableInputs();
-
-        if (currentSelection != -1)
+        if (IsHoldingToChange && currentSelection != -1 && currentSelection != previousSelection)
         {
             SelectPortion(currentSelection);
-            currentSelection = -1;
         }
     }
 
@@ -67,10 +70,10 @@ public class RadialMenuController : AMonoBehaivourWithInputs
         var portion = Instantiate(portionPrefabRef, this.transform) as RadialMenuPortion;
         portion.icon.sprite = settings.portion.icon;
         portion.iconRect.localPosition = new Vector3(0, iconDistanceFromCenter, 0);
-        portion.iconPivot.rotation = Quaternion.Euler(0,0, (index * -portionSize360) -portionSize360 / 2);
+        portion.iconPivot.rotation = Quaternion.Euler(0,0, -portionSize360 / 2);
         portion.background.color = settings.portion.background;
         portion.background.fillAmount = portionSize01;
-        portion.backgroundRect.rotation = Quaternion.Euler(0,0, index * -portionSize360);
+        portion.backgroundRect.rotation = Quaternion.Euler(0,0, -index * portionSize360);
         portion.callback = settings.callback;
         return portion;
     }
@@ -80,14 +83,18 @@ public class RadialMenuController : AMonoBehaivourWithInputs
         if (IsHoldingToChange && !PlayerController.instance.IsDoingSomething())
         {
             Time.timeScale = .1f;
-            var mouseAngle = GetAngleFromMouseInput(Input.mousePosition);
-            currentSelection = (int)(mouseAngle / portionSize360);
+            var mouseAngle = GetAngleFromMouseInput(pixelsMouse);
+
+            if (deltaMouse.magnitude > tolerance)
+            {
+                currentSelection = (int)(mouseAngle / portionSize360);
+            }
+
             HoverPortion(currentSelection);
         }
         else
         {
             Time.timeScale = 1;
-            currentSelection = -1;
         }
     }
 
@@ -98,6 +105,7 @@ public class RadialMenuController : AMonoBehaivourWithInputs
 
         PlayerController.instance.DisableInputs();
 
+        previousSelection = currentSelection;
         this.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         IsHoldingToChange = true;
@@ -105,6 +113,8 @@ public class RadialMenuController : AMonoBehaivourWithInputs
 
     private void DisableRadialMenu()
     {
+        SubmitSelection();
+
         PlayerController.instance.EnableInputs();
 
         this.gameObject.SetActive(false);
