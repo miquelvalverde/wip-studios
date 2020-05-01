@@ -321,6 +321,14 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Checkpoints"",
+                    ""type"": ""Button"",
+                    ""id"": ""5a371ad8-8116-4fd7-9db6-6c6d2b63fecf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -343,6 +351,116 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",
                     ""action"": ""DebugHud"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4e21926-5b18-4297-817f-f912e694a763"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Checkpoints"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ab26b00-b0af-4e83-884b-0de89dbfce03"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Checkpoints"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd9012e6-6fa1-4cf3-9f46-880d34693c4a"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Checkpoints"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da580cab-67b6-4f82-b300-d04b13db8093"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Checkpoints"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""43d8b85c-2f8c-4720-92b2-e512c5f61e3d"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Checkpoints"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ffcb4f67-d482-4836-90f9-b32c136a62bd"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Checkpoints"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13350088-1d2f-42eb-9233-724511c9411f"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Checkpoints"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4584c372-c016-4691-81ad-9c2d1803df14"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Checkpoints"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b0edf0f-31ae-4447-9a2a-597fe1c921c4"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Checkpoints"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1cfa6797-fc31-45ac-b07c-28a70f6b539b"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Checkpoints"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -399,6 +517,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_AIVision = m_Debug.FindAction("AIVision", throwIfNotFound: true);
         m_Debug_DebugHud = m_Debug.FindAction("DebugHud", throwIfNotFound: true);
+        m_Debug_Checkpoints = m_Debug.FindAction("Checkpoints", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -596,12 +715,14 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private IDebugActions m_DebugActionsCallbackInterface;
     private readonly InputAction m_Debug_AIVision;
     private readonly InputAction m_Debug_DebugHud;
+    private readonly InputAction m_Debug_Checkpoints;
     public struct DebugActions
     {
         private @InputSystem m_Wrapper;
         public DebugActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
         public InputAction @AIVision => m_Wrapper.m_Debug_AIVision;
         public InputAction @DebugHud => m_Wrapper.m_Debug_DebugHud;
+        public InputAction @Checkpoints => m_Wrapper.m_Debug_Checkpoints;
         public InputActionMap Get() { return m_Wrapper.m_Debug; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -617,6 +738,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @DebugHud.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugHud;
                 @DebugHud.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugHud;
                 @DebugHud.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugHud;
+                @Checkpoints.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnCheckpoints;
+                @Checkpoints.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnCheckpoints;
+                @Checkpoints.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnCheckpoints;
             }
             m_Wrapper.m_DebugActionsCallbackInterface = instance;
             if (instance != null)
@@ -627,6 +751,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @DebugHud.started += instance.OnDebugHud;
                 @DebugHud.performed += instance.OnDebugHud;
                 @DebugHud.canceled += instance.OnDebugHud;
+                @Checkpoints.started += instance.OnCheckpoints;
+                @Checkpoints.performed += instance.OnCheckpoints;
+                @Checkpoints.canceled += instance.OnCheckpoints;
             }
         }
     }
@@ -671,5 +798,6 @@ public class @InputSystem : IInputActionCollection, IDisposable
     {
         void OnAIVision(InputAction.CallbackContext context);
         void OnDebugHud(InputAction.CallbackContext context);
+        void OnCheckpoints(InputAction.CallbackContext context);
     }
 }
