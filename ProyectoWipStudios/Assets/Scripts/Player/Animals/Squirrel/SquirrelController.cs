@@ -56,6 +56,9 @@ public class SquirrelController : PlayerSpecificController
             }
             catch (CannotClimbException) { EndClimb(); }
         }
+
+        if (!PlayerController.instance.stats.isClimbing && inputClimb)
+            inputClimb = false;
     }
 
     #region Gliding
