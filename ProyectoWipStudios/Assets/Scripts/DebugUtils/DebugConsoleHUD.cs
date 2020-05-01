@@ -11,7 +11,7 @@ public class DebugConsoleHUD : AMonoBehaivourWithInputs
 
     protected override void SetControls()
     {
-        controls.Player.Debug.performed += _ => ToggleDebugWindow();
+        controls.Debug.DebugHud.performed += _ => ToggleDebugWindow();
     }
 
     private void Update()

@@ -70,14 +70,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Debug",
-                    "type": "Button",
-                    "id": "cc2a88aa-f7b7-4e20-9c2b-4fc547893030",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "SecondaryClimb",
                     "type": "Button",
                     "id": "e9f9ba40-d78c-49d7-9cfe-4f6145a3282e",
@@ -221,17 +213,6 @@
                 },
                 {
                     "name": "",
-                    "id": "3ef1d758-9dc2-4660-8117-c33fb544001b",
-                    "path": "<Keyboard>/f1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "MouseAndKeyboard",
-                    "action": "Debug",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "bbb91a5c-3c4c-4414-b34b-a4d88676a4dd",
                     "path": "<Keyboard>/w",
                     "interactions": "",
@@ -284,6 +265,52 @@
                     "processors": "",
                     "groups": "MouseAndKeyboard",
                     "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Debug",
+            "id": "482b0f7d-ae28-4606-8f63-4d5cb106ac85",
+            "actions": [
+                {
+                    "name": "AIVision",
+                    "type": "Button",
+                    "id": "ed725fdd-4710-40ac-99c9-4a002e6c686e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DebugHud",
+                    "type": "Button",
+                    "id": "6870366d-2fff-4a17-a78e-c33a0c9c24b1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "05390097-c2ed-42b9-87dd-ed9419eb51f9",
+                    "path": "<Keyboard>/f2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MouseAndKeyboard",
+                    "action": "AIVision",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33acc3fe-73b0-414d-8c33-a0f9dc7af490",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MouseAndKeyboard",
+                    "action": "DebugHud",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

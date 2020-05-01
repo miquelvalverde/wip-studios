@@ -83,14 +83,6 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Debug"",
-                    ""type"": ""Button"",
-                    ""id"": ""cc2a88aa-f7b7-4e20-9c2b-4fc547893030"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""SecondaryClimb"",
                     ""type"": ""Button"",
                     ""id"": ""e9f9ba40-d78c-49d7-9cfe-4f6145a3282e"",
@@ -234,17 +226,6 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3ef1d758-9dc2-4660-8117-c33fb544001b"",
-                    ""path"": ""<Keyboard>/f1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""MouseAndKeyboard"",
-                    ""action"": ""Debug"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""bbb91a5c-3c4c-4414-b34b-a4d88676a4dd"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
@@ -301,6 +282,52 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""482b0f7d-ae28-4606-8f63-4d5cb106ac85"",
+            ""actions"": [
+                {
+                    ""name"": ""AIVision"",
+                    ""type"": ""Button"",
+                    ""id"": ""ed725fdd-4710-40ac-99c9-4a002e6c686e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugHud"",
+                    ""type"": ""Button"",
+                    ""id"": ""6870366d-2fff-4a17-a78e-c33a0c9c24b1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""05390097-c2ed-42b9-87dd-ed9419eb51f9"",
+                    ""path"": ""<Keyboard>/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""AIVision"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33acc3fe-73b0-414d-8c33-a0f9dc7af490"",
+                    ""path"": ""<Keyboard>/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""DebugHud"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -343,12 +370,15 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_Player_Climb = m_Player.FindAction("Climb", throwIfNotFound: true);
         m_Player_Tongue = m_Player.FindAction("Tongue", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
-        m_Player_Debug = m_Player.FindAction("Debug", throwIfNotFound: true);
         m_Player_SecondaryClimb = m_Player.FindAction("SecondaryClimb", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_MousePosition = m_UI.FindAction("MousePosition", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_AIVision = m_Debug.FindAction("AIVision", throwIfNotFound: true);
+        m_Debug_DebugHud = m_Debug.FindAction("DebugHud", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -406,7 +436,6 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Climb;
     private readonly InputAction m_Player_Tongue;
     private readonly InputAction m_Player_Run;
-    private readonly InputAction m_Player_Debug;
     private readonly InputAction m_Player_SecondaryClimb;
     public struct PlayerActions
     {
@@ -420,7 +449,6 @@ public class @InputSystem : IInputActionCollection, IDisposable
         public InputAction @Climb => m_Wrapper.m_Player_Climb;
         public InputAction @Tongue => m_Wrapper.m_Player_Tongue;
         public InputAction @Run => m_Wrapper.m_Player_Run;
-        public InputAction @Debug => m_Wrapper.m_Player_Debug;
         public InputAction @SecondaryClimb => m_Wrapper.m_Player_SecondaryClimb;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -455,9 +483,6 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
-                @Debug.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebug;
-                @Debug.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebug;
-                @Debug.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebug;
                 @SecondaryClimb.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryClimb;
                 @SecondaryClimb.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryClimb;
                 @SecondaryClimb.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryClimb;
@@ -489,9 +514,6 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
-                @Debug.started += instance.OnDebug;
-                @Debug.performed += instance.OnDebug;
-                @Debug.canceled += instance.OnDebug;
                 @SecondaryClimb.started += instance.OnSecondaryClimb;
                 @SecondaryClimb.performed += instance.OnSecondaryClimb;
                 @SecondaryClimb.canceled += instance.OnSecondaryClimb;
@@ -540,6 +562,47 @@ public class @InputSystem : IInputActionCollection, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private IDebugActions m_DebugActionsCallbackInterface;
+    private readonly InputAction m_Debug_AIVision;
+    private readonly InputAction m_Debug_DebugHud;
+    public struct DebugActions
+    {
+        private @InputSystem m_Wrapper;
+        public DebugActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @AIVision => m_Wrapper.m_Debug_AIVision;
+        public InputAction @DebugHud => m_Wrapper.m_Debug_DebugHud;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void SetCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterface != null)
+            {
+                @AIVision.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnAIVision;
+                @AIVision.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnAIVision;
+                @AIVision.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnAIVision;
+                @DebugHud.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugHud;
+                @DebugHud.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugHud;
+                @DebugHud.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnDebugHud;
+            }
+            m_Wrapper.m_DebugActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @AIVision.started += instance.OnAIVision;
+                @AIVision.performed += instance.OnAIVision;
+                @AIVision.canceled += instance.OnAIVision;
+                @DebugHud.started += instance.OnDebugHud;
+                @DebugHud.performed += instance.OnDebugHud;
+                @DebugHud.canceled += instance.OnDebugHud;
+            }
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     private int m_MouseAndKeyboardSchemeIndex = -1;
     public InputControlScheme MouseAndKeyboardScheme
     {
@@ -568,12 +631,16 @@ public class @InputSystem : IInputActionCollection, IDisposable
         void OnClimb(InputAction.CallbackContext context);
         void OnTongue(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
-        void OnDebug(InputAction.CallbackContext context);
         void OnSecondaryClimb(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
         void OnSubmit(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnAIVision(InputAction.CallbackContext context);
+        void OnDebugHud(InputAction.CallbackContext context);
     }
 }
