@@ -200,14 +200,12 @@ public class PlayerController : MonoBehaviour
     {
         specificController.EnableControls();
         movementController.EnableControls();
-        cameraController.EnableControls();
     }
 
     public void DisableInputs()
     {
         specificController.DisableControls();
         movementController.DisableControls();
-        cameraController.DisableControls();
     }
 
 }
