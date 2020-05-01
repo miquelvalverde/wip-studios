@@ -76,6 +76,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SecondaryClimb",
+                    "type": "Button",
+                    "id": "e9f9ba40-d78c-49d7-9cfe-4f6145a3282e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -170,7 +178,7 @@
                 {
                     "name": "",
                     "id": "e34a68c4-43cb-4fa5-9707-e1efd84daffb",
-                    "path": "<Keyboard>/space",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "MouseAndKeyboard",
@@ -219,6 +227,17 @@
                     "processors": "",
                     "groups": "MouseAndKeyboard",
                     "action": "Debug",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bbb91a5c-3c4c-4414-b34b-a4d88676a4dd",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MouseAndKeyboard",
+                    "action": "SecondaryClimb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

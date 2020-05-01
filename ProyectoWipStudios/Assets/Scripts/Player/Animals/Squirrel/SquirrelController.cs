@@ -34,31 +34,16 @@ public class SquirrelController : PlayerSpecificController
         this.controls.Player.Glide.performed += _ => StartGlide();
         this.controls.Player.Glide.canceled += _ => StopGlide();
 
-        this.controls.Player.Climb.performed += _ => inputClimb = true;
-        this.controls.Player.Climb.canceled += _ => inputClimb = false;
+        this.controls.Player.Climb.performed += _ => StartClimb();
+
+        this.controls.Player.SecondaryClimb.performed += _ => inputClimb = true;
+        this.controls.Player.SecondaryClimb.canceled += _ => inputClimb = false;
     }
 
     public override void UpdateSpecificAction()
     {
         if (PlayerController.instance.stats.isGliding && PlayerController.instance.groundDistance < 1)
             StopGlide();
-
-        if (!PlayerController.instance.stats.isClimbing && !PlayerController.instance.stats.isGliding && !PlayerController.instance.stats.isGrounded && inputClimb && IsTreeClose())
-        {
-            GetTree();
-
-            if (!currentTree)
-                return;
-
-            this.playerController.stats.isClimbing = true;
-
-            this.playerController.doNormalMovement = false;
-            this.playerController.lockRotation = true;
-            this.playerController.doGravity = false;
-            currentTree.ResetTree();
-            GetNextClimbPoint();
-            this.playerController.transform.forward = currentTree.GetForward(this.playerController.transform);
-        }
 
         if (PlayerController.instance.stats.isClimbing && Vector3.Distance(transform.position, nextClimbPosition) < .5f)
         {
@@ -71,6 +56,9 @@ public class SquirrelController : PlayerSpecificController
             }
             catch (CannotClimbException) { EndClimb(); }
         }
+
+        if (!PlayerController.instance.stats.isClimbing && inputClimb)
+            inputClimb = false;
     }
 
     #region Gliding
@@ -97,6 +85,26 @@ public class SquirrelController : PlayerSpecificController
         this.playerController.ResetMaxVerticalSpeed();
     }
     #endregion
+
+    private void StartClimb()
+    {
+        if (PlayerController.instance.stats.isClimbing || PlayerController.instance.stats.isGliding || !PlayerController.instance.stats.isGrounded || !IsTreeClose())
+            return;
+
+        GetTree();
+
+        if (!currentTree)
+            return;
+
+        this.playerController.stats.isClimbing = true;
+
+        this.playerController.doNormalMovement = false;
+        this.playerController.lockRotation = true;
+        this.playerController.doGravity = false;
+        currentTree.ResetTree();
+        GetNextClimbPoint();
+        this.playerController.transform.forward = currentTree.GetForward(this.playerController.transform);
+    }
 
     private bool IsTreeClose()
     {
