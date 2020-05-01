@@ -256,6 +256,14 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MouseDelta"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""eac09cb9-2d13-4da0-bd4b-55f7b1b34e44"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -278,6 +286,17 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",
                     ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bbb5bda6-f059-48f8-a13e-c2ae79b76aed"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""MouseDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -375,6 +394,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_MousePosition = m_UI.FindAction("MousePosition", throwIfNotFound: true);
+        m_UI_MouseDelta = m_UI.FindAction("MouseDelta", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_AIVision = m_Debug.FindAction("AIVision", throwIfNotFound: true);
@@ -527,12 +547,14 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_Submit;
     private readonly InputAction m_UI_MousePosition;
+    private readonly InputAction m_UI_MouseDelta;
     public struct UIActions
     {
         private @InputSystem m_Wrapper;
         public UIActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @MousePosition => m_Wrapper.m_UI_MousePosition;
+        public InputAction @MouseDelta => m_Wrapper.m_UI_MouseDelta;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -548,6 +570,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @MousePosition.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
+                @MouseDelta.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseDelta;
+                @MouseDelta.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseDelta;
+                @MouseDelta.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMouseDelta;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -558,6 +583,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
+                @MouseDelta.started += instance.OnMouseDelta;
+                @MouseDelta.performed += instance.OnMouseDelta;
+                @MouseDelta.canceled += instance.OnMouseDelta;
             }
         }
     }
@@ -637,6 +665,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
     {
         void OnSubmit(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnMouseDelta(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {
