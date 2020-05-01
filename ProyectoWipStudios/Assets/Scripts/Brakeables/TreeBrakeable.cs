@@ -10,8 +10,14 @@ public class TreeBrakeable : MonoBehaviour, IBreakable
     private int debugArrowCount = 5;
     private float debugArrowLength = 2F;
 
+    private bool wasFall;
+
     public void Break()
     {
+        if (wasFall)
+            return;
+
+        wasFall = true;
         StartCoroutine(TreeFallRoutine());
     }
 

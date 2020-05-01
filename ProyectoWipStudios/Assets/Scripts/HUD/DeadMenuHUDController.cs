@@ -28,7 +28,7 @@ public class DeadMenuHUDController : MonoBehaviour
     public void Retry()
     {
         //That will change on alpha
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Exit()
