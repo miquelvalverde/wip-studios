@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovementController : MonoBehaviour
+public class PlayerMovementController : AMonoBehaivourWithInputs
 {
     //Components
     public CharacterController characterController { get; private set; }
     private Transform cameraTransform;
 
     //Inputs
-    private InputSystem controls;
     private Vector2 inputDirection;
     private bool inputJump;
 
@@ -46,15 +45,13 @@ public class PlayerMovementController : MonoBehaviour
 
     private bool isGrounded;
 
-    private void Awake()
+    protected override void SetControls()
     {
-        controls = new InputSystem();
-
         controls.Player.Move.performed += ctx => inputDirection = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += _ => inputDirection = Vector2.zero;
 
-        controls.Player.Jump.performed += _ => inputJump = true;
-        controls.Player.Jump.canceled += _ => inputJump = false;
+        controls.Player.Jump.performed += _ => Jump();
+        //controls.Player.Jump.canceled += _ => inputJump = false;
     }
 
     public void Initialize()
@@ -63,16 +60,6 @@ public class PlayerMovementController : MonoBehaviour
         cameraTransform = Camera.main.transform;
         
         this.ResetMaxVerticalSpeed();
-    }
-
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
     }
 
     public void UpdateMovement()
@@ -95,11 +82,11 @@ public class PlayerMovementController : MonoBehaviour
         else
             verticalSpeed = 0;
 
-        if (this.doNormalMovement && this.useMovementInputs)
+        /*if (this.doNormalMovement && this.useMovementInputs)
             this.CalculateJump();
 
         if (inputJump)
-            inputJump = false;
+            inputJump = false;*/
     }
 
     private void CalculateLookDirection()
@@ -167,9 +154,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Jump()
     {
-        inputJump = false;
-
-        if (!doNormalMovement || !isGrounded)
+        if (!this.doNormalMovement || !this.isGrounded || !this.useMovementInputs)
             return;
 
         float jumpSpeed = Mathf.Sqrt(-2 * -Mathf.Abs(gravity) * jumpHeight);

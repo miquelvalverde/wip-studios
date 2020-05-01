@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
-public class RadialMenuController : MonoBehaviour
+public class RadialMenuController : AMonoBehaivourWithInputs
 {
     [System.Serializable]
     public struct Portion
@@ -26,29 +22,28 @@ public class RadialMenuController : MonoBehaviour
 
     private bool IsHoldingToChange;
 
-    private InputSystem controls;
-
-    private void Awake()
+    protected override void SetControls()
     {
-        controls = new InputSystem();
-        this.controls.Enable(); // On this case the enable needs to be here because the component is disabled since press Change button and its need to be always enabled.
+        canDisableInputs = false; // On this case its need to be always enabled.
+        controls.Player.Change.performed += _ => EnableRadialMenu();
+        controls.Player.Change.canceled += _ => DisableRadialMenu();
+        controls.UI.Submit.performed += _ => SubmitSelection();
+        DisableRadialMenu();
     }
 
     public void Initializate()
     {
-        controls.Player.Change.performed += _ => EnableRadialMenu();
-        controls.Player.Change.canceled += _ => DisableRadialMenu();
-        controls.UI.Submit.performed += _ => SubmitSelection();
         portionCount = portions.Length;
         portionSize360 = 360F / portionCount;
         portionSize01 = portionSize360 / 360F;
         currentSelection = -1;
         radialMenuPortions = CreateWheel();
-        DisableRadialMenu();
     }
 
     private void SubmitSelection()
     {
+        PlayerController.instance.EnableInputs();
+
         if (currentSelection != -1)
         {
             SelectPortion(currentSelection);
@@ -101,6 +96,8 @@ public class RadialMenuController : MonoBehaviour
         if (PlayerController.instance.IsDoingSomething())
             return;
 
+        PlayerController.instance.DisableInputs();
+
         this.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         IsHoldingToChange = true;
@@ -108,6 +105,8 @@ public class RadialMenuController : MonoBehaviour
 
     private void DisableRadialMenu()
     {
+        PlayerController.instance.EnableInputs();
+
         this.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         IsHoldingToChange = false;

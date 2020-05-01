@@ -178,13 +178,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505764387283416440}
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.49999997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5463555892390774912}
   - {fileID: 6967319985852594154}
   - {fileID: 8566595954953994232}
-  m_Father: {fileID: 6409196610489863217}
+  m_Father: {fileID: 4113394472706851807}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
 --- !u!1 &1695899927379528144
@@ -212,10 +212,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695899927379528144}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.0073675737, y: 1.6346128, z: -0.1021628}
+  m_LocalPosition: {x: 0.007367573, y: 1.6346127, z: -0.10216279}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6409196610489863217}
+  m_Father: {fileID: 4113394472706851807}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &5487898660952719117
@@ -533,6 +533,61 @@ Transform:
   m_Father: {fileID: 2363463278019548054}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4770731714369008147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4113394472706851807}
+  - component: {fileID: 4916111705742941234}
+  m_Layer: 0
+  m_Name: Animator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4113394472706851807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770731714369008147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1338719067899380384}
+  - {fileID: 6959663773468258694}
+  m_Father: {fileID: 6409196610489863217}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4916111705742941234
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4770731714369008147}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 8876645a75780f247bc80f0cd3f8994c, type: 3}
+  m_Controller: {fileID: 9100000, guid: ad442e7c8a72d454cbffaed2390cf3fc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'CATRigHub001'\n\tTransform 'CATRigHub001'\n\tFrom
+    animation clip 'PlayerGliding'"
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4925351928425213841
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +845,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6409196610489863217}
   - component: {fileID: 7973996445671112236}
-  - component: {fileID: 7973996445671112227}
   m_Layer: 0
   m_Name: Squirrel
   m_TagString: Untagged
@@ -809,8 +863,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.15, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
-  - {fileID: 1338719067899380384}
-  - {fileID: 6959663773468258694}
+  - {fileID: 4113394472706851807}
   - {fileID: 1371981986345728483}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -831,6 +884,7 @@ MonoBehaviour:
   jumpHeight: 3
   scale: 0.6
   cameraPoint: {fileID: 1371981986345728483}
+  anim: {fileID: 4916111705742941234}
   glideSpeed: 2
   climbCheckerVerticalOffset: 0.8
   climbCheckerHorizontalOffset: 0.55
@@ -838,28 +892,6 @@ MonoBehaviour:
   whatIsTree:
     serializedVersion: 2
     m_Bits: 512
---- !u!95 &7973996445671112227
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7973996445671112226}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8876645a75780f247bc80f0cd3f8994c, type: 3}
-  m_Controller: {fileID: 9100000, guid: ad442e7c8a72d454cbffaed2390cf3fc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'CATRigHub001'\n\tTransform 'CATRigHub001'\n\tFrom
-    animation clip 'PlayerGliding'"
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8050269287478634522
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +951,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6409196610489863217}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8536600080328833877
 GameObject:
