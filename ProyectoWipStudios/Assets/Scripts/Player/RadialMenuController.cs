@@ -107,7 +107,7 @@ public class RadialMenuController : AMonoBehaivourWithInputs
 
         previousSelection = currentSelection;
         this.gameObject.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         IsHoldingToChange = true;
     }
 
