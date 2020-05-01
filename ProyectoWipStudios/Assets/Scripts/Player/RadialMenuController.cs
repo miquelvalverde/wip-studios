@@ -42,14 +42,12 @@ public class RadialMenuController : AMonoBehaivourWithInputs
         portionCount = portions.Length;
         portionSize360 = 360F / portionCount;
         portionSize01 = portionSize360 / 360F;
-        currentSelection = -1;
+        currentSelection = 0;
         radialMenuPortions = CreateWheel();
     }
 
     private void SubmitSelection()
     {
-        PlayerController.instance.EnableInputs();
-
         if (IsHoldingToChange && currentSelection != -1 && currentSelection != previousSelection)
         {
             SelectPortion(currentSelection);
