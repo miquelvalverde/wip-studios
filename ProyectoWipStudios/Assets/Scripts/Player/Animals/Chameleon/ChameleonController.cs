@@ -18,8 +18,9 @@ public class ChameleonController : PlayerSpecificController
         this.controls.Player.Tongue.performed += _ => TonguePick();
         this.controls.Player.Camouflage.performed += _ => Camouflage();
         hudInstance = Instantiate(chameleonHUD);
+        camouflageMaterial.SetFloat("Camouflage", 1);
     }
-        
+
     private void TonguePick()
     {
         tongue.DoTongue(dropForce);
