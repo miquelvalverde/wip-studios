@@ -89,6 +89,14 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Camouflage"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ea5ec25-a9a9-4e16-ad79-6726bb15b565"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -232,6 +240,17 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",
                     ""action"": ""SecondaryClimb"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42eb800d-cf8c-4231-a017-8a8efaec36d7"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Camouflage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -390,6 +409,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_Player_Tongue = m_Player.FindAction("Tongue", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_SecondaryClimb = m_Player.FindAction("SecondaryClimb", throwIfNotFound: true);
+        m_Player_Camouflage = m_Player.FindAction("Camouflage", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
@@ -457,6 +477,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Tongue;
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_SecondaryClimb;
+    private readonly InputAction m_Player_Camouflage;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
@@ -470,6 +491,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         public InputAction @Tongue => m_Wrapper.m_Player_Tongue;
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @SecondaryClimb => m_Wrapper.m_Player_SecondaryClimb;
+        public InputAction @Camouflage => m_Wrapper.m_Player_Camouflage;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -506,6 +528,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @SecondaryClimb.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryClimb;
                 @SecondaryClimb.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryClimb;
                 @SecondaryClimb.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryClimb;
+                @Camouflage.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamouflage;
+                @Camouflage.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamouflage;
+                @Camouflage.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamouflage;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -537,6 +562,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @SecondaryClimb.started += instance.OnSecondaryClimb;
                 @SecondaryClimb.performed += instance.OnSecondaryClimb;
                 @SecondaryClimb.canceled += instance.OnSecondaryClimb;
+                @Camouflage.started += instance.OnCamouflage;
+                @Camouflage.performed += instance.OnCamouflage;
+                @Camouflage.canceled += instance.OnCamouflage;
             }
         }
     }
@@ -660,6 +688,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         void OnTongue(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnSecondaryClimb(InputAction.CallbackContext context);
+        void OnCamouflage(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
