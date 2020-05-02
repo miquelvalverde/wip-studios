@@ -10,8 +10,9 @@ public class ChameleonController : PlayerSpecificController
     [SerializeField] ChameleonHUDController chameleonHUD = null;
     [SerializeField] private Material camouflageMaterial;
     private ChameleonHUDController hudInstance;
-    private bool isCamouflaged = false;
     private bool isCamouflaging = false;
+
+    public bool IsCamouflaged { get; private set; }
 
     public override void Initializate()
     {
@@ -30,7 +31,7 @@ public class ChameleonController : PlayerSpecificController
     private void Camouflage()
     {
         if (!isCamouflaging)
-            StartCoroutine(CamouflageRoutine(2.0F, isCamouflaged));
+            StartCoroutine(CamouflageRoutine(2.0F, IsCamouflaged));
     }
 
     IEnumerator CamouflageRoutine(float transitionTime, bool reverse)
@@ -44,10 +45,10 @@ public class ChameleonController : PlayerSpecificController
             timer += Time.deltaTime;
             yield return null;
         }
-        isCamouflaged = !isCamouflaged;
+        IsCamouflaged = !IsCamouflaged;
         isCamouflaging = false;
 
-        if (isCamouflaged)
+        if (IsCamouflaged)
         {
             this.playerController.useMovementInputs = false;
             this.playerController.lockRotation = true;
