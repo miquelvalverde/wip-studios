@@ -172,7 +172,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0150fb59-19db-4c10-a4b0-8924898eec04"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",
