@@ -125,6 +125,13 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
         PlayerController.instance.stats.velocity = velocity;
     }
 
+    public void TeleportTo(Vector3 position)
+    {
+        characterController.enabled = false;
+        transform.position = position;
+        characterController.enabled = true;
+    }
+
     #region Gravity
     private void CalculateGravity()
     {
@@ -146,11 +153,6 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
     #endregion
 
     #region Jump
-    private void CalculateJump()
-    {
-        if (inputJump)
-            Jump();
-    }
 
     private void Jump()
     {

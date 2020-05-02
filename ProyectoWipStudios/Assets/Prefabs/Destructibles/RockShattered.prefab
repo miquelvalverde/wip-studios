@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8858973172056945542}
   - component: {fileID: 2593323737161629721}
   - component: {fileID: 2593323737161629720}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: solidShatter1_shard8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 5842270886676463408}
   - component: {fileID: 2593323737161629725}
   - component: {fileID: 2593323737161629724}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: solidShatter1_shard6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 7658537888989825131}
   - component: {fileID: 2593323737161629737}
   - component: {fileID: 2593323737161629736}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard10_solidShatter1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 2482075057547754295}
   - component: {fileID: 2593323737161629731}
   - component: {fileID: 2593323737161629730}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: solidShatter1_shard5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 1874620569601058024}
   - component: {fileID: 2593323737161629733}
   - component: {fileID: 2593323737161629732}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: solidShatter1_shard2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7388123287504694037}
   - component: {fileID: 4982795093417475646}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RockShattered
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b27a0fe2bbccf04983b1e166ac6e44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 10
+  time: 2
 --- !u!1 &8522712358409901633
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 255890939979922326}
   - component: {fileID: 2593323737161629739}
   - component: {fileID: 2593323737161629738}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: solidShatter1_shard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 3477901824685637848}
   - component: {fileID: 2593323737161629727}
   - component: {fileID: 2593323737161629726}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: solidShatter1_shard7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 7741797761035834726}
   - component: {fileID: 2593323737161629723}
   - component: {fileID: 2593323737161629722}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: solidShatter1_shard9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 3929229131329837521}
   - component: {fileID: 2593323737161629729}
   - component: {fileID: 2593323737161629728}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: solidShatter1_shard4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1066,7 +1066,7 @@ GameObject:
   - component: {fileID: 2144437145940851580}
   - component: {fileID: 2593323737161629735}
   - component: {fileID: 2593323737161629734}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: solidShatter1_shard3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

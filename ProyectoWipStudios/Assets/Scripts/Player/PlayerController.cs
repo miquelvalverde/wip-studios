@@ -74,12 +74,14 @@ public class PlayerController : MonoBehaviour
         public bool isClimbing;
         public bool isRunning;
         public bool isTongue;
-
+        public bool isDead;
+        
         public override string ToString()
         {
             return
                   "Velocity: " + velocity
                 + "\nSpeed: " + Mathf.RoundToInt(speed)
+                + "\nisDead: " + isDead
                 + "\nisGrounded: " + isGrounded
                 + "\nisGliding: " + isGliding
                 + "\nisClimbing: " + isClimbing
@@ -206,6 +208,24 @@ public class PlayerController : MonoBehaviour
     {
         specificController.DisableControls();
         movementController.DisableControls();
+    }
+
+    public void TeleportTo(Transform point)
+    {
+        if (!point)
+            return;
+
+        movementController.TeleportTo(point.position);
+    }
+
+    public void Dead()
+    {
+        DisableInputs();
+        cameraController.DisableControls();
+        radialMenuController.DisableControls();
+        DeadMenuHUDController.instance.DisplayDeadMenu();
+        stats.isDead = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
 }

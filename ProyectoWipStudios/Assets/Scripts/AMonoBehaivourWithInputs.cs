@@ -27,7 +27,8 @@ public abstract class AMonoBehaivourWithInputs : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        this.DisableControls();
+        if (canDisableInputs)
+            this.DisableControls();
     }
 
     public void EnableControls()
@@ -37,8 +38,7 @@ public abstract class AMonoBehaivourWithInputs : MonoBehaviour
 
     public void DisableControls()
     {
-        if (canDisableInputs)
-            this.controls.Disable();
+        this.controls.Disable();
     }
 
 }
