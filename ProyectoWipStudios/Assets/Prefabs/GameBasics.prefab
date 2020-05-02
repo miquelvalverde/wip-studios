@@ -1070,11 +1070,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2742673791137860588, guid: a4ddcc62997b3f742ac072ff7d9f7b11,
-        type: 3}
-      propertyPath: speedSmoothTime
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 2742673791137860589, guid: a4ddcc62997b3f742ac072ff7d9f7b11,
         type: 3}
       propertyPath: radialMenuController
@@ -1224,29 +1219,14 @@ PrefabInstance:
       objectReference: {fileID: 6785756667637627794}
     - target: {fileID: 8074667991408332694, guid: 3b672eb7c9abab74da5c41e67daa2770,
         type: 3}
-      propertyPath: portions.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeToSquirrel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8074667991408332694, guid: 3b672eb7c9abab74da5c41e67daa2770,
-        type: 3}
       propertyPath: portions.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6785756667637627794}
     - target: {fileID: 8074667991408332694, guid: 3b672eb7c9abab74da5c41e67daa2770,
         type: 3}
-      propertyPath: portions.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeToChameleon
-      objectReference: {fileID: 0}
-    - target: {fileID: 8074667991408332694, guid: 3b672eb7c9abab74da5c41e67daa2770,
-        type: 3}
       propertyPath: portions.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6785756667637627794}
-    - target: {fileID: 8074667991408332694, guid: 3b672eb7c9abab74da5c41e67daa2770,
-        type: 3}
-      propertyPath: portions.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeToBoar
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b672eb7c9abab74da5c41e67daa2770, type: 3}
 --- !u!114 &588508329039538143 stripped

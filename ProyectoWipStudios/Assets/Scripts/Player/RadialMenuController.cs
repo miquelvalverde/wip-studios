@@ -34,7 +34,7 @@ public class RadialMenuController : AMonoBehaivourWithInputs
         controls.UI.MousePosition.performed += ctx => pixelsMouse = ctx.ReadValue<Vector2>();
         controls.UI.MouseDelta.performed += ctx => deltaMouse = ctx.ReadValue<Vector2>();
         controls.UI.MouseDelta.canceled += _ => deltaMouse = Vector2.zero;
-        DisableRadialMenu();
+        this.gameObject.SetActive(false);
     }
 
     public void Initializate()
