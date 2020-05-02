@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3855912754923890288}
   - component: {fileID: 3855912754923890290}
   m_Layer: 9
-  m_Name: NonClimbable-Tree
+  m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,6 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3855912755171600266}
+  - {fileID: 7914879181947834181}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -73,8 +74,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 5, z: 1}
-  m_Children:
-  - {fileID: 4200244119904026623}
+  m_Children: []
   m_Father: {fileID: 3855912754923890288}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -125,7 +125,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &4682858289420324762
+--- !u!1 &6518033843759864486
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,46 +133,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4200244119904026623}
-  - component: {fileID: 6251552194874664004}
-  - component: {fileID: 3921878951794107285}
-  - component: {fileID: 8363407183319593735}
+  - component: {fileID: 7914879181947834181}
+  - component: {fileID: 2269835322263038095}
+  - component: {fileID: 5042593826008863491}
+  - component: {fileID: 3373345112366172612}
   m_Layer: 8
-  m_Name: Branch
+  m_Name: Leaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4200244119904026623
+--- !u!4 &7914879181947834181
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4682858289420324762}
+  m_GameObject: {fileID: 6518033843759864486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 0.77500004, z: 0}
-  m_LocalScale: {x: 4, y: 0.05, z: 1}
+  m_LocalPosition: {x: 0, y: 10.15, z: 0}
+  m_LocalScale: {x: 4.37448, y: 4.37448, z: 4.37448}
   m_Children: []
-  m_Father: {fileID: 3855912755171600266}
-  m_RootOrder: 0
+  m_Father: {fileID: 3855912754923890288}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6251552194874664004
+--- !u!33 &2269835322263038095
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4682858289420324762}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3921878951794107285
+  m_GameObject: {fileID: 6518033843759864486}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &5042593826008863491
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4682858289420324762}
+  m_GameObject: {fileID: 6518033843759864486}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -184,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 800ea648dfcfabc4fbda1753afb1b2f9, type: 2}
+  - {fileID: 2100000, guid: 45a081f2416869e41aba561aa955ee98, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -205,16 +205,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8363407183319593735
-BoxCollider:
+--- !u!135 &3373345112366172612
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4682858289420324762}
+  m_GameObject: {fileID: 6518033843759864486}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
