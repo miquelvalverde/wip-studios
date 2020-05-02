@@ -8,11 +8,11 @@ public class ChameleonController : PlayerSpecificController
     [SerializeField] private Tongue tongue = null;
     [SerializeField] private float dropForce;
     [SerializeField] ChameleonHUDController chameleonHUD = null;
-    [SerializeField] private Material camouflageMaterial; 
+    [SerializeField] private Material camouflageMaterial;
     private ChameleonHUDController hudInstance;
     private bool isCamouflaged = false;
-    private bool isCamouflaging= false;
-        
+    private bool isCamouflaging = false;
+
     public override void Initializate()
     {
         this.controls.Player.Tongue.performed += _ => TonguePick();
@@ -46,6 +46,21 @@ public class ChameleonController : PlayerSpecificController
         }
         isCamouflaged = !isCamouflaged;
         isCamouflaging = false;
+
+        if (isCamouflaged)
+        {
+            this.playerController.useMovementInputs = false;
+            this.playerController.lockRotation = true;
+            this.playerController.stats.isRunning = true;
+            this.playerController.ChangeSpeed(0);
+        }
+        else
+        {
+            this.playerController.useMovementInputs = true;
+            this.playerController.lockRotation = false;
+            this.playerController.stats.isRunning = false;
+            this.playerController.ResetSpeed();
+        }
     }
 
     public override void UpdateSpecificAction()
@@ -60,6 +75,7 @@ public class ChameleonController : PlayerSpecificController
     private void OnDestroy()
     {
         tongue?.Drop(0);
-        Destroy(hudInstance.gameObject);
+        if(hudInstance)
+            Destroy(hudInstance.gameObject);
     }
 }
