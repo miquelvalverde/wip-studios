@@ -200,7 +200,7 @@
                 {
                     "name": "",
                     "id": "22143800-3e0e-4be1-962e-ef11c4eb50f7",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "MouseAndKeyboard",
@@ -233,7 +233,7 @@
                 {
                     "name": "",
                     "id": "42eb800d-cf8c-4231-a017-8a8efaec36d7",
-                    "path": "<Keyboard>/q",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "MouseAndKeyboard",
@@ -270,6 +270,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "b3c527f4-2a29-4c40-bed8-48c49b41588b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -303,6 +311,17 @@
                     "processors": "",
                     "groups": "MouseAndKeyboard",
                     "action": "MouseDelta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "65695ffa-3dc1-48f1-9951-d35d2ad6bc49",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MouseAndKeyboard",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -330,5 +330,5 @@ MonoBehaviour:
   dontSeeMaterial: {fileID: 2100000, guid: f928ad01878c88745812c18e5dce5574, type: 2}
   seeMaterial: {fileID: 2100000, guid: 07bbe74b0b9b48742b61fb0ae58f3439, type: 2}
   turnSpeed: 0.5
-  stopTime: 2
-  angle: 90
+  stopTime: 1.2
+  angle: 180

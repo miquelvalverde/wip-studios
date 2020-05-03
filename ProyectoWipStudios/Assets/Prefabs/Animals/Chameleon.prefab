@@ -916,11 +916,11 @@ MonoBehaviour:
   cameraPoint: {fileID: 7158394301815127356}
   anim: {fileID: 6960196028656221924}
   tongue: {fileID: 7385755679254333289}
-  dropForce: 100
+  dropForce: 200
   chameleonHUD: {fileID: 6480272451193786695, guid: be39bea30aae1494eb351bb51af2c1fa,
     type: 3}
   camouflageMaterial: {fileID: 2100000, guid: 4036578bca60bdd44a578eb785e87eba, type: 2}
-  transitionTime: 2
+  transitionTime: 0.5
 --- !u!1 &8050269287478634522
 GameObject:
   m_ObjectHideFlags: 0
