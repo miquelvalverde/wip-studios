@@ -145,7 +145,9 @@ public class PlayerController : MonoBehaviour
     {
         return this.stats.isClimbing ||
             this.stats.isGliding ||
-            this.stats.isRunning;
+            this.stats.isRunning ||
+            this.stats.isTongue ||
+            this.stats.isCamouflaged;
     }
 
     public void SetSpecificController(PlayerSpecificController specificController)
