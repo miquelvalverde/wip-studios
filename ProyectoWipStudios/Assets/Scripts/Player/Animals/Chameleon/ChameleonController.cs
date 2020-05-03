@@ -9,11 +9,10 @@ public class ChameleonController : PlayerSpecificController
     [SerializeField] private float dropForce;
     [SerializeField] ChameleonHUDController chameleonHUD = null;
     [SerializeField] private Material camouflageMaterial;
+    [SerializeField] private float transitionTime = 1.5F;
     private ChameleonHUDController hudInstance;
     private bool isCamouflaging = false;
-
-    public bool IsCamouflaged { get; private set; }
-
+        
     public override void Initializate()
     {
         this.controls.Player.Tongue.performed += _ => TonguePick();
@@ -31,11 +30,13 @@ public class ChameleonController : PlayerSpecificController
     private void Camouflage()
     {
         if (!isCamouflaging)
-            StartCoroutine(CamouflageRoutine(2.0F, IsCamouflaged));
+            StartCoroutine(CamouflageRoutine(this.playerController.stats.isCamouflaged));
     }
 
-    IEnumerator CamouflageRoutine(float transitionTime, bool reverse)
+    IEnumerator CamouflageRoutine(bool reverse)
     {
+        this.playerController.stats.isCamouflaged = !this.playerController.stats.isCamouflaged;
+
         isCamouflaging = true;
         float timer = 0.0f;
         while (timer <= transitionTime)
@@ -45,22 +46,17 @@ public class ChameleonController : PlayerSpecificController
             timer += Time.deltaTime;
             yield return null;
         }
-        IsCamouflaged = !IsCamouflaged;
         isCamouflaging = false;
 
-        if (IsCamouflaged)
+        if (this.playerController.stats.isCamouflaged)
         {
-            this.playerController.useMovementInputs = false;
+            this.playerController.doNormalMovement = false;
             this.playerController.lockRotation = true;
-            this.playerController.stats.isRunning = true;
-            this.playerController.ChangeSpeed(0);
         }
         else
         {
-            this.playerController.useMovementInputs = true;
+            this.playerController.doNormalMovement = true;
             this.playerController.lockRotation = false;
-            this.playerController.stats.isRunning = false;
-            this.playerController.ResetSpeed();
         }
     }
 

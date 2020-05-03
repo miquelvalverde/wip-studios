@@ -91,7 +91,7 @@ public class ProtoAI : AMonoBehaivourWithInputs
     private void OnTriggerEnter(Collider other)
     {
         var otherController = other.GetComponent<PlayerController>();
-        if (otherController && otherController.specificController is ChameleonController c && !c.IsCamouflaged)
+        if (otherController != null && !otherController.stats.isCamouflaged)
             isSeeingPlayer = true;
     }
 
