@@ -10,7 +10,9 @@ public class GameController : AMonoBehaivourWithInputs
     void Start()
     {
         this.controls.UI.Pause.performed += _ => GamePause();
-    }   
+
+        GameReanudate();
+    }
 
     private void GamePause()
     {

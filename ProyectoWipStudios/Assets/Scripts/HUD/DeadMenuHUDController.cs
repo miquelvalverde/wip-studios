@@ -23,6 +23,8 @@ public class DeadMenuHUDController : MonoBehaviour
     public void DisplayDeadMenu()
     {
         anim.SetBool("isShowing", true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void Retry()
