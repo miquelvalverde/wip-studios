@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 154933127}
-  m_IndirectSpecularColor: {r: 0.4509825, g: 0.5008476, b: 0.5743571, a: 1}
+  m_IndirectSpecularColor: {r: 0.4509821, g: 0.5008466, b: 0.5743557, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -366,7 +366,7 @@ Transform:
   - {fileID: 295293977}
   - {fileID: 1985300954}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &295293977 stripped
 Transform:
@@ -640,7 +640,7 @@ PrefabInstance:
     - target: {fileID: 8657104808115142407, guid: 4bd8631d7d59d144c8f59a526a6402b5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8657104808115142407, guid: 4bd8631d7d59d144c8f59a526a6402b5,
         type: 3}
@@ -910,10 +910,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5327053137858852791, guid: 28c3dd1689b768b4383c638553385ab2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5e1e344a84cbb034f86e3410ee5c8952, type: 2}
     - target: {fileID: 7548181921089154790, guid: 28c3dd1689b768b4383c638553385ab2,
         type: 3}
       propertyPath: m_Name
       value: Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548181921089154790, guid: 28c3dd1689b768b4383c638553385ab2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c3dd1689b768b4383c638553385ab2, type: 3}

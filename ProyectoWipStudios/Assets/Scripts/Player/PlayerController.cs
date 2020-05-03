@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
         public bool isRunning;
         public bool isTongue;
         public bool isDead;
+        public bool isCamouflaged;
         
         public override string ToString()
         {
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviour
                 + "\nisClimbing: " + isClimbing
                 + "\nisRunning: " + isRunning
                 + "\nisTongue: " + isTongue
+                + "\nisCamouflaged: " + isCamouflaged
                 + "\nAnimal: " + PlayerController.instance.specificController.ToString();
         }
     }
@@ -143,7 +145,9 @@ public class PlayerController : MonoBehaviour
     {
         return this.stats.isClimbing ||
             this.stats.isGliding ||
-            this.stats.isRunning;
+            this.stats.isRunning ||
+            this.stats.isTongue ||
+            this.stats.isCamouflaged;
     }
 
     public void SetSpecificController(PlayerSpecificController specificController)

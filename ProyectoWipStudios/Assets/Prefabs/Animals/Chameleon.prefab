@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1338719067899380384}
   - component: {fileID: 5487898660952719117}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a223510cc2b604449b8c6e762e61074d, type: 2}
+  - {fileID: 2100000, guid: 4036578bca60bdd44a578eb785e87eba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -919,6 +919,8 @@ MonoBehaviour:
   dropForce: 100
   chameleonHUD: {fileID: 6480272451193786695, guid: be39bea30aae1494eb351bb51af2c1fa,
     type: 3}
+  camouflageMaterial: {fileID: 2100000, guid: 4036578bca60bdd44a578eb785e87eba, type: 2}
+  transitionTime: 2
 --- !u!1 &8050269287478634522
 GameObject:
   m_ObjectHideFlags: 0
