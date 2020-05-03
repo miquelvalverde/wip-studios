@@ -37,17 +37,6 @@ public class ChameleonController : PlayerSpecificController
     {
         this.playerController.stats.isCamouflaged = !this.playerController.stats.isCamouflaged;
 
-        isCamouflaging = true;
-        float timer = 0.0f;
-        while (timer <= transitionTime)
-        {
-            if (reverse) camouflageMaterial.SetFloat("Camouflage", timer / transitionTime);
-            else camouflageMaterial.SetFloat("Camouflage", 1 - timer / transitionTime);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        isCamouflaging = false;
-
         if (this.playerController.stats.isCamouflaged)
         {
             this.playerController.doNormalMovement = false;
@@ -58,6 +47,18 @@ public class ChameleonController : PlayerSpecificController
             this.playerController.doNormalMovement = true;
             this.playerController.lockRotation = false;
         }
+
+        // dissolve
+        isCamouflaging = true;
+        float timer = 0.0f;
+        while (timer <= transitionTime)
+        {
+            if (reverse) camouflageMaterial.SetFloat("Camouflage", timer / transitionTime);
+            else camouflageMaterial.SetFloat("Camouflage", 1 - timer / transitionTime);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        isCamouflaging = false;
     }
 
     public override void UpdateSpecificAction()
