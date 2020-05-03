@@ -17,13 +17,15 @@ public class GameController : AMonoBehaivourWithInputs
         Time.timeScale = 0;
         pauseMenuHUD.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
-            
+
     public void GameReanudate()
     {
         Time.timeScale = 1;
         pauseMenuHUD.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void GameQuit()
