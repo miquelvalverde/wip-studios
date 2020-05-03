@@ -109,6 +109,9 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
 
     public void Move()
     {
+        if (!doNormalMovement)
+            currentSpeed = 0;
+
         Vector3 velocity;
         velocity = (!PlayerController.instance.stats.isClimbing) ?
             transform.forward * currentSpeed + Vector3.up * verticalSpeed :
