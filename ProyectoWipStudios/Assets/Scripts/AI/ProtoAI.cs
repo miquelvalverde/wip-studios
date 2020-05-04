@@ -79,7 +79,7 @@ public class ProtoAI : AMonoBehaivourWithInputs
             parent.rotation = Quaternion.Lerp(fromAngle, toAngle, t);
             yield return null;
         }
-        parent.rotation = toAngle;
+        //parent.rotation = toAngle;
         isStopped = false;
     }
 
