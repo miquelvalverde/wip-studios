@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class ChameleonController : PlayerSpecificController
 {
     [SerializeField] private Tongue tongue = null;
-    [SerializeField] private float dropForce;
+    [SerializeField] private float dropForce = 200;
     [SerializeField] ChameleonHUDController chameleonHUD = null;
-    [SerializeField] private Material camouflageMaterial;
+    [SerializeField] private Material camouflageMaterial = null;
     [SerializeField] private float transitionTime = 1.5F;
     private ChameleonHUDController hudInstance;
     private bool isCamouflaging = false;

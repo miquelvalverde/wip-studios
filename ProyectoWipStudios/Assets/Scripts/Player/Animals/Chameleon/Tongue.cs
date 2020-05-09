@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Tongue : MonoBehaviour
 {
-    [SerializeField] private Transform tongueScaler;
-    [SerializeField] private AnimationCurve movementCurve;
-    [SerializeField] private float speed;
-    [SerializeField] private Transform tongueEnd;
-    [SerializeField] private float range;
+    [SerializeField] private Transform tongueScaler = null;
+    [SerializeField] private AnimationCurve movementCurve = null;
+    [SerializeField] private float speed = 30;
+    [SerializeField] private Transform tongueEnd = null;
+    [SerializeField] private float range = 5;
     private bool isProtracting;
     private bool isRetracting;
     private float pickableDistance;

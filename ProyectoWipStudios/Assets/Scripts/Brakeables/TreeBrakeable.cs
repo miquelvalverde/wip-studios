@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class TreeBrakeable : MonoBehaviour, IBreakable
 {
-    [SerializeField] private float fallAngle;
-    [SerializeField] private float fallTime;    
-    [SerializeField] private AnimationCurve fallCurve;
+    [SerializeField] private float fallAngle = -272.28f;
+    [SerializeField] private float fallTime = 4;    
+    [SerializeField] private AnimationCurve fallCurve = null;
     private float debugHeight = 10F;
     private int debugArrowCount = 5;
     private float debugArrowLength = 2F;

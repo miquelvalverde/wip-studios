@@ -51,7 +51,6 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
         controls.Player.Move.canceled += _ => inputDirection = Vector2.zero;
 
         controls.Player.Jump.performed += _ => Jump();
-        //controls.Player.Jump.canceled += _ => inputJump = false;
     }
 
     public void Initialize()
@@ -81,12 +80,6 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
             this.CalculateGravity();
         else
             verticalSpeed = 0;
-
-        /*if (this.doNormalMovement && this.useMovementInputs)
-            this.CalculateJump();
-
-        if (inputJump)
-            inputJump = false;*/
     }
 
     private void CalculateLookDirection()
