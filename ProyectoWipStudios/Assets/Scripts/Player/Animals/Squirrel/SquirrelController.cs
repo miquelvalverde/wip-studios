@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SquirrelController : PlayerSpecificController
 {
@@ -27,17 +25,12 @@ public class SquirrelController : PlayerSpecificController
     private bool endedTree = false;
     private Vector3 nextClimbPosition = Vector3.zero;
 
-    private bool inputClimb;
-
     public override void Initializate()
     {
         this.controls.Player.Glide.performed += _ => StartGlide();
         this.controls.Player.Glide.canceled += _ => StopGlide();
 
         this.controls.Player.Climb.performed += _ => StartClimb();
-
-        this.controls.Player.SecondaryClimb.performed += _ => inputClimb = true;
-        this.controls.Player.SecondaryClimb.canceled += _ => inputClimb = false;
     }
 
     public override void UpdateSpecificAction()
@@ -49,16 +42,14 @@ public class SquirrelController : PlayerSpecificController
         {
             try
             {
-                if (inputClimb)
-                    endedTree = GetNextClimbPoint();
-                else if (endedTree)
+                
+                if (endedTree)
                     EndClimb();
+
+                endedTree = GetNextClimbPoint();
             }
             catch (CannotClimbException) { EndClimb(); }
         }
-
-        if (!PlayerController.instance.stats.isClimbing && inputClimb)
-            inputClimb = false;
     }
 
     #region Gliding

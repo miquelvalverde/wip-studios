@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TreeInteractable : MonoBehaviour
 {
 
-    [SerializeField] private List<Transform> climbPoints = new List<Transform>();
+    [SerializeField] private Transform parentOfClimbPoints = null;
+    private List<Transform> climbPoints = new List<Transform>();
     [SerializeField] private float radius = .5f;
     [SerializeField] private bool maxClimbForward = false;
     private int climbIndex = 0;
@@ -28,6 +28,12 @@ public class TreeInteractable : MonoBehaviour
 
         public Vector3 point;
         public Vector3 direction;
+    }
+
+    private void Awake()
+    {
+        foreach (Transform child in parentOfClimbPoints)
+            climbPoints.Add(child);
     }
 
     public Vector3 GetNextPosition(Transform player)
