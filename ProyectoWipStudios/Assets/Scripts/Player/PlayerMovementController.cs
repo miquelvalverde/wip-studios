@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -11,14 +10,16 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
 
     //Inputs
     private Vector2 inputDirection;
-    private bool inputJump;
 
     [Header("Turn Movement")]
     [SerializeField] private float turnSmoothTime = .15f;
     private float turnSmoothVelocity;
 
     [Header("Player Movement")]
-    [SerializeField] private float speedSmoothTime = .1f;
+    [SerializeField] private float onGroundAcceleration = 0;
+    [SerializeField] private float onGroundDeceleration = 0;
+    [SerializeField] private float onAirAcceleration = 0;
+    [SerializeField] private float onAirDeceleration = 0;
     private float _speed = 5;
     private float speed = 5;
     private float speedSmoothVelocity;
@@ -97,7 +98,10 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
         if (PlayerController.instance.useMovementInputs)
             targetSpeed *= inputDirection.magnitude;
 
-        currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
+        currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity,
+            (PlayerController.instance.stats.isGrounded) ?
+                ((targetSpeed != 0) ? onGroundAcceleration : onGroundDeceleration) :
+                ((targetSpeed != 0) ? onAirAcceleration : onAirDeceleration));
     }
 
     public void Move()
