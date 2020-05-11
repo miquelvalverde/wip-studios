@@ -12,7 +12,7 @@ public class ProtoAI : AMonoBehaivourWithInputs
     [SerializeField] private MeshRenderer parentMeshRenderer = null;
     [SerializeField] private Material dontSeeMaterial = null;
     [SerializeField] private Material seeMaterial = null;
-    [SerializeField] private float turnSpeed;
+    [SerializeField] private float turnSpeed = .5f;
     [SerializeField] private float stopTime = 2;
     private float timer = 0;
     [SerializeField] private float angle = 90;

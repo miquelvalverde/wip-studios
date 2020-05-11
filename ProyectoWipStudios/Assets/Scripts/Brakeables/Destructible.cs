@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Destructible : MonoBehaviour, IBreakable
 {
-    [SerializeField] private GameObject destructibleVersion;
+    [SerializeField] private GameObject destructibleVersion = null;
 
     public void Break()
     {

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameController : AMonoBehaivourWithInputs
 {
-    [SerializeField] private GameObject pauseMenuHUD;
+    [SerializeField] private GameObject pauseMenuHUD = null;
 
     void Start()
     {

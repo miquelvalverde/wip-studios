@@ -10,10 +10,10 @@ public class RadialMenuController : AMonoBehaivourWithInputs
         public UnityEvent callback;
     }
 
-    [SerializeField] private Portion[] portions;
-    [SerializeField] private RadialMenuPortion portionPrefabRef;
-    [SerializeField] private float iconDistanceFromCenter;
-    [SerializeField] private Color unselectedPortionBackground;
+    [SerializeField] private Portion[] portions = null;
+    [SerializeField] private RadialMenuPortion portionPrefabRef = null;
+    [SerializeField] private float iconDistanceFromCenter = 210;
+    [SerializeField] private Color unselectedPortionBackground = Color.black;
     private RadialMenuPortion[] radialMenuPortions;
     private int portionCount;
     private float portionSize360;
