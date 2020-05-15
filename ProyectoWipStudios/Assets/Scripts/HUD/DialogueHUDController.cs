@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class DialogueHUDController : MonoBehaviour
 {
-    Dictionary<Collider, Queue<string>> stories;
-    public Collider[] checkPointTriggers;
-    public Queue<string> sentences;
-        
+    [System.Serializable]
+    public struct StoryTrigger
+    {
+        public Collider trigger;
+        public StoryScriptable story;
+    }
+    
+    public StoryTrigger[] storyTriggers;
+            
     private void Start()
     {
-        sentences = new Queue<string>();
     }
 }
