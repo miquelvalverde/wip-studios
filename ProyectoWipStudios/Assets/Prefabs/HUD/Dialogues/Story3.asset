@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c34e68a5a629245a958750d3cb0c3a, type: 3}
   m_Name: Story3
   m_EditorClassIdentifier: 
-  sentences: []
+  sentences:
+  - caca
+  - culo
+  - pedo
+  - piss
