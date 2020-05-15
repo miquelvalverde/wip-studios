@@ -41,7 +41,7 @@ public class StoryHUDController : AMonoBehaivourWithInputs
         isTellingStory = true;
         currentMessage = 0;
         currentStory = story;
-        this.gameObject.SetActive(true);
+        gameObject.SetActive(true);
         Next();
     }
         
@@ -49,7 +49,8 @@ public class StoryHUDController : AMonoBehaivourWithInputs
     {
         if (currentMessage < currentStory.sentences.Count)
         {
-            textPanel.text = currentStory.sentences[currentMessage];
+            StopAllCoroutines();
+            StartCoroutine(TypeRoutine(currentStory.sentences[currentMessage]));
             currentMessage++;
         }
         else
@@ -58,10 +59,20 @@ public class StoryHUDController : AMonoBehaivourWithInputs
         }
     }
 
+    IEnumerator TypeRoutine(string sentence)
+    {
+        textPanel.text = string.Empty;
+        foreach (char letter in sentence.ToCharArray())
+        {
+            textPanel.text += letter;
+            yield return null;
+        }
+    }
+
     public void ResetStory()
     {
         textPanel.text = string.Empty;
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         isTellingStory = false;
     }
 }
