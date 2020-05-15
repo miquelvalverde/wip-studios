@@ -72,7 +72,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSmoothTime: 0.15
-  speedSmoothTime: 0.01
+  onGroundAcceleration: 0.1
+  onGroundDeceleration: 0.1
+  onAirAcceleration: 0.3
+  onAirDeceleration: 0.5
   gravity: 15
   maxVerticalSpeed: 10
   whatIsGround:
