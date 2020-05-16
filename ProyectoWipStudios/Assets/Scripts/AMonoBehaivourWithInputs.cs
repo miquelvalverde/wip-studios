@@ -7,7 +7,7 @@ public abstract class AMonoBehaivourWithInputs : MyMonoBehaivour
 
     protected bool canDisableInputs = true;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         controls = new InputSystem();
         canDisableInputs = true; //Make sure is true by default

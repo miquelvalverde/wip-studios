@@ -103,7 +103,7 @@ public class RadialMenuController : AMonoBehaivourWithInputs
         if (PlayerController.instance.IsDoingSomething())
             return;
 
-        PlayerController.instance.DisableInputs();
+        PlayerController.instance.DisableSpecificController();
 
         previousSelection = currentSelection;
         this.gameObject.SetActive(true);
