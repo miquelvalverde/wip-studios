@@ -89,7 +89,6 @@ public class Enemy : MonoBehaviourPlayerGettable
         pathPositions.Enqueue(position);
 
         State g = new IdleState();
-        Debug.Log(g);
         currentState = g;
     }
 
