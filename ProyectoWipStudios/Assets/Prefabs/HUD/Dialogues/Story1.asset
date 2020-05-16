@@ -12,3 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c34e68a5a629245a958750d3cb0c3a, type: 3}
   m_Name: Story1
   m_EditorClassIdentifier: 
+  sentences:
+  - Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+    Ipsum has been the industry's standard dummy text ever since the 1500s, when
+    an unknown printer took a galley of type and scrambled it to make a type specimen
+    book.
+  - culo
+  - pedo
+  - pis
