@@ -135,9 +135,12 @@ public class PlayerController : MonoBehaviour
         if (specificController)
             specificController.UpdateSpecificAction();
 
-        movementController.Move();
-
         animatorController.UpdateAnimation();
+    }
+
+    private void FixedUpdate()
+    {
+        movementController.Move();
     }
 
     /** GETTERS AND SETTERS **/
