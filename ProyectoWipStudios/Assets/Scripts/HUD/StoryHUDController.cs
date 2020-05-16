@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoryHUDController : AMonoBehaivourWithInputs
+public class StoryHUDController : MonoBehaivourWithInputs
 {
     #region Singleton
     public static StoryHUDController instance;

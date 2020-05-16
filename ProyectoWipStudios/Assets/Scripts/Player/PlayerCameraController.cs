@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerCameraController : AMonoBehaivourWithInputs
+public class PlayerCameraController : MonoBehaivourWithInputs
 {
     [SerializeField] private float maxDistanceToLookAt = 5;
     [SerializeField] private float minDistanceToLookAt = 1;
