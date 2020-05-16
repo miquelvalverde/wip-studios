@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerCameraController : AMonoBehaivourWithInputs
 {
     [SerializeField] private float maxDistanceToLookAt = 5;
     [SerializeField] private float minDistanceToLookAt = 1;
+    private float distanceToLookAt = 0;
+
     [SerializeField] private LayerMask raycastLayerMask;
     [SerializeField] private float offsetOnCollision = .5f;
     [Space]
@@ -19,15 +19,16 @@ public class PlayerCameraController : AMonoBehaivourWithInputs
 
     [HideInInspector] private Vector2 mouseInput;
 
+    private void Start()
+    {
+        distanceToLookAt = maxDistanceToLookAt;
+    }
+
     protected override void SetControls()
     {
         controls.Player.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
         controls.Player.Look.canceled += _ => mouseInput = Vector2.zero;
-    }
-
-    public void Initializate()
-    {
-
+        controls.Player.Zoom.performed += ctx => DoZoom(ctx.ReadValue<Vector2>().y);
     }
 
     public void UpdateCamera()
@@ -71,8 +72,8 @@ public class PlayerCameraController : AMonoBehaivourWithInputs
 
         direction.Normalize();
 
-        distance = maxDistanceToLookAt;
-        desiredPosition = playerPosition - direction * maxDistanceToLookAt;
+        distance = distanceToLookAt;
+        desiredPosition = playerPosition - direction * distanceToLookAt;
 
         if (distance < minDistanceToLookAt)
         {
@@ -88,6 +89,13 @@ public class PlayerCameraController : AMonoBehaivourWithInputs
             desiredPosition = hit.point + direction * offsetOnCollision;
         }
 
+    }
+
+    private void DoZoom(float amount)
+    {
+        int scrollAmount = (amount != 0) ? (int)Mathf.Sign(amount) : 0;
+
+        distanceToLookAt = Mathf.Clamp(distanceToLookAt + scrollAmount, minDistanceToLookAt, maxDistanceToLookAt);
     }
 
 }

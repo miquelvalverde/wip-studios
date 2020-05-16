@@ -97,6 +97,14 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""5c567481-4bc6-46a0-8f1d-69c635873546"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -251,6 +259,17 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",
                     ""action"": ""Camouflage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35be0920-427b-4b0d-816c-7f5cb5fd2cf2"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -585,6 +604,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_SecondaryClimb = m_Player.FindAction("SecondaryClimb", throwIfNotFound: true);
         m_Player_Camouflage = m_Player.FindAction("Camouflage", throwIfNotFound: true);
+        m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
@@ -657,6 +677,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_SecondaryClimb;
     private readonly InputAction m_Player_Camouflage;
+    private readonly InputAction m_Player_Zoom;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
@@ -671,6 +692,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @SecondaryClimb => m_Wrapper.m_Player_SecondaryClimb;
         public InputAction @Camouflage => m_Wrapper.m_Player_Camouflage;
+        public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -710,6 +732,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Camouflage.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamouflage;
                 @Camouflage.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamouflage;
                 @Camouflage.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamouflage;
+                @Zoom.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
+                @Zoom.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
+                @Zoom.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -744,6 +769,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Camouflage.started += instance.OnCamouflage;
                 @Camouflage.performed += instance.OnCamouflage;
                 @Camouflage.canceled += instance.OnCamouflage;
+                @Zoom.started += instance.OnZoom;
+                @Zoom.performed += instance.OnZoom;
+                @Zoom.canceled += instance.OnZoom;
             }
         }
     }
@@ -900,6 +928,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnSecondaryClimb(InputAction.CallbackContext context);
         void OnCamouflage(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
