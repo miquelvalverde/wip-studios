@@ -114,7 +114,6 @@ public class PlayerController : MonoBehaviour
         animatorController = this.GetComponent<PlayerAnimatorController>();
         cameraController = Camera.main.GetComponent<PlayerCameraController>();
 
-        cameraController.Initializate();
         movementController.Initialize();
         radialMenuController.Initializate();
 

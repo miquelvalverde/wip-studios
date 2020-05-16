@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerCameraController : MonoBehaivourWithInputs
 {
     [SerializeField] private float maxDistanceToLookAt = 5;
     [SerializeField] private float minDistanceToLookAt = 1;
+    private float distanceToLookAt = 0;
+
     [SerializeField] private LayerMask raycastLayerMask;
     [SerializeField] private float offsetOnCollision = .5f;
     [Space]
@@ -13,21 +13,25 @@ public class PlayerCameraController : MonoBehaivourWithInputs
     [SerializeField] private float minPitch = -50;
     [SerializeField] private float maxPitch = 80;
 
-    [HideInInspector] private Vector3 desiredPosition;
-    [HideInInspector] private Vector3 direction;
-    [HideInInspector] private float distance;
+    private Vector3 desiredPosition;
+    private Vector3 direction;
+    private float distance;
 
-    [HideInInspector] private Vector2 mouseInput;
+    private Vector2 mouseInput;
+    private bool moveBackInput;
+
+    private void Start()
+    {
+        distanceToLookAt = maxDistanceToLookAt;
+    }
 
     protected override void SetControls()
     {
         controls.Player.Look.performed += ctx => mouseInput = ctx.ReadValue<Vector2>();
         controls.Player.Look.canceled += _ => mouseInput = Vector2.zero;
-    }
 
-    public void Initializate()
-    {
-
+        controls.Player.Zoom.performed += ctx => DoZoom(ctx.ReadValue<Vector2>().y);
+        controls.Player.CameraReset.performed += _ => moveBackInput = true;
     }
 
     public void UpdateCamera()
@@ -43,8 +47,16 @@ public class PlayerCameraController : MonoBehaivourWithInputs
         float pitch = 0;
 
         Vector3 eulerAngles = transform.eulerAngles;
-        yaw = (eulerAngles.y + 180);
-        pitch = eulerAngles.x;
+        if (!moveBackInput)
+        {
+            yaw = (eulerAngles.y + 180);
+            pitch = eulerAngles.x;
+        }
+        else
+        {
+            moveBackInput = false;
+            yaw = player.transform.eulerAngles.y + 180;
+        }
 
         CalculatePosition(mouseX, mouseY, yaw, pitch, PlayerController.instance.cameraPoint.position);
 
@@ -71,8 +83,8 @@ public class PlayerCameraController : MonoBehaivourWithInputs
 
         direction.Normalize();
 
-        distance = maxDistanceToLookAt;
-        desiredPosition = playerPosition - direction * maxDistanceToLookAt;
+        distance = distanceToLookAt;
+        desiredPosition = playerPosition - direction * distanceToLookAt;
 
         if (distance < minDistanceToLookAt)
         {
@@ -90,4 +102,10 @@ public class PlayerCameraController : MonoBehaivourWithInputs
 
     }
 
+    private void DoZoom(float amount)
+    {
+        int scrollAmount = (amount != 0) ? -(int)Mathf.Sign(amount) : 0;
+
+        distanceToLookAt = Mathf.Clamp(distanceToLookAt + scrollAmount, minDistanceToLookAt, maxDistanceToLookAt);
+    }
 }
