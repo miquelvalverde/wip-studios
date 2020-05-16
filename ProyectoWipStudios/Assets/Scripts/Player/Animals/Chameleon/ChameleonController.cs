@@ -21,7 +21,9 @@ public class ChameleonController : PlayerSpecificController
 
     private void TonguePick()
     {
-        tongue.DoTongue(dropForce);
+        if (!PlayerController.instance.stats.isCamouflaged)
+            tongue.DoTongue(dropForce);
+
         hudInstance.ShowPickable(tongue.CurrentPickable);
     }
 
