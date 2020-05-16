@@ -16,8 +16,6 @@ public abstract class AState
 
     public virtual void StartState(Enemy self)
     {
-        Debug.Log("Changed to " + this.GetType());
-
         this.self = self;
     }
 

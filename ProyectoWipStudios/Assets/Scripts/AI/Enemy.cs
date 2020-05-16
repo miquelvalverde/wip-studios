@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -36,7 +37,7 @@ public class Enemy : MyMonoBehaivour
         public bool isPlayerClose;
     }
 
-    [SerializeField] public Stats stats = new Stats();
+    [HideInInspector] public Stats stats = new Stats();
 
     public NavMeshAgent agent { get; private set; }
 
@@ -71,10 +72,11 @@ public class Enemy : MyMonoBehaivour
         }
     }
 
-
-    private int pathIndex;
     [SerializeField] private List<Transform> pathPoints = new List<Transform>();
     private Queue<Vector3> pathPositions = new Queue<Vector3>();
+
+    public float chaseMaxDistance = 0;
+    public float shootDistance = 0;
 
     private void Awake()
     {
@@ -94,9 +96,20 @@ public class Enemy : MyMonoBehaivour
 
     private void Update()
     {
+        if (stats.isSeeingPlayer && CheckPlayerDistance() > chaseMaxDistance)
+            stats.isPlayerFar = true;
+
+        if (stats.isSeeingPlayer && CheckPlayerDistance() < shootDistance)
+            stats.isPlayerClose = true;
+
         currentState = currentState.ChangeState();
 
         currentState.UpdateState();
+    }
+
+    private float CheckPlayerDistance()
+    {
+        return Vector3.Distance(player.transform.position, position);
     }
 
     public Vector3 GetNextPosition()
@@ -106,4 +119,14 @@ public class Enemy : MyMonoBehaivour
 
         return nextPosition;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        UnityEditor.Handles.color = Color.yellow;
+        UnityEditor.Handles.DrawWireDisc(position, Vector3.up, chaseMaxDistance);
+        
+        UnityEditor.Handles.color = Color.red;
+        UnityEditor.Handles.DrawWireDisc(position, Vector3.up, shootDistance);
+    }
+
 }

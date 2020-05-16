@@ -2,7 +2,7 @@
 
 public class EnemyVisionToggler : AMonoBehaivourWithInputs
 {
-    [SerializeField] private MeshRenderer[] meshRenderer;
+    [SerializeField] private MeshRenderer[] meshRenderer = null;
     private bool visionMeshesAreOcult;
 
     private void Start()
