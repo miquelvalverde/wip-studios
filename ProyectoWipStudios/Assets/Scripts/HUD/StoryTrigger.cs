@@ -13,7 +13,7 @@ public class StoryTrigger : MonoBehaviour
         
     private void OnTriggerExit(Collider other)
     {
-        StoryHUDController.instance.ResetStory();
+        StoryHUDController.instance.EndStory();
 
     }
 }

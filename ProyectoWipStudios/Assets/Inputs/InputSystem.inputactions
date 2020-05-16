@@ -286,6 +286,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SkipAllDialog",
+                    "type": "Button",
+                    "id": "0b20fa4d-399c-416c-81a5-b1505f4f3b18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -341,6 +349,17 @@
                     "processors": "",
                     "groups": "MouseAndKeyboard",
                     "action": "SkipDialog",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42b60cda-6639-4ee9-9b2d-9694c29c6622",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MouseAndKeyboard",
+                    "action": "SkipAllDialog",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

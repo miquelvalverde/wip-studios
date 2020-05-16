@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class StoryHUDController : AMonoBehaivourWithInputs
 {
+    #region Singleton
     public static StoryHUDController instance;
 
     protected override void Awake()
@@ -20,12 +21,14 @@ public class StoryHUDController : AMonoBehaivourWithInputs
 
         instance = this;
 
-        ResetStory();
+        EndStory();
     }
+    #endregion
 
     protected override void SetControls()
     {
         controls.UI.SkipDialog.performed += _ => Next();
+        controls.UI.SkipAllDialog.performed += _ => EndStory();
     }
 
     [SerializeField] private Text textPanel;
@@ -40,7 +43,12 @@ public class StoryHUDController : AMonoBehaivourWithInputs
     {
         if (isTellingStory)
             return;
-            
+
+        if (PlayerController.instance.IsDoingSomething())
+            return;
+
+        PlayerController.instance.DisableInputs();
+
         isTellingStory = true;
         index = 0;
         currentStory = story;
@@ -52,7 +60,6 @@ public class StoryHUDController : AMonoBehaivourWithInputs
     {
         if (index < currentStory.sentences.Count)
         {
-
             if (isTyping)
             {
                 EndType();
@@ -65,7 +72,7 @@ public class StoryHUDController : AMonoBehaivourWithInputs
         }
         else
         {
-            ResetStory();
+            EndStory();
         }
     }
 
@@ -91,8 +98,9 @@ public class StoryHUDController : AMonoBehaivourWithInputs
         isTyping = false;
     }
 
-    public void ResetStory()
+    public void EndStory()
     {
+        PlayerController.instance?.EnableInputs();
         textPanel.text = string.Empty;
         gameObject.SetActive(false);
         isTellingStory = false;

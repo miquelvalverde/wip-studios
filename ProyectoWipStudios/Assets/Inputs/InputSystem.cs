@@ -299,6 +299,14 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SkipAllDialog"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b20fa4d-399c-416c-81a5-b1505f4f3b18"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -354,6 +362,17 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",
                     ""action"": ""SkipDialog"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42b60cda-6639-4ee9-9b2d-9694c29c6622"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""SkipAllDialog"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -573,6 +592,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_UI_MouseDelta = m_UI.FindAction("MouseDelta", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         m_UI_SkipDialog = m_UI.FindAction("SkipDialog", throwIfNotFound: true);
+        m_UI_SkipAllDialog = m_UI.FindAction("SkipAllDialog", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_AIVision = m_Debug.FindAction("AIVision", throwIfNotFound: true);
@@ -737,6 +757,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_MouseDelta;
     private readonly InputAction m_UI_Pause;
     private readonly InputAction m_UI_SkipDialog;
+    private readonly InputAction m_UI_SkipAllDialog;
     public struct UIActions
     {
         private @InputSystem m_Wrapper;
@@ -746,6 +767,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         public InputAction @MouseDelta => m_Wrapper.m_UI_MouseDelta;
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
         public InputAction @SkipDialog => m_Wrapper.m_UI_SkipDialog;
+        public InputAction @SkipAllDialog => m_Wrapper.m_UI_SkipAllDialog;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -770,6 +792,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @SkipDialog.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipDialog;
                 @SkipDialog.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipDialog;
                 @SkipDialog.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipDialog;
+                @SkipAllDialog.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipAllDialog;
+                @SkipAllDialog.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipAllDialog;
+                @SkipAllDialog.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipAllDialog;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -789,6 +814,9 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @SkipDialog.started += instance.OnSkipDialog;
                 @SkipDialog.performed += instance.OnSkipDialog;
                 @SkipDialog.canceled += instance.OnSkipDialog;
+                @SkipAllDialog.started += instance.OnSkipAllDialog;
+                @SkipAllDialog.performed += instance.OnSkipAllDialog;
+                @SkipAllDialog.canceled += instance.OnSkipAllDialog;
             }
         }
     }
@@ -880,6 +908,7 @@ public class @InputSystem : IInputActionCollection, IDisposable
         void OnMouseDelta(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnSkipDialog(InputAction.CallbackContext context);
+        void OnSkipAllDialog(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {

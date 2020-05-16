@@ -211,6 +211,12 @@ public class PlayerController : MonoBehaviour
     public void DisableInputs()
     {
         specificController.DisableControls();
+        movementController.DisableControls();
+    }
+        
+    public void DisableSpecificController()
+    {
+        specificController.DisableControls();
     }
 
     public void TeleportTo(Transform point)
