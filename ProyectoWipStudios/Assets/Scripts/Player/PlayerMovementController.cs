@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovementController : AMonoBehaivourWithInputs
+public class PlayerMovementController : MonoBehaivourWithInputs
 {
     //Components
     public CharacterController characterController { get; private set; }

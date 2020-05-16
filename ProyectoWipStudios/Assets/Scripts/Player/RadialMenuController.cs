@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class RadialMenuController : AMonoBehaivourWithInputs
+public class RadialMenuController : MonoBehaivourWithInputs
 {
     [System.Serializable]
     public struct Portion

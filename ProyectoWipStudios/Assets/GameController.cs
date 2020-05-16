@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GameController : AMonoBehaivourWithInputs
+public class GameController : MonoBehaivourWithInputs
 {
     [SerializeField] private GameObject pauseMenuHUD = null;
 

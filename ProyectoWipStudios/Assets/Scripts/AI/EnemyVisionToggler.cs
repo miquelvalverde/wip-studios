@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyVisionToggler : AMonoBehaivourWithInputs
+public class EnemyVisionToggler : MonoBehaivourWithInputs
 {
     [SerializeField] private MeshRenderer[] meshRenderer = null;
     private bool visionMeshesAreOcult;

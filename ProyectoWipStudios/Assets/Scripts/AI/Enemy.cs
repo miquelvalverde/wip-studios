@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Enemy : MyMonoBehaivour
+public class Enemy : MonoBehaviourPlayerGettable
 {
 
     public struct Stats
@@ -49,9 +48,9 @@ public class Enemy : MyMonoBehaivour
         }
     }
 
-    private AState _currentState;
+    private State _currentState;
 
-    private AState currentState
+    private State currentState
     {
         get
         {
@@ -89,7 +88,7 @@ public class Enemy : MyMonoBehaivour
 
         pathPositions.Enqueue(position);
 
-        AState g = new IdleState();
+        State g = new IdleState();
         Debug.Log(g);
         currentState = g;
     }

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class IdleState : AState
+public class IdleState : State
 {
 
     private float timer = 0;
 
-    public override AState ChangeState()
+    public override State ChangeState()
     {
 
         if (self.stats.isSeeingPlayer)

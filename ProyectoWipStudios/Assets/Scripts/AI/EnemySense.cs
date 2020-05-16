@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemySense : MyMonoBehaivour
+public class EnemySense : MonoBehaviourPlayerGettable
 {
     [SerializeField] private Enemy self = null;
 

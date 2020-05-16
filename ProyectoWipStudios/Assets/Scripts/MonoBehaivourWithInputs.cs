@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class AMonoBehaivourWithInputs : MyMonoBehaivour
+public abstract class MonoBehaivourWithInputs : MonoBehaviourPlayerGettable
 {
 
     protected InputSystem controls;

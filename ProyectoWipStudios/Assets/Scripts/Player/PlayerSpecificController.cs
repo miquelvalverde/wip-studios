@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class PlayerSpecificController : AMonoBehaivourWithInputs
+public abstract class PlayerSpecificController : MonoBehaivourWithInputs
 {
     protected PlayerController playerController;
 

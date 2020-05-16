@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PatrolState : AState
+public class PatrolState : State
 {
     public override void StartState(Enemy self)
     {
@@ -10,7 +10,7 @@ public class PatrolState : AState
         this.self.agent.SetDestination(this.self.GetNextPosition());
     }
 
-    public override AState ChangeState()
+    public override State ChangeState()
     {
         if (self.stats.isSeeingPlayer)
             return new ChaseState();

@@ -1,5 +1,5 @@
 ﻿
-public class ShootState : AState
+public class ShootState : State
 {
 
     public override void StartState(Enemy self)
@@ -9,7 +9,7 @@ public class ShootState : AState
         player.Dead();
     }
 
-    public override AState ChangeState()
+    public override State ChangeState()
     {
         return null;
     }

@@ -1,5 +1,5 @@
 ﻿
-public class ChaseState : AState
+public class ChaseState : State
 {
 
     public override void StartState(Enemy self)
@@ -9,7 +9,7 @@ public class ChaseState : AState
         this.self.agent.isStopped = false;
     }
 
-    public override AState ChangeState()
+    public override State ChangeState()
     {
         if (self.stats.isPlayerFar)
             return new IdleState();

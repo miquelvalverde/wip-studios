@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public abstract class AState
+﻿public abstract class State
 {
 
     protected PlayerController player
@@ -12,7 +10,7 @@ public abstract class AState
 
     public abstract void UpdateState();
 
-    public abstract AState ChangeState();
+    public abstract State ChangeState();
 
     public virtual void StartState(Enemy self)
     {
