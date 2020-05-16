@@ -29,8 +29,11 @@ public class StoryHUDController : AMonoBehaivourWithInputs
     }
 
     [SerializeField] private Text textPanel;
+    [Tooltip("Time between characters. Less is faster.")]
+    [SerializeField] private float typeSpeed = 0.01F;
     private bool isTellingStory = false;
-    private int currentMessage = 0;
+    private bool isTyping = false;
+    private int index = 0;
     private StoryScriptable currentStory;
         
     public void StartStory(StoryScriptable story)
@@ -39,7 +42,7 @@ public class StoryHUDController : AMonoBehaivourWithInputs
             return;
             
         isTellingStory = true;
-        currentMessage = 0;
+        index = 0;
         currentStory = story;
         gameObject.SetActive(true);
         Next();
@@ -47,11 +50,18 @@ public class StoryHUDController : AMonoBehaivourWithInputs
         
     private void Next()
     {
-        if (currentMessage < currentStory.sentences.Count)
+        if (index < currentStory.sentences.Count)
         {
-            StopAllCoroutines();
-            StartCoroutine(TypeRoutine(currentStory.sentences[currentMessage]));
-            currentMessage++;
+
+            if (isTyping)
+            {
+                EndType();
+            }
+            else
+            {
+                StartCoroutine(TypeRoutine(currentStory.sentences[index]));
+                index++;
+            }
         }
         else
         {
@@ -61,12 +71,24 @@ public class StoryHUDController : AMonoBehaivourWithInputs
 
     IEnumerator TypeRoutine(string sentence)
     {
+        isTyping = true;
+
+        WaitForSeconds wait = new WaitForSeconds(typeSpeed);
         textPanel.text = string.Empty;
         foreach (char letter in sentence.ToCharArray())
         {
             textPanel.text += letter;
-            yield return null;
+            yield return wait;
         }
+
+        isTyping = false;
+    }
+
+    private void EndType()
+    {
+        StopAllCoroutines();
+        textPanel.text = currentStory.sentences[index-1];
+        isTyping = false;
     }
 
     public void ResetStory()
@@ -74,5 +96,8 @@ public class StoryHUDController : AMonoBehaivourWithInputs
         textPanel.text = string.Empty;
         gameObject.SetActive(false);
         isTellingStory = false;
+        isTyping = false;
+        index = 0;
+        currentStory = null;
     }
 }
