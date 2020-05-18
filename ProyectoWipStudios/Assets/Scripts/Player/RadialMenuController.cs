@@ -8,6 +8,7 @@ public class RadialMenuController : MonoBehaivourWithInputs
     {
         public RadialMenuPortionScriptable portion;
         public UnityEvent callback;
+        public bool isLocked;
     }
 
     [SerializeField] private Portion[] portions = null;
@@ -25,6 +26,9 @@ public class RadialMenuController : MonoBehaivourWithInputs
     private Vector2 deltaMouse;
     private float tolerance = 2.0F;
     private int previousSelection;
+
+    // Hardcoded icon rotation fixes. TODO improve solution
+    private float[] iconRotation = new float[3] { 60, 180, -60 };
 
     protected override void SetControls()
     {
@@ -70,6 +74,7 @@ public class RadialMenuController : MonoBehaivourWithInputs
         var portion = Instantiate(portionPrefabRef, this.transform) as RadialMenuPortion;
         portion.icon.sprite = settings.portion.icon;
         portion.iconRect.localPosition = new Vector3(0, iconDistanceFromCenter, 0);
+        portion.iconRect.rotation = Quaternion.Euler(0, 0, iconRotation[index]);
         portion.iconPivot.rotation = Quaternion.Euler(0,0, -portionSize360 / 2);
         portion.background.color = settings.portion.background;
         portion.background.fillAmount = portionSize01;

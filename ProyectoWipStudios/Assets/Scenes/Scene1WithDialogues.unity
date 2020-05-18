@@ -822,12 +822,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 198448835}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &199737458 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7869792079062375535, guid: 53d438789353e4d469ced5e722bc5575,
-    type: 3}
-  m_PrefabInstance: {fileID: 1160531816}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &212428071
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,7 +930,7 @@ Transform:
   - {fileID: 822251046}
   - {fileID: 1086727204}
   - {fileID: 2135257513}
-  - {fileID: 2008740127}
+  - {fileID: 1377616835}
   - {fileID: 1193287181}
   - {fileID: 1022868079}
   - {fileID: 894222310}
@@ -950,13 +944,13 @@ Transform:
   - {fileID: 275373494}
   - {fileID: 1620553652}
   - {fileID: 1993638505}
-  - {fileID: 1377616835}
-  - {fileID: 199737458}
+  - {fileID: 1160531817}
   - {fileID: 572595634}
   - {fileID: 2083778501}
   - {fileID: 1078150532}
   - {fileID: 996511797}
   - {fileID: 29126704}
+  - {fileID: 1224852980}
   - {fileID: 1190355007}
   - {fileID: 767369311}
   - {fileID: 41635168}
@@ -1894,6 +1888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   story: {fileID: 11400000, guid: 4abfbe3dc354c3444a43e8ea90afe420, type: 2}
+  unlocksAnimal: 3
 --- !u!65 &448365762
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2483,6 +2478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   story: {fileID: 11400000, guid: 6ce014923f4ce6748aa1487e731af81d, type: 2}
+  unlocksAnimal: 0
 --- !u!1001 &545469932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5752,6 +5748,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53d438789353e4d469ced5e722bc5575, type: 3}
+--- !u!4 &1160531817 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1160531816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1171501156
 GameObject:
   m_ObjectHideFlags: 0
@@ -6279,6 +6280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53d438789353e4d469ced5e722bc5575, type: 3}
+--- !u!4 &1224852980 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1224852979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1250565030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7168,7 +7174,7 @@ Transform:
   m_LocalScale: {x: 7.8899713, y: 7.8899713, z: 7.8899713}
   m_Children: []
   m_Father: {fileID: 215438606}
-  m_RootOrder: 65
+  m_RootOrder: 51
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1388884367
 GameObject:
@@ -10189,6 +10195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   story: {fileID: 11400000, guid: 297d5255eefe1c94fa5db349c848aaac, type: 2}
+  unlocksAnimal: 2
 --- !u!65 &1776317481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11655,12 +11662,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2008740127 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7869792079062375535, guid: 53d438789353e4d469ced5e722bc5575,
-    type: 3}
-  m_PrefabInstance: {fileID: 1224852979}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2049668706
 PrefabInstance:
   m_ObjectHideFlags: 0

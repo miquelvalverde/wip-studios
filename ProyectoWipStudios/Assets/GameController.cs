@@ -31,4 +31,4 @@ public class GameController : MonoBehaivourWithInputs
     {
         Application.Quit();
     }
-}
+} 

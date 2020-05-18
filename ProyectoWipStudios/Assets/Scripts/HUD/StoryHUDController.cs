@@ -44,10 +44,10 @@ public class StoryHUDController : MonoBehaivourWithInputs
         if (isTellingStory)
             return;
 
-        if (PlayerController.instance.IsDoingSomething())
+        if (player.IsDoingSomething())
             return;
 
-        PlayerController.instance.DisableInputs();
+        player.DisableInputs();
 
         isTellingStory = true;
         index = 0;
@@ -100,7 +100,7 @@ public class StoryHUDController : MonoBehaivourWithInputs
 
     public void EndStory()
     {
-        PlayerController.instance?.EnableInputs();
+        player?.EnableInputs();
         textPanel.text = string.Empty;
         gameObject.SetActive(false);
         isTellingStory = false;

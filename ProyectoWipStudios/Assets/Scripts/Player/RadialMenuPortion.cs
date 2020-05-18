@@ -12,5 +12,6 @@ public class RadialMenuPortion : MonoBehaviour
     public RectTransform iconPivot;
     public Image background;
     public RectTransform backgroundRect;
+    public Image lockIcon;  
     [HideInInspector] public UnityEvent callback;
 }
