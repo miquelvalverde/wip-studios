@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cede8c39ad61cf849b72417a29309f93, type: 3}
-  m_Name: ChameleonPortion
+  m_Name: BoarPortion
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 77f0294f5a7bf8440b96b8530bacf518, type: 3}
-  background: {r: 0.5862026, g: 0, b: 1, a: 0.7294118}
+  icon: {fileID: 21300000, guid: f9e76fc0a215b084081d8b70ffbd554f, type: 3}
+  background: {r: 0.14481258, g: 0, b: 1, a: 0.7294118}
+  animal: 0

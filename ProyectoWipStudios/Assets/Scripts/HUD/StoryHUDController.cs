@@ -106,6 +106,7 @@ public class StoryHUDController : MonoBehaivourWithInputs
         isTellingStory = false;
         isTyping = false;
         index = 0;
+        player.GetRadialMenuController.Unlock(currentStory.unlocksAnimal);
         currentStory = null;
     }
 }

@@ -8,5 +8,5 @@ public class StoryScriptable : ScriptableObject
     public List<string> sentences;
 
     [Tooltip("Whether or not it unlocks an animal at the end")]
-    [SerializeField] private UnlockType unlocksAnimal;
+    public UnlockType unlocksAnimal;
 }

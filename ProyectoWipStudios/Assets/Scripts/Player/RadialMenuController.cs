@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class RadialMenuController : MonoBehaivourWithInputs
@@ -8,9 +9,9 @@ public class RadialMenuController : MonoBehaivourWithInputs
     {
         public RadialMenuPortionScriptable portion;
         public UnityEvent callback;
-        public bool isLocked;
+        public bool isLockedInitially;
     }
-
+        
     [SerializeField] private Portion[] portions = null;
     [SerializeField] private RadialMenuPortion portionPrefabRef = null;
     [SerializeField] private float iconDistanceFromCenter = 210;
@@ -80,12 +81,17 @@ public class RadialMenuController : MonoBehaivourWithInputs
         portion.background.fillAmount = portionSize01;
         portion.backgroundRect.rotation = Quaternion.Euler(0,0, -index * portionSize360);
         portion.callback = settings.callback;
+        portion.animal = settings.portion.animal;
+        if(settings.isLockedInitially)
+            portion.Lock();
+        else
+            portion.Unlock();
         return portion;
     }
 
     public void UpdateRadialMenu()
     {
-        if (IsHoldingToChange && !PlayerController.instance.IsDoingSomething())
+        if (IsHoldingToChange && !player.IsDoingSomething())
         {
             Time.timeScale = .1f;
             var mouseAngle = GetAngleFromMouseInput(pixelsMouse);
@@ -108,7 +114,7 @@ public class RadialMenuController : MonoBehaivourWithInputs
         if (PlayerController.instance.IsDoingSomething())
             return;
 
-        PlayerController.instance.DisableSpecificController();
+        player.DisableSpecificController();
 
         previousSelection = currentSelection;
         this.gameObject.SetActive(true);
@@ -120,7 +126,7 @@ public class RadialMenuController : MonoBehaivourWithInputs
     {
         SubmitSelection();
 
-        PlayerController.instance.EnableInputs();
+        player.EnableInputs();
 
         this.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
@@ -153,5 +159,13 @@ public class RadialMenuController : MonoBehaivourWithInputs
         var nonNormalizedAngle = Vector3.SignedAngle(Vector3.up, mousePosition - screenHalf, -Vector3.forward);
         var normalizedAngle = (nonNormalizedAngle + 360F) % 360F;
         return normalizedAngle;
+    }
+
+    public void Unlock(UnlockType unlockType)
+    {
+        if(unlockType != UnlockType.NONE)
+        {
+            radialMenuPortions.Where(p => p.animal.Equals(unlockType)).FirstOrDefault().Unlock();
+        }
     }
 }
