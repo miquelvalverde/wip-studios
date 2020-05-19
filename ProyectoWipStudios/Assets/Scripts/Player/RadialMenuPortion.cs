@@ -21,6 +21,7 @@ public class RadialMenuPortion : MonoBehaviour
     {
         isLocked = false;
         lockIcon.enabled = false;
+        // TODO trigger some animation or unlock sound.
     }
         
     public void Lock()

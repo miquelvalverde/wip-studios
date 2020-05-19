@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -53,7 +54,13 @@ public class RadialMenuController : MonoBehaivourWithInputs
 
     private void SubmitSelection()
     {
-        if (IsHoldingToChange && currentSelection != -1 && currentSelection != previousSelection)
+        if(radialMenuPortions[currentSelection].isLocked)
+        {
+            Debug.Log("This animal is locked");
+            currentSelection = previousSelection;
+            // TODO throw message system
+        }
+        else if (IsHoldingToChange && currentSelection != -1 && currentSelection != previousSelection)
         {
             SelectPortion(currentSelection);
         }
@@ -82,10 +89,7 @@ public class RadialMenuController : MonoBehaivourWithInputs
         portion.backgroundRect.rotation = Quaternion.Euler(0,0, -index * portionSize360);
         portion.callback = settings.callback;
         portion.animal = settings.portion.animal;
-        if(settings.isLockedInitially)
-            portion.Lock();
-        else
-            portion.Unlock();
+        (settings.isLockedInitially ? (Action) portion.Lock : portion.Unlock)();
         return portion;
     }
 

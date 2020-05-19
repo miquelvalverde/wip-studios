@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StoryTrigger : MonoBehaviour
 {
-    [SerializeField] private StoryScriptable story;
+    [SerializeField] private StoryScriptable story = null;
         
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +14,5 @@ public class StoryTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         StoryHUDController.instance.EndStory();
-
     }
 }
