@@ -76,4 +76,13 @@ public class ChameleonController : PlayerSpecificController
         if(hudInstance)
             Destroy(hudInstance.gameObject);
     }
+
+    public override bool CheckIfCanChange(Type to)
+    {
+
+        if (to == Type.Boar)
+            return this.CheckUp(.5f);
+
+        return true;
+    }
 }
