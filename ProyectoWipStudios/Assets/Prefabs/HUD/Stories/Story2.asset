@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cede8c39ad61cf849b72417a29309f93, type: 3}
-  m_Name: ChameleonPortion
+  m_Script: {fileID: 11500000, guid: 43c34e68a5a629245a958750d3cb0c3a, type: 3}
+  m_Name: Story2
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 77f0294f5a7bf8440b96b8530bacf518, type: 3}
-  background: {r: 0.5862026, g: 0, b: 1, a: 0.7294118}
+  sentences:
+  - caca
+  - culo
+  - pedo
+  - piss
+  unlocksAnimal: 2

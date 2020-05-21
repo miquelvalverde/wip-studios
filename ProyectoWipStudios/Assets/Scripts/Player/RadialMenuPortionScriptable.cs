@@ -9,4 +9,5 @@ public class RadialMenuPortionScriptable : ScriptableObject
 {
     public Sprite icon;
     public Color background;
+    public UnlockType animal;
 }

@@ -76,4 +76,9 @@ public class BoarController : PlayerSpecificController
 
         Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
     }
+
+    public override bool CheckIfCanChange(Type to)
+    {
+        return true;
+    }
 }

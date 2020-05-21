@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementController))]
 [RequireComponent(typeof(PlayerAnimatorController))]
 public class PlayerController : MonoBehaviour
 {
+
     public static PlayerController instance { get; private set; }
 
     //Controllers
@@ -12,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private PlayerCameraController cameraController;
     private PlayerSpecificController _specificController;
     [SerializeField] private RadialMenuController radialMenuController = null;
+
+    public RadialMenuController GetRadialMenuController { get => radialMenuController; }
+
     [SerializeField] private Transform _defaultCameraPoint = null;
     [HideInInspector] public Transform cameraPoint
     {
@@ -24,6 +29,7 @@ public class PlayerController : MonoBehaviour
     }
     private float characterDefaultHeight;
     private float characterDefaultYCenter;
+
 
     public PlayerSpecificController specificController
     {
@@ -181,39 +187,46 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void ChangeToAnimal(PlayerSpecificController animalRef)
+    private void ChangeToAnimal(PlayerSpecificController animalRef, PlayerSpecificController.Type newAnimalType)
     {
         if (specificController)
+        {
+            if (!specificController.CheckIfCanChange(newAnimalType))
+                return;
+
             Destroy(specificController.gameObject);
+        }
 
         specificController = Instantiate(animalRef, transform);
     }
 
     public void ChangeToSquirrel()
     {
-        ChangeToAnimal(squirrelRef);
+        ChangeToAnimal(squirrelRef, PlayerSpecificController.Type.Squirrel);
     }
 
     public void ChangeToChameleon()
     {
-        ChangeToAnimal(chameleonRef);
+        ChangeToAnimal(chameleonRef, PlayerSpecificController.Type.Chameleon);
     }
 
     public void ChangeToBoar()
     {
-        ChangeToAnimal(boarRef);
+        ChangeToAnimal(boarRef, PlayerSpecificController.Type.Boar);
     }
 
     public void EnableInputs()
     {
         specificController.EnableControls();
         movementController.EnableControls();
+        radialMenuController.EnableControls();
     }
 
     public void DisableInputs()
     {
         specificController.DisableControls();
         movementController.DisableControls();
+        radialMenuController.DisableControls();
     }
         
     public void DisableSpecificController()

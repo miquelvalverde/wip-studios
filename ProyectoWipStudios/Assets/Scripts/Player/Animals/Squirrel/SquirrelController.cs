@@ -146,4 +146,17 @@ public class SquirrelController : PlayerSpecificController
 
         Gizmos.DrawWireSphere(checkerPosition, climbCheckerRadius);
     }
+
+    public override bool CheckIfCanChange(Type to)
+    {
+        switch (to)
+        {
+            case Type.Chameleon:
+                return this.CheckUp(.5f);
+            case Type.Boar:
+                return this.CheckUp(1.25f);
+        }
+
+        return true;
+    }
 }
