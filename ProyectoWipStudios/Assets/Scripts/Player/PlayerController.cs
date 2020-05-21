@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementController))]
 [RequireComponent(typeof(PlayerAnimatorController))]
 public class PlayerController : MonoBehaviour
 {
+
     public static PlayerController instance { get; private set; }
 
     //Controllers
@@ -185,27 +187,32 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void ChangeToAnimal(PlayerSpecificController animalRef)
+    private void ChangeToAnimal(PlayerSpecificController animalRef, PlayerSpecificController.Type newAnimalType)
     {
         if (specificController)
+        {
+            if (!specificController.CheckIfCanChange(newAnimalType))
+                return;
+
             Destroy(specificController.gameObject);
+        }
 
         specificController = Instantiate(animalRef, transform);
     }
 
     public void ChangeToSquirrel()
     {
-        ChangeToAnimal(squirrelRef);
+        ChangeToAnimal(squirrelRef, PlayerSpecificController.Type.Squirrel);
     }
 
     public void ChangeToChameleon()
     {
-        ChangeToAnimal(chameleonRef);
+        ChangeToAnimal(chameleonRef, PlayerSpecificController.Type.Chameleon);
     }
 
     public void ChangeToBoar()
     {
-        ChangeToAnimal(boarRef);
+        ChangeToAnimal(boarRef, PlayerSpecificController.Type.Boar);
     }
 
     public void EnableInputs()
