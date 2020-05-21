@@ -212,12 +212,14 @@ public class PlayerController : MonoBehaviour
     {
         specificController.EnableControls();
         movementController.EnableControls();
+        radialMenuController.EnableControls();
     }
 
     public void DisableInputs()
     {
         specificController.DisableControls();
         movementController.DisableControls();
+        radialMenuController.DisableControls();
     }
         
     public void DisableSpecificController()
