@@ -3089,7 +3089,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180578254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -53.98, y: 13.51, z: -7.76}
+  m_LocalPosition: {x: -577.6, y: 43.25, z: -324.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 901266492}
@@ -3203,7 +3203,7 @@ PrefabInstance:
     - target: {fileID: 1332382074945111830, guid: bde674f7307d45041b5cae386041664c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1332382074945111830, guid: bde674f7307d45041b5cae386041664c,
         type: 3}
@@ -3373,7 +3373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 212428072}
   m_Layer: 0
-  m_Name: AfterEnemies
+  m_Name: AfterRockClimb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3387,7 +3387,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212428071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -104.44, y: 5.02, z: -41.46}
+  m_LocalPosition: {x: -431.61, y: 41.87, z: -301.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 901266492}
@@ -4171,7 +4171,7 @@ PrefabInstance:
     - target: {fileID: 1332382074945111830, guid: bde674f7307d45041b5cae386041664c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1332382074945111830, guid: bde674f7307d45041b5cae386041664c,
         type: 3}
@@ -6143,7 +6143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 378081939}
   m_Layer: 0
-  m_Name: BeforeBreakingRocks
+  m_Name: AfterPlatformer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6157,7 +6157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378081938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.59, y: 5.02, z: -113.46}
+  m_LocalPosition: {x: -116.06, y: 13.95, z: -217.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 901266492}
@@ -12995,7 +12995,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853111445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.59, y: -0.09, z: -163.47}
+  m_LocalPosition: {x: 33, y: -0.09, z: -163.47}
   m_LocalScale: {x: 25.729986, y: 20.688126, z: 27.852951}
   m_Children: []
   m_Father: {fileID: 1726544240}
@@ -14306,7 +14306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 985920383}
   m_Layer: 0
-  m_Name: BeforeGlide
+  m_Name: Boar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14320,7 +14320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985920382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 7.41, z: -60.07}
+  m_LocalPosition: {x: -138.04, y: 0.91, z: -5.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 901266492}
@@ -24318,7 +24318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1655037182}
   m_Layer: 0
-  m_Name: BeforeTreeJumps
+  m_Name: LastAcorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24332,7 +24332,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655037181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -102.33, y: 5.02, z: -9.18}
+  m_LocalPosition: {x: -535.19, y: 59.6, z: -307.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 901266492}
@@ -24348,7 +24348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1656636145}
   m_Layer: 0
-  m_Name: BeforeEnemies
+  m_Name: AfterEnemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24362,7 +24362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656636144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -104.44, y: 5.02, z: -80.91}
+  m_LocalPosition: {x: -371.01, y: 2.55, z: -317.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 901266492}
@@ -25701,7 +25701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1719139653}
   m_Layer: 0
-  m_Name: BeforeTrap
+  m_Name: Chameleon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25715,7 +25715,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719139652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -104.44, y: 5.02, z: -106.22}
+  m_LocalPosition: {x: -118.49, y: 1.93, z: -323.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 901266492}
@@ -27155,7 +27155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824988754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.91, z: -20.99}
+  m_LocalPosition: {x: -80.05, y: 8.45, z: -9.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 901266492}
@@ -31493,7 +31493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115585547}
   m_Layer: 0
-  m_Name: BeforeFallingTree
+  m_Name: AfterBoarTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31507,7 +31507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115585546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.61, y: 5.02, z: -113.46}
+  m_LocalPosition: {x: -141.1, y: 14.07, z: -134.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 901266492}
