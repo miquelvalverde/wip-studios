@@ -15,6 +15,7 @@ public class GameController : MonoBehaivourWithInputs
     {
         Time.timeScale = 0;
         pauseMenuHUD.SetActive(true);
+        player.DisableInputs();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -23,6 +24,7 @@ public class GameController : MonoBehaivourWithInputs
     {
         Time.timeScale = 1;
         pauseMenuHUD.SetActive(false);
+        player.EnableInputs();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -31,4 +33,4 @@ public class GameController : MonoBehaivourWithInputs
     {
         Application.Quit();
     }
-}
+} 

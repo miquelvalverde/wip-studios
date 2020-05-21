@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,10 +18,13 @@ public class StoryHUDController : MonoBehaivourWithInputs
         }
 
         instance = this;
-
-        EndStory();
     }
     #endregion
+
+    private void Start()
+    {
+        EndStory();
+    }
 
     protected override void SetControls()
     {
@@ -31,7 +32,8 @@ public class StoryHUDController : MonoBehaivourWithInputs
         controls.UI.SkipAllDialog.performed += _ => EndStory();
     }
 
-    [SerializeField] private Text textPanel;
+    [SerializeField] private Text textPanel = null;
+    [SerializeField] private GameObject panel = null;
     [Tooltip("Time between characters. Less is faster.")]
     [SerializeField] private float typeSpeed = 0.01F;
     private bool isTellingStory = false;
@@ -44,20 +46,23 @@ public class StoryHUDController : MonoBehaivourWithInputs
         if (isTellingStory)
             return;
 
-        if (PlayerController.instance.IsDoingSomething())
+        if (player.IsDoingSomething())
             return;
 
-        PlayerController.instance.DisableInputs();
+        player.DisableInputs();
 
         isTellingStory = true;
         index = 0;
         currentStory = story;
-        gameObject.SetActive(true);
+        panel.SetActive(true);
         Next();
     }
         
     private void Next()
     {
+        if (currentStory == null)
+            return;
+
         if (index < currentStory.sentences.Count)
         {
             if (isTyping)
@@ -100,9 +105,13 @@ public class StoryHUDController : MonoBehaivourWithInputs
 
     public void EndStory()
     {
-        PlayerController.instance?.EnableInputs();
+        if (currentStory == null)
+            return;
+
+        player.EnableInputs();
+        player.GetRadialMenuController.Unlock(currentStory.unlocksAnimal);
         textPanel.text = string.Empty;
-        gameObject.SetActive(false);
+        panel.SetActive(false);
         isTellingStory = false;
         isTyping = false;
         index = 0;
