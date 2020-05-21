@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Story3
   m_EditorClassIdentifier: 
   sentences:
-  - caca
-  - culo
-  - pedo
-  - piss
-  unlocksAnimal: 3
+  - You have the powers of the chameleon.
+  - Press click to use your camouflage. Be careful, you can't move when hiding.
+  - Press E to pick things with your tongue.
+  unlocksAnimal: 2

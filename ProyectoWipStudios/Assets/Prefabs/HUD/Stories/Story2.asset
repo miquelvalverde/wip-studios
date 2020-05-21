@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Story2
   m_EditorClassIdentifier: 
   sentences:
-  - caca
-  - culo
-  - pedo
-  - piss
-  unlocksAnimal: 2
+  - You have the powers of the boar.
+  - You can't jump high, but your charges are strong.
+  - Press Left Click to charge forward and break some rocks or trees.
+  unlocksAnimal: 0
