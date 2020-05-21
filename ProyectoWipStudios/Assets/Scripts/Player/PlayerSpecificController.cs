@@ -4,6 +4,8 @@ public abstract class PlayerSpecificController : MonoBehaivourWithInputs
 {
     protected PlayerController playerController;
 
+    public enum Type { Squirrel, Chameleon, Boar }
+
     public float walkSpeed;
     public float jumpHeight;
     public float scale = 1;
@@ -21,6 +23,13 @@ public abstract class PlayerSpecificController : MonoBehaivourWithInputs
     public abstract void Initializate();
 
     public abstract void UpdateSpecificAction();
+
+    public abstract bool CheckIfCanChange(Type to);
+
+    protected bool CheckUp(float distance)
+    {
+        return !Physics.Raycast(cameraPoint.position + (Vector3.down * .25f), Vector3.up, distance + .25f);
+    }
 
     public Animator GetAnimator()
     {
