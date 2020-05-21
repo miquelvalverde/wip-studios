@@ -118,6 +118,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: plant1
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ecec4e8d84fcc844bbb1db0e9c06dea3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: ecec4e8d84fcc844bbb1db0e9c06dea3,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecec4e8d84fcc844bbb1db0e9c06dea3, type: 3}
 --- !u!4 &8315423600127511476 stripped
