@@ -154,7 +154,7 @@ public class SquirrelController : PlayerSpecificController
             case Type.Chameleon:
                 return this.CheckUp(.5f);
             case Type.Boar:
-                return this.CheckUp(1f);
+                return this.CheckUp(1.25f);
         }
 
         return true;

@@ -81,7 +81,7 @@ public class ChameleonController : PlayerSpecificController
     {
 
         if (to == Type.Boar)
-            return this.CheckUp(.5f);
+            return this.CheckUp(.15f);
 
         return true;
     }

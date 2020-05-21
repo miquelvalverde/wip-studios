@@ -28,7 +28,7 @@ public abstract class PlayerSpecificController : MonoBehaivourWithInputs
 
     protected bool CheckUp(float distance)
     {
-        return !Physics.Raycast(cameraPoint.position, Vector3.up, distance);
+        return !Physics.Raycast(cameraPoint.position + (Vector3.down * .25f), Vector3.up, distance + .25f);
     }
 
     public Animator GetAnimator()
