@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private PlayerCameraController cameraController;
     private PlayerSpecificController _specificController;
     [SerializeField] private RadialMenuController radialMenuController = null;
+
+    public RadialMenuController GetRadialMenuController { get => radialMenuController; }
+
     [SerializeField] private Transform _defaultCameraPoint = null;
     [HideInInspector] public Transform cameraPoint
     {
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
     }
     private float characterDefaultHeight;
     private float characterDefaultYCenter;
+
 
     public PlayerSpecificController specificController
     {
@@ -215,12 +219,14 @@ public class PlayerController : MonoBehaviour
     {
         specificController.EnableControls();
         movementController.EnableControls();
+        radialMenuController.EnableControls();
     }
 
     public void DisableInputs()
     {
         specificController.DisableControls();
         movementController.DisableControls();
+        radialMenuController.DisableControls();
     }
         
     public void DisableSpecificController()
