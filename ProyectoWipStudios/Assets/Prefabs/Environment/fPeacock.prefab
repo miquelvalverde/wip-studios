@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4361004066137089115
 Transform:
@@ -108,10 +108,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -1294730632866080261, guid: 1f48fab056703c74d82538adfbcb14cf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 1f48fab056703c74d82538adfbcb14cf,
         type: 3}
       propertyPath: m_Name
       value: fPeacock
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1f48fab056703c74d82538adfbcb14cf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -801763256681114213, guid: 1f48fab056703c74d82538adfbcb14cf,
         type: 3}
@@ -123,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0ac96bf752c174a41be9962ad89f4647, type: 2}
+    - target: {fileID: 9043724374704971416, guid: 1f48fab056703c74d82538adfbcb14cf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f48fab056703c74d82538adfbcb14cf, type: 3}
 --- !u!4 &8790976827379609264 stripped

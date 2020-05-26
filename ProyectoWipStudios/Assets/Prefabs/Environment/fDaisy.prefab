@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1479579824997427006
 Transform:
@@ -103,16 +103,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3197698406240015100, guid: d58d00c20b420f7479a19063b2dcc40f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -1709438619310234043, guid: d58d00c20b420f7479a19063b2dcc40f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -1429782299043466052, guid: d58d00c20b420f7479a19063b2dcc40f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: d58d00c20b420f7479a19063b2dcc40f,
         type: 3}
       propertyPath: m_Name
       value: fDaisy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d58d00c20b420f7479a19063b2dcc40f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -433479401619685055, guid: d58d00c20b420f7479a19063b2dcc40f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468528563854577825, guid: d58d00c20b420f7479a19063b2dcc40f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094198267642030940, guid: d58d00c20b420f7479a19063b2dcc40f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5037493825506363511, guid: d58d00c20b420f7479a19063b2dcc40f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fc1250a311be997478870aafbbdd5f15, type: 2}
+    - target: {fileID: 6074912888018571112, guid: d58d00c20b420f7479a19063b2dcc40f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6169869779110140641, guid: d58d00c20b420f7479a19063b2dcc40f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

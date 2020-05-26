@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4294571243530513711
 Transform:
@@ -98,11 +98,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: fBunny
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e110fd97375a8ca42baad00ffa36b31d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: -263339185217974575, guid: e110fd97375a8ca42baad00ffa36b31d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bc2525fb4b294f4448a18d7c2119425e, type: 2}
+    - target: {fileID: 3545034874246310552, guid: e110fd97375a8ca42baad00ffa36b31d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e110fd97375a8ca42baad00ffa36b31d, type: 3}
 --- !u!4 &9143385882607797523 stripped

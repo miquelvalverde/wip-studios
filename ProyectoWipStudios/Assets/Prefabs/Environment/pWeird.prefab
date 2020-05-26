@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2350297811957700265
 Transform:
@@ -113,11 +113,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: pWeird
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2781bd586262e0549b30fd18bb6af142,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 547735012700010296, guid: 2781bd586262e0549b30fd18bb6af142,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2a08a4ef6a99d1247b031703ee251c5b, type: 2}
+    - target: {fileID: 1932017766138579539, guid: 2781bd586262e0549b30fd18bb6af142,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2781bd586262e0549b30fd18bb6af142, type: 3}
 --- !u!4 &1024519373355378107 stripped
