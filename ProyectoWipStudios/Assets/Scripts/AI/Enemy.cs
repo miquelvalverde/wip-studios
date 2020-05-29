@@ -118,13 +118,13 @@ public class Enemy : MonoBehaviourPlayerGettable
         return nextPosition;
     }
 
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
         UnityEditor.Handles.color = Color.yellow;
         UnityEditor.Handles.DrawWireDisc(position, Vector3.up, chaseMaxDistance);
         
         UnityEditor.Handles.color = Color.red;
         UnityEditor.Handles.DrawWireDisc(position, Vector3.up, shootDistance);
-    }
+    }*/
 
 }

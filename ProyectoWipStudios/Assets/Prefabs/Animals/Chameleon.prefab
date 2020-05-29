@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487d71b38d8f1364fb68bd4916969da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 8
   jumpHeight: 1
   scale: 1
   cameraPoint: {fileID: 7158394301815127356}
