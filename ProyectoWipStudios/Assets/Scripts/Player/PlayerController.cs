@@ -24,9 +24,17 @@ public class PlayerController : MonoBehaviour
         {
             return (!specificController) ? _defaultCameraPoint : specificController.cameraPoint;
         }
-
-        private set { }
     }
+
+    [HideInInspector]
+    public Transform headPoint
+    {
+        get
+        {
+            return (!specificController) ? null : specificController.headPoint;
+        }
+    }
+
     private float characterDefaultHeight;
     private float characterDefaultYCenter;
 

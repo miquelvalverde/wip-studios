@@ -37,6 +37,10 @@ public class PlayerMovementController : MonoBehaivourWithInputs
     [SerializeField] private Vector3 checkerOffset = Vector3.up * .2f;
     [SerializeField] private Vector3 chekcerDimensions = Vector3.one;
 
+    [Header("Head Checker")]
+    [SerializeField] private float headCheckerRadius = 0;
+    [SerializeField] private LayerMask whatIsBlockHead = 0;
+
     //Control variables
     private bool doNormalMovement;
     private bool lockRotation;
@@ -136,10 +140,23 @@ public class PlayerMovementController : MonoBehaivourWithInputs
     {
         if (!isGrounded)
         {
+            if (CheckHead() && verticalSpeed > 0)
+            {
+                verticalSpeed = 0;
+            }
+
             verticalSpeed += -Mathf.Abs(gravity) * Time.deltaTime;
             verticalSpeed = Mathf.Clamp(verticalSpeed, -Mathf.Abs(_maxVerticalSpeed), Mathf.Infinity);
         }
     }
+
+    private bool CheckHead()
+    {
+        Vector3 center = player.headPoint.position;
+
+        return Physics.CheckSphere(center, headCheckerRadius, whatIsBlockHead);
+    }
+
     public void ResetMaxVerticalSpeed()
     {
         SetMaxVerticalSpeed(maxVerticalSpeed);
@@ -161,7 +178,7 @@ public class PlayerMovementController : MonoBehaivourWithInputs
         float jumpSpeed = Mathf.Sqrt(-2 * -Mathf.Abs(gravity) * jumpHeight);
         verticalSpeed = jumpSpeed;
 
-        PlayerController.instance.stats.isJumping = true;
+        player.stats.isJumping = true;
     }
     #endregion
 
@@ -189,6 +206,9 @@ public class PlayerMovementController : MonoBehaivourWithInputs
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
+
+        if (player)
+            Gizmos.DrawWireSphere(player.headPoint.position, headCheckerRadius);
 
         Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.lossyScale);
         Gizmos.matrix = rotationMatrix;
