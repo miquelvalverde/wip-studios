@@ -7,6 +7,9 @@ public class ChameleonController : PlayerSpecificController
     [SerializeField] private float dropForce = 200;
     [SerializeField] ChameleonHUDController chameleonHUD = null;
     [SerializeField] private Material camouflageMaterial = null;
+    [SerializeField] private Material camouflageMaterialTail = null;
+    [SerializeField] private Material camouflageMaterialDiamond = null;
+    [SerializeField] private Material camouflageMaterialEyes = null;    
     [SerializeField] private float transitionTime = 1.5F;
     private ChameleonHUDController hudInstance;
     private bool isCamouflaging = false;
@@ -17,6 +20,9 @@ public class ChameleonController : PlayerSpecificController
         this.controls.Player.Camouflage.performed += _ => Camouflage();
         hudInstance = Instantiate(chameleonHUD);
         camouflageMaterial.SetFloat("Camouflage", 1);
+        camouflageMaterialTail.SetFloat("Camouflage", 1);
+        camouflageMaterialDiamond.SetFloat("Camouflage", 1);
+        camouflageMaterialEyes.SetFloat("Camouflage", 1);
     }
 
     private void TonguePick()
@@ -53,8 +59,20 @@ public class ChameleonController : PlayerSpecificController
         float timer = 0.0f;
         while (timer <= transitionTime)
         {
-            if (reverse) camouflageMaterial.SetFloat("Camouflage", timer / transitionTime);
-            else camouflageMaterial.SetFloat("Camouflage", 1 - timer / transitionTime);
+            if (reverse)
+            {
+                camouflageMaterial.SetFloat("Camouflage", timer / transitionTime);
+                camouflageMaterialTail.SetFloat("Camouflage", timer / transitionTime);
+                camouflageMaterialDiamond.SetFloat("Camouflage", timer / transitionTime);
+                camouflageMaterialEyes.SetFloat("Camouflage", timer / transitionTime);
+            }
+            else
+            {
+                camouflageMaterial.SetFloat("Camouflage", 1 - timer / transitionTime);
+                camouflageMaterialTail.SetFloat("Camouflage", 1 - timer / transitionTime);
+                camouflageMaterialDiamond.SetFloat("Camouflage", 1 - timer / transitionTime);
+                camouflageMaterialEyes.SetFloat("Camouflage", 1 - timer / transitionTime);
+            }
             timer += Time.deltaTime;
             yield return null;
         }
