@@ -63,7 +63,7 @@ public class StoryHUDController : MonoBehaivourWithInputs
         if (currentStory == null)
             return;
 
-        if (index < currentStory.sentences.Count)
+        if (index <= currentStory.sentences.Count)
         {
             if (isTyping)
             {
@@ -71,14 +71,26 @@ public class StoryHUDController : MonoBehaivourWithInputs
             }
             else
             {
-                StartCoroutine(TypeRoutine(currentStory.sentences[index]));
-                index++;
+                if(IsLast())
+                {
+                    EndStory();
+                }
+                else
+                {
+                    StartCoroutine(TypeRoutine(currentStory.sentences[index]));
+                    index++;
+                }
             }
         }
         else
         {
             EndStory();
         }
+    }
+
+    private bool IsLast()
+    {
+        return index == currentStory.sentences.Count;
     }
 
     IEnumerator TypeRoutine(string sentence)
