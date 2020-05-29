@@ -938,7 +938,7 @@ SkinnedMeshRenderer:
   m_RootBone: {fileID: 0}
   m_AABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.8265458, y: 0.8265458, z: 0.00000008171858}
+    m_Extent: {x: 0.6491692, y: 0.64916915, z: 0.0000000641818}
   m_DirtyAABB: 0
 --- !u!183 &4665132834292872348
 Cloth:
@@ -3160,10 +3160,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'CATRigHub001'\n\tTransform 'CATRigHub001'\n\tFrom
-    animation clip 'PlayerGliding'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -3395,8 +3392,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5204545717426836343}
   m_LocalRotation: {x: 3.5526779e-15, y: -0.000000029802317, z: -6.3946384e-15, w: 1}
-  m_LocalPosition: {x: -0.2992411, y: 0, z: -0.00000003557801}
-  m_LocalScale: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_LocalPosition: {x: -0.2992411, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2839014759569839633}
   m_Father: {fileID: 8566595954953994232}
@@ -4038,7 +4035,7 @@ Animator:
   m_GameObject: {fileID: 7562021936673922036}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f2be9a6b7a008b47b82a350c2f8c95b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5a2a26a6e4bced143a921a8a75b3e5c7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
