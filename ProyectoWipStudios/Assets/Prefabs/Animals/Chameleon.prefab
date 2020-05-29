@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 4791623200713362778}
   - component: {fileID: 5440130512738763432}
   - component: {fileID: 6415492000789004880}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Daiamante_Camaleon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 2944751991744320654}
   - component: {fileID: 7070319068645070582}
   - component: {fileID: 21997306385455363}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -930,7 +930,7 @@ GameObject:
   - component: {fileID: 8815659886399319200}
   - component: {fileID: 4582525466195563095}
   - component: {fileID: 3032117242790141138}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ojos_Camaleon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: 3011589719216395584}
   - component: {fileID: 5058399449926092351}
   - component: {fileID: 973261269258573535}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cola camaleon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1328,10 +1328,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8012767944300914070}
     m_Modifications:
+    - target: {fileID: 421299150076014135, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 421299150555440794, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 421299150604779294, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
         type: 3}
       propertyPath: m_Name
       value: Tongue
+      objectReference: {fileID: 0}
+    - target: {fileID: 421299150604779294, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 421299150604779295, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
         type: 3}
@@ -1402,6 +1417,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.757174
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578162705178851034, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572932081110211904, guid: 33d6c9e76abd57b45aa84b302f3e6d24,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33d6c9e76abd57b45aa84b302f3e6d24, type: 3}
