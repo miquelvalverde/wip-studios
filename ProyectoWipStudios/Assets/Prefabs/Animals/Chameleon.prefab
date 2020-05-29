@@ -520,7 +520,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4036578bca60bdd44a578eb785e87eba, type: 2}
+  - {fileID: 2100000, guid: d71cebea03b67af4eb991a1f1326080d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -977,7 +977,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1170facb71167cd4bad6aa64be548c31, type: 2}
+  - {fileID: 2100000, guid: 6d4836de2bd9088499cfab44c859a155, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1056,7 +1056,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4036578bca60bdd44a578eb785e87eba, type: 2}
+  - {fileID: 2100000, guid: e2e6f78a14d11264fa8a0e69b544d1ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1257,6 +1257,12 @@ MonoBehaviour:
   chameleonHUD: {fileID: 6480272451193786695, guid: be39bea30aae1494eb351bb51af2c1fa,
     type: 3}
   camouflageMaterial: {fileID: 2100000, guid: 4036578bca60bdd44a578eb785e87eba, type: 2}
+  camouflageMaterialTail: {fileID: 2100000, guid: e2e6f78a14d11264fa8a0e69b544d1ac,
+    type: 2}
+  camouflageMaterialDiamond: {fileID: 2100000, guid: d71cebea03b67af4eb991a1f1326080d,
+    type: 2}
+  camouflageMaterialEyes: {fileID: 2100000, guid: 6d4836de2bd9088499cfab44c859a155,
+    type: 2}
   transitionTime: 0.5
 --- !u!1 &8050269287478634522
 GameObject:
