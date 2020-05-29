@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class WinningTrigger : MonoBehaviour
 {
-    [SerializeField] private int sceneIndex;
+    [SerializeField] private int sceneIndex = 0;
 
     private void OnTriggerEnter(Collider other)
     {
