@@ -17,6 +17,7 @@ public class RadialMenuController : MonoBehaivourWithInputs
     [SerializeField] private RadialMenuPortion portionPrefabRef = null;
     [SerializeField] private float iconDistanceFromCenter = 210;
     [SerializeField] private Color unselectedPortionBackground = Color.black;
+    [SerializeField] private float hoverSize = 1.6f;
     private RadialMenuPortion[] radialMenuPortions;
     private int portionCount;
     private float portionSize360;
@@ -84,7 +85,7 @@ public class RadialMenuController : MonoBehaivourWithInputs
         portion.iconRect.localPosition = new Vector3(0, iconDistanceFromCenter, 0);
         portion.iconRect.rotation = Quaternion.Euler(0, 0, iconRotation[index]);
         portion.iconPivot.rotation = Quaternion.Euler(0,0, -portionSize360 / 2);
-        portion.background.color = settings.portion.background;
+        portion.background.color = unselectedPortionBackground;
         portion.background.fillAmount = portionSize01;
         portion.backgroundRect.rotation = Quaternion.Euler(0,0, -index * portionSize360);
         portion.callback = settings.callback;
@@ -148,11 +149,11 @@ public class RadialMenuController : MonoBehaivourWithInputs
         {
             if(portionIndex == selectedPortionIndex)
             {
-                radialMenuPortions[portionIndex].background.color = portions[portionIndex].portion.background;
+                radialMenuPortions[portionIndex].iconRect.localScale = new Vector3(hoverSize, hoverSize, 1); 
             }
             else
             {
-                radialMenuPortions[portionIndex].background.color = unselectedPortionBackground;
+                radialMenuPortions[portionIndex].iconRect.localScale = Vector3.one;
             }
         }
     }
