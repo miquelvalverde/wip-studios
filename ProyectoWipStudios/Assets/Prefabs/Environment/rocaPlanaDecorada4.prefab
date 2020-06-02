@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5924344552752367915}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rocaPlanaDecorada4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,6 +141,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: pCactus (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2675104055130973659, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449315298604616279, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214419793792198290, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 665b7cfbe65711843b2ae1dd918b2821, type: 3}
 --- !u!4 &8586287571753522296 stripped
@@ -230,6 +245,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pCactus (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675104055130973659, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449315298604616279, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214419793792198290, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 665b7cfbe65711843b2ae1dd918b2821, type: 3}
@@ -321,6 +351,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: pCactus (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2675104055130973659, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449315298604616279, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214419793792198290, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 665b7cfbe65711843b2ae1dd918b2821, type: 3}
 --- !u!4 &8586287570972739902 stripped
@@ -411,6 +456,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: pCactus (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2675104055130973659, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449315298604616279, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214419793792198290, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 665b7cfbe65711843b2ae1dd918b2821, type: 3}
 --- !u!4 &8586287570878164519 stripped
@@ -426,6 +486,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5924344552752367915}
     m_Modifications:
+    - target: {fileID: -8052994932809076077, guid: b517a8fb8d1cb934d841d56deaab6379,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b517a8fb8d1cb934d841d56deaab6379,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -500,6 +565,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: rocaPlanaSmooth (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b517a8fb8d1cb934d841d56deaab6379,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b517a8fb8d1cb934d841d56deaab6379, type: 3}
@@ -602,6 +672,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pCactus (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2675104055130973659, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449315298604616279, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214419793792198290, guid: 665b7cfbe65711843b2ae1dd918b2821,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 665b7cfbe65711843b2ae1dd918b2821, type: 3}
