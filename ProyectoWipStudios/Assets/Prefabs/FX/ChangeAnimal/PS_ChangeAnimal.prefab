@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2793848261676133701}
   - component: {fileID: 2793848261676133702}
   m_Layer: 0
-  m_Name: PS_Magic Parent 1
+  m_Name: PS_ChangeAnimal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2793848261676133703}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -14.41, y: 0.13, z: -1.06}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2793848263613204223}
   - {fileID: 2279064556156034880}
