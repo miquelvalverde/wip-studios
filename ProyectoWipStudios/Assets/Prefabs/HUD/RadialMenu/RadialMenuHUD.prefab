@@ -26,7 +26,7 @@ RectTransform:
   m_GameObject: {fileID: 7851267889730761743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.69136, y: 0.69136, z: 0.69136}
   m_Children:
   - {fileID: 7851267889968165637}
   m_Father: {fileID: 0}
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portions:
-  - portion: {fileID: 11400000, guid: 74662b567cb7ea14aaa65d7477e9765d, type: 2}
+  - portion: {fileID: 0}
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -102,6 +102,7 @@ MonoBehaviour:
     type: 3}
   iconDistanceFromCenter: 80
   unselectedPortionBackground: {r: 0, g: 0, b: 0, a: 0}
+  hoverSize: 1.6
 --- !u!1 &7851267889968165638
 GameObject:
   m_ObjectHideFlags: 0
