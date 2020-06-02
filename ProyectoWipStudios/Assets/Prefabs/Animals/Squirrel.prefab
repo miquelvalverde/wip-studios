@@ -2854,13 +2854,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ddc20ca95b4ad04eac676aeb5d660b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
-  jumpHeight: 3
+  walkSpeed: 8
+  jumpHeight: 2
   scale: 0.6
   cameraPoint: {fileID: 1371981986345728483}
   headPoint: {fileID: 4041258374981397206}
   anim: {fileID: 895099810607542304}
-  glideSpeed: 2
+  glideSpeed: 5
   climbCheckerVerticalOffset: 0.8
   climbCheckerHorizontalOffset: 0.55
   climbCheckerRadius: 0.8
