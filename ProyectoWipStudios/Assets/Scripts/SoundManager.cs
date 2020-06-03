@@ -5,34 +5,22 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    #region Singleton
-    public static SoundManager instance;
-
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-
-        instance = this;
-
-        DontDestroyOnLoad(this);
-    }
-    #endregion
-
     public static FMOD.Studio.EventInstance UIHover;
     public static FMOD.Studio.EventInstance UISelect;
+    public static FMOD.Studio.EventInstance Music1;
+    public static FMOD.Studio.EventInstance Music2;
 
-    private void Start()
-    {
+    private void Awake()
+    {   
         LoadAllFMODSounds();
+        DontDestroyOnLoad(this);
     }
 
     private void LoadAllFMODSounds()
     {
         UISelect = FMODUnity.RuntimeManager.CreateInstance("event:/Events/UI/Select item/ui_select");
         UIHover = FMODUnity.RuntimeManager.CreateInstance("event:/Events/UI/Hover item/ui_hover");
+        Music1 = FMODUnity.RuntimeManager.CreateInstance("event:/Events/Soundtrack/Music/Music 1/music1");
+        Music2 = FMODUnity.RuntimeManager.CreateInstance("event:/Events/Soundtrack/Music/Music 2/music2");
     }
 }
