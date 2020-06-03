@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2196031225274519361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -188,9 +188,11 @@ MonoBehaviour:
   background: {fileID: 1809660528259115385}
   backgroundRect: {fileID: 1809660528259115384}
   lockIcon: {fileID: 4547030466319303163}
+  isLocked: 0
   callback:
     m_PersistentCalls:
       m_Calls: []
+  animal: 0
 --- !u!1 &7278677184471703465
 GameObject:
   m_ObjectHideFlags: 0
