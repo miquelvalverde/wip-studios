@@ -22,7 +22,7 @@ public class Trap : MonoBehaviour
         if (other.GetComponent<PlayerController>())
             Activate(true);
 
-        if (other.GetComponent<Pickable>())
+        if (other.GetComponent<Aimable>())
             Activate(false);
     }
 
