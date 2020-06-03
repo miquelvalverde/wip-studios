@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickable : MonoBehaviour
+public class Pickable : Aimable
 {
     public Sprite icon;
     private Rigidbody rb;
         
-    private void Awake()
+    private void Awake()    
     {
         this.rb = GetComponent<Rigidbody>();
         this.rb.isKinematic = false;

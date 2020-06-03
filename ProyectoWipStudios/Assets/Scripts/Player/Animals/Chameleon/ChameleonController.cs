@@ -30,7 +30,7 @@ public class ChameleonController : PlayerSpecificController
         if (!PlayerController.instance.stats.isCamouflaged)
             tongue.DoTongue(dropForce);
 
-        hudInstance.ShowPickable(tongue.CurrentPickable);
+        hudInstance.ShowPickable(tongue.CurrentAimable is Pickable pickable ? pickable : null);
     }
 
     private void Camouflage()
