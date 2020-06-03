@@ -20,13 +20,13 @@ public class RadialMenuPortion : MonoBehaviour
     public void Unlock()
     {
         isLocked = false;
-        lockIcon.enabled = false;
+        icon.color = Color.white;
         // TODO trigger some animation or unlock sound.
     }
-        
+
     public void Lock()
     {
         isLocked = true;
-        lockIcon.enabled = true;
+        icon.color = Color.gray;
     }
 }

@@ -15,7 +15,7 @@ public class Tongue : MonoBehaviour
     private float factor;
     private const float INITIAL_SIZE = 0.1F;
 
-    public Pickable CurrentPickable { get; private set; }
+    public Aimable CurrentAimable { get; private set; }
 
     private void Awake()
     {
@@ -27,27 +27,29 @@ public class Tongue : MonoBehaviour
         if (isProtracting || isRetracting)
             return;
 
-        if (CurrentPickable != null)
+        if (CurrentAimable != null)
         {
             Drop(dropForce);
             return;
         }
 
-        var closestPickable = GetClosestPickable();
-        if (closestPickable == null)
+        var closestAimable = GetClosestAimable();
+        if (closestAimable == null)
         {
             ProtractTongue(transform.position + transform.forward * range);
             return;
         }
 
-        CurrentPickable = closestPickable;
-        ProtractTongue(CurrentPickable.transform.position);
+        CurrentAimable = closestAimable;
+        ProtractTongue(CurrentAimable.transform.position);
     }
         
     public void Drop(float force)
     {
-        CurrentPickable?.Drop(transform.position, transform.forward, force);
-        CurrentPickable = null;
+        if (CurrentAimable != null && CurrentAimable is Pickable pickable)
+            pickable.Drop(transform.position, transform.forward, force);
+
+        CurrentAimable = null;
     }
 
     private void ResetTongue()
@@ -87,6 +89,7 @@ public class Tongue : MonoBehaviour
 
             if (tongueScaler.localScale.z >= pickableDistance)
             {
+                Press();
                 RetractTongue();
             }
         }
@@ -96,8 +99,8 @@ public class Tongue : MonoBehaviour
             factor = movementCurve.Evaluate(currentTime);
             tongueScaler.localScale -= new Vector3(0, 0, speed * factor * Time.deltaTime);
 
-            if(CurrentPickable != null)
-                CurrentPickable.transform.position = tongueEnd.position;
+            if(CurrentAimable != null && CurrentAimable is Pickable)
+                CurrentAimable.transform.position = tongueEnd.position;
 
             if (tongueScaler.localScale.z <= INITIAL_SIZE)
             {
@@ -114,40 +117,48 @@ public class Tongue : MonoBehaviour
 
     private void Eat()
     {
-        CurrentPickable?.Pick();
+        if (CurrentAimable != null && CurrentAimable is Pickable pickable)
+            pickable.Pick();
+
         ResetTongue();
     }
+        
+    private void Press()
+    {
+        if (CurrentAimable != null && CurrentAimable is Pressable pressable)
+            pressable.callback.Invoke();
+    }
 
-    private Pickable GetClosestPickable()
+    private Aimable GetClosestAimable()
     {
         var colliders = Physics.OverlapSphere(transform.position, range);
-        var pickables = ExtractPickablesOnly(colliders);
+        var aimables = ExtractAimablesOnly(colliders);
         var minDistance = range;
-        Pickable closestPickable = null;
-        foreach (Pickable pickable in pickables)
+        Aimable closestAimable = null;
+        foreach (Aimable aimable in aimables)
         {
-            var distance = Vector3.Distance(tongueScaler.position, pickable.transform.position);
-            var direction = pickable.transform.position - tongueScaler.position;
+            var distance = Vector3.Distance(tongueScaler.position, aimable.transform.position);
+            var direction = aimable.transform.position - tongueScaler.position;
             if (distance < minDistance && Vector3.Dot(direction, transform.forward) > 0)
             {
-                closestPickable = pickable;
+                closestAimable = aimable;
                 minDistance = distance;
             }
         }
-        return closestPickable;
+        return closestAimable;
     }
 
-    private static List<Pickable> ExtractPickablesOnly(Collider[] colliders)
+    private static List<Aimable> ExtractAimablesOnly(Collider[] colliders)
     {
-        var pickables = new List<Pickable>();
+        var aimables = new List<Aimable>();
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            var pickable = colliders[i].GetComponent<Pickable>();
-            if (pickable != null)
-                pickables.Add(pickable);
+            var aimable = colliders[i].GetComponent<Aimable>();
+            if (aimable != null)
+                aimables.Add(aimable);
         }
 
-        return pickables;
+        return aimables;
     }
 }
