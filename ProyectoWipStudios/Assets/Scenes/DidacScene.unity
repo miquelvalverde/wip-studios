@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 154933127}
-  m_IndirectSpecularColor: {r: 0.4509821, g: 0.5008466, b: 0.5743557, a: 1}
+  m_IndirectSpecularColor: {r: 0.4509825, g: 0.5008476, b: 0.5743571, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -832,26 +832,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 588508329039538143, guid: 4bd8631d7d59d144c8f59a526a6402b5,
-        type: 3}
-      propertyPath: portions.Array.data[1].isLockedInitially
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 588508329039538143, guid: 4bd8631d7d59d144c8f59a526a6402b5,
-        type: 3}
-      propertyPath: portions.Array.data[2].isLockedInitially
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6785756667637627795, guid: 4bd8631d7d59d144c8f59a526a6402b5,
-        type: 3}
-      propertyPath: headCheckerRadius
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6785756667637627795, guid: 4bd8631d7d59d144c8f59a526a6402b5,
-        type: 3}
-      propertyPath: whatIsBlockHead.m_Bits
-      value: 2816
-      objectReference: {fileID: 0}
     - target: {fileID: 8657104808115142400, guid: 4bd8631d7d59d144c8f59a526a6402b5,
         type: 3}
       propertyPath: m_Name

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portions:
-  - portion: {fileID: 0}
+  - portion: {fileID: 11400000, guid: 59c9ce351761e554fa571a430866f365, type: 2}
     callback:
       m_PersistentCalls:
         m_Calls:

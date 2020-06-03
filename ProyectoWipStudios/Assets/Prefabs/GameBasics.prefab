@@ -2148,7 +2148,8 @@ PrefabInstance:
         type: 3}
       propertyPath: portions.Array.data[0].portion
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 59c9ce351761e554fa571a430866f365,
+        type: 2}
     - target: {fileID: 8074667991408332694, guid: 3b672eb7c9abab74da5c41e67daa2770,
         type: 3}
       propertyPath: portions.Array.data[1].isLockedInitially
