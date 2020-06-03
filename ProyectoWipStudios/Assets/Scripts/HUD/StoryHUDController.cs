@@ -34,6 +34,10 @@ public class StoryHUDController : MonoBehaivourWithInputs
 
     [SerializeField] private Text textPanel = null;
     [SerializeField] private GameObject panel = null;
+    [SerializeField] private Image animalIcon = null;  
+    [SerializeField] private Sprite boarIcon = null;
+    [SerializeField] private Sprite chameleonIcon = null;
+    [SerializeField] private Sprite squirrelIcon = null; 
     [Tooltip("Time between characters. Less is faster.")]
     [SerializeField] private float typeSpeed = 0.01F;
     private bool isTellingStory = false;
@@ -54,10 +58,27 @@ public class StoryHUDController : MonoBehaivourWithInputs
         isTellingStory = true;
         index = 0;
         currentStory = story;
+        animalIcon.sprite = GetImage(story.unlocksAnimal);
         panel.SetActive(true);
         Next();
     }
-        
+
+    private Sprite GetImage(UnlockType unlockType)
+    {
+        switch (unlockType)
+        {
+            case UnlockType.BOAR:
+                return boarIcon;
+            case UnlockType.SQUIRREL:
+                return squirrelIcon;
+            case UnlockType.CHAMELEON:
+                return chameleonIcon;
+            case UnlockType.NONE:
+            default:
+                return null;
+        }
+    }
+
     private void Next()
     {
         if (currentStory == null)
