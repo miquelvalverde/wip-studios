@@ -215,4 +215,10 @@ public class PlayerMovementController : MonoBehaivourWithInputs
 
         Gizmos.DrawWireCube(checkerOffset, chekcerDimensions);
     }
+
+    public void SpeedToZero()
+    {
+        currentSpeed = 0;
+    }
+
 }
