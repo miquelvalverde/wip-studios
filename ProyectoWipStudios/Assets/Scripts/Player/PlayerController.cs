@@ -24,9 +24,17 @@ public class PlayerController : MonoBehaviour
         {
             return (!specificController) ? _defaultCameraPoint : specificController.cameraPoint;
         }
-
-        private set { }
     }
+
+    [HideInInspector]
+    public Transform headPoint
+    {
+        get
+        {
+            return (!specificController) ? null : specificController.headPoint;
+        }
+    }
+
     private float characterDefaultHeight;
     private float characterDefaultYCenter;
 
@@ -220,6 +228,7 @@ public class PlayerController : MonoBehaviour
         specificController.EnableControls();
         movementController.EnableControls();
         radialMenuController.EnableControls();
+        cameraController.EnableControls();
     }
 
     public void DisableInputs()
@@ -232,6 +241,11 @@ public class PlayerController : MonoBehaviour
     public void DisableSpecificController()
     {
         specificController.DisableControls();
+    }
+
+    public void DisableCameraControls()
+    {
+        cameraController.DisableControls();
     }
 
     public void TeleportTo(Transform point)

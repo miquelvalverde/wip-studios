@@ -10,6 +10,7 @@ public abstract class PlayerSpecificController : MonoBehaivourWithInputs
     public float jumpHeight;
     public float scale = 1;
     public Transform cameraPoint;
+    public Transform headPoint;
 
     [SerializeField] protected Animator anim = null;
 

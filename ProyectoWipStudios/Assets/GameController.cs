@@ -16,6 +16,7 @@ public class GameController : MonoBehaivourWithInputs
         Time.timeScale = 0;
         pauseMenuHUD.SetActive(true);
         player.DisableInputs();
+        player.DisableCameraControls();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

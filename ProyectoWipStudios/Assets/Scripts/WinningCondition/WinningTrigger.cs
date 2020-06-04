@@ -9,6 +9,8 @@ public class WinningTrigger : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>())
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             SceneManager.LoadScene(sceneIndex);
         }
     }
