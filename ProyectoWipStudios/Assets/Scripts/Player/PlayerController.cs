@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     public RadialMenuController GetRadialMenuController { get => radialMenuController; }
 
+    [SerializeField] private GameObject _changeParticles = null;
+    [SerializeField] private Transform _spawnParticlePoint = null;
     [SerializeField] private Transform _defaultCameraPoint = null;
     [HideInInspector] public Transform cameraPoint
     {
@@ -205,7 +207,10 @@ public class PlayerController : MonoBehaviour
             Destroy(specificController.gameObject);
         }
 
+        SoundManager.Change.start();
         specificController = Instantiate(animalRef, transform);
+        var particlesInstance = Instantiate(_changeParticles, _spawnParticlePoint.position, Quaternion.identity, _spawnParticlePoint);
+        Destroy(particlesInstance, 2.5f);
     }
 
     public void ChangeToSquirrel()
@@ -264,6 +269,11 @@ public class PlayerController : MonoBehaviour
         DeadMenuHUDController.instance.DisplayDeadMenu();
         stats.isDead = true;
         Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void SpeedToZero()
+    {
+        this.movementController.SpeedToZero();
     }
 
 }

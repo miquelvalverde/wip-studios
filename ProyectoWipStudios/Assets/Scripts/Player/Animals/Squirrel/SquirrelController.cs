@@ -133,6 +133,9 @@ public class SquirrelController : PlayerSpecificController
         this.playerController.doNormalMovement = true;
         this.playerController.doGravity = true;
         this.playerController.lockRotation = false;
+
+        player.SpeedToZero();
+
     }
 
     public override string ToString()
