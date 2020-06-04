@@ -19,6 +19,8 @@ public class GameController : MonoBehaivourWithInputs
         player.DisableCameraControls();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        SoundTriggerOnPointerClick();
+        SoundManager.Music2.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     public void GameReanudate()
@@ -28,10 +30,21 @@ public class GameController : MonoBehaivourWithInputs
         player.EnableInputs();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        SoundManager.Music2.start();
     }
-
+        
     public void GameQuit()
     {
         Application.Quit();
+    }
+
+    public void SoundTriggerOnPointerEnter()
+    {
+        SoundManager.UIHover.start();           
+    }
+
+    public void SoundTriggerOnPointerClick()
+    {
+        SoundManager.UISelect.start();
     }
 } 
