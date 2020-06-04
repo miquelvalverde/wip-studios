@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3718331334000303969}
   - component: {fileID: 3176338992834017789}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Boar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 5674645106058387624}
   - component: {fileID: 5206033121310106193}
   - component: {fileID: 1872614659462076723}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 3256149606007831541}
   - component: {fileID: 3030323517167238231}
   - component: {fileID: 6827504602765095671}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Diamante_Jabali
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2398987814571353556}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CameraPoint
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 1747712923322858901}
   - component: {fileID: 1056997761655066220}
   - component: {fileID: 3940874022663710359}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cuernos jabali
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 5886666539607346302}
   - component: {fileID: 8354843120611587955}
   - component: {fileID: 3724320948348097366}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ojos_Jabali
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 6465410217959094544}
   - component: {fileID: 6177844389143821341}
   - component: {fileID: 1939753657378222418}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cola jabali
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4959450459767872148}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HeadPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 5176394416231945030}
   - component: {fileID: 5144676395467947116}
   - component: {fileID: 8333738213605459483}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Morro Jabali
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 702428156157606439}
   - component: {fileID: 6321224895435303367}
   - component: {fileID: 7633771965875721593}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Orejas jabali
   m_TagString: Untagged
   m_Icon: {fileID: 0}
