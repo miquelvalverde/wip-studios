@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimatorController : MonoBehaviour
+public class PlayerAnimatorController : MonoBehaviourPlayerGettable
 {
     private Animator anim;
 
@@ -23,12 +23,14 @@ public class PlayerAnimatorController : MonoBehaviour
         if (!anim)
             return;
 
-        //anim.SetFloat("Speed", PlayerController.instance.stats.speed, .1f, Time.deltaTime);
-        //anim.SetBool("IsGrounded", PlayerController.instance.stats.isGrounded);
-        //anim.SetBool("IsJumping", PlayerController.instance.stats.isJumping);
-        anim.SetBool("IsGliding", PlayerController.instance.stats.isGliding);
+        anim.SetFloat("Speed", player.stats.speed, .1f, Time.deltaTime);
+        anim.SetBool("IsGrounded", player.stats.isGrounded);
+        anim.SetBool("IsJumping", player.stats.isJumping);
+        anim.SetBool("IsGliding", player.stats.isGliding);
+        anim.SetBool("IsClimbing", player.stats.isClimbing);
+        anim.SetBool("IsTongue", player.stats.isTongue);
 
-        PlayerController.instance.stats.isJumping = false;
+        player.stats.isJumping = false;
     }
 
 }
