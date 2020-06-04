@@ -28,6 +28,7 @@ public class PlayerAnimatorController : MonoBehaviourPlayerGettable
         anim.SetBool("IsJumping", player.stats.isJumping);
         anim.SetBool("IsGliding", player.stats.isGliding);
         anim.SetBool("IsClimbing", player.stats.isClimbing);
+        anim.SetBool("IsTongue", player.stats.isTongue);
 
         player.stats.isJumping = false;
     }
