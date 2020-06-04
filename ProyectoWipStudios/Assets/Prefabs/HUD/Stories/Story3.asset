@@ -15,5 +15,6 @@ MonoBehaviour:
   sentences:
   - You have the powers of the chameleon.
   - Press click to use your camouflage. Be careful, you can't move when hiding.
-  - Press E to pick things with your tongue.
+  - Press E to pick things with your tongue, and E again to spit them.
+  - You are close to the dam, you can do it!
   unlocksAnimal: 2
