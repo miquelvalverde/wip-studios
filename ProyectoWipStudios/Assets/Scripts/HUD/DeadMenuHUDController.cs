@@ -30,6 +30,7 @@ public class DeadMenuHUDController : MonoBehaviour
     public void Retry()
     {
         //That will change on alpha
+        SoundManager.Music2.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
