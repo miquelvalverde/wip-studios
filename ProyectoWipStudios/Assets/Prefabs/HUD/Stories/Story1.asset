@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Story1
   m_EditorClassIdentifier: 
   sentences:
-  - You have the power of the Squirrel.
+  - The humans have build a dam abd the river has dried.
+  - Use the powers of the animals to save the forest!
+  - Now I give you the power of the Squirrel.
   - Use Space to jump high and press again to glide.
   - You can also climb some trees with Left Click.
+  - Find other Spirits and they will help you!
   unlocksAnimal: 1
