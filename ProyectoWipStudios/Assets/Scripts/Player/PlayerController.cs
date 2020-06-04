@@ -207,6 +207,7 @@ public class PlayerController : MonoBehaviour
             Destroy(specificController.gameObject);
         }
 
+        SoundManager.Change.start();
         specificController = Instantiate(animalRef, transform);
         var particlesInstance = Instantiate(_changeParticles, _spawnParticlePoint.position, Quaternion.identity, _spawnParticlePoint);
         Destroy(particlesInstance, 2.5f);
