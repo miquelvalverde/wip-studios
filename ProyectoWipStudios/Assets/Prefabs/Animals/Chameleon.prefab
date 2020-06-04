@@ -2674,13 +2674,20 @@ MonoBehaviour:
   dropForce: 200
   chameleonHUD: {fileID: 6480272451193786695, guid: be39bea30aae1494eb351bb51af2c1fa,
     type: 3}
-  camouflageMaterial: {fileID: 2100000, guid: 4036578bca60bdd44a578eb785e87eba, type: 2}
-  camouflageMaterialTail: {fileID: 2100000, guid: e2e6f78a14d11264fa8a0e69b544d1ac,
-    type: 2}
-  camouflageMaterialDiamond: {fileID: 2100000, guid: d71cebea03b67af4eb991a1f1326080d,
-    type: 2}
-  camouflageMaterialEyes: {fileID: 2100000, guid: 6d4836de2bd9088499cfab44c859a155,
-    type: 2}
+  materials:
+  - {fileID: 2100000, guid: 30ad6cd10e4780c42938ecadcc703557, type: 2}
+  - {fileID: 2100000, guid: 51766df8ed48fa2499beb6d49f684641, type: 2}
+  - {fileID: 2100000, guid: c3a41cc88f90b294aad1721e373b19d4, type: 2}
+  - {fileID: 2100000, guid: 51617ad5f18ea9045a9260908d337a84, type: 2}
+  - {fileID: 2100000, guid: 6143f0d9793b8f3428dfe85a0c25a613, type: 2}
+  - {fileID: 2100000, guid: 1e92cdf905b3eb04a846db7ef3b818d8, type: 2}
+  - {fileID: 2100000, guid: 0d810340f22e0c4499b041365997505f, type: 2}
+  - {fileID: 2100000, guid: c29fb92c87a0eba4aa75fb86b872b499, type: 2}
+  - {fileID: 2100000, guid: 7b9ad4ae2c407744a8995e8fdd13cad4, type: 2}
+  - {fileID: 2100000, guid: 79df12d0125069147978b3d6a0a34e20, type: 2}
+  - {fileID: 2100000, guid: 03a3d22e880b3d545b479466784ef6bd, type: 2}
+  - {fileID: 2100000, guid: ce7f6247373de5649acf588c15f76602, type: 2}
+  - {fileID: 2100000, guid: 9c00906ee81895a428aefb04195eb214, type: 2}
   transitionTime: 0.5
 --- !u!1001 &7180911475223951465
 PrefabInstance:
