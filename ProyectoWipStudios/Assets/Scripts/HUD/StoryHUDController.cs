@@ -14,7 +14,6 @@ public class StoryHUDController : MonoBehaivourWithInputs
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
-            return;
         }
 
         instance = this;
