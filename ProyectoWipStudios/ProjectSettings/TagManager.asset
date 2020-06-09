@@ -18,8 +18,8 @@ TagManager:
   - Player
   - BrokenRock
   - ZTransparent
-  - 
-  - 
+  - PostProcessAlive
+  - PostProcessDead
   - 
   - 
   - 
