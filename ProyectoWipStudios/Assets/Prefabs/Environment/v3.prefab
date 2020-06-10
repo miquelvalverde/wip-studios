@@ -137,6 +137,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4537700168378349740, guid: 7ce22ed0e203a434b96959fcc2b0abf8,
+        type: 3}
+      propertyPath: m_TagString
+      value: stoneTag
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ce22ed0e203a434b96959fcc2b0abf8, type: 3}
 --- !u!4 &2315978903268899189 stripped

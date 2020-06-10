@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 144961196215851842}
   m_Layer: 0
   m_Name: r13
-  m_TagString: Untagged
+  m_TagString: stoneTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -111,6 +111,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -1206085215174012829, guid: 73edceebefcd95e4fbdf51c2b7f8e88a,
+        type: 3}
+      propertyPath: m_TagString
+      value: stoneTag
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 73edceebefcd95e4fbdf51c2b7f8e88a,
         type: 3}
