@@ -179,6 +179,19 @@ public class PlayerMovementController : MonoBehaivourWithInputs
         verticalSpeed = jumpSpeed;
 
         player.stats.isJumping = true;
+
+        switch (player.specificController.MyAnimalType)
+        {
+            case PlayerSpecificController.Type.Squirrel:
+                SoundManager.BoarJump.start();
+                break;  
+            case PlayerSpecificController.Type.Chameleon:
+                SoundManager.ChameleonJump.start();
+                break;
+            case PlayerSpecificController.Type.Boar:
+                SoundManager.BoarJump.start();
+                break;
+        }
     }
     #endregion
 

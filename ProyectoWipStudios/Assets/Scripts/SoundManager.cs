@@ -25,11 +25,7 @@ public class SoundManager : MonoBehaviour
     public static FMOD.Studio.EventInstance Waterfall;
     public static FMOD.Studio.EventInstance DartShot;
     public static FMOD.Studio.EventInstance ItsThere;
-    public static FMOD.Studio.EventInstance Waterfall;
-    public static FMOD.Studio.EventInstance DartShot;
-    public static FMOD.Studio.EventInstance ItsThere;
     public static FMOD.Studio.EventInstance BoarOuch;
-    public static FMOD.Studio.EventInstance ChameleonOuch;
     public static FMOD.Studio.EventInstance ChameleonOuch;
     public static FMOD.Studio.EventInstance SquirrelOuch;
     public static FMOD.Studio.EventInstance BoarJump;

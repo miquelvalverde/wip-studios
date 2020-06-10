@@ -18,7 +18,8 @@ public class ChameleonController : PlayerSpecificController
         hudInstance = Instantiate(chameleonHUD);
         foreach (Material material in materials)
             material.SetFloat("Camouflage", 1);
-    }
+        MyAnimalType = Type.Chameleon;
+    }   
 
     private void TonguePick()
     {
@@ -42,11 +43,13 @@ public class ChameleonController : PlayerSpecificController
         {
             this.playerController.doNormalMovement = false;
             this.playerController.lockRotation = true;
+            SoundManager.ChameleonCamouflage.start();
         }
         else
         {
             this.playerController.doNormalMovement = true;
             this.playerController.lockRotation = false;
+            SoundManager.ChameleonDecamouflage.start();
         }
 
         // dissolve

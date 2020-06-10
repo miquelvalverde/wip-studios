@@ -29,6 +29,7 @@ public class RadialMenuController : MonoBehaivourWithInputs
     private Vector2 deltaMouse;
     private float tolerance = 2.0F;
     private int previousSelection;
+    private int previousHoverSelection = 0;    
 
     // Hardcoded icon rotation fixes. TODO improve solution
     private float[] iconRotation = new float[3] { 60, 180, -60 };
@@ -125,6 +126,7 @@ public class RadialMenuController : MonoBehaivourWithInputs
         this.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.Confined;
         IsHoldingToChange = true;
+        SoundManager.UISelect.start();
     }
 
     private void DisableRadialMenu()
@@ -136,6 +138,7 @@ public class RadialMenuController : MonoBehaivourWithInputs
         this.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         IsHoldingToChange = false;
+        SoundManager.UISelect.start();
     }
 
     private void SelectPortion(int selectedPortionIndex)
@@ -149,13 +152,19 @@ public class RadialMenuController : MonoBehaivourWithInputs
         {
             if(portionIndex == selectedPortionIndex)
             {
-                radialMenuPortions[portionIndex].iconRect.localScale = new Vector3(hoverSize, hoverSize, 1); 
+                radialMenuPortions[portionIndex].iconRect.localScale = new Vector3(hoverSize, hoverSize, 1);
             }
             else
             {
                 radialMenuPortions[portionIndex].iconRect.localScale = Vector3.one;
             }
         }
+
+        if(previousHoverSelection != selectedPortionIndex)
+        {
+            SoundManager.UIHover.start();
+        }
+        previousHoverSelection = selectedPortionIndex;
     }
 
     private float GetAngleFromMouseInput(Vector3 mousePosition)

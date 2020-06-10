@@ -31,6 +31,7 @@ public class SquirrelController : PlayerSpecificController
         this.controls.Player.Glide.canceled += _ => StopGlide();
 
         this.controls.Player.Climb.performed += _ => StartClimb();
+        MyAnimalType = Type.Squirrel;
     }
 
     public override void UpdateSpecificAction()

@@ -15,6 +15,7 @@ public class Pickable : Aimable
 
     public void Pick()
     {
+        SoundManager.ChameleonTonguePick.start();
         this.gameObject.SetActive(false);
         this.rb.isKinematic = true;
     }
@@ -28,5 +29,6 @@ public class Pickable : Aimable
         this.gameObject.SetActive(true);
         this.rb.isKinematic = false;
         this.rb.AddForce(direction * force);
+        SoundManager.ChameleonSpit.start();
     }
 }
