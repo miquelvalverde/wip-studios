@@ -65,6 +65,7 @@ public class SquirrelController : PlayerSpecificController
         this.playerController.useMovementInputs = false;
         this.playerController.stats.isGliding = true;
         this.playerController.ChangeMaxVerticalSpeed(glideSpeed);
+        SoundManager.SquirrelGlide.start();
     }
 
     private void StopGlide()
@@ -75,6 +76,7 @@ public class SquirrelController : PlayerSpecificController
         this.playerController.useMovementInputs = true;
         this.playerController.stats.isGliding = false;
         this.playerController.ResetMaxVerticalSpeed();
+        SoundManager.SquirrelGlide.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
     #endregion
 
@@ -121,7 +123,7 @@ public class SquirrelController : PlayerSpecificController
     {
         nextClimbPosition = currentTree.GetNextPosition(transform);
         this.playerController.alternativeMoveDestination = nextClimbPosition;
-
+        SoundManager.SquirrelClimb.start();
         return currentTree.IsLastPoint;
     }
 
