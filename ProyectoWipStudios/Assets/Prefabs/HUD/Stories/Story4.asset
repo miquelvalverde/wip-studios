@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentences:
   - The path to the dam is blocked by some big rocks!
-  - Here you have and abandoned control panel that humans used to use.
+  - this is and abandoned control panel that humans used to use.
   - Maybe it still works...
   unlocksAnimal: 3
