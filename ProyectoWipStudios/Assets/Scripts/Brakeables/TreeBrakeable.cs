@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class TreeBrakeable : MonoBehaviour, IBreakable
+public class TreeBrakeable : MonoBehaviourPlayerGettable, IBreakable
 {
     [SerializeField] private float fallAngle = -272.28f;
     [SerializeField] private float fallTime = 4;    
@@ -34,6 +34,8 @@ public class TreeBrakeable : MonoBehaviour, IBreakable
             timer += Time.deltaTime;
             yield return null;
         }
+
+        player.cameraController.Shake(0.5f, .5f);
     }
 
     private void OnDrawGizmos()

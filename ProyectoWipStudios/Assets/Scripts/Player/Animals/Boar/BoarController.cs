@@ -60,6 +60,7 @@ public class BoarController : PlayerSpecificController
                 colliders[0].GetComponent<IBreakable>().Break();
 
             SoundManager.BoarHit.start();
+            player.cameraController.Shake(.05f, .07f);
             return true;
         }
 

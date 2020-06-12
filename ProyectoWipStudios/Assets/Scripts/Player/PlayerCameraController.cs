@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerCameraController : MonoBehaivourWithInputs
 {
@@ -20,9 +21,12 @@ public class PlayerCameraController : MonoBehaivourWithInputs
     private Vector2 mouseInput;
     private bool moveBackInput;
 
+    private bool isShaking = false;
+
     private void Start()
     {
         distanceToLookAt = maxDistanceToLookAt;
+        isShaking = false;
     }
 
     protected override void SetControls()
@@ -36,6 +40,9 @@ public class PlayerCameraController : MonoBehaivourWithInputs
 
     public void UpdateCamera()
     {
+        if (isShaking)
+            return;
+
         float mouseX = mouseInput.x;
         float mouseY = mouseInput.y;
 
@@ -108,4 +115,36 @@ public class PlayerCameraController : MonoBehaivourWithInputs
 
         distanceToLookAt = Mathf.Clamp(distanceToLookAt + scrollAmount, minDistanceToLookAt, maxDistanceToLookAt);
     }
+
+    public void Shake(float duration, float magnitude)
+    {
+        StartCoroutine(ShakeEnumerator(duration, magnitude));
+    }
+
+    private IEnumerator ShakeEnumerator(float duration, float magnitude)
+    {
+        isShaking = true;
+
+        Vector3 originalPos = Camera.main.transform.localPosition;
+
+        float elapsed = .0f;
+
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+            float z = Random.Range(-1f, 1f) * magnitude;
+
+            Camera.main.transform.position = originalPos + new Vector3(x, y, z);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Camera.main.transform.localPosition = originalPos;
+
+        isShaking = false;
+    }
+
 }
