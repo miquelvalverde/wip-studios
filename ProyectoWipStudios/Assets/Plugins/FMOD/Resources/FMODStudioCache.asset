@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/Master.strings.bank
   SubDir: 
-  lastModified: 637269020094883240
+  lastModified: 637272338356543262
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -89,6 +89,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 713
+--- !u!114 &-8354567705325986626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/Master.bank
+  SubDir: 
+  lastModified: 637272338356533290
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-7959336441596345772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +122,7 @@ MonoBehaviour:
   Path: event:/Events/Player/Jump/Boar jump/boar_jump
   guid: 0d0a24446b07504a97c11b294c1d0a18
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -173,7 +191,7 @@ MonoBehaviour:
   Path: event:/Events/Chameleon Specific/Tongue/chameleon_tongue
   guid: 71b6425246c49841a0f12bdcc29a9a51
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -196,7 +214,7 @@ MonoBehaviour:
   Path: event:/Events/Player/Walk steps/Stone/animal_step_stone
   guid: bcb675c98bd3614c9f757a04814ffeae
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -239,7 +257,7 @@ MonoBehaviour:
   Path: event:/Events/Chameleon Specific/Spit/chameleon_spit
   guid: b5b933e9f413fc46b5c2ec4b3823acf9
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -262,7 +280,7 @@ MonoBehaviour:
   Path: event:/Events/Rock/Rock impact/rock_impact_boar
   guid: 2a7d633627e8f742b67142a8281683c0
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -285,7 +303,7 @@ MonoBehaviour:
   Path: event:/Events/Rock/Rock shatter/rock_shatter
   guid: 5994eef26736a24983cee77479a32658
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -372,7 +390,7 @@ MonoBehaviour:
   Path: event:/Events/UI/Select item/ui_select
   guid: da70cf568621c945bbc47b52cd21a62e
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -395,7 +413,7 @@ MonoBehaviour:
   Path: event:/Events/Chameleon Specific/Decamouflage/chameleon_decamouflage
   guid: e6080a37a4e449428f90164516482887
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -418,7 +436,7 @@ MonoBehaviour:
   Path: event:/Events/Chameleon Specific/Tongue pick/chameleon_tongue_pick
   guid: 276d39e4acac0e448b05a8206590bb98
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -441,7 +459,7 @@ MonoBehaviour:
   Path: event:/Events/Soundtrack/Soundtrack/soundtrack
   guid: 0b26aaa808dc7b498921de264f4c51c5
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -487,7 +505,7 @@ MonoBehaviour:
   Path: event:/Events/Tree/Falling tree/tree_fall
   guid: e479ec7a50d5064baf1df2efc553c7a8
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -533,7 +551,7 @@ MonoBehaviour:
   Path: event:/Events/Soundtrack/Music/Music 2/music2
   guid: b924ff75b02b13428633da48470f83ae
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -579,7 +597,7 @@ MonoBehaviour:
   Path: event:/Events/Boar Specific/Hit/boar_hit
   guid: 16e72582b284c74fb6325a245f7496ba
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -625,7 +643,7 @@ MonoBehaviour:
   Path: event:/Events/Squirrel Specific/Glide/squirrel_glide
   guid: 868450ca4d427f449500e6a1db8bf1c0
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -750,7 +768,7 @@ MonoBehaviour:
   Path: event:/Events/Player/Dart impact/Squirrel ouch/squirrel_ouch
   guid: 8c52f4f853685a48b711bed2be76ebdb
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -791,7 +809,7 @@ MonoBehaviour:
   Path: event:/Events/Dam/Waterfall/waterfall
   guid: ba79f77feaa5f14f8ea43a6dd1d2d904
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -855,7 +873,7 @@ MonoBehaviour:
   Path: event:/Events/Enemy/Dart shot/dart_shot
   guid: 54cbc5dab88b1348a697a232e18adbf2
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -877,7 +895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -8608366872434812353}
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   EditorEvents:
   - {fileID: 9152057087107873756}
   - {fileID: -5422130214827579115}
@@ -917,10 +935,10 @@ MonoBehaviour:
   - {fileID: 8344510495312624313}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   StringsBanks:
   - {fileID: -8608366872434812353}
-  stringsBankWriteTime: 637269020094883240
+  stringsBankWriteTime: 637272338356543262
   cacheVersion: 3
 --- !u!114 &2129554503959935
 MonoBehaviour:
@@ -960,7 +978,7 @@ MonoBehaviour:
   Path: event:/Events/Player/Dart impact/Boar ouch/boar_ouch
   guid: c04b3e015e26494badab0f3931966a13
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -983,7 +1001,7 @@ MonoBehaviour:
   Path: event:/Events/Soundtrack/Music/Music 1/music1
   guid: e93a85edb0683c45a3d551c02b453e46
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1088,7 +1106,7 @@ MonoBehaviour:
   Path: event:/Events/Player/Walk steps/Grass/animal_step_grass
   guid: a433bb5f6850fb44a18954e647b3c524
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1111,7 +1129,7 @@ MonoBehaviour:
   Path: event:/Events/Dam/Turbine active/turbine_active
   guid: 44e4f54969ced14a88a170ee2806326f
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1226,7 +1244,7 @@ MonoBehaviour:
   Path: event:/Events/Bear Trap/Trap activated/trap
   guid: b4fd7ea3a405b548bd5d0a37971e6c3c
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1272,7 +1290,7 @@ MonoBehaviour:
   Path: event:/Events/Player/Walk steps/Wood/animal_step_wood
   guid: e65f416cada8d943a8e22c72c13321d0
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1318,7 +1336,7 @@ MonoBehaviour:
   Path: event:/Events/Player/Jump/Chameleon jump/chameleon_jump
   guid: eec1438f39a3d3479df6b912f4883e4f
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1387,7 +1405,7 @@ MonoBehaviour:
   Path: event:/Events/Boar Specific/Fall/boar_fall
   guid: ad9f6458093f6c42a34a0dbdcf266ac6
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1602,7 +1620,7 @@ MonoBehaviour:
   Path: event:/Events/Squirrel Specific/Climb/squirrel_climb
   guid: 7172786ced86fa4ca3924aa4a6c49af8
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1707,7 +1725,7 @@ MonoBehaviour:
   Path: event:/Events/Player/Dart impact/Chameleon ouch/chameleon_ouch
   guid: 19a29e42a32b474ba6949703194e4843
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1776,7 +1794,7 @@ MonoBehaviour:
   Path: event:/Events/Enemy/It's there!/its_there
   guid: 47e52ced13b4bb4c8db4c0107dada746
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1799,7 +1817,7 @@ MonoBehaviour:
   Path: event:/Events/Player/Transformation/animal_transform
   guid: 81f39bce83a2784f993bfbf9c7714e45
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1822,7 +1840,7 @@ MonoBehaviour:
   Path: event:/Events/UI/Hover item/ui_hover
   guid: e62b5786fe399d4ea3613a2718c1f502
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1845,7 +1863,7 @@ MonoBehaviour:
   Path: event:/Events/Boar Specific/Charge/boar_charge
   guid: 664a5feb521da94383a10f47198c2fbc
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1868,7 +1886,7 @@ MonoBehaviour:
   Path: event:/Events/Player/Jump/Squirrel jump/squirrel_jump
   guid: bd4045157e84434396faba10732eb96d
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1891,7 +1909,7 @@ MonoBehaviour:
   Path: event:/Events/Dam/Dam break/dam_break
   guid: 8acbc2669b9b104491e9179ecae4f938
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -1914,7 +1932,7 @@ MonoBehaviour:
   Path: event:/Events/Chameleon Specific/Camouflage/chameleon_camouflage
   guid: fcf86868d607eb48b426e5b999df456a
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1960,7 +1978,7 @@ MonoBehaviour:
   Path: event:/Events/Tree/Tree impact/tree_impact
   guid: 37f1e096bfe76c44ad94d03472b1ce1f
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1983,7 +2001,7 @@ MonoBehaviour:
   Path: event:/Events/Dam/Turbine break/turbine_break
   guid: 0192d1eaf9ea3345b94d988e61e2122b
   Banks:
-  - {fileID: -1615804649832151532}
+  - {fileID: -8354567705325986626}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
