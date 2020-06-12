@@ -23,6 +23,7 @@ public class DestroyGradually : MonoBehaviour
 
     IEnumerator DestroyRoutine(Material material)
     {
+        SoundManager.RockShatter.start();
         float stepTime = 0.01F;
         float numSteps = time / stepTime;
         float alphaStep = 1F / numSteps;

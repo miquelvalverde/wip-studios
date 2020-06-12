@@ -28,6 +28,7 @@ public class Trap : MonoBehaviour
 
     private void Activate(bool killPlayer)
     {
+        SoundManager.BearTrap.start();
         isDeployed = true;
         trapMeshRenderer.material = trapActivatedMaterial;
         if(killPlayer)

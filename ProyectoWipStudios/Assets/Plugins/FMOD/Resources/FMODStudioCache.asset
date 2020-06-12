@@ -23,6 +23,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1568
+--- !u!114 &-9066567362938044489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Soundtrack/Music/Music 1/music1
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Soundtrack/Music/Music 1/music1
+  guid: e93a85edb0683c45a3d551c02b453e46
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 51200
 --- !u!114 &-8891967414307497512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +89,29 @@ MonoBehaviour:
   - Name: 
     Value: 2968
   Exists: 1
+--- !u!114 &-8552922051124985553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Dam/Turbine active/turbine_active
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Dam/Turbine active/turbine_active
+  guid: 44e4f54969ced14a88a170ee2806326f
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 46000
 --- !u!114 &-8528125121604360294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +199,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5268
+--- !u!114 &-7953694911359017873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Enemy/It's there!/its_there
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Enemy/It's there!/its_there
+  guid: 47e52ced13b4bb4c8db4c0107dada746
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 669
+--- !u!114 &-7781831891115019527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Chameleon Specific/Tongue/chameleon_tongue
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Chameleon Specific/Tongue/chameleon_tongue
+  guid: 71b6425246c49841a0f12bdcc29a9a51
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 494
 --- !u!114 &-7690657027115426707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +357,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 480
+--- !u!114 &-6926122374031821371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Dam/Dam break/dam_break
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Dam/Dam break/dam_break
+  guid: 8acbc2669b9b104491e9179ecae4f938
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 11049
 --- !u!114 &-6891416271938463747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +403,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &-6830671295087943696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Tree/Falling tree/tree_fall
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Tree/Falling tree/tree_fall
+  guid: e479ec7a50d5064baf1df2efc553c7a8
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 5268
 --- !u!114 &-6546875900392554945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +472,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 322
+--- !u!114 &-6220188452793086720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Soundtrack/Soundtrack/soundtrack
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Soundtrack/Soundtrack/soundtrack
+  guid: 0b26aaa808dc7b498921de264f4c51c5
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 266754
 --- !u!114 &-6170465437148170778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +628,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 266754
+--- !u!114 &-5266947349040636249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/UI/Select item/ui_select
+  m_EditorClassIdentifier: 
+  Path: event:/Events/UI/Select item/ui_select
+  guid: da70cf568621c945bbc47b52cd21a62e
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1075
+--- !u!114 &-5203624888620371816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Rock/Rock shatter/rock_shatter
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Rock/Rock shatter/rock_shatter
+  guid: 5994eef26736a24983cee77479a32658
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1760
 --- !u!114 &-5196518674172613793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +697,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 46000
+--- !u!114 &-5162000700209758073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Squirrel Specific/Climb/squirrel_climb
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Squirrel Specific/Climb/squirrel_climb
+  guid: 7172786ced86fa4ca3924aa4a6c49af8
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 242
+--- !u!114 &-5031254766639734336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/UI/Hover item/ui_hover
+  m_EditorClassIdentifier: 
+  Path: event:/Events/UI/Hover item/ui_hover
+  guid: e62b5786fe399d4ea3613a2718c1f502
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 713
 --- !u!114 &-4943994395785289184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +789,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 312
+--- !u!114 &-4716137559581524698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Chameleon Specific/Tongue pick/chameleon_tongue_pick
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Chameleon Specific/Tongue pick/chameleon_tongue_pick
+  guid: 276d39e4acac0e448b05a8206590bb98
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 475
+--- !u!114 &-4511818387657874593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Player/Walk steps/Grass/animal_step_grass
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Player/Walk steps/Grass/animal_step_grass
+  guid: a433bb5f6850fb44a18954e647b3c524
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 368
 --- !u!114 &-4123704933523986149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,6 +904,93 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 562
+--- !u!114 &-3663741021761045540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Player/Jump/Chameleon jump/chameleon_jump
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Player/Jump/Chameleon jump/chameleon_jump
+  guid: eec1438f39a3d3479df6b912f4883e4f
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 153
+--- !u!114 &-3400742939652589911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/Master.bank
+  SubDir: 
+  lastModified: 637268972470028340
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-3330241399523075463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Player/Walk steps/Wood/animal_step_wood
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Player/Walk steps/Wood/animal_step_wood
+  guid: e65f416cada8d943a8e22c72c13321d0
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 286
+--- !u!114 &-2736523295417868398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Squirrel Specific/Glide/squirrel_glide
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Squirrel Specific/Glide/squirrel_glide
+  guid: 868450ca4d427f449500e6a1db8bf1c0
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 4000
 --- !u!114 &-2566295900597561581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,6 +1014,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 181
+--- !u!114 &-2523909571251141819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/Master.strings.bank
+  SubDir: 
+  lastModified: 637275715716862973
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 2968
+  Exists: 1
 --- !u!114 &-2368556393416506803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,6 +1073,29 @@ MonoBehaviour:
   guid: 2a7d633627e8f742b67142a8281683c0
   Banks:
   - {fileID: -7080355173812784538}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 500
+--- !u!114 &-2037255217432090065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Rock/Rock impact/rock_impact_boar
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Rock/Rock impact/rock_impact_boar
+  guid: 2a7d633627e8f742b67142a8281683c0
+  Banks:
+  - {fileID: -779002609718952844}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -840,6 +1269,47 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 82336
+--- !u!114 &-779002609718952844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/Master.bank
+  SubDir: 
+  lastModified: 637275715716813023
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-771271369101878223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Enemy/Dart shot/dart_shot
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Enemy/Dart shot/dart_shot
+  guid: 54cbc5dab88b1348a697a232e18adbf2
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 850
 --- !u!114 &-50697035222500700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,42 +1349,42 @@ MonoBehaviour:
   - {fileID: -8608366872434812353}
   - {fileID: -8354567705325986626}
   EditorEvents:
-  - {fileID: 9152057087107873756}
-  - {fileID: -5422130214827579115}
-  - {fileID: -7959336441596345772}
-  - {fileID: -3740748469145840998}
-  - {fileID: 6086318735909609542}
-  - {fileID: -5468949845134530602}
-  - {fileID: -6891416271938463747}
-  - {fileID: 9067368304719722700}
-  - {fileID: 1036373938814835113}
-  - {fileID: 6844452152855983110}
-  - {fileID: -50697035222500700}
-  - {fileID: -6546875900392554945}
-  - {fileID: 7639889186273188603}
-  - {fileID: 5578039906807391158}
-  - {fileID: -7368760457168991081}
-  - {fileID: 6898884148238598814}
-  - {fileID: -2368556393416506803}
-  - {fileID: 7968140264271677748}
-  - {fileID: -1155039327253476920}
-  - {fileID: 819340352468179857}
-  - {fileID: 3466982081494978257}
-  - {fileID: 1713740508596688415}
-  - {fileID: -6927779391674515428}
-  - {fileID: -4123704933523986149}
-  - {fileID: -968247067385085993}
-  - {fileID: -7237682891219994846}
-  - {fileID: 7703287824590985177}
-  - {fileID: 201524678899939585}
-  - {fileID: -5860531415264446630}
-  - {fileID: -4943994395785289184}
-  - {fileID: -5563521947110503160}
-  - {fileID: 7267044700859011582}
-  - {fileID: 2435077498511374871}
-  - {fileID: 329336296199761009}
-  - {fileID: 2544224726379876165}
-  - {fileID: 8344510495312624313}
+  - {fileID: 3083680189414696283}
+  - {fileID: -6220188452793086720}
+  - {fileID: 2872684950333552548}
+  - {fileID: 1582392153305839698}
+  - {fileID: -8262026815352178616}
+  - {fileID: -4716137559581524698}
+  - {fileID: -2037255217432090065}
+  - {fileID: -7993385448351853943}
+  - {fileID: -8552922051124985553}
+  - {fileID: -7953694911359017873}
+  - {fileID: -771271369101878223}
+  - {fileID: -5203624888620371816}
+  - {fileID: 4066487085376336092}
+  - {fileID: -5162000700209758073}
+  - {fileID: -7781831891115019527}
+  - {fileID: 9089431362192865190}
+  - {fileID: -2736523295417868398}
+  - {fileID: -6926122374031821371}
+  - {fileID: 8135527279666532881}
+  - {fileID: -4511818387657874593}
+  - {fileID: 1303352086999740412}
+  - {fileID: 4731931545899703015}
+  - {fileID: 5381737664826919990}
+  - {fileID: 4397863159510591941}
+  - {fileID: 5918240368156796073}
+  - {fileID: 2628455789203857198}
+  - {fileID: 7033684729461884761}
+  - {fileID: 8126461599735979503}
+  - {fileID: -5266947349040636249}
+  - {fileID: -6830671295087943696}
+  - {fileID: 6256198862007258217}
+  - {fileID: -5031254766639734336}
+  - {fileID: -3330241399523075463}
+  - {fileID: -9066567362938044489}
+  - {fileID: -3663741021761045540}
+  - {fileID: 2037831720799805771}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8354567705325986626}
@@ -1165,6 +1635,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1097
+--- !u!114 &1303352086999740412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Boar Specific/Fall/boar_fall
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Boar Specific/Fall/boar_fall
+  guid: ad9f6458093f6c42a34a0dbdcf266ac6
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 879
 --- !u!114 &1491580474214265955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1188,6 +1681,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 153
+--- !u!114 &1582392153305839698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Boar Specific/Hit/boar_hit
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Boar Specific/Hit/boar_hit
+  guid: 16e72582b284c74fb6325a245f7496ba
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 562
 --- !u!114 &1711086009685397894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,6 +1750,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 774
+--- !u!114 &2037831720799805771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Chameleon Specific/Camouflage/chameleon_camouflage
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Chameleon Specific/Camouflage/chameleon_camouflage
+  guid: fcf86868d607eb48b426e5b999df456a
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 312
 --- !u!114 &2130079194193293494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,6 +1888,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 657
+--- !u!114 &2628455789203857198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Player/Walk steps/Stone/animal_step_stone
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Player/Walk steps/Stone/animal_step_stone
+  guid: bcb675c98bd3614c9f757a04814ffeae
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 342
+--- !u!114 &2872684950333552548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Player/Jump/Boar jump/boar_jump
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Player/Jump/Boar jump/boar_jump
+  guid: 0d0a24446b07504a97c11b294c1d0a18
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 181
 --- !u!114 &2962235647043037801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,6 +1957,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 368
+--- !u!114 &3083680189414696283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Dam/Turbine break/turbine_break
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Dam/Turbine break/turbine_break
+  guid: 0192d1eaf9ea3345b94d988e61e2122b
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 657
 --- !u!114 &3466982081494978257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1487,6 +2095,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 562
+--- !u!114 &4066487085376336092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Boar Specific/Charge/boar_charge
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Boar Specific/Charge/boar_charge
+  guid: 664a5feb521da94383a10f47198c2fbc
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1568
+--- !u!114 &4397863159510591941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Soundtrack/Music/Music 2/music2
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Soundtrack/Music/Music 2/music2
+  guid: b924ff75b02b13428633da48470f83ae
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 82336
 --- !u!114 &4450172607808320215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1528,6 +2182,29 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &4731931545899703015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Bear Trap/Trap activated/trap
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Bear Trap/Trap activated/trap
+  guid: b4fd7ea3a405b548bd5d0a37971e6c3c
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 774
 --- !u!114 &5128528685225202435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1587,6 +2264,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 266754
+--- !u!114 &5381737664826919990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Chameleon Specific/Spit/chameleon_spit
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Chameleon Specific/Spit/chameleon_spit
+  guid: b5b933e9f413fc46b5c2ec4b3823acf9
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 480
 --- !u!114 &5578039906807391158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1646,6 +2346,29 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &5918240368156796073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Dam/Waterfall/waterfall
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Dam/Waterfall/waterfall
+  guid: ba79f77feaa5f14f8ea43a6dd1d2d904
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 60000
 --- !u!114 &5981760703209702326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1715,6 +2438,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 532
+--- !u!114 &6256198862007258217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Chameleon Specific/Decamouflage/chameleon_decamouflage
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Chameleon Specific/Decamouflage/chameleon_decamouflage
+  guid: e6080a37a4e449428f90164516482887
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 322
 --- !u!114 &6365395489532131438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1807,6 +2553,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1097
+--- !u!114 &7033684729461884761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Player/Jump/Squirrel jump/squirrel_jump
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Player/Jump/Squirrel jump/squirrel_jump
+  guid: bd4045157e84434396faba10732eb96d
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 185
 --- !u!114 &7267044700859011582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1899,6 +2668,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 11049
+--- !u!114 &8126461599735979503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Player/Dart impact/Boar ouch/boar_ouch
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Player/Dart impact/Boar ouch/boar_ouch
+  guid: c04b3e015e26494badab0f3931966a13
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 322
+--- !u!114 &8135527279666532881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Player/Dart impact/Squirrel ouch/squirrel_ouch
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Player/Dart impact/Squirrel ouch/squirrel_ouch
+  guid: 8c52f4f853685a48b711bed2be76ebdb
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 544
 --- !u!114 &8344510495312624313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1968,6 +2783,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 926
+--- !u!114 &9089431362192865190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Events/Player/Transformation/animal_transform
+  m_EditorClassIdentifier: 
+  Path: event:/Events/Player/Transformation/animal_transform
+  guid: 81f39bce83a2784f993bfbf9c7714e45
+  Banks:
+  - {fileID: -779002609718952844}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1097
 --- !u!114 &9152057087107873756
 MonoBehaviour:
   m_ObjectHideFlags: 0

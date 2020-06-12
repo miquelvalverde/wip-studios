@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2891101302833072404, guid: ed2d7425455d2eb45948de9b14c219e4,
+        type: 3}
+      propertyPath: m_TagString
+      value: stoneTag
+      objectReference: {fileID: 0}
     - target: {fileID: 6142926780526314112, guid: ed2d7425455d2eb45948de9b14c219e4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

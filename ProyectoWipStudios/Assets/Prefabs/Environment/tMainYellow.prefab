@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 210771048207464218, guid: 411ad9f74ebc41c45ad0ebaadfec1701,
+        type: 3}
+      propertyPath: m_TagString
+      value: woodTag
+      objectReference: {fileID: 0}
     - target: {fileID: 674367561267445604, guid: 411ad9f74ebc41c45ad0ebaadfec1701,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -166,6 +171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641521391401287525, guid: 411ad9f74ebc41c45ad0ebaadfec1701,
+        type: 3}
+      propertyPath: m_TagString
+      value: woodTag
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 411ad9f74ebc41c45ad0ebaadfec1701, type: 3}
