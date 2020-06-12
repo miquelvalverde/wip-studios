@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundAnimationHandler : MonoBehaviour
+public class SoundAnimationHandler : MonoBehaviourPlayerGettable
 {
     int layers;
 
@@ -13,7 +13,10 @@ public class SoundAnimationHandler : MonoBehaviour
 
     public void WalkStep()
     {
-         Debug.DrawRay(transform.parent.position, Vector3.down * 5, Color.green);
+        if (player.stats.speed < 0.2)
+            return;
+
+        Debug.DrawRay(transform.parent.position, Vector3.down * 5, Color.green);
 
         if (Physics.Raycast(transform.parent.position + Vector3.up, Vector3.down, out RaycastHit hit, 5, layers))
         {
