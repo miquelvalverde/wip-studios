@@ -13,7 +13,10 @@ public class EnemySense : MonoBehaviourPlayerGettable
         Physics.Raycast(self.position + Vector3.up, (player.transform.position + Vector3.up) - (self.position + Vector3.up), out hit, self.chaseMaxDistance);
 
         if (hit.collider && hit.collider.GetComponent<PlayerController>() && !player.stats.isCamouflaged)
+        {
             self.stats.isSeeingPlayer = true;
+            SoundManager.ItsThere.start();
+        }
         
     }
 

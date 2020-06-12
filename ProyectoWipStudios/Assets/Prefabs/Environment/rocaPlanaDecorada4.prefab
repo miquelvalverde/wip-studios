@@ -491,6 +491,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: -8052994932809076077, guid: b517a8fb8d1cb934d841d56deaab6379,
+        type: 3}
+      propertyPath: m_TagString
+      value: stoneTag
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b517a8fb8d1cb934d841d56deaab6379,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -27,6 +27,7 @@ public class Trap : MonoBehaviour
 
     private void Activate(bool killPlayer)
     {
+        SoundManager.BearTrap.start();
         isDeployed = true;
         trapAnimation.Play();
         if (killPlayer)
