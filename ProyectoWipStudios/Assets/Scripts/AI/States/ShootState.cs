@@ -7,6 +7,7 @@ public class ShootState : State
         base.StartState(self);
         this.self.agent.isStopped = true;
         this.self.SetAnim("Shoot");
+        SoundManager.DartShot.start();
         player.Dead();
     }
 

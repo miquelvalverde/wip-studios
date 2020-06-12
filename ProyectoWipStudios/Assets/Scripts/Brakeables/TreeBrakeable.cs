@@ -23,6 +23,7 @@ public class TreeBrakeable : MonoBehaviour, IBreakable
 
     IEnumerator TreeFallRoutine()
     {
+        SoundManager.TreeFall.start();
         var direction = transform.right;
         direction = Quaternion.AngleAxis(fallAngle, transform.up) * direction;
         var currentDirection = transform.up;

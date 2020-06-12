@@ -6,6 +6,8 @@ public abstract class PlayerSpecificController : MonoBehaivourWithInputs
 
     public enum Type { Squirrel, Chameleon, Boar }
 
+    public Type MyAnimalType { get; protected set; }
+
     public float walkSpeed;
     public float jumpHeight;
     public float scale = 1;
@@ -13,6 +15,7 @@ public abstract class PlayerSpecificController : MonoBehaivourWithInputs
     public Transform headPoint;
 
     [SerializeField] protected Animator anim = null;
+
 
     public virtual void Start()
     {

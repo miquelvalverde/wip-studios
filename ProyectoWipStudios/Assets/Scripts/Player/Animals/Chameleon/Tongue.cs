@@ -72,6 +72,7 @@ public class Tongue : MonoBehaviour
         isProtracting = true;
         tongueScaler.gameObject.SetActive(true);
         PlayerController.instance.stats.isTongue = true;
+        SoundManager.ChameleonTongue.start();
     }
 
     private void Update()

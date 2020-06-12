@@ -14,6 +14,7 @@ public class BoarController : PlayerSpecificController
     public override void Initializate()
     {
         this.controls.Player.Run.performed += _ => Run();
+        MyAnimalType = Type.Boar;
     }
 
     public override void UpdateSpecificAction()
@@ -33,6 +34,7 @@ public class BoarController : PlayerSpecificController
 
         this.playerController.ChangeSpeed(runSpeed);
 
+        SoundManager.BoarCharge.start();
         Invoke("ExitRun", timeRunning);
     }
 
@@ -44,6 +46,7 @@ public class BoarController : PlayerSpecificController
         this.playerController.stats.isRunning = false;
 
         this.playerController.ResetSpeed();
+        SoundManager.BoarCharge.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     private bool HasCrashed()
@@ -56,6 +59,7 @@ public class BoarController : PlayerSpecificController
             if (colliders[0].GetComponent<IBreakable>() != null)
                 colliders[0].GetComponent<IBreakable>().Break();
 
+            SoundManager.BoarHit.start();
             return true;
         }
 
