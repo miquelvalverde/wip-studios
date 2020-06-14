@@ -78,7 +78,7 @@ Material:
     - Vector1_C002143E: 0.06
     - _AlphaClip: 0
     - _Blend: 0
-    - _BumpScale: 1
+    - _BumpScale: 3
     - _Cull: 2
     - _Cutoff: 0.5
     - _DstBlend: 0
