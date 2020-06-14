@@ -4,6 +4,7 @@ public class BoarController : PlayerSpecificController
 {
     [SerializeField] private float runSpeed = 10;
     [SerializeField] private float timeRunning = 2;
+    [SerializeField] private float stunTime = .5f;
 
     [Space]
     [Header("Crash Checker")]
@@ -41,12 +42,18 @@ public class BoarController : PlayerSpecificController
     private void ExitRun()
     {
         CancelInvoke("ExitRun");
-        this.playerController.useMovementInputs = true;
-        this.playerController.lockRotation = false;
-        this.playerController.stats.isRunning = false;
 
         this.playerController.ResetSpeed();
         SoundManager.BoarCharge.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        this.playerController.stats.isRunning = false;
+        Invoke("ReturnControl", stunTime);
+    }
+
+    private void ReturnControl()
+    {
+        this.playerController.lockRotation = false;
+        this.playerController.useMovementInputs = true;
     }
 
     private bool HasCrashed()
@@ -60,7 +67,7 @@ public class BoarController : PlayerSpecificController
                 colliders[0].GetComponent<IBreakable>().Break();
 
             SoundManager.BoarHit.start();
-            player.cameraController.Shake(.05f, .07f);
+            player.cameraController.Shake(.1f, .1f);
             return true;
         }
 

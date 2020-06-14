@@ -125,7 +125,7 @@ public class PlayerCameraController : MonoBehaivourWithInputs
     {
         isShaking = true;
 
-        Vector3 originalPos = Camera.main.transform.localPosition;
+        Vector3 originalPos = Camera.main.transform.position;
 
         float elapsed = .0f;
 
@@ -142,7 +142,7 @@ public class PlayerCameraController : MonoBehaivourWithInputs
             yield return null;
         }
 
-        Camera.main.transform.localPosition = originalPos;
+        Camera.main.transform.position = originalPos;
 
         isShaking = false;
     }
