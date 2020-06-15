@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Main Camera Profile 1
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: 7975746014056285663}
---- !u!114 &7975746014056285663
+  - {fileID: 8430091119838147627}
+--- !u!114 &8430091119838147627
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32,13 +32,13 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 14.59
+    value: 25.62
   threshold:
     overrideState: 1
-    value: 6.17
+    value: 1
   softKnee:
     overrideState: 1
-    value: 0.701
+    value: 0.5
   clamp:
     overrideState: 1
     value: 65472
@@ -50,7 +50,11 @@ MonoBehaviour:
     value: 0
   color:
     overrideState: 1
-    value: {r: 1, g: 1, b: 1, a: 1}
+    value:
+      r: 1
+      g: 1
+      b: 1
+      a: 1
   fastMode:
     overrideState: 1
     value: 0
