@@ -373,7 +373,7 @@ MonoBehaviour:
   checkerDimensions: {x: 0.7, y: 1.75, z: 0.25}
   whatIsObstacle:
     serializedVersion: 2
-    m_Bits: 769
+    m_Bits: 33537
 --- !u!1 &637316967499038290
 GameObject:
   m_ObjectHideFlags: 0
