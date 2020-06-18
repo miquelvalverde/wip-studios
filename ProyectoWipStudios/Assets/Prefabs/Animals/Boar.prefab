@@ -372,8 +372,8 @@ MonoBehaviour:
   timeRunning: 2
   stunTime: 1
   stuntParticles: {fileID: 3233917297520115436}
-  checkerOffset: {x: 0, y: 1.5, z: 0.85}
-  checkerDimensions: {x: 0.7, y: 2.2, z: 0.25}
+  checkerOffset: {x: 0, y: 2.19, z: 0.85}
+  checkerDimensions: {x: 0.7, y: 1.5, z: 0.25}
   whatIsObstacle:
     serializedVersion: 2
     m_Bits: 33537

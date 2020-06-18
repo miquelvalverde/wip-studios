@@ -139,6 +139,16 @@ public class PlayerController : MonoBehaviour
         ChangeToSquirrel();
     }
 
+    private void Start()
+    {
+        if (CheckpointManager.Instance != null && CheckpointManager.Instance.mustRestartAtCheckpoint)
+        {
+            transform.position = CheckpointManager.Instance.lastPosition;
+            transform.rotation = CheckpointManager.Instance.lastRotation;
+            CheckpointManager.Instance.mustRestartAtCheckpoint = false;
+        }
+    }
+
     private void Update()
     {
         radialMenuController.UpdateRadialMenu();
@@ -205,13 +215,6 @@ public class PlayerController : MonoBehaviour
                 return;
 
             Destroy(specificController.gameObject);
-        }
-
-        if(CheckpointManager.Instance != null && CheckpointManager.Instance.mustRestartAtCheckpoint)
-        {
-            transform.position = CheckpointManager.Instance.lastPosition;
-            transform.rotation = CheckpointManager.Instance.lastRotation;
-            CheckpointManager.Instance.mustRestartAtCheckpoint = false;
         }
 
         SoundManager.Change.start();
