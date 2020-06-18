@@ -23,6 +23,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1568
+--- !u!114 &-9158420349748883459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/Master.bank
+  SubDir: 
+  lastModified: 637280365688388619
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-9066567362938044489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +106,7 @@ MonoBehaviour:
   FileSizes:
   - Name: 
     Value: 2968
-  Exists: 1
+  Exists: 0
 --- !u!114 &-8552922051124985553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +439,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &-6891214426858014779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/Master.strings.bank
+  SubDir: 
+  lastModified: 637280365688408513
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 2968
+  Exists: 1
 --- !u!114 &-6830671295087943696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,19 +1567,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -8608366872434812353}
-  - {fileID: -8354567705325986626}
-  - {fileID: -1434001108301397998}
-  - {fileID: 1343802012251616870}
-  - {fileID: -305053704746483216}
+  - {fileID: 6731919807355757933}
+  - {fileID: -6891214426858014779}
+  - {fileID: 5616649676430716395}
   EditorEvents:
   - {fileID: 3083680189414696283}
   - {fileID: -6220188452793086720}
   - {fileID: 2872684950333552548}
   - {fileID: 1582392153305839698}
-  - {fileID: -8262026815352178616}
+  - {fileID: 0}
   - {fileID: -4716137559581524698}
   - {fileID: -2037255217432090065}
-  - {fileID: -7993385448351853943}
+  - {fileID: 0}
   - {fileID: -8552922051124985553}
   - {fileID: -7953694911359017873}
   - {fileID: -771271369101878223}
@@ -1575,8 +1612,8 @@ MonoBehaviour:
   - {fileID: 6731919807355757933}
   StringsBanks:
   - {fileID: -8608366872434812353}
-  - {fileID: -1434001108301397998}
-  stringsBankWriteTime: 637269020094883240
+  - {fileID: -6891214426858014779}
+  stringsBankWriteTime: 637280365688408513
   cacheVersion: 3
 --- !u!114 &2129554503959935
 MonoBehaviour:
@@ -1844,30 +1881,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 879
---- !u!114 &1325507777854608279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Events/Dam/Waterfall/waterfall
-  m_EditorClassIdentifier: 
-  Path: event:/Events/Dam/Waterfall/waterfall
-  guid: ba79f77feaa5f14f8ea43a6dd1d2d904
-  Banks:
-  - {fileID: 5437417428492962670}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 60000
---- !u!114 &1343802012251616870
+--- !u!114 &1340713169949836997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1877,14 +1891,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: Assets/StreamingAssets/Master.bank
+  Path: Assets/StreamingAssets/Master.strings.bank
   SubDir: 
-  lastModified: 637275724603377709
+  lastModified: 637280365688408513
   LoadResult: 0
-  FileSizes: []
-  Exists: 0
+  FileSizes:
+  - Name: 
+    Value: 2968
+  Exists: 1
 --- !u!114 &1491580474214265955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2537,6 +2553,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 242
+--- !u!114 &5616649676430716395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/Master.bank
+  SubDir: 
+  lastModified: 637280365688388619
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &5708405955672504748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2751,7 +2785,7 @@ MonoBehaviour:
   lastModified: 637269020094878269
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &6844452152855983110
 MonoBehaviour:
   m_ObjectHideFlags: 0
