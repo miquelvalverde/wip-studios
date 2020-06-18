@@ -56,9 +56,9 @@ public class GameController : MonoBehaivourWithInputs
 
     public void GameWin()
     {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
-        SceneManager.LoadScene(1);
+        /*Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;*/
+        SceneManager.LoadScene("Cinematic");
     }
         
     public void GameQuit()
