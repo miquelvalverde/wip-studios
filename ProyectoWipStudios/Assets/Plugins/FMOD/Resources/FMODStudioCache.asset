@@ -476,7 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/StreamingAssets/Master.strings.bank
   SubDir: 
-  lastModified: 637269020094883240
+  lastModified: 637269001073861712
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -1006,6 +1006,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 475
+--- !u!114 &-4593558683655564734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/Master.bank
+  SubDir: 
+  lastModified: 637269001073842036
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-4511818387657874593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1907,7 +1925,7 @@ MonoBehaviour:
   lastModified: 637269020094878269
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-50697035222500700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1974,6 +1992,7 @@ MonoBehaviour:
   - {fileID: 4282407502331308507}
   - {fileID: -2560963326346952860}
   - {fileID: -91495200054008725}
+  - {fileID: -4593558683655564734}
   EditorEvents:
   - {fileID: 3083680189414696283}
   - {fileID: -6220188452793086720}
@@ -2017,7 +2036,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -8608366872434812353}
   - {fileID: -6891214426858014779}
-  stringsBankWriteTime: 637269020094883240
+  stringsBankWriteTime: 637269001073861712
   cacheVersion: 3
 --- !u!114 &2129554503959935
 MonoBehaviour:
@@ -2147,6 +2166,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 532
+--- !u!114 &531541252200650214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/Master.bank
+  SubDir: 
+  lastModified: 637269001073842036
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &661372839615163964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3773,6 +3810,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 185
+--- !u!114 &7753144280306094059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/StreamingAssets/Master.bank
+  SubDir: 
+  lastModified: 637269001073842036
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &7968140264271677748
 MonoBehaviour:
   m_ObjectHideFlags: 0
