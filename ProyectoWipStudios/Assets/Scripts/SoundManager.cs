@@ -86,5 +86,9 @@ public class SoundManager : MonoBehaviour
         TreeImpact = FMODUnity.RuntimeManager.CreateInstance("event:/Events/Tree/Tree impact/tree_impact");
         UIHover = FMODUnity.RuntimeManager.CreateInstance("event:/Events/UI/Hover item/ui_hover");
         UISelect = FMODUnity.RuntimeManager.CreateInstance("event:/Events/UI/Select item/ui_select");
+
+        StepGrass.setVolume(.5f);
+        StepStone.setVolume(.5f);
+        StepWood.setVolume(.5f);
     }
 }
