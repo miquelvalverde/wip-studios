@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Checkpoint : MonoBehaviour
+public class Checkpoint : MonoBehaviourPlayerGettable
 {
     [SerializeField] private Transform spawnPosition;
 
@@ -21,6 +21,7 @@ public class Checkpoint : MonoBehaviour
         if (other.transform.name != "Player")
             return;
 
-        CheckpointManager.Instance.SaveCheckpoint(this);
+        var unlocks = player.GetRadialMenuController.GetUnlocksArray();
+        CheckpointManager.Instance.SaveCheckpoint(this, unlocks);
     }
 }

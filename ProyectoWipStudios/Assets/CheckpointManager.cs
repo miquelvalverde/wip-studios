@@ -17,17 +17,21 @@ public class CheckpointManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-    }
+    }   
 
     [HideInInspector] public Vector3 lastPosition;
     [HideInInspector] public Quaternion lastRotation;
     [HideInInspector] public bool mustRestartAtCheckpoint = false;
-        
-    public void SaveCheckpoint(Checkpoint checkpoint)
+    [HideInInspector] public bool mustUnlockCertainAnimals = false;
+    [HideInInspector] public bool[] unlockedAnimals;
+
+    public void SaveCheckpoint(Checkpoint checkpoint, bool[] currentUnlocks)
     {
+        unlockedAnimals = currentUnlocks;
         lastPosition = checkpoint.SpawnPosition;
         lastRotation = checkpoint.SpawnRotation;
         mustRestartAtCheckpoint = true;
+        mustUnlockCertainAnimals = true;
     }
 
 

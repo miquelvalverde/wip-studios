@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -73,6 +75,11 @@ public class RadialMenuController : MonoBehaivourWithInputs
         var portionInstances = new RadialMenuPortion[portionCount];
         for (int portionIndex = 0; portionIndex < portionCount; portionIndex++)
         {
+            if (CheckpointManager.Instance != null && CheckpointManager.Instance.mustUnlockCertainAnimals)
+            {
+                portions[portionIndex].isLockedInitially = CheckpointManager.Instance.unlockedAnimals[portionIndex];
+            }
+
             var portion = CreatePortion(portionIndex, portions[portionIndex]);
             portionInstances[portionIndex] = portion;
         }
@@ -181,5 +188,13 @@ public class RadialMenuController : MonoBehaivourWithInputs
         {
             radialMenuPortions.Where(p => p.animal.Equals(unlockType)).FirstOrDefault().Unlock();
         }
+    }
+
+    public bool[] GetUnlocksArray()
+    {
+        bool a = radialMenuPortions[0].isLocked;
+        bool b = radialMenuPortions[1].isLocked;
+        bool c = radialMenuPortions[2].isLocked;
+        return new bool[3] { a, b, c };
     }
 }
