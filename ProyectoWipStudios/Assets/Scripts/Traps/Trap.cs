@@ -5,8 +5,7 @@ using UnityEngine;
 public class Trap : MonoBehaviour
 {
 
-    [SerializeField] private MeshRenderer trapMeshRenderer = null;
-    [SerializeField] private Material trapActivatedMaterial = null;
+    [SerializeField] private Animation trapAnimation = null;
     private bool isDeployed;
 
     private void Start()
@@ -30,8 +29,8 @@ public class Trap : MonoBehaviour
     {
         SoundManager.BearTrap.start();
         isDeployed = true;
-        trapMeshRenderer.material = trapActivatedMaterial;
-        if(killPlayer)
+        trapAnimation.Play();
+        if (killPlayer)
             PlayerController.instance.Dead();
     }
 

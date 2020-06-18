@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 393715624243151550}
   m_Layer: 0
-  m_Name: tMainYellowThirsty (2)
+  m_Name: tMainYellowThirstyNoBranch (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 8527336440217424911}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.7952585, y: 20.789726, z: 2.2313836}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 3496279759025463059}
   m_Father: {fileID: 393715624243151550}

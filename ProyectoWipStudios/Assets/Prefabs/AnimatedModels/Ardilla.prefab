@@ -656,7 +656,7 @@ Animator:
   m_GameObject: {fileID: 1699867982475408682}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 153ae0e98dd33f141af1535655b08085, type: 3}
-  m_Controller: {fileID: 9100000, guid: 5a2a26a6e4bced143a921a8a75b3e5c7, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -986,7 +986,7 @@ SkinnedMeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 438eee2108de4a34da16540a86885495, type: 2}
   - {fileID: 2100000, guid: 9a9eb06355c124f438f76a42aca705bf, type: 2}
-  - {fileID: 2100000, guid: 7cf2f380488f09f4f805cedc7abb3993, type: 2}
+  - {fileID: 2100000, guid: 1ebe79eb86b05de4ba1c0fb081f2a21b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
