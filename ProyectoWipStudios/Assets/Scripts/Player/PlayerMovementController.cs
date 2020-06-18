@@ -98,7 +98,7 @@ public class PlayerMovementController : MonoBehaivourWithInputs
     private void CalculateNormalMovement()
     {
         float targetSpeed = speed;
-        if (PlayerController.instance.useMovementInputs)
+        if (PlayerController.instance.useMovementInputs && (this.player.stats.isRunning || this.player.stats.isGliding))
             targetSpeed *= inputDirection.magnitude;
 
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity,
