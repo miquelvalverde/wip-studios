@@ -11,6 +11,11 @@ public class Checkpoint : MonoBehaviour
         get => spawnPosition.position;
     }
 
+    public Quaternion SpawnRotation
+    {
+        get => spawnPosition.rotation;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.name != "Player")

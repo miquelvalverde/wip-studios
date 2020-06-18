@@ -207,9 +207,10 @@ public class PlayerController : MonoBehaviour
             Destroy(specificController.gameObject);
         }
 
-        if(CheckpointManager.Instance.mustRestartAtCheckpoint)
+        if(CheckpointManager.Instance != null && CheckpointManager.Instance.mustRestartAtCheckpoint)
         {
             transform.position = CheckpointManager.Instance.lastPosition;
+            transform.rotation = CheckpointManager.Instance.lastRotation;
             CheckpointManager.Instance.mustRestartAtCheckpoint = false;
         }
 

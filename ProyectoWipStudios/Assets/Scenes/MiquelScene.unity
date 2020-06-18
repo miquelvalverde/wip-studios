@@ -3937,6 +3937,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: CHECKPOINT
       objectReference: {fileID: 0}
+    - target: {fileID: 6673109450227499394, guid: 610844497f1a44547a74cd1f5abf9de5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6673109450227499394, guid: 610844497f1a44547a74cd1f5abf9de5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.38268343
+      objectReference: {fileID: 0}
+    - target: {fileID: 6673109450227499394, guid: 610844497f1a44547a74cd1f5abf9de5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6673109450227499394, guid: 610844497f1a44547a74cd1f5abf9de5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.92387956
+      objectReference: {fileID: 0}
+    - target: {fileID: 6673109450227499394, guid: 610844497f1a44547a74cd1f5abf9de5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 610844497f1a44547a74cd1f5abf9de5, type: 3}
 --- !u!1001 &7670054794835000379
