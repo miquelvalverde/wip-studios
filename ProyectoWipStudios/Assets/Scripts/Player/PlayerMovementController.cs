@@ -186,7 +186,7 @@ public class PlayerMovementController : MonoBehaivourWithInputs
         switch (player.specificController.MyAnimalType)
         {
             case PlayerSpecificController.Type.Squirrel:
-                SoundManager.BoarJump.start();
+                SoundManager.SquirrelJump.start();
                 break;  
             case PlayerSpecificController.Type.Chameleon:
                 SoundManager.ChameleonJump.start();

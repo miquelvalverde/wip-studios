@@ -37,6 +37,7 @@ public class StoryHUDController : MonoBehaivourWithInputs
     [SerializeField] private Sprite boarIcon = null;
     [SerializeField] private Sprite chameleonIcon = null;
     [SerializeField] private Sprite squirrelIcon = null; 
+    [SerializeField] private Sprite invisibleIcon = null;
     [Tooltip("Time between characters. Less is faster.")]
     [SerializeField] private float typeSpeed = 0.01F;
     private bool isTellingStory = false;
@@ -73,6 +74,7 @@ public class StoryHUDController : MonoBehaivourWithInputs
             case UnlockType.CHAMELEON:
                 return chameleonIcon;
             case UnlockType.NONE:
+                return invisibleIcon;
             default:
                 return null;
         }
