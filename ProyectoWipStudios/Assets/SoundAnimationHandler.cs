@@ -18,7 +18,7 @@ public class SoundAnimationHandler : MonoBehaviourPlayerGettable
 
         Debug.DrawRay(transform.parent.position, Vector3.down * 5, Color.green);
 
-        if (Physics.Raycast(transform.parent.position + Vector3.up, Vector3.down, out RaycastHit hit, 5, layers))
+        if (Physics.Raycast(transform.parent.parent.position + Vector3.up, Vector3.down, out RaycastHit hit, 5, layers))
         {
             string groundTag = hit.collider.tag;
 
