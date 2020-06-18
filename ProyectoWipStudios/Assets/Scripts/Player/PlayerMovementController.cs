@@ -101,7 +101,7 @@ public class PlayerMovementController : MonoBehaivourWithInputs
         if (player.useMovementInputs)
             targetSpeed *= inputDirection.magnitude;
 
-        if (!player.useMovementInputs && !player.stats.isRunning && player.lockRotation)
+        if (player.stats.isStunded)
             targetSpeed = 0;
 
         currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity,

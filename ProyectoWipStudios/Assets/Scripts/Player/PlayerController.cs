@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
         public bool isGliding;
         public bool isClimbing;
         public bool isRunning;
+        public bool isStunded;
         public bool isTongue;
         public bool isDead;
         public bool isCamouflaged;
@@ -171,11 +172,12 @@ public class PlayerController : MonoBehaviour
     /** GETTERS AND SETTERS **/
     public bool IsDoingSomething()
     {
-        return this.stats.isClimbing ||
-            this.stats.isGliding ||
-            this.stats.isRunning ||
-            this.stats.isTongue ||
-            this.stats.isCamouflaged;
+        return this.stats.isClimbing
+            || this.stats.isGliding
+            || this.stats.isRunning
+            || this.stats.isTongue
+            || this.stats.isCamouflaged
+            || this.stats.isStunded;
     }
 
     public void SetSpecificController(PlayerSpecificController specificController)

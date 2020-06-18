@@ -50,6 +50,7 @@ public class BoarController : PlayerSpecificController
         this.stuntParticles.Play();
 
         this.playerController.stats.isRunning = false;
+        player.stats.isStunded = true;
         Invoke("ReturnControl", stunTime);
     }
 
@@ -57,6 +58,7 @@ public class BoarController : PlayerSpecificController
     {
         this.playerController.lockRotation = false;
         this.playerController.useMovementInputs = true;
+        player.stats.isStunded = false;
         this.stuntParticles.Stop();
     }
 
