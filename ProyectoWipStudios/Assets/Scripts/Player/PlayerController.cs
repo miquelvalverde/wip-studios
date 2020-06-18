@@ -207,6 +207,12 @@ public class PlayerController : MonoBehaviour
             Destroy(specificController.gameObject);
         }
 
+        if(CheckpointManager.Instance.mustRestartAtCheckpoint)
+        {
+            transform.position = CheckpointManager.Instance.lastPosition;
+            CheckpointManager.Instance.mustRestartAtCheckpoint = false;
+        }
+
         SoundManager.Change.start();
         specificController = Instantiate(animalRef, transform);
         var particlesInstance = Instantiate(_changeParticles, _spawnParticlePoint.position, Quaternion.identity, _spawnParticlePoint);
