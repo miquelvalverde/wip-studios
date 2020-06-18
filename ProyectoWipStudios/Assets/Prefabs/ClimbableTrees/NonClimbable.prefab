@@ -360,6 +360,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8872308792995321356, guid: 1e91f0bbfeb88e9428acaf1c2a203b15,
+        type: 3}
+      propertyPath: m_TagString
+      value: woodTag
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e91f0bbfeb88e9428acaf1c2a203b15, type: 3}
 --- !u!4 &1918698159771278811 stripped

@@ -127,6 +127,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 6007300929051062800, guid: 4c56bb3139861c14cbb18754a7868902,
+        type: 3}
+      propertyPath: m_TagString
+      value: stoneTag
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c56bb3139861c14cbb18754a7868902, type: 3}
 --- !u!4 &3779953616577414800 stripped

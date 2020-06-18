@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 8159938549015869361}
   m_Layer: 0
   m_Name: tFloral
-  m_TagString: Untagged
+  m_TagString: woodTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
