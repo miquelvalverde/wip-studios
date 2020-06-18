@@ -87,8 +87,8 @@ public class SoundManager : MonoBehaviour
         UIHover = FMODUnity.RuntimeManager.CreateInstance("event:/Events/UI/Hover item/ui_hover");
         UISelect = FMODUnity.RuntimeManager.CreateInstance("event:/Events/UI/Select item/ui_select");
 
-        StepGrass.setVolume(.5f);
-        StepStone.setVolume(.5f);
-        StepWood.setVolume(.5f);
+        StepGrass.setVolume(.2f);
+        StepStone.setVolume(.2f);
+        StepWood.setVolume(.2f);
     }
 }
