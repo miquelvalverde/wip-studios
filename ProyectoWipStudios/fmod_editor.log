@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001DE28C2CF38 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000023613EA4F58 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Priority: 0, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -16,3 +16,115 @@
 [LOG] Manager::init                            : done.
 [LOG] Manager::readBank                        : fileversion = 123, compatVersion = 119 (oldest = 44, newest = 123)
 [LOG] Manager::readBank                        : fileversion = 123, compatVersion = 119 (oldest = 44, newest = 123)
+[LOG] SoundI::release                          : music2 (00000234272F9EA8)
+[LOG] SoundI::release                          :     music2 (00000234271B93B8)
+[LOG] SoundI::release                          :     music2 (00000234272FA058)
+[LOG] SoundI::release                          :  (0000023677049618)
+[LOG] SoundI::release                          :     boar_ouch (00000234271B9558)
+[LOG] SoundI::release                          :  (000002360CC7D7B8)
+[LOG] SoundI::release                          :     rock_shatter (00000234271BAA78)
+[LOG] SoundI::release                          :  (000002360CC7B6A8)
+[LOG] SoundI::release                          :     chameleon_ouch (00000234271BAC18)
+[LOG] SoundI::release                          :  (0000023609FD8538)
+[LOG] SoundI::release                          :     squirrel_glide (000002360C36B418)
+[LOG] SoundI::release                          :  (0000023613BFEA18)
+[LOG] SoundI::release                          :     chameleon_camouflage (00000234271B7B58)
+[LOG] SoundI::release                          :  (000002360CC7C508)
+[LOG] SoundI::release                          :     boar_fall (00000234271B7678)
+[LOG] SoundI::release                          :  (00000235CEE1ED58)
+[LOG] SoundI::release                          :     chameleon_spit (000002360C36AF38)
+[LOG] SoundI::release                          :  (0000023613BFE178)
+[LOG] SoundI::release                          :     boar_hit (00000234271B7CF8)
+[LOG] SoundI::release                          :  (0000023609792ED8)
+[LOG] SoundI::release                          :     rock_impact_boar (000002360C36B278)
+[LOG] SoundI::release                          :  (0000023426947DC8)
+[LOG] SoundI::release                          :     chameleon_tongue (000002360C36BDD8)
+[LOG] SoundI::release                          :  (0000023677048EE8)
+[LOG] SoundI::release                          :     squirrel_ouch (00000234271B8B98)
+[LOG] SoundI::release                          :  (0000023426947F38)
+[LOG] SoundI::release                          :     tree_impact (000002360C36BF78)
+[LOG] SoundI::release                          :  (0000023426946278)
+[LOG] SoundI::release                          :     squirrel_climb1 (000002360C36B8F8)
+[LOG] SoundI::release                          :  (000002367704A478)
+[LOG] SoundI::release                          :     squirrel_climb2 (00000234271B9BD8)
+[LOG] SoundI::release                          :  (0000023677049338)
+[LOG] SoundI::release                          :     squirrel_climb3 (00000234271BA258)
+[LOG] SoundI::release                          :  (0000023426948C28)
+[LOG] SoundI::release                          :     squirrel_climb4 (000002360C36B758)
+[LOG] SoundI::release                          :  (000002342AA970D8)
+[LOG] SoundI::release                          :     chameleon_decamouflage (000002360C36B0D8)
+[LOG] SoundI::release                          :  (0000023613BFF428)
+[LOG] SoundI::release                          :     animal_transform (00000234271B89F8)
+[LOG] SoundI::release                          :  (00000234269473B8)
+[LOG] SoundI::release                          :     tree_fall (00000234271BA0B8)
+[LOG] SoundI::release                          :  (0000023613BFF148)
+[LOG] SoundI::release                          :     turbine_break1 (00000234271BADB8)
+[LOG] SoundI::release                          :  (000002367704B448)
+[LOG] SoundI::release                          :     turbine_break2 (00000234271B9F18)
+[LOG] SoundI::release                          :  (0000023426947C58)
+[LOG] SoundI::release                          :     animal_step1_wood (000002360C36C118)
+[LOG] SoundI::release                          :  (0000023426947808)
+[LOG] SoundI::release                          :     animal_step2_wood (00000234271BA3F8)
+[LOG] SoundI::release                          :  (0000023426948948)
+[LOG] SoundI::release                          :     animal_step3_wood (00000234271BA598)
+[LOG] SoundI::release                          :  (0000023677048A98)
+[LOG] SoundI::release                          :     animal_step4_wood (00000234271B9218)
+[LOG] SoundI::release                          :  (000002360CC7C678)
+[LOG] SoundI::release                          :     ui_hover (00000234271B7818)
+[LOG] SoundI::release                          :  (000002360CC7BC68)
+[LOG] SoundI::release                          :     its_there1 (00000234271B7338)
+[LOG] SoundI::release                          :  (0000023613BFEFD8)
+[LOG] SoundI::release                          :     its_there2 (00000234271B96F8)
+[LOG] SoundI::release                          :  (000002367704BB78)
+[LOG] SoundI::release                          :     its_there3 (00000234271B9898)
+[LOG] SoundI::release                          :  (0000023613BFE738)
+[LOG] SoundI::release                          :     its_there4 (00000234271BA738)
+[LOG] SoundI::release                          :  (0000023613BFD768)
+[LOG] SoundI::release                          :     chameleon_tongue_pick (00000234271B86B8)
+[LOG] SoundI::release                          :  (00000236770491C8)
+[LOG] SoundI::release                          :     squirrel_jump (00000234271B9A38)
+[LOG] SoundI::release                          :  (0000023613BFE2E8)
+[LOG] SoundI::release                          :     animal_step1_stone (00000234271B74D8)
+[LOG] SoundI::release                          :  (0000023613BFEE68)
+[LOG] SoundI::release                          :     animal_step2_stone (00000234271B81D8)
+[LOG] SoundI::release                          :  (00000235CEE1E4B8)
+[LOG] SoundI::release                          :     animal_step3_stone (000002360C36BA98)
+[LOG] SoundI::release                          :  (0000023613BFE5C8)
+[LOG] SoundI::release                          :     animal_step4_stone (00000234271B8038)
+[LOG] SoundI::release                          :  (000002360CC7C0B8)
+[LOG] SoundI::release                          :     animal_step1_grass (00000234271B9078)
+[LOG] SoundI::release                          :  (0000023613BFDD28)
+[LOG] SoundI::release                          :     animal_step2_grass (00000234271B8858)
+[LOG] SoundI::release                          :  (000002367704A5E8)
+[LOG] SoundI::release                          :     animal_step3_grass (00000234271B9D78)
+[LOG] SoundI::release                          :  (000002360CC7C228)
+[LOG] SoundI::release                          :     animal_step4_grass (00000234271B7198)
+[LOG] SoundI::release                          :  (0000023613BFDE98)
+[LOG] SoundI::release                          :     ui_select (00000234271B79B8)
+[LOG] SoundI::release                          :  (00000235CEE1EBE8)
+[LOG] SoundI::release                          :     dart_shot (000002360C36AD98)
+[LOG] SoundI::release                          :  (000002367704A198)
+[LOG] SoundI::release                          :     boar_charge (00000234271BAF58)
+[LOG] SoundI::release                          :  (00000235CEE1E798)
+[LOG] SoundI::release                          :     trap (000002360C36C2B8)
+[LOG] SoundI::release                          :  (0000023426945E28)
+[LOG] SoundI::release                          :     boar_jump (00000234271BA8D8)
+[LOG] SoundI::release                          :  (0000023613BFF2B8)
+[LOG] SoundI::release                          :     chameleon_jump (00000234271B7E98)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
+[LOG] SystemI::close                           : Closed.
