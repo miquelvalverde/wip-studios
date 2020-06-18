@@ -77,6 +77,18 @@ public class Enemy : MonoBehaviourPlayerGettable
     public float chaseMaxDistance = 0;
     public float shootDistance = 0;
 
+    public Animator anim = null;
+
+    public void SetAnim(string name)
+    {
+        anim.SetBool("Idle", false);
+        anim.SetBool("Run", false);
+        anim.SetBool("Walk", false);
+        anim.SetBool("Shoot", false);
+
+        anim.SetBool(name, true);
+    }
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();

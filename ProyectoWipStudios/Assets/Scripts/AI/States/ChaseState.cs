@@ -7,6 +7,7 @@ public class ChaseState : State
         base.StartState(self);
 
         this.self.agent.isStopped = false;
+        this.self.SetAnim("Run");
     }
 
     public override State ChangeState()

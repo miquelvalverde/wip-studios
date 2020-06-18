@@ -28,7 +28,7 @@ public class IdleState : State
         timer = Random.Range(2f, 4f);
 
         this.self.agent.isStopped = true;
-
+        this.self.SetAnim("Idle");
     }
 
     public override void UpdateState()

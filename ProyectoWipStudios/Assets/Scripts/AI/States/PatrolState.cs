@@ -8,6 +8,7 @@ public class PatrolState : State
 
         this.self.agent.isStopped = false;
         this.self.agent.SetDestination(this.self.GetNextPosition());
+        this.self.SetAnim("Walk");
     }
 
     public override State ChangeState()
