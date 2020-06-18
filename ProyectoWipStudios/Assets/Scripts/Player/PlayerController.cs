@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     //Controllers
     private PlayerMovementController movementController;
     private PlayerAnimatorController animatorController;
-    private PlayerCameraController cameraController;
+    [HideInInspector] public PlayerCameraController cameraController;
     private PlayerSpecificController _specificController;
     [SerializeField] private RadialMenuController radialMenuController = null;
 

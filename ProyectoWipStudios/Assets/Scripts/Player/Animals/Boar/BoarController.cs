@@ -4,6 +4,7 @@ public class BoarController : PlayerSpecificController
 {
     [SerializeField] private float runSpeed = 10;
     [SerializeField] private float timeRunning = 2;
+    [SerializeField] private float stunTime = .5f;
 
     [Space]
     [Header("Crash Checker")]
@@ -41,12 +42,18 @@ public class BoarController : PlayerSpecificController
     private void ExitRun()
     {
         CancelInvoke("ExitRun");
-        this.playerController.useMovementInputs = true;
-        this.playerController.lockRotation = false;
-        this.playerController.stats.isRunning = false;
 
         this.playerController.ResetSpeed();
         SoundManager.BoarCharge.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+        this.playerController.stats.isRunning = false;
+        Invoke("ReturnControl", stunTime);
+    }
+
+    private void ReturnControl()
+    {
+        this.playerController.lockRotation = false;
+        this.playerController.useMovementInputs = true;
     }
 
     private bool HasCrashed()
@@ -54,14 +61,21 @@ public class BoarController : PlayerSpecificController
         Collider[] colliders = Physics.OverlapBox(transform.position + ((transform.forward * checkerOffset.z) + (transform.right * checkerOffset.x) + (transform.up * checkerOffset.y))
             , checkerDimensions/2, transform.rotation, whatIsObstacle);
 
-        if(colliders.Length > 0)
+        for(int i=0; i<colliders.Length; i++)
         {
-            if (colliders[0].GetComponent<IBreakable>() != null)
-                colliders[0].GetComponent<IBreakable>().Break();
+            if (colliders[i].GetComponent<IBreakable>() != null)
+                colliders[i].GetComponent<IBreakable>().Break();
 
-            SoundManager.BoarHit.start();
-            return true;
+
+            if (colliders[i].tag != "PostPo")
+            {
+                SoundManager.BoarHit.start();
+                player.cameraController.Shake(.1f, .1f);
+                return true;
+            }
         }
+
+        
 
         return false;
     }
