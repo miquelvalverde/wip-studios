@@ -371,7 +371,7 @@ MonoBehaviour:
   runSpeed: 12
   timeRunning: 2
   stunTime: 1
-  stuntParticles: {fileID: 0}
+  stuntParticles: {fileID: 3233917297520115436}
   checkerOffset: {x: 0, y: 1.5, z: 0.85}
   checkerDimensions: {x: 0.7, y: 2.2, z: 0.25}
   whatIsObstacle:
@@ -2873,6 +2873,51 @@ PrefabInstance:
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 2037987082201446086, guid: 2c9c07c665137254a87a9962f8638b81,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037987082201446086, guid: 2c9c07c665137254a87a9962f8638b81,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037987082201446086, guid: 2c9c07c665137254a87a9962f8638b81,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037987082201446086, guid: 2c9c07c665137254a87a9962f8638b81,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037987082201446086, guid: 2c9c07c665137254a87a9962f8638b81,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037987082201446086, guid: 2c9c07c665137254a87a9962f8638b81,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037987082201446086, guid: 2c9c07c665137254a87a9962f8638b81,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037987082201446086, guid: 2c9c07c665137254a87a9962f8638b81,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037987082201446086, guid: 2c9c07c665137254a87a9962f8638b81,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
     - target: {fileID: 2037987082201446087, guid: 2c9c07c665137254a87a9962f8638b81,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2948,6 +2993,12 @@ PrefabInstance:
 --- !u!4 &3233917297520115437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2037987082201446087, guid: 2c9c07c665137254a87a9962f8638b81,
+    type: 3}
+  m_PrefabInstance: {fileID: 3506418249658976298}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3233917297520115436 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2037987082201446086, guid: 2c9c07c665137254a87a9962f8638b81,
     type: 3}
   m_PrefabInstance: {fileID: 3506418249658976298}
   m_PrefabAsset: {fileID: 0}
