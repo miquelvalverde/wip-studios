@@ -7,6 +7,7 @@ TagManager:
   - grassTag
   - stoneTag
   - woodTag
+  - PostPo
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - PostProcessAlive
   - PostProcessDead
   - MapLimits
-  - 
+  - Postpo
   - 
   - 
   - 

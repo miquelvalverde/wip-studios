@@ -60,7 +60,9 @@ public class BoarController : PlayerSpecificController
                 colliders[0].GetComponent<IBreakable>().Break();
 
             SoundManager.BoarHit.start();
-            return true;
+
+            if(colliders[0].tag != "PostPo")
+                return true;
         }
 
         return false;
