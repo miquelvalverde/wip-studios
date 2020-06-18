@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c34e68a5a629245a958750d3cb0c3a, type: 3}
+  m_Name: Story2
+  m_EditorClassIdentifier: 
+  sentences:
+  - You have the powers of the boar.
+  - You can't jump high, but your charges are strong.
+  - Press Left Click to charge forward and break some rocks or trees.
+  - Use Right Click to transform into the different animal spirits you have.
+  - Now go ahead, we need your help!
+  unlocksAnimal: 0

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DebugCheckpoint : AMonoBehaivourWithInputs
+public class DebugCheckpoint : MonoBehaivourWithInputs
 {
 
     [SerializeField] private Transform checkPointOne = null;

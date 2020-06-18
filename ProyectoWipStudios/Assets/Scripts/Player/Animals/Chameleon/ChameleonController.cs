@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class ChameleonController : PlayerSpecificController
 {
     [SerializeField] private Tongue tongue = null;
-    [SerializeField] private float dropForce;
+    [SerializeField] private float dropForce = 200;
     [SerializeField] ChameleonHUDController chameleonHUD = null;
-    [SerializeField] private Material camouflageMaterial;
+    [SerializeField] private Material[] materials = null;
     [SerializeField] private float transitionTime = 1.5F;
     private ChameleonHUDController hudInstance;
     private bool isCamouflaging = false;
@@ -18,13 +16,17 @@ public class ChameleonController : PlayerSpecificController
         this.controls.Player.Tongue.performed += _ => TonguePick();
         this.controls.Player.Camouflage.performed += _ => Camouflage();
         hudInstance = Instantiate(chameleonHUD);
-        camouflageMaterial.SetFloat("Camouflage", 1);
-    }
+        foreach (Material material in materials)
+            material.SetFloat("Camouflage", 1);
+        MyAnimalType = Type.Chameleon;
+    }   
 
     private void TonguePick()
     {
-        tongue.DoTongue(dropForce);
-        hudInstance.ShowPickable(tongue.CurrentPickable);
+        if (!PlayerController.instance.stats.isCamouflaged)
+            tongue.DoTongue(dropForce);
+
+        hudInstance.ShowPickable(tongue.CurrentAimable is Pickable pickable ? pickable : null);
     }
 
     private void Camouflage()
@@ -41,11 +43,13 @@ public class ChameleonController : PlayerSpecificController
         {
             this.playerController.doNormalMovement = false;
             this.playerController.lockRotation = true;
+            SoundManager.ChameleonCamouflage.start();
         }
         else
         {
             this.playerController.doNormalMovement = true;
             this.playerController.lockRotation = false;
+            SoundManager.ChameleonDecamouflage.start();
         }
 
         // dissolve
@@ -53,8 +57,16 @@ public class ChameleonController : PlayerSpecificController
         float timer = 0.0f;
         while (timer <= transitionTime)
         {
-            if (reverse) camouflageMaterial.SetFloat("Camouflage", timer / transitionTime);
-            else camouflageMaterial.SetFloat("Camouflage", 1 - timer / transitionTime);
+            if (reverse)
+            {
+                foreach (Material material in materials)
+                    material.SetFloat("Camouflage", timer / transitionTime);
+            }
+            else
+            {
+                foreach (Material material in materials)
+                    material.SetFloat("Camouflage", 1 - timer / transitionTime);
+            }
             timer += Time.deltaTime;
             yield return null;
         }
@@ -75,5 +87,14 @@ public class ChameleonController : PlayerSpecificController
         tongue?.Drop(0);
         if(hudInstance)
             Destroy(hudInstance.gameObject);
+    }
+
+    public override bool CheckIfCanChange(Type to)
+    {
+
+        if (to == Type.Boar)
+            return this.CheckUp(.15f);
+
+        return true;
     }
 }

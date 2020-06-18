@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SquirrelController : PlayerSpecificController
 {
@@ -27,17 +25,13 @@ public class SquirrelController : PlayerSpecificController
     private bool endedTree = false;
     private Vector3 nextClimbPosition = Vector3.zero;
 
-    private bool inputClimb;
-
     public override void Initializate()
     {
         this.controls.Player.Glide.performed += _ => StartGlide();
         this.controls.Player.Glide.canceled += _ => StopGlide();
 
         this.controls.Player.Climb.performed += _ => StartClimb();
-
-        this.controls.Player.SecondaryClimb.performed += _ => inputClimb = true;
-        this.controls.Player.SecondaryClimb.canceled += _ => inputClimb = false;
+        MyAnimalType = Type.Squirrel;
     }
 
     public override void UpdateSpecificAction()
@@ -49,16 +43,14 @@ public class SquirrelController : PlayerSpecificController
         {
             try
             {
-                if (inputClimb)
-                    endedTree = GetNextClimbPoint();
-                else if (endedTree)
+                
+                if (endedTree)
                     EndClimb();
+
+                endedTree = GetNextClimbPoint();
             }
             catch (CannotClimbException) { EndClimb(); }
         }
-
-        if (!PlayerController.instance.stats.isClimbing && inputClimb)
-            inputClimb = false;
     }
 
     #region Gliding
@@ -73,6 +65,7 @@ public class SquirrelController : PlayerSpecificController
         this.playerController.useMovementInputs = false;
         this.playerController.stats.isGliding = true;
         this.playerController.ChangeMaxVerticalSpeed(glideSpeed);
+        SoundManager.SquirrelGlide.start();
     }
 
     private void StopGlide()
@@ -83,6 +76,7 @@ public class SquirrelController : PlayerSpecificController
         this.playerController.useMovementInputs = true;
         this.playerController.stats.isGliding = false;
         this.playerController.ResetMaxVerticalSpeed();
+        SoundManager.SquirrelGlide.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
     #endregion
 
@@ -129,7 +123,7 @@ public class SquirrelController : PlayerSpecificController
     {
         nextClimbPosition = currentTree.GetNextPosition(transform);
         this.playerController.alternativeMoveDestination = nextClimbPosition;
-
+        SoundManager.SquirrelClimb.start();
         return currentTree.IsLastPoint;
     }
 
@@ -142,6 +136,9 @@ public class SquirrelController : PlayerSpecificController
         this.playerController.doNormalMovement = true;
         this.playerController.doGravity = true;
         this.playerController.lockRotation = false;
+
+        player.SpeedToZero();
+
     }
 
     public override string ToString()
@@ -154,5 +151,18 @@ public class SquirrelController : PlayerSpecificController
         Gizmos.color = Color.blue;
 
         Gizmos.DrawWireSphere(checkerPosition, climbCheckerRadius);
+    }
+
+    public override bool CheckIfCanChange(Type to)
+    {
+        switch (to)
+        {
+            case Type.Chameleon:
+                return this.CheckUp(.5f);
+            case Type.Boar:
+                return this.CheckUp(1.25f);
+        }
+
+        return true;
     }
 }

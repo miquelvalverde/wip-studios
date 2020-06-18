@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class TreeBrakeable : MonoBehaviour, IBreakable
+public class TreeBrakeable : MonoBehaviourPlayerGettable, IBreakable
 {
-    [SerializeField] private float fallAngle;
-    [SerializeField] private float fallTime;    
-    [SerializeField] private AnimationCurve fallCurve;
+    [SerializeField] private float fallAngle = -272.28f;
+    [SerializeField] private float fallTime = 4;    
+    [SerializeField] private AnimationCurve fallCurve = null;
     private float debugHeight = 10F;
     private int debugArrowCount = 5;
     private float debugArrowLength = 2F;
@@ -23,6 +23,7 @@ public class TreeBrakeable : MonoBehaviour, IBreakable
 
     IEnumerator TreeFallRoutine()
     {
+        SoundManager.TreeFall.start();
         var direction = transform.right;
         direction = Quaternion.AngleAxis(fallAngle, transform.up) * direction;
         var currentDirection = transform.up;
@@ -33,6 +34,8 @@ public class TreeBrakeable : MonoBehaviour, IBreakable
             timer += Time.deltaTime;
             yield return null;
         }
+
+        player.cameraController.Shake(0.5f, .5f);
     }
 
     private void OnDrawGizmos()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DebugConsoleHUD : AMonoBehaivourWithInputs
+public class DebugConsoleHUD : MonoBehaivourWithInputs
 {
     [SerializeField] private GameObject parentPanel = null;
     [SerializeField] private Text debugText = null;

@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 
-public abstract class PlayerSpecificController : AMonoBehaivourWithInputs
+public abstract class PlayerSpecificController : MonoBehaivourWithInputs
 {
     protected PlayerController playerController;
+
+    public enum Type { Squirrel, Chameleon, Boar }
+
+    public Type MyAnimalType { get; protected set; }
 
     public float walkSpeed;
     public float jumpHeight;
     public float scale = 1;
     public Transform cameraPoint;
+    public Transform headPoint;
 
     [SerializeField] protected Animator anim = null;
+
 
     public virtual void Start()
     {
@@ -21,6 +27,13 @@ public abstract class PlayerSpecificController : AMonoBehaivourWithInputs
     public abstract void Initializate();
 
     public abstract void UpdateSpecificAction();
+
+    public abstract bool CheckIfCanChange(Type to);
+
+    protected bool CheckUp(float distance)
+    {
+        return !Physics.Raycast(cameraPoint.position + (Vector3.down * .25f), Vector3.up, distance + .25f);
+    }
 
     public Animator GetAnimator()
     {

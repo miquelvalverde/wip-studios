@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovementController : AMonoBehaivourWithInputs
+public class PlayerMovementController : MonoBehaivourWithInputs
 {
     //Components
     public CharacterController characterController { get; private set; }
@@ -11,14 +9,16 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
 
     //Inputs
     private Vector2 inputDirection;
-    private bool inputJump;
 
     [Header("Turn Movement")]
     [SerializeField] private float turnSmoothTime = .15f;
     private float turnSmoothVelocity;
 
     [Header("Player Movement")]
-    [SerializeField] private float speedSmoothTime = .1f;
+    [SerializeField] private float onGroundAcceleration = 0;
+    [SerializeField] private float onGroundDeceleration = 0;
+    [SerializeField] private float onAirAcceleration = 0;
+    [SerializeField] private float onAirDeceleration = 0;
     private float _speed = 5;
     private float speed = 5;
     private float speedSmoothVelocity;
@@ -37,6 +37,10 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
     [SerializeField] private Vector3 checkerOffset = Vector3.up * .2f;
     [SerializeField] private Vector3 chekcerDimensions = Vector3.one;
 
+    [Header("Head Checker")]
+    [SerializeField] private float headCheckerRadius = 0;
+    [SerializeField] private LayerMask whatIsBlockHead = 0;
+
     //Control variables
     private bool doNormalMovement;
     private bool lockRotation;
@@ -51,7 +55,6 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
         controls.Player.Move.canceled += _ => inputDirection = Vector2.zero;
 
         controls.Player.Jump.performed += _ => Jump();
-        //controls.Player.Jump.canceled += _ => inputJump = false;
     }
 
     public void Initialize()
@@ -81,12 +84,6 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
             this.CalculateGravity();
         else
             verticalSpeed = 0;
-
-        /*if (this.doNormalMovement && this.useMovementInputs)
-            this.CalculateJump();
-
-        if (inputJump)
-            inputJump = false;*/
     }
 
     private void CalculateLookDirection()
@@ -101,10 +98,16 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
     private void CalculateNormalMovement()
     {
         float targetSpeed = speed;
-        if (PlayerController.instance.useMovementInputs)
+        if (player.useMovementInputs)
             targetSpeed *= inputDirection.magnitude;
 
-        currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
+        if (player.stats.isStunded)
+            targetSpeed = 0;
+
+        currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity,
+            (PlayerController.instance.stats.isGrounded) ?
+                ((targetSpeed != 0) ? onGroundAcceleration : onGroundDeceleration) :
+                ((targetSpeed != 0) ? onAirAcceleration : onAirDeceleration));
     }
 
     public void Move()
@@ -140,10 +143,23 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
     {
         if (!isGrounded)
         {
+            if (CheckHead() && verticalSpeed > 0)
+            {
+                verticalSpeed = 0;
+            }
+
             verticalSpeed += -Mathf.Abs(gravity) * Time.deltaTime;
             verticalSpeed = Mathf.Clamp(verticalSpeed, -Mathf.Abs(_maxVerticalSpeed), Mathf.Infinity);
         }
     }
+
+    private bool CheckHead()
+    {
+        Vector3 center = player.headPoint.position;
+
+        return Physics.CheckSphere(center, headCheckerRadius, whatIsBlockHead);
+    }
+
     public void ResetMaxVerticalSpeed()
     {
         SetMaxVerticalSpeed(maxVerticalSpeed);
@@ -165,7 +181,20 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
         float jumpSpeed = Mathf.Sqrt(-2 * -Mathf.Abs(gravity) * jumpHeight);
         verticalSpeed = jumpSpeed;
 
-        PlayerController.instance.stats.isJumping = true;
+        player.stats.isJumping = true;
+
+        switch (player.specificController.MyAnimalType)
+        {
+            case PlayerSpecificController.Type.Squirrel:
+                SoundManager.SquirrelJump.start();
+                break;  
+            case PlayerSpecificController.Type.Chameleon:
+                SoundManager.ChameleonJump.start();
+                break;
+            case PlayerSpecificController.Type.Boar:
+                SoundManager.BoarJump.start();
+                break;
+        }
     }
     #endregion
 
@@ -194,9 +223,18 @@ public class PlayerMovementController : AMonoBehaivourWithInputs
     {
         Gizmos.color = Color.red;
 
+        if (player)
+            Gizmos.DrawWireSphere(player.headPoint.position, headCheckerRadius);
+
         Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.lossyScale);
         Gizmos.matrix = rotationMatrix;
 
         Gizmos.DrawWireCube(checkerOffset, chekcerDimensions);
     }
+
+    public void SpeedToZero()
+    {
+        currentSpeed = 0;
+    }
+
 }

@@ -97,6 +97,22 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""5c567481-4bc6-46a0-8f1d-69c635873546"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""CameraReset"",
+                    ""type"": ""Button"",
+                    ""id"": ""542ae56b-2f76-4929-b525-7a167bbcd460"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -253,6 +269,28 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""action"": ""Camouflage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35be0920-427b-4b0d-816c-7f5cb5fd2cf2"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd64eeb9-af60-4cc1-b0eb-a3fd1e939697"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""CameraReset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -288,6 +326,22 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""b3c527f4-2a29-4c40-bed8-48c49b41588b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SkipDialog"",
+                    ""type"": ""Button"",
+                    ""id"": ""4a8d536b-3a9f-4d21-9fe0-35c8456f6c0e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SkipAllDialog"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b20fa4d-399c-416c-81a5-b1505f4f3b18"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -335,6 +389,28 @@ public class @InputSystem : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93c1f5a2-6ff5-4fc0-9804-722a1b09df9e"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""SkipDialog"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42b60cda-6639-4ee9-9b2d-9694c29c6622"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""SkipAllDialog"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -547,12 +623,16 @@ public class @InputSystem : IInputActionCollection, IDisposable
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_SecondaryClimb = m_Player.FindAction("SecondaryClimb", throwIfNotFound: true);
         m_Player_Camouflage = m_Player.FindAction("Camouflage", throwIfNotFound: true);
+        m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
+        m_Player_CameraReset = m_Player.FindAction("CameraReset", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_MousePosition = m_UI.FindAction("MousePosition", throwIfNotFound: true);
         m_UI_MouseDelta = m_UI.FindAction("MouseDelta", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+        m_UI_SkipDialog = m_UI.FindAction("SkipDialog", throwIfNotFound: true);
+        m_UI_SkipAllDialog = m_UI.FindAction("SkipAllDialog", throwIfNotFound: true);
         // Debug
         m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
         m_Debug_AIVision = m_Debug.FindAction("AIVision", throwIfNotFound: true);
@@ -617,6 +697,8 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_SecondaryClimb;
     private readonly InputAction m_Player_Camouflage;
+    private readonly InputAction m_Player_Zoom;
+    private readonly InputAction m_Player_CameraReset;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
@@ -631,6 +713,8 @@ public class @InputSystem : IInputActionCollection, IDisposable
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @SecondaryClimb => m_Wrapper.m_Player_SecondaryClimb;
         public InputAction @Camouflage => m_Wrapper.m_Player_Camouflage;
+        public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
+        public InputAction @CameraReset => m_Wrapper.m_Player_CameraReset;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -670,6 +754,12 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Camouflage.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamouflage;
                 @Camouflage.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamouflage;
                 @Camouflage.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamouflage;
+                @Zoom.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
+                @Zoom.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
+                @Zoom.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnZoom;
+                @CameraReset.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraReset;
+                @CameraReset.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraReset;
+                @CameraReset.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCameraReset;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -704,6 +794,12 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Camouflage.started += instance.OnCamouflage;
                 @Camouflage.performed += instance.OnCamouflage;
                 @Camouflage.canceled += instance.OnCamouflage;
+                @Zoom.started += instance.OnZoom;
+                @Zoom.performed += instance.OnZoom;
+                @Zoom.canceled += instance.OnZoom;
+                @CameraReset.started += instance.OnCameraReset;
+                @CameraReset.performed += instance.OnCameraReset;
+                @CameraReset.canceled += instance.OnCameraReset;
             }
         }
     }
@@ -716,6 +812,8 @@ public class @InputSystem : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_MousePosition;
     private readonly InputAction m_UI_MouseDelta;
     private readonly InputAction m_UI_Pause;
+    private readonly InputAction m_UI_SkipDialog;
+    private readonly InputAction m_UI_SkipAllDialog;
     public struct UIActions
     {
         private @InputSystem m_Wrapper;
@@ -724,6 +822,8 @@ public class @InputSystem : IInputActionCollection, IDisposable
         public InputAction @MousePosition => m_Wrapper.m_UI_MousePosition;
         public InputAction @MouseDelta => m_Wrapper.m_UI_MouseDelta;
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
+        public InputAction @SkipDialog => m_Wrapper.m_UI_SkipDialog;
+        public InputAction @SkipAllDialog => m_Wrapper.m_UI_SkipAllDialog;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -745,6 +845,12 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                @SkipDialog.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipDialog;
+                @SkipDialog.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipDialog;
+                @SkipDialog.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipDialog;
+                @SkipAllDialog.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipAllDialog;
+                @SkipAllDialog.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipAllDialog;
+                @SkipAllDialog.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSkipAllDialog;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -761,6 +867,12 @@ public class @InputSystem : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @SkipDialog.started += instance.OnSkipDialog;
+                @SkipDialog.performed += instance.OnSkipDialog;
+                @SkipDialog.canceled += instance.OnSkipDialog;
+                @SkipAllDialog.started += instance.OnSkipAllDialog;
+                @SkipAllDialog.performed += instance.OnSkipAllDialog;
+                @SkipAllDialog.canceled += instance.OnSkipAllDialog;
             }
         }
     }
@@ -844,6 +956,8 @@ public class @InputSystem : IInputActionCollection, IDisposable
         void OnRun(InputAction.CallbackContext context);
         void OnSecondaryClimb(InputAction.CallbackContext context);
         void OnCamouflage(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
+        void OnCameraReset(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -851,6 +965,8 @@ public class @InputSystem : IInputActionCollection, IDisposable
         void OnMousePosition(InputAction.CallbackContext context);
         void OnMouseDelta(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnSkipDialog(InputAction.CallbackContext context);
+        void OnSkipAllDialog(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {

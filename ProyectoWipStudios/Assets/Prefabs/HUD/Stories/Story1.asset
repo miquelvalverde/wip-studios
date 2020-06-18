@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c34e68a5a629245a958750d3cb0c3a, type: 3}
+  m_Name: Story1
+  m_EditorClassIdentifier: 
+  sentences:
+  - The humans have built a dam and the river has dried.
+  - Use the powers of the animals to save the forest!
+  - Now I give you the power of the Squirrel.
+  - Use Space to jump high and press again to glide.
+  - You can also climb some trees with Left Click.
+  - Find other Spirits and they will help you!
+  unlocksAnimal: 1

@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - grassTag
+  - stoneTag
+  - woodTag
+  - PostPo
   layers:
   - Default
   - TransparentFX
@@ -18,10 +22,10 @@ TagManager:
   - Player
   - BrokenRock
   - ZTransparent
-  - 
-  - 
-  - 
-  - 
+  - PostProcessAlive
+  - PostProcessDead
+  - MapLimits
+  - Postpo
   - 
   - 
   - 

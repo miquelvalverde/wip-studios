@@ -1,17 +1,24 @@
-﻿using UnityEngine;
+﻿using System.Threading;
+using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementController))]
 [RequireComponent(typeof(PlayerAnimatorController))]
 public class PlayerController : MonoBehaviour
 {
+
     public static PlayerController instance { get; private set; }
 
     //Controllers
     private PlayerMovementController movementController;
     private PlayerAnimatorController animatorController;
-    private PlayerCameraController cameraController;
+    [HideInInspector] public PlayerCameraController cameraController;
     private PlayerSpecificController _specificController;
     [SerializeField] private RadialMenuController radialMenuController = null;
+
+    public RadialMenuController GetRadialMenuController { get => radialMenuController; }
+
+    [SerializeField] private GameObject _changeParticles = null;
+    [SerializeField] private Transform _spawnParticlePoint = null;
     [SerializeField] private Transform _defaultCameraPoint = null;
     [HideInInspector] public Transform cameraPoint
     {
@@ -19,11 +26,20 @@ public class PlayerController : MonoBehaviour
         {
             return (!specificController) ? _defaultCameraPoint : specificController.cameraPoint;
         }
-
-        private set { }
     }
+
+    [HideInInspector]
+    public Transform headPoint
+    {
+        get
+        {
+            return (!specificController) ? null : specificController.headPoint;
+        }
+    }
+
     private float characterDefaultHeight;
     private float characterDefaultYCenter;
+
 
     public PlayerSpecificController specificController
     {
@@ -73,6 +89,7 @@ public class PlayerController : MonoBehaviour
         public bool isGliding;
         public bool isClimbing;
         public bool isRunning;
+        public bool isStunded;
         public bool isTongue;
         public bool isDead;
         public bool isCamouflaged;
@@ -114,7 +131,6 @@ public class PlayerController : MonoBehaviour
         animatorController = this.GetComponent<PlayerAnimatorController>();
         cameraController = Camera.main.GetComponent<PlayerCameraController>();
 
-        cameraController.Initializate();
         movementController.Initialize();
         radialMenuController.Initializate();
 
@@ -122,6 +138,16 @@ public class PlayerController : MonoBehaviour
         characterDefaultYCenter = movementController.characterController.center.y;
 
         ChangeToSquirrel();
+    }
+
+    private void Start()
+    {
+        if (CheckpointManager.Instance != null && CheckpointManager.Instance.mustRestartAtCheckpoint)
+        {
+            transform.position = CheckpointManager.Instance.lastPosition;
+            transform.rotation = CheckpointManager.Instance.lastRotation;
+            CheckpointManager.Instance.mustRestartAtCheckpoint = false;
+        }
     }
 
     private void Update()
@@ -135,19 +161,23 @@ public class PlayerController : MonoBehaviour
         if (specificController)
             specificController.UpdateSpecificAction();
 
-        movementController.Move();
-
         animatorController.UpdateAnimation();
+    }
+
+    private void FixedUpdate()
+    {
+        movementController.Move();
     }
 
     /** GETTERS AND SETTERS **/
     public bool IsDoingSomething()
     {
-        return this.stats.isClimbing ||
-            this.stats.isGliding ||
-            this.stats.isRunning ||
-            this.stats.isTongue ||
-            this.stats.isCamouflaged;
+        return this.stats.isClimbing
+            || this.stats.isGliding
+            || this.stats.isRunning
+            || this.stats.isTongue
+            || this.stats.isCamouflaged
+            || this.stats.isStunded;
     }
 
     public void SetSpecificController(PlayerSpecificController specificController)
@@ -179,39 +209,60 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void ChangeToAnimal(PlayerSpecificController animalRef)
+    private void ChangeToAnimal(PlayerSpecificController animalRef, PlayerSpecificController.Type newAnimalType)
     {
         if (specificController)
-            Destroy(specificController.gameObject);
+        {
+            if (!specificController.CheckIfCanChange(newAnimalType))
+                return;
 
+            Destroy(specificController.gameObject);
+        }
+
+        SoundManager.Change.start();
         specificController = Instantiate(animalRef, transform);
+        var particlesInstance = Instantiate(_changeParticles, _spawnParticlePoint.position, Quaternion.identity, _spawnParticlePoint);
+        Destroy(particlesInstance, 2.5f);
     }
 
     public void ChangeToSquirrel()
     {
-        ChangeToAnimal(squirrelRef);
+        ChangeToAnimal(squirrelRef, PlayerSpecificController.Type.Squirrel);
     }
 
     public void ChangeToChameleon()
     {
-        ChangeToAnimal(chameleonRef);
+        ChangeToAnimal(chameleonRef, PlayerSpecificController.Type.Chameleon);
     }
 
     public void ChangeToBoar()
     {
-        ChangeToAnimal(boarRef);
+        ChangeToAnimal(boarRef, PlayerSpecificController.Type.Boar);
     }
 
     public void EnableInputs()
     {
         specificController.EnableControls();
         movementController.EnableControls();
+        radialMenuController.EnableControls();
+        cameraController.EnableControls();
     }
 
     public void DisableInputs()
     {
         specificController.DisableControls();
         movementController.DisableControls();
+        radialMenuController.DisableControls();
+    }
+        
+    public void DisableSpecificController()
+    {
+        specificController.DisableControls();
+    }
+
+    public void DisableCameraControls()
+    {
+        cameraController.DisableControls();
     }
 
     public void TeleportTo(Transform point)
@@ -230,6 +281,11 @@ public class PlayerController : MonoBehaviour
         DeadMenuHUDController.instance.DisplayDeadMenu();
         stats.isDead = true;
         Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void SpeedToZero()
+    {
+        this.movementController.SpeedToZero();
     }
 
 }

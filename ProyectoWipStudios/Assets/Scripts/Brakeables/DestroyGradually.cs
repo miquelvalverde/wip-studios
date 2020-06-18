@@ -1,10 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyGradually : MonoBehaviour
 {
-    [SerializeField] private float time;
+    [SerializeField] private float time = 2;
 
     private void Awake()
     {
@@ -24,6 +23,7 @@ public class DestroyGradually : MonoBehaviour
 
     IEnumerator DestroyRoutine(Material material)
     {
+        SoundManager.RockShatter.start();
         float stepTime = 0.01F;
         float numSteps = time / stepTime;
         float alphaStep = 1F / numSteps;
