@@ -22,7 +22,10 @@ public class Trap : MonoBehaviour
             Activate(true);
 
         if (other.GetComponent<Aimable>())
+        {
             Activate(false);
+            Destroy(other.gameObject);
+        }
     }
 
     private void Activate(bool killPlayer)
