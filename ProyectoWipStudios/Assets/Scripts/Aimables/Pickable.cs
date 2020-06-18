@@ -28,6 +28,7 @@ public class Pickable : Aimable
         this.gameObject.transform.position = position;
         this.gameObject.SetActive(true);
         this.rb.isKinematic = false;
+        this.rb.useGravity = true;
         this.rb.AddForce(direction * force);
         SoundManager.ChameleonSpit.start();
     }
