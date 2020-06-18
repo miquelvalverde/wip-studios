@@ -30,8 +30,11 @@ public class GameController : MonoBehaivourWithInputs
     {
         Time.timeScale = 0;
         pauseMenuHUD.SetActive(true);
-        player.DisableInputs();
-        player.DisableCameraControls();
+        if (player)
+        {
+            player.DisableInputs();
+            player.DisableCameraControls();
+        }
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         SoundTriggerOnPointerClick();
@@ -42,9 +45,12 @@ public class GameController : MonoBehaivourWithInputs
     {
         Time.timeScale = 1;
         pauseMenuHUD.SetActive(false);
-        player.EnableInputs();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (player)
+        {
+            player.EnableInputs();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
         SoundManager.Music2.start();
     }
 
@@ -58,6 +64,12 @@ public class GameController : MonoBehaivourWithInputs
     public void GameQuit()
     {
         Application.Quit();
+    }
+
+    public void GoToLevel()
+    {
+        SceneManager.LoadSceneAsync("Map01");
+        SoundManager.Music2.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     public void SoundTriggerOnPointerEnter()
